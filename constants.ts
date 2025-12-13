@@ -272,3 +272,12 @@ export const BLOG_POSTS = [
     image: "https://picsum.photos/seed/blog3/600/400"
   }
 ];
+
+export const GALLERY_IMAGES = [
+  "https://picsum.photos/seed/gallery1/800/600",
+  "https://picsum.photos/seed/gallery2/800/600",
+  "https://picsum.photos/seed/gallery3/800/600",
+  "https://picsum.photos/seed/gallery4/800/600",
+  "https://picsum.photos/seed/gallery5/800/600",
+  "https://picsum.photos/seed/gallery6/800/600"
+];
