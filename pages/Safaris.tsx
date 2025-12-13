@@ -3,12 +3,10 @@ import { Map, Clock, ArrowRight, Compass, ChevronDown, ChevronUp, MapPin, BedDou
 import { SAFARI_ITINERARIES } from '../constants';
 import SectionHeader from '../components/SectionHeader';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useAuth } from '../src/auth/AuthContext';
 import { useNavigate, useLocation } from 'react-router-dom';
 
 const Safaris: React.FC = () => {
   const [expandedItinerary, setExpandedItinerary] = useState<string | null>(null);
-  const { user } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -89,8 +87,8 @@ const Safaris: React.FC = () => {
                       <button
                         onClick={() => toggleItinerary(itinerary.id)}
                         className={`flex-1 flex items-center justify-center gap-2 px-6 py-3 rounded text-sm font-medium transition-colors uppercase tracking-wide ${expandedItinerary === itinerary.id
-                            ? 'bg-dark text-white'
-                            : 'border border-primary text-primary hover:bg-orange-50'
+                          ? 'bg-dark text-white'
+                          : 'border border-primary text-primary hover:bg-orange-50'
                           }`}
                       >
                         {expandedItinerary === itinerary.id ? 'Close Itinerary' : 'View Day-by-Day'}
@@ -99,10 +97,6 @@ const Safaris: React.FC = () => {
                       <button
                         className="flex-1 bg-primary hover:bg-[#c4492e] text-white px-6 py-3 rounded text-sm font-medium transition-colors uppercase tracking-wide shadow-md"
                         onClick={() => {
-                          if (!user) {
-                            navigate('/auth?redirect=' + encodeURIComponent(location.pathname));
-                            return;
-                          }
                           navigate('/others');
                         }}
                       >
