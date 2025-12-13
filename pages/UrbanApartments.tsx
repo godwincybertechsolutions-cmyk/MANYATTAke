@@ -3,7 +3,7 @@ import { Bed, Bath, Move, Check, Car, User, Camera } from 'lucide-react';
 import { URBAN_APARTMENTS } from '../constants';
 import SectionHeader from '../components/SectionHeader';
 import { useNavigate } from 'react-router-dom';
-import ImageSlideshowModal from '../components/ImageSlideshowModal';
+import ImageSlideshowModal from '../src/components/ImageSlideshowModal';
 
 const UrbanApartments: React.FC = () => {
   const navigate = useNavigate();

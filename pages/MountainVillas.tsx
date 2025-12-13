@@ -3,7 +3,7 @@ import { Wifi, Shield, Coffee, Utensils, Check, Fish, Mountain, Camera } from 'l
 import { MOUNTAIN_VILLA_PRICING, BURGURET_IMAGES } from '../constants';
 import SectionHeader from '../components/SectionHeader';
 import { useNavigate } from 'react-router-dom';
-import ImageSlideshowModal from '../components/ImageSlideshowModal';
+import ImageSlideshowModal from '../src/components/ImageSlideshowModal';
 
 const MountainVillas: React.FC = () => {
   const navigate = useNavigate();
