@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import { Calendar, Users, MapPin, ChevronDown } from 'lucide-react';
 import { PropertyType } from '../types';
-import { useAuth } from '../src/auth/AuthContext';
+// import { useAuth } from '../src/auth/AuthContext';
 import { useNavigate, useLocation } from 'react-router-dom';
 
 const BookingWidget: React.FC = () => {
   const [activeTab, setActiveTab] = useState<PropertyType>('mountain');
-  const { user } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -16,25 +15,22 @@ const BookingWidget: React.FC = () => {
       <div className="flex border-b border-gray-100">
         <button
           onClick={() => setActiveTab('mountain')}
-          className={`flex-1 py-4 text-center text-sm font-semibold uppercase tracking-wider transition-colors ${
-            activeTab === 'mountain' ? 'bg-primary text-white' : 'text-gray-500 hover:bg-gray-50'
-          }`}
+          className={`flex-1 py-4 text-center text-sm font-semibold uppercase tracking-wider transition-colors ${activeTab === 'mountain' ? 'bg-primary text-white' : 'text-gray-500 hover:bg-gray-50'
+            }`}
         >
           Mountain Villas
         </button>
         <button
           onClick={() => setActiveTab('safari')}
-          className={`flex-1 py-4 text-center text-sm font-semibold uppercase tracking-wider transition-colors ${
-            activeTab === 'safari' ? 'bg-primary text-white' : 'text-gray-500 hover:bg-gray-50'
-          }`}
+          className={`flex-1 py-4 text-center text-sm font-semibold uppercase tracking-wider transition-colors ${activeTab === 'safari' ? 'bg-primary text-white' : 'text-gray-500 hover:bg-gray-50'
+            }`}
         >
           Safaris
         </button>
         <button
           onClick={() => setActiveTab('urban')}
-          className={`flex-1 py-4 text-center text-sm font-semibold uppercase tracking-wider transition-colors ${
-            activeTab === 'urban' ? 'bg-primary text-white' : 'text-gray-500 hover:bg-gray-50'
-          }`}
+          className={`flex-1 py-4 text-center text-sm font-semibold uppercase tracking-wider transition-colors ${activeTab === 'urban' ? 'bg-primary text-white' : 'text-gray-500 hover:bg-gray-50'
+            }`}
         >
           Apartments
         </button>
@@ -61,9 +57,9 @@ const BookingWidget: React.FC = () => {
           <label className="text-xs text-gray-400 font-medium uppercase mb-1 block">Check In</label>
           <div className="flex items-center gap-2 text-dark font-serif text-lg">
             <Calendar size={18} className="text-primary" />
-            <input 
-              type="date" 
-              className="outline-none w-full text-dark font-serif bg-transparent uppercase text-sm cursor-pointer" 
+            <input
+              type="date"
+              className="outline-none w-full text-dark font-serif bg-transparent uppercase text-sm cursor-pointer"
             />
           </div>
         </div>
@@ -73,9 +69,9 @@ const BookingWidget: React.FC = () => {
           <label className="text-xs text-gray-400 font-medium uppercase mb-1 block">Check Out</label>
           <div className="flex items-center gap-2 text-dark font-serif text-lg">
             <Calendar size={18} className="text-primary" />
-            <input 
-              type="date" 
-              className="outline-none w-full text-dark font-serif bg-transparent uppercase text-sm cursor-pointer" 
+            <input
+              type="date"
+              className="outline-none w-full text-dark font-serif bg-transparent uppercase text-sm cursor-pointer"
             />
           </div>
         </div>
@@ -84,10 +80,6 @@ const BookingWidget: React.FC = () => {
         <button
           className="bg-dark hover:bg-black text-white h-full rounded-lg flex flex-col items-center justify-center transition-all shadow-lg"
           onClick={() => {
-            if (!user) {
-              navigate('/auth?redirect=' + encodeURIComponent(location.pathname));
-              return;
-            }
             navigate('/others');
           }}
         >
