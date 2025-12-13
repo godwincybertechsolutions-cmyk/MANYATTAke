@@ -97,10 +97,51 @@ export const BURGURET_IMAGES = [
   "/assets/Burguret Mountainside Villa/Burguret. Outside Patio View.jpg",
   "/assets/Burguret Mountainside Villa/Burguret. Outside Patio dining area.jpg",
   "/assets/Burguret Mountainside Villa/Burguret. Outside Patio seating area.jpg",
-  "/assets/Burguret Mountainside Villa/Burguret. Swimming Pool 1.jpg",
   "/assets/Burguret Mountainside Villa/Burguret. Swimming Pool 2.jpg",
   "/assets/Burguret Mountainside Villa/Buruguret. Living area Overview.jpg"
 ];
+
+export const BURGURET_VILLA_DETAILS = {
+  title: "Burguret Mountainside Villa",
+  subtitle: "Three Bedroom Villa on the Slopes of Mt. Kenya",
+  description: "The Burguret Mountainside Villa is a 3-bedroom luxurious bungalow seated on 2.2 acres of African Bush Land filled with ‘Leleshwa’ Cedar trees. It is a seamless fusion of old British architectural style and Kenyan Lamu coastal designs with most of its furniture handmade from the Coast using Oak tree ‘Mvule’.",
+  location: {
+    main: "Burguret, Kenya",
+    sub: "Slopes of Mt Kenya",
+    detail: "Close to Burguret River"
+  },
+  offers: {
+    living: [
+      "Spacious lounge area with a fireplace",
+      "Dining area fitting six people (inside)",
+      "Outdoor seating area overlooking the swimming pool",
+      "Outdoor dining area for 8 people",
+      "Outdoor Patio with Swimming Pool"
+    ],
+    kitchen: "A fully equipped separate kitchen with a dining area fitting four people.",
+    bedrooms: "Three bedrooms all ensuite; one master bedroom with walk-in closet and two guest bedrooms.",
+    laundry: "A well-equipped laundry room.",
+    amenities: ["Starlink Internet", "Water Dispenser with Drinking Water"],
+    facilities: ["2-Car Designated Parking Area", "Staff Quarters on site"]
+  },
+  services: [
+    "24hrs Security Services",
+    "Groundskeeper and Housekeeper Services",
+    "In-house Chef upon request (not inclusive in accommodation charges)",
+    "In-Person Check-In",
+    "Car Hire Services (recommended)"
+  ],
+  surroundings: [
+    { name: "Solio Ranch Conservancy", time: "30 mins" },
+    { name: "Ol Pejeta Conservancy", time: "30 mins" },
+    { name: "Aberdare National Park", time: "50 mins" },
+    { name: "Mt. Kenya National Park", time: "30 mins" },
+    { name: "Samburu National Reserve", time: "1.5 hours" },
+    { name: "Shaba National Reserve", time: "1.5 hours" },
+    { name: "Buffalo Springs National Reserve", time: "1.5 hours" },
+    { name: "Meru National Park", time: "2-3 hours" }
+  ]
+};
 export const MOUNTAIN_VILLA_PRICING = [
   {
     title: "Family Retreat",
@@ -122,7 +163,169 @@ export const MOUNTAIN_VILLA_PRICING = [
   }
 ];
 
+export const NARUMORU_VILLA_DETAILS = {
+  title: "Narumoru Mountainside Villa",
+  subtitle: "Three Bedroom Villa on the Slopes of Mt. Kenya",
+  description: "The Narumoru Mountainside Villa is one of the most beautiful homes in the area with unique handmade designs and is set on an extraordinary 8-acre piece of forest with over a half kilometer river frontage. Aside from visits from the wildlife such as the Colobus, antelopes, and hundreds of various birds, the Villa offers a quintessence of privacy, and a calm serene surrounding filled with nature.",
+  location: {
+    main: "Narumoru, Kenya",
+    sub: "Bordering Mt Kenya National Park",
+    detail: "River Frontage"
+  },
+  offers: {
+    living: [
+      "Spacious lounge area with a fireplace",
+      "Dining area fitting six people (inside)",
+      "Outdoor seating area overlooking the grounds",
+      "Outdoor Patio"
+    ],
+    kitchen: "A fully equipped separate kitchen with a dining area fitting four people.",
+    bedrooms: "Three bedrooms and one separate bathroom; one master bedroom ensuite with walk-in closet and two guest bedrooms.",
+    laundry: "A well-equipped laundry room.",
+    amenities: ["Starlink Internet", "Water Dispenser with Drinking Water"],
+    facilities: ["2-Car Designated Parking Area", "Staff Quarters on site", "Camping Site with barbecue area", "Accessible River Frontage"]
+  },
+  services: [
+    "24hrs Security Services",
+    "Groundskeeper and Housekeeper Services",
+    "In-house Chef upon request (not inclusive in accommodation charges)",
+    "In-Person Check-In",
+    "Car Hire Services (recommended)"
+  ],
+  surroundings: [
+    { name: "Solio Ranch Conservancy", time: "30 mins" },
+    { name: "Ol Pejeta Conservancy", time: "45 mins" },
+    { name: "Aberdare National Park", time: "50 mins" },
+    { name: "Mt. Kenya National Park", time: "15 mins" },
+    { name: "Samburu National Reserve", time: "1.5 hours" },
+    { name: "Shaba National Reserve", time: "1.5 hours" },
+    { name: "Buffalo Springs National Reserve", time: "1.5 hours" },
+    { name: "Meru National Park", time: "2-3 hours" }
+  ],
+  images: [
+    "https://picsum.photos/seed/narumoru1/800/600",
+    "https://picsum.photos/seed/narumoru2/800/600",
+    "https://picsum.photos/seed/narumoru3/800/600"
+  ]
+};
+
+export const NARUMORU_VILLA_DETAILS = {
+  title: "Narumoru Mountainside Villa",
+  subtitle: "Three Bedroom Villa on the Slopes of Mt. Kenya",
+  description: "The Narumoru Mountainside Villa is one of the most beautiful homes in the area with unique handmade designs and is set on an extraordinary 8-acre piece of forest with over a half kilometer river frontage. Aside from visits from the wildlife such as the Colobus, antelopes, and hundreds of various birds, the Villa offers a quintessence of privacy, and a calm serene surrounding filled with nature.",
+  location: {
+    main: "Narumoru, Kenya",
+    sub: "Bordering Mt Kenya National Park",
+    detail: "River Frontage"
+  },
+  offers: {
+    living: [
+      "Spacious lounge area with a fireplace",
+      "Dining area fitting six people (inside)",
+      "Outdoor seating area overlooking the grounds",
+      "Outdoor Patio"
+    ],
+    kitchen: "A fully equipped separate kitchen with a dining area fitting four people.",
+    bedrooms: "Three bedrooms and one separate bathroom; one master bedroom ensuite with walk-in closet and two guest bedrooms.",
+    laundry: "A well-equipped laundry room.",
+    amenities: ["Starlink Internet", "Water Dispenser with Drinking Water"],
+    facilities: ["2-Car Designated Parking Area", "Staff Quarters on site", "Camping Site with barbecue area", "Accessible River Frontage"]
+  },
+  services: [
+    "24hrs Security Services",
+    "Groundskeeper and Housekeeper Services",
+    "In-house Chef upon request (not inclusive in accommodation charges)",
+    "In-Person Check-In",
+    "Car Hire Services (recommended)"
+  ],
+  surroundings: [
+    { name: "Solio Ranch Conservancy", time: "30 mins" },
+    { name: "Ol Pejeta Conservancy", time: "45 mins" },
+    { name: "Aberdare National Park", time: "50 mins" },
+    { name: "Mt. Kenya National Park", time: "15 mins" },
+    { name: "Samburu National Reserve", time: "1.5 hours" },
+    { name: "Shaba National Reserve", time: "1.5 hours" },
+    { name: "Buffalo Springs National Reserve", time: "1.5 hours" },
+    { name: "Meru National Park", time: "2-3 hours" }
+  ],
+  images: [
+    "https://picsum.photos/seed/narumoru1/800/600",
+    "https://picsum.photos/seed/narumoru2/800/600",
+    "https://picsum.photos/seed/narumoru3/800/600"
+  ]
+};
+
 export const SAFARI_ITINERARIES: Itinerary[] = [
+  {
+    id: "3-night-safari",
+    title: "3-Night Safari Adventure",
+    duration: "3 Nights",
+    locations: ["Aberdare National Park", "Ol Pejeta Conservancy", "Solio Ranch"],
+    description: "A comprehensive 4-day journey through the highlands, featuring misty forests, iconic wildlife conservancies, and private rhino sanctuaries. Experience the best of Mt. Kenya's surroundings.",
+    image: "https://www.discoverafrica.com/wp-content/uploads/2015/07/solio-game-reserve-rhino-sanctuary.jpg",
+    pricePerPerson: "Inquire for Pricing",
+    days: [
+      {
+        day: 1,
+        title: "Arrival & Relaxation",
+        activities: ["Check-in at base of Mt Kenya", "Poolside relaxation", "Bonfire & Dinner"],
+        lodging: "Mountainside Haven"
+      },
+      {
+        day: 2,
+        title: "Aberdare National Park",
+        activities: ["Full-day safari (7:00 AM departure)", "Picnic lunch by waterfalls", "Evening relaxation / games"],
+        lodging: "Mountainside Haven"
+      },
+      {
+        day: 3,
+        title: "Ol Pejeta Conservancy",
+        activities: ["Half-day safari (Rhinos, Chimps)", "Late barbecue lunch", "Afternoon relaxation / massage"],
+        lodging: "Mountainside Haven"
+      },
+      {
+        day: 4,
+        title: "Solio Ranch & Departure",
+        activities: ["Early breakfast", "Half-day game drive at Solio Ranch", "Lunch & Departure"],
+        lodging: "N/A"
+      }
+    ]
+  },
+  {
+    id: "3-night-safari",
+    title: "3-Night Safari Adventure",
+    duration: "3 Nights",
+    locations: ["Aberdare National Park", "Ol Pejeta Conservancy", "Solio Ranch"],
+    description: "A comprehensive 4-day journey through the highlands, featuring misty forests, iconic wildlife conservancies, and private rhino sanctuaries. Experience the best of Mt. Kenya's surroundings.",
+    image: "https://www.discoverafrica.com/wp-content/uploads/2015/07/solio-game-reserve-rhino-sanctuary.jpg",
+    pricePerPerson: "Inquire for Pricing",
+    days: [
+      {
+        day: 1,
+        title: "Arrival & Relaxation",
+        activities: ["Check-in at base of Mt Kenya", "Poolside relaxation", "Bonfire & Dinner"],
+        lodging: "Mountainside Haven"
+      },
+      {
+        day: 2,
+        title: "Aberdare National Park",
+        activities: ["Full-day safari (7:00 AM departure)", "Picnic lunch by waterfalls", "Evening relaxation / games"],
+        lodging: "Mountainside Haven"
+      },
+      {
+        day: 3,
+        title: "Ol Pejeta Conservancy",
+        activities: ["Half-day safari (Rhinos, Chimps)", "Late barbecue lunch", "Afternoon relaxation / massage"],
+        lodging: "Mountainside Haven"
+      },
+      {
+        day: 4,
+        title: "Solio Ranch & Departure",
+        activities: ["Early breakfast", "Half-day game drive at Solio Ranch", "Lunch & Departure"],
+        lodging: "N/A"
+      }
+    ]
+  },
   {
     id: "weekend",
     title: "Weekend Escape",

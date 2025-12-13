@@ -89,13 +89,13 @@ const Home: React.FC = () => {
               <div className="relative h-[500px] overflow-hidden rounded-xl mb-6">
                 <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors z-10"></div>
                 <img
-                  src="https://twendesasa.com/wp-content/uploads/2023/09/List-Of-Best-Places-To-Visit-In-Kirinyaga-County.jpg"
-                  alt="Mountain Villas"
+                  src="/assets/Burguret Mountainside Villa/Burguret. House Overall View.jpg"
+                  alt="Mountainside Haven"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
                 <div className="absolute bottom-0 left-0 p-8 z-20 text-white">
                   <Mountain className="mb-4 text-primary" size={32} />
-                  <h3 className="font-serif text-3xl mb-2">Kirinyaga Haven</h3>
+                  <h3 className="font-serif text-3xl mb-2">Mountainside Haven</h3>
                   <p className="text-white/80 text-sm opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-4 group-hover:translate-y-0 duration-300">
                     Tranquil villas nestled in the misty slopes of Mt. Kenya.
                   </p>
