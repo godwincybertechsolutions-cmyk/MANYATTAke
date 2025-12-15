@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { MapPin, Check, Camera } from 'lucide-react';
-import { useNavigate } from 'react-router-dom'; // Added import for useNavigate
-import ImageSlideshowModal from '../components/ImageSlideshowModal'; // Assuming this component exists
+import { useNavigate } from 'react-router-dom';
+import ImageSlideshowModal from '../components/ImageSlideshowModal';
 import {
   BURGURET_VILLA_DETAILS,
   BURGURET_IMAGES,
@@ -134,7 +134,7 @@ const MountainVillas: React.FC = () => {
           </div>
         ))}
       </div>
-    </div> {/* This closing div was missing */ }
+    </div>
   );
 };
 
