@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import { Wifi, Shield, Coffee, Utensils, Check, Fish, Mountain, Camera, Car, MapPin, Wind } from 'lucide-react';
+import { MapPin, Check, Camera } from 'lucide-react';
+import { useNavigate } from 'react-router-dom'; // Added import for useNavigate
+import ImageSlideshowModal from '../components/ImageSlideshowModal'; // Assuming this component exists
 import {
   BURGURET_VILLA_DETAILS,
   BURGURET_IMAGES,
@@ -16,8 +18,8 @@ const VILLAS = [
   {
     id: 'narumoru',
     details: NARUMORU_VILLA_DETAILS,
-    images: NARUMORU_VILLA_DETAILS.images,
-    heroImage: "https://picsum.photos/seed/narumoru_hero/1920/1080" // Placeholder
+    images: NARUMORU_VILLA_DETAILS.images || [],
+    heroImage: "https://picsum.photos/seed/narumoru_hero/1920/1080"
   }
 ];
 
@@ -132,5 +134,8 @@ const MountainVillas: React.FC = () => {
           </div>
         ))}
       </div>
+    </div> {/* This closing div was missing */ }
+  );
+};
 
-      export default MountainVillas;
+export default MountainVillas;
