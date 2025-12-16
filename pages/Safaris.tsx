@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Map, Clock, ArrowRight, Compass, ChevronDown, ChevronUp, MapPin, BedDouble } from 'lucide-react';
 import { SAFARI_ITINERARIES } from '../constants';
 import SectionHeader from '../components/SectionHeader';
+import OptimizedImage from '../components/OptimizedImage';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigate, useLocation } from 'react-router-dom';
 
@@ -18,10 +19,13 @@ const Safaris: React.FC = () => {
     <div className="w-full pt-20">
       {/* Hero */}
       <div className="relative h-[60vh] w-full bg-dark overflow-hidden">
-        <img
+        <OptimizedImage
           src="https://www.onthegotours.com/repository/Tsavo-West-National-Park-watering-hole--Kenya-safaris--On-The-Go-Tours-831311706788391_crop_flip_2250_1200_f2f2f2_center-center.jpg"
           alt="Safari"
-          className="w-full h-full object-cover opacity-60"
+          className="opacity-60"
+          fill
+          priority
+          objectFit="cover"
         />
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-6">
           <span className="text-primary text-sm font-bold tracking-[0.3em] uppercase mb-4">Journeys That Transform</span>
@@ -51,10 +55,12 @@ const Safaris: React.FC = () => {
                 <div className="flex flex-col md:flex-row">
                   {/* Image Section */}
                   <div className="w-full md:w-2/5 h-64 md:h-auto relative">
-                    <img
+                    <OptimizedImage
                       src={itinerary.image}
                       alt={itinerary.title}
-                      className="w-full h-full object-cover"
+                      className=""
+                      fill
+                      objectFit="cover"
                     />
                     <div className="absolute top-4 left-4 bg-white/90 backdrop-blur px-4 py-2 rounded-full flex items-center gap-2 shadow-sm">
                       <Clock size={14} className="text-primary" />
