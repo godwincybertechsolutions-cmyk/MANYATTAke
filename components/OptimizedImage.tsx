@@ -47,9 +47,11 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
   }, [priority]);
 
   // Convert jpg to webp, fallback to original
-  const getImageSrc = (imgSrc: string) => {
+  // Convert jpg to webp, fallback to original. Prefer webp only for non-priority images.
+  const getImageSrc = (imgSrc: string, preferWebp = true) => {
     if (!imgSrc) return blurPlaceholder;
     if (imgSrc.startsWith('http')) return imgSrc; // External images as-is
+    if (!preferWebp) return imgSrc;
     return imgSrc.replace(/\.(jpg|jpeg|png)$/i, '.webp');
   };
 
@@ -72,17 +74,21 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
       <div className={`relative w-full h-full overflow-hidden ${className}`}>
         <img
           ref={imgRef}
-          src={priority ? webpSrc : blurPlaceholder}
+          src={priority ? src : blurPlaceholder}
           alt={alt}
           loading={priority ? 'eager' : 'lazy'}
           className={`w-full h-full ${objectFitClass} transition-opacity duration-300 ${
             showImage ? 'opacity-100' : 'opacity-75'
           }`}
           onLoad={handleLoad}
+          onError={() => {
+            // ensure visible fallback for priority local images
+            if (imgRef.current && imgRef.current.src !== src) imgRef.current.src = src;
+          }}
         />
         {!priority && isLoaded && (
           <img
-            src={webpSrc}
+            src={getImageSrc(src)}
             alt={alt}
             className={`absolute inset-0 w-full h-full ${objectFitClass} transition-opacity duration-300 ${
               showImage ? 'opacity-100' : 'opacity-0'
@@ -90,8 +96,6 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
             onLoad={handleLoad}
             onError={() => {
               // Fallback to original if webp fails
-              const fallbackImg = new Image();
-              fallbackImg.src = src;
               if (imgRef.current) {
                 imgRef.current.src = src;
               }
@@ -105,7 +109,7 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
   return (
     <motion.img
       ref={imgRef}
-      src={priority ? webpSrc : blurPlaceholder}
+      src={priority ? src : blurPlaceholder}
       alt={alt}
       loading={priority ? 'eager' : 'lazy'}
       className={`${objectFitClass} transition-opacity duration-300 ${
@@ -116,7 +120,7 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
       animate={{ opacity: showImage ? 1 : 0.7 }}
       transition={{ duration: 0.3 }}
       {...(!priority && isLoaded && {
-        srcSet: `${webpSrc} 1x`
+        srcSet: `${getImageSrc(src)} 1x`
       })}
       onError={() => {
         // Fallback to original if webp fails
