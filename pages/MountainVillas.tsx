@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { MapPin, Check, Camera } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import ImageSlideshowModal from '../components/ImageSlideshowModal';
+import OptimizedImage from '../components/OptimizedImage';
 import {
   BURGURET_VILLA_DETAILS,
   BURGURET_IMAGES,
@@ -46,10 +47,13 @@ const MountainVillas: React.FC = () => {
 
       {/* Hero */}
       <div className="relative h-[60vh] w-full">
-        <img
+        <OptimizedImage
           src="/assets/Burguret Mountainside Villa/Burguret. House Overall View.jpg"
           alt="Mountainside Haven"
-          className="w-full h-full object-cover"
+          className=""
+          fill
+          priority
+          objectFit="cover"
         />
         <div className="absolute inset-0 bg-black/40 flex items-center justify-center text-center">
           <div className="max-w-4xl px-6">
@@ -117,16 +121,34 @@ const MountainVillas: React.FC = () => {
 
                 {/* Images Grid */}
                 <div className="md:w-1/2 grid grid-cols-2 gap-4">
-                  <div className="col-span-2 h-64 rounded-xl overflow-hidden relative group cursor-pointer" onClick={() => openGallery(villa.images, villa.details.title)}>
-                    <img src={villa.heroImage} alt={villa.details.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                  <div className="col-span-2 h-64 rounded-xl overflow-hidden relative group cursor-pointer shadow-lg hover:shadow-xl transition-shadow duration-300" onClick={() => openGallery(villa.images, villa.details.title)}>
+                    <OptimizedImage 
+                      src={villa.heroImage} 
+                      alt={villa.details.title} 
+                      className="transition-transform duration-700 group-hover:scale-110"
+                      fill
+                      objectFit="cover"
+                    />
                     <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
                   </div>
                   {/* Display 2 more small images if available */}
-                  <div className="h-40 rounded-xl overflow-hidden hidden md:block">
-                    <img src={villa.images[1] || villa.images[0]} className="w-full h-full object-cover" alt="Detail 1" />
+                  <div className="h-40 rounded-xl overflow-hidden hidden md:block shadow-md hover:shadow-lg transition-shadow duration-300">
+                    <OptimizedImage 
+                      src={villa.images[1] || villa.images[0]} 
+                      alt="Detail 1"
+                      className=""
+                      fill
+                      objectFit="cover"
+                    />
                   </div>
-                  <div className="h-40 rounded-xl overflow-hidden hidden md:block">
-                    <img src={villa.images[2] || villa.images[0]} className="w-full h-full object-cover" alt="Detail 2" />
+                  <div className="h-40 rounded-xl overflow-hidden hidden md:block shadow-md hover:shadow-lg transition-shadow duration-300">
+                    <OptimizedImage 
+                      src={villa.images[2] || villa.images[0]} 
+                      alt="Detail 2"
+                      className=""
+                      fill
+                      objectFit="cover"
+                    />
                   </div>
                 </div>
               </div>

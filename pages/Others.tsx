@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Coffee, Heart, ArrowRight, ShoppingBag, Droplets, Camera, BookOpen } from 'lucide-react';
 import SectionHeader from '../components/SectionHeader';
+import StoryModal from '../components/StoryModal';
+import ImpactReportModal from '../components/ImpactReportModal';
 import { COFFEE_PRODUCTS, CSR_PROJECTS, BLOG_POSTS, GALLERY_IMAGES } from '../constants';
 
 const Others: React.FC = () => {
+  const [selectedStory, setSelectedStory] = useState<number | null>(null);
+  const [selectedReport, setSelectedReport] = useState<number | null>(null);
   return (
     <div className="w-full pt-20">
       {/* Hero */}
@@ -82,18 +86,18 @@ const Others: React.FC = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             {CSR_PROJECTS.map((project, index) => (
-              <div key={index} className="flex flex-col md:flex-row gap-6 bg-gray-800 rounded-xl overflow-hidden hover:bg-gray-750 transition-colors">
-                <div className="md:w-2/5 h-64 md:h-auto">
-                  <img src={project.image} alt={project.title} className="w-full h-full object-cover" />
+              <div key={index} className="flex flex-col md:flex-row gap-6 bg-gray-800 rounded-xl overflow-hidden hover:bg-gray-750 transition-colors cursor-pointer group" onClick={() => setSelectedReport(index)}>
+                <div className="md:w-2/5 h-64 md:h-auto overflow-hidden">
+                  <img src={project.image} alt={project.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
                 </div>
                 <div className="p-8 md:w-3/5 flex flex-col justify-center">
                   <h3 className="font-serif text-2xl mb-4 text-primary">{project.title}</h3>
                   <p className="text-gray-300 leading-relaxed mb-6">
                     {project.description}
                   </p>
-                  <a href="#" className="inline-flex items-center gap-2 text-sm font-medium hover:text-primary transition-colors">
+                  <button className="inline-flex items-center gap-2 text-sm font-medium hover:text-primary transition-colors">
                     Read Impact Report <ArrowRight size={16} />
-                  </a>
+                  </button>
                 </div>
               </div>
             ))}
@@ -115,7 +119,7 @@ const Others: React.FC = () => {
               
               <div className="space-y-10">
                 {BLOG_POSTS.map((post, index) => (
-                  <div key={index} className="group flex flex-col sm:flex-row gap-6 items-start border-b border-gray-100 pb-10 last:border-0">
+                  <div key={index} className="group flex flex-col sm:flex-row gap-6 items-start border-b border-gray-100 pb-10 last:border-0 cursor-pointer">
                     <div className="w-full sm:w-48 h-32 rounded-lg overflow-hidden shrink-0">
                       <img src={post.image} alt={post.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                     </div>
@@ -125,7 +129,7 @@ const Others: React.FC = () => {
                       <p className="text-gray-500 leading-relaxed text-sm mb-4">
                         {post.excerpt}
                       </p>
-                      <button className="text-dark text-sm font-medium underline decoration-gray-300 hover:decoration-primary underline-offset-4 transition-all">Read Story</button>
+                      <button onClick={() => setSelectedStory(index)} className="text-dark text-sm font-medium underline decoration-gray-300 hover:decoration-primary underline-offset-4 transition-all">Read Story</button>
                     </div>
                   </div>
                 ))}
@@ -155,6 +159,32 @@ const Others: React.FC = () => {
           </div>
         </div>
       </section>
+
+      {/* Modals */}
+      {selectedStory !== null && (
+        <StoryModal
+          isOpen={selectedStory !== null}
+          onClose={() => setSelectedStory(null)}
+          title={BLOG_POSTS[selectedStory]?.title || ''}
+          date={BLOG_POSTS[selectedStory]?.date || ''}
+          image={BLOG_POSTS[selectedStory]?.image || ''}
+          author={BLOG_POSTS[selectedStory]?.author || 'New Manyatta Team'}
+          content={BLOG_POSTS[selectedStory]?.fullContent || BLOG_POSTS[selectedStory]?.excerpt || ''}
+        />
+      )}
+
+      {selectedReport !== null && (
+        <ImpactReportModal
+          isOpen={selectedReport !== null}
+          onClose={() => setSelectedReport(null)}
+          title={CSR_PROJECTS[selectedReport]?.title || ''}
+          description={CSR_PROJECTS[selectedReport]?.description || ''}
+          image={CSR_PROJECTS[selectedReport]?.image || ''}
+          reportContent={CSR_PROJECTS[selectedReport]?.reportContent || CSR_PROJECTS[selectedReport]?.description || ''}
+          year="2024"
+          impact={CSR_PROJECTS[selectedReport]?.impact || []}
+        />
+      )}
     </div>
   );
 };

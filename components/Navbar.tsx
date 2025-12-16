@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { NAVIGATION_LINKS, APP_NAME } from '../constants';
+import OptimizedImage from './OptimizedImage';
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -25,13 +26,18 @@ const Navbar: React.FC = () => {
 
   return (
     <nav
-      className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white/95 backdrop-blur-md shadow-lg py-4' : 'bg-transparent py-6'
+      className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white/95 backdrop-blur-md shadow-lg py-3' : 'bg-transparent py-6'
         }`}
     >
       <div className="container mx-auto px-6 flex justify-between items-center">
         {/* Logo */}
-        <Link to="/" className="flex items-center group">
-          <img src="https://previews.dropbox.com/p/thumb/AC0gIHz5OkQtfL1xlA2zYv2jgSid9OnVl15xdhQ6QPzLV5UwF7uwq3i7DlAC24zbXHoqKpMZy7JX79Lx21ZZJYGkqnSBxjrYUGxctdW50mVPEQlRIiwrOYYkHZPQyRBeRzfHnSW5S21CC8TrG2KMK30il1uxVMnAU_gpH4rPz83MbYLOVyB15arlV1B3VDNZ8CkxdEBbuQKtzjggxJZRVMFXLqA56sDLUWMJimNSr8rLWsUYRsVpCHJh3MYsesBInTuwtLdEbWhWi1Noz_i5z7xjnJyb6EEH8vlsoVlPwfwjGoHDzVeAdwFSpEluBnn1I7n3q4kxJm3ulrtsPnqSZw-l/p.png" alt={APP_NAME} className={`h-10 ${scrolled ? '' : 'filter brightness-0 invert'}`} />
+        <Link to="/" className="flex items-center group hover:opacity-80 transition-opacity">
+          <OptimizedImage 
+            src="https://previews.dropbox.com/p/thumb/AC0gIHz5OkQtfL1xlA2zYv2jgSid9OnVl15xdhQ6QPzLV5UwF7uwq3i7DlAC24zbXHoqKpMZy7JX79Lx21ZZJYGkqnSBxjrYUGxctdW50mVPEQlRIiwrOYYkHZPQyRBeRzfHnSW5S21CC8TrG2KMK30il1uxVMnAU_gpH4rPz83MbYLOVyB15arlV1B3VDNZ8CkxdEBbuQKtzjggxJZRVMFXLqA56sDLUWMJimNSr8rLWsUYRsVpCHJh3MYsesBInTuwtLdEbWhWi1Noz_i5z7xjnJyb6EEH8vlsoVlPwfwjGoHDzVeAdwFSpEluBnn1I7n3q4kxJm3ulrtsPnqSZw-l/p.png"
+            alt={APP_NAME}
+            className={`h-10 ${scrolled ? '' : 'filter brightness-0 invert'}`}
+            priority
+          />
         </Link>
 
         {/* Desktop Nav */}

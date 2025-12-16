@@ -4,6 +4,7 @@ import { ArrowRight, Mountain, Binoculars, Building2 } from 'lucide-react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import BookingWidget from '../components/BookingWidget';
 import SectionHeader from '../components/SectionHeader';
+import OptimizedImage from '../components/OptimizedImage';
 // import { useAuth } from '../src/auth/AuthContext';
 
 const Home: React.FC = () => {
@@ -21,10 +22,13 @@ const Home: React.FC = () => {
           animate={{ scale: 1 }}
           transition={{ duration: 10, repeat: Infinity, repeatType: "reverse" }}
         >
-          <img
+          <OptimizedImage
             src="https://picsum.photos/seed/kenyahero/1920/1080"
             alt="Kenya Landscape"
-            className="w-full h-full object-cover"
+            className="w-full h-full"
+            fill
+            priority
+            objectFit="cover"
           />
         </motion.div>
 
@@ -86,12 +90,14 @@ const Home: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Card 1 */}
             <Link to="/mountain-villas" className="group cursor-pointer">
-              <div className="relative h-[500px] overflow-hidden rounded-xl mb-6">
+              <div className="relative h-[500px] overflow-hidden rounded-xl mb-6 shadow-lg hover:shadow-2xl transition-shadow duration-300">
                 <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors z-10"></div>
-                <img
+                <OptimizedImage
                   src="/assets/Burguret Mountainside Villa/Burguret. House Overall View.jpg"
                   alt="Mountainside Haven"
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  className="transition-transform duration-700 group-hover:scale-110"
+                  fill
+                  objectFit="cover"
                 />
                 <div className="absolute bottom-0 left-0 p-8 z-20 text-white">
                   <Mountain className="mb-4 text-primary" size={32} />
@@ -105,12 +111,14 @@ const Home: React.FC = () => {
 
             {/* Card 2 */}
             <Link to="/safaris" className="group cursor-pointer md:-mt-12">
-              <div className="relative h-[500px] overflow-hidden rounded-xl mb-6 shadow-2xl">
+              <div className="relative h-[500px] overflow-hidden rounded-xl mb-6 shadow-2xl hover:shadow-2xl transition-shadow duration-300">
                 <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors z-10"></div>
-                <img
+                <OptimizedImage
                   src="https://ecoadventuresafaris.com/wp-content/uploads/2023/01/Kenya-1-1200x675.jpg"
                   alt="Safari"
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  className="transition-transform duration-700 group-hover:scale-110"
+                  fill
+                  objectFit="cover"
                 />
                 <div className="absolute bottom-0 left-0 p-8 z-20 text-white">
                   <Binoculars className="mb-4 text-primary" size={32} />
@@ -124,12 +132,14 @@ const Home: React.FC = () => {
 
             {/* Card 3 */}
             <Link to="/urban-apartments" className="group cursor-pointer">
-              <div className="relative h-[500px] overflow-hidden rounded-xl mb-6">
+              <div className="relative h-[500px] overflow-hidden rounded-xl mb-6 shadow-lg hover:shadow-2xl transition-shadow duration-300">
                 <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors z-10"></div>
-                <img
+                <OptimizedImage
                   src="https://laurelandhomes.com/wp-content/uploads/2018/06/appearance.jpg"
                   alt="Urban Apartments"
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  className="transition-transform duration-700 group-hover:scale-110"
+                  fill
+                  objectFit="cover"
                 />
                 <div className="absolute bottom-0 left-0 p-8 z-20 text-white">
                   <Building2 className="mb-4 text-primary" size={32} />
