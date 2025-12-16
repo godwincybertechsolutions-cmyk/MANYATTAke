@@ -18,16 +18,13 @@ export default defineConfig(({ mode }) => {
             },
           },
         },
-        // Optimize images during build
-        minify: 'terser',
-        terserOptions: {
-          compress: {
-            drop_console: true,
-          },
-        },
+        // Minification with esbuild (default, faster and simpler)
+        minify: 'esbuild',
         // Target modern browsers for smaller bundle
         target: 'esnext',
         cssCodeSplit: true,
+        // Enable source maps for production debugging if needed
+        sourcemap: false,
       },
       plugins: [react()],
       define: {

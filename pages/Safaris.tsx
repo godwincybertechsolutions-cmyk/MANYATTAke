@@ -151,9 +151,9 @@ const Safaris: React.FC = () => {
       </section>
 
       {/* Map Viz Placeholder */}
-      <section className="py-20 bg-dark text-white text-center">
+      <section className="py-20 bg-black text-white text-center">
         <div className="container mx-auto px-6">
-          <div className="bg-gray-800 rounded-xl p-8 max-w-5xl mx-auto border border-gray-700 relative overflow-hidden min-h-[400px] flex flex-col items-center justify-center">
+          <div className="bg-gray-900 rounded-xl p-8 max-w-5xl mx-auto border border-gray-800 relative overflow-hidden min-h-[400px] flex flex-col items-center justify-center">
             {/* Abstract Map UI */}
             <div className="absolute inset-0 opacity-20">
               {/* Just lines and dots to simulate a map */}
@@ -170,7 +170,7 @@ const Safaris: React.FC = () => {
             <p className="text-gray-400 max-w-lg mx-auto mb-8 relative z-10">
               Visualize your journey from the highlands to the plains. See how our properties connect to key wildlife corridors.
             </p>
-            <button className="bg-white text-dark hover:bg-gray-200 px-8 py-3 rounded-full font-bold uppercase text-sm tracking-widest relative z-10">
+            <button className="bg-white text-black hover:bg-gray-200 px-8 py-3 rounded-full font-bold uppercase text-sm tracking-widest relative z-10 transition-colors">
               Explore Route
             </button>
           </div>
