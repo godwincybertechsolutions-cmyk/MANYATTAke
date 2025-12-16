@@ -1,6 +1,7 @@
 import React from 'react';
-import { Mountain, Instagram, Facebook, Twitter, Mail, Phone, MapPin } from 'lucide-react';
+import { Instagram, Facebook, Twitter, Mail, Phone, MapPin } from 'lucide-react';
 import { APP_NAME } from '../constants';
+import OptimizedImage from './OptimizedImage';
 import { Link } from 'react-router-dom';
 
 const Footer: React.FC = () => {
@@ -11,10 +12,15 @@ const Footer: React.FC = () => {
           
           {/* Brand */}
           <div className="space-y-6">
-            <div className="flex items-center gap-2">
-              <Mountain size={32} className="text-primary" />
-              <span className="font-serif text-2xl font-bold">{APP_NAME}</span>
-            </div>
+              <Link to="/" className="inline-flex items-center gap-3 hover:opacity-80 transition-opacity">
+                <OptimizedImage 
+                  src="/assets/Logo/New Manyatta Logo.png"
+                  alt={APP_NAME}
+                  className="h-16"
+                  priority
+                />
+                <span className="font-serif text-2xl font-bold hidden sm:block">{APP_NAME}</span>
+              </Link>
             <p className="text-gray-400 text-sm leading-relaxed">
               Bridging the gap between the majestic peaks of Mt. Kenya, the wild soul of the savannah, and the sophisticated pulse of Nairobi.
             </p>

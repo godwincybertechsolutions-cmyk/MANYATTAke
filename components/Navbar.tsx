@@ -33,9 +33,9 @@ const Navbar: React.FC = () => {
         {/* Logo */}
         <Link to="/" className="flex items-center group hover:opacity-80 transition-opacity">
           <OptimizedImage 
-            src="https://previews.dropbox.com/p/thumb/AC0gIHz5OkQtfL1xlA2zYv2jgSid9OnVl15xdhQ6QPzLV5UwF7uwq3i7DlAC24zbXHoqKpMZy7JX79Lx21ZZJYGkqnSBxjrYUGxctdW50mVPEQlRIiwrOYYkHZPQyRBeRzfHnSW5S21CC8TrG2KMK30il1uxVMnAU_gpH4rPz83MbYLOVyB15arlV1B3VDNZ8CkxdEBbuQKtzjggxJZRVMFXLqA56sDLUWMJimNSr8rLWsUYRsVpCHJh3MYsesBInTuwtLdEbWhWi1Noz_i5z7xjnJyb6EEH8vlsoVlPwfwjGoHDzVeAdwFSpEluBnn1I7n3q4kxJm3ulrtsPnqSZw-l/p.png"
+             src="/assets/Logo/New Manyatta Logo.png"
             alt={APP_NAME}
-            className={`h-10 ${scrolled ? '' : 'filter brightness-0 invert'}`}
+             className="h-12"
             priority
           />
         </Link>
