@@ -90,63 +90,69 @@ const Home: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Card 1 */}
             <Link to="/mountain-villas" className="group cursor-pointer">
-              <div className="relative h-[500px] overflow-hidden rounded-xl mb-6 shadow-lg hover:shadow-2xl transition-shadow duration-300">
-                <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors z-10"></div>
-                <OptimizedImage
-                  src="/assets/Burguret Mountainside Villa/Burguret. House Overall View.jpg"
-                  alt="Mountainside Haven"
-                  className="transition-transform duration-700 group-hover:scale-110"
-                  fill
-                  objectFit="cover"
-                />
-                <div className="absolute bottom-0 left-0 p-8 z-20 text-white">
-                  <Mountain className="mb-4 text-primary" size={32} />
-                  <h3 className="font-serif text-3xl mb-2">Mountainside Haven</h3>
-                  <p className="text-white/80 text-sm opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-4 group-hover:translate-y-0 duration-300">
-                    Tranquil villas nestled in the misty slopes of Mt. Kenya.
-                  </p>
+              <div>
+                <div className="relative h-[500px] overflow-hidden rounded-xl mb-2 shadow-lg hover:shadow-2xl transition-shadow duration-300">
+                  <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors z-10"></div>
+                  <OptimizedImage
+                    src="/assets/Burguret Mountainside Villa/Burguret. House Overall View.jpg"
+                    alt="Mountainside Haven"
+                    className="transition-transform duration-700 group-hover:scale-110"
+                    fill
+                    objectFit="cover"
+                  />
+                </div>
+                <div className="px-2 text-left">
+                  <div className="flex items-center gap-3 text-primary mb-2">
+                    <Mountain size={28} />
+                    <h3 className="font-serif text-2xl">Mountainside Villas</h3>
+                  </div>
+                  <p className="text-gray-700 text-sm">Tranquil villas nestled in the misty slopes of Mt. Kenya.</p>
                 </div>
               </div>
             </Link>
 
             {/* Card 2 */}
             <Link to="/safaris" className="group cursor-pointer md:-mt-12">
-              <div className="relative h-[500px] overflow-hidden rounded-xl mb-6 shadow-2xl hover:shadow-2xl transition-shadow duration-300">
-                <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors z-10"></div>
-                <OptimizedImage
-                  src="https://ecoadventuresafaris.com/wp-content/uploads/2023/01/Kenya-1-1200x675.jpg"
-                  alt="Safari"
-                  className="transition-transform duration-700 group-hover:scale-110"
-                  fill
-                  objectFit="cover"
-                />
-                <div className="absolute bottom-0 left-0 p-8 z-20 text-white">
-                  <Binoculars className="mb-4 text-primary" size={32} />
-                  <h3 className="font-serif text-3xl mb-2">Wild Soul Safaris</h3>
-                  <p className="text-white/80 text-sm opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-4 group-hover:translate-y-0 duration-300">
-                    Immersive game drives connecting you to nature's rhythm.
-                  </p>
+              <div>
+                <div className="relative h-[500px] overflow-hidden rounded-xl mb-2 shadow-2xl hover:shadow-2xl transition-shadow duration-300">
+                  <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors z-10"></div>
+                  <OptimizedImage
+                    src="https://ecoadventuresafaris.com/wp-content/uploads/2023/01/Kenya-1-1200x675.jpg"
+                    alt="Safari"
+                    className="transition-transform duration-700 group-hover:scale-110"
+                    fill
+                    objectFit="cover"
+                  />
+                </div>
+                <div className="px-2 text-left">
+                  <div className="flex items-center gap-3 text-primary mb-2">
+                    <Binoculars size={28} />
+                    <h3 className="font-serif text-2xl">Safaris</h3>
+                  </div>
+                  <p className="text-gray-700 text-sm">Immersive game drives connecting you to nature's rhythm.</p>
                 </div>
               </div>
             </Link>
 
             {/* Card 3 */}
             <Link to="/urban-apartments" className="group cursor-pointer">
-              <div className="relative h-[500px] overflow-hidden rounded-xl mb-6 shadow-lg hover:shadow-2xl transition-shadow duration-300">
-                <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors z-10"></div>
-                <OptimizedImage
-                  src="https://laurelandhomes.com/wp-content/uploads/2018/06/appearance.jpg"
-                  alt="Urban Apartments"
-                  className="transition-transform duration-700 group-hover:scale-110"
-                  fill
-                  objectFit="cover"
-                />
-                <div className="absolute bottom-0 left-0 p-8 z-20 text-white">
-                  <Building2 className="mb-4 text-primary" size={32} />
-                  <h3 className="font-serif text-3xl mb-2">Urban Retreats</h3>
-                  <p className="text-white/80 text-sm opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-4 group-hover:translate-y-0 duration-300">
-                    Sophisticated apartments in the heart of Nairobi.
-                  </p>
+              <div>
+                <div className="relative h-[500px] overflow-hidden rounded-xl mb-2 shadow-lg hover:shadow-2xl transition-shadow duration-300">
+                  <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors z-10"></div>
+                  <OptimizedImage
+                    src="https://laurelandhomes.com/wp-content/uploads/2018/06/appearance.jpg"
+                    alt="Urban Apartments"
+                    className="transition-transform duration-700 group-hover:scale-110"
+                    fill
+                    objectFit="cover"
+                  />
+                </div>
+                <div className="px-2 text-left">
+                  <div className="flex items-center gap-3 text-primary mb-2">
+                    <Building2 size={28} />
+                    <h3 className="font-serif text-2xl">Apartments</h3>
+                  </div>
+                  <p className="text-gray-700 text-sm">Sophisticated apartments in the heart of Nairobi.</p>
                 </div>
               </div>
             </Link>

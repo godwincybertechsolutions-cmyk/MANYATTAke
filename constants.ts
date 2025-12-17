@@ -69,6 +69,9 @@ export const ALBA_IMAGES = [
 ];
 
 export const BURGURET_IMAGES = [
+  "/assets/Burguret Mountainside Villa/Buruguret. Living area Overview.jpg",
+  "/assets/Burguret Mountainside Villa/Burguret. Swimming Pool 2.jpg",
+  "/assets/Burguret Mountainside Villa/Burguret. Living room 1.jpg",
   "/assets/Burguret Mountainside Villa/Burguret. 1st Guest Bedroom .jpg",
   "/assets/Burguret Mountainside Villa/Burguret. 1st Guest Bedroom 2.jpg",
   "/assets/Burguret Mountainside Villa/Burguret. 1st Guest Bedroom 3.jpg",
@@ -86,7 +89,6 @@ export const BURGURET_IMAGES = [
   "/assets/Burguret Mountainside Villa/Burguret. Kitchen.jpg",
   "/assets/Burguret Mountainside Villa/Burguret. Living Room 2.jpg",
   "/assets/Burguret Mountainside Villa/Burguret. Living Room Overview.jpg",
-  "/assets/Burguret Mountainside Villa/Burguret. Living room 1.jpg",
   "/assets/Burguret Mountainside Villa/Burguret. Living room 3.jpg",
   "/assets/Burguret Mountainside Villa/Burguret. Master Bedroom .jpg",
   "/assets/Burguret Mountainside Villa/Burguret. Master Bedroom 2.jpg",
@@ -97,8 +99,7 @@ export const BURGURET_IMAGES = [
   "/assets/Burguret Mountainside Villa/Burguret. Outside Patio View.jpg",
   "/assets/Burguret Mountainside Villa/Burguret. Outside Patio dining area.jpg",
   "/assets/Burguret Mountainside Villa/Burguret. Outside Patio seating area.jpg",
-  "/assets/Burguret Mountainside Villa/Burguret. Swimming Pool 2.jpg",
-  "/assets/Burguret Mountainside Villa/Buruguret. Living area Overview.jpg"
+  "/assets/Burguret Mountainside Villa/Burguret. Swimming Pool 2.jpg"
 ];
 
 export const BURGURET_VILLA_DETAILS = {
@@ -293,7 +294,7 @@ export const URBAN_APARTMENTS = [
     salePrice: "Ksh 10.5M",
     rentLongTerm: "Ksh 170K/month",
     rentShortTerm: "Ksh 8,400/night",
-    image: "https://cf.bstatic.com/xdata/images/hotel/max1024x768/541248208.jpg?k=105563b298686010deda9c8068f83d5957edf62174b54a2c50f7afe81d1ccb26&o=",
+    image: "/assets/Laurel Hill Suites/L6 Reception.jpg",
     features: ["City View", "Rooftop Pool", "Gym Access"],
     images: LAUREL_IMAGES
   },
@@ -303,7 +304,7 @@ export const URBAN_APARTMENTS = [
     bedrooms: 2,
     rentLongTerm: "Ksh 250K/month",
     rentShortTerm: "Ksh 14,400/night",
-    image: "https://ravihomes.co.ke/wp-content/uploads/classified-listing/2023/05/Alba-Gardens.png",
+    image: "/assets/Alba Gardens B1702/A17 Reception.jpg",
     features: ["Garden Terrace", "Double Parking", "Smart Home System"],
     images: ALBA_IMAGES
   }
@@ -315,7 +316,7 @@ export const COFFEE_PRODUCTS = [
     name: "Mt. Elgon Reserve",
     roast: "Medium Dark",
     price: "Ksh 1,200",
-    image: "https://previews.dropbox.com/p/thumb/AC2OB6hLNbrf3f6dZxiqU8ZILCzXft3k1n6ySuvDG_QS3zLu9KG95NR0jGzOtOsiNW1egEhOUvAt3MjFXFp8O-in2ETO0Kv0a7XDGdRYxSGWAqifFS2RWfT3ban7Wt74GmZHvaMuT8KVUuNDTNJNGTQ43n1S7X6jLlOSwO4SWUGyFD1X3F8u4A5_Nt2p3dt1dYE63sKiob8jIG7bIG0kDNRPB-bnNdTr8MJOvDbmE51z4E1hF5A0j6AdXhZk56Uge8oh8vU9s1e3njUs2f4nVCwU479nX9Uo8rGrMPK0CurlXRmh8kcdq7o2-7P97CBG0IMutfIhx69mjRl7eVMeKHUm/p.png",
+    image: "/assets/Coffee/MT Elgon Reserve Coffee Packaging.png",
     notes: "Chocolate, Citrus, Spice"
   },
   {
@@ -323,7 +324,7 @@ export const COFFEE_PRODUCTS = [
     name: "Volcanic Gold",
     roast: "Light",
     price: "Ksh 1,500",
-    image: "https://previews.dropbox.com/p/thumb/AC1zW4cM_pB4vPCPxkvc-flXez_Mp6prcaNgoq6iOd0yLwkvkaZTh2F709Cwjk672UCJiVNls5GuzTgwoeLY1IB8ycN3giY-4MGtm3ozEZ1sfZO0LjtQhxcVyHp6LkD-Yj9kI-ELlRu-I-LY4ubHclI7e-KRdLWrANlTHHE7S-KXQ1lUAd9HEtLl-CYTGFVfniTKSedpcZCqtYnWx5JsieKgcd1R5NrmraBx6PdYF682gl_Y2Q4sgKh_vKMfvlGhcK0c-90uZwNqNS3_-i8Cmdhg2sdRoB-LeBDmniBQMlmEHxBHqzaZLQs3qYRHpkQ3h1qxq1klvH_JdMrbU_zvBwPG/p.png",
+    image: "/assets/Coffee/volcanic gold Coffee Packaging.png",
     notes: "Floral, Berry, Honey"
   }
 ];

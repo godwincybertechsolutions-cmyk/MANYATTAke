@@ -46,22 +46,22 @@ const MountainVillas: React.FC = () => {
       />
 
       {/* Hero */}
-      <div className="relative h-[60vh] w-full">
-        <OptimizedImage
-          src="/assets/Burguret Mountainside Villa/Burguret. House Overall View.jpg"
-          alt="Mountainside Haven"
-          className=""
-          fill
-          priority
-          objectFit="cover"
-        />
-        <div className="absolute inset-0 bg-black/40 flex items-center justify-center text-center">
-          <div className="max-w-4xl px-6">
-            <h1 className="font-serif text-5xl md:text-7xl text-white mb-6 uppercase">Mountainside Haven</h1>
-            <p className="text-white/90 text-xl font-light max-w-2xl mx-auto mb-8 tracking-wide">
-              Experience the serenity of Mt. Kenya in our exclusive villas.
-            </p>
-          </div>
+      <div>
+        <div className="relative h-[60vh] w-full overflow-hidden">
+          <OptimizedImage
+            src="/assets/Burguret Mountainside Villa/Burguret. Outside Lounge Area.jpg"
+            alt="Mountainside Haven"
+            className=""
+            fill
+            priority
+            objectFit="cover"
+          />
+        </div>
+        <div className="container mx-auto px-6 py-6 text-center">
+          <h1 className="font-serif text-4xl md:text-6xl text-dark mb-3 uppercase">Mountainside Haven</h1>
+          <p className="text-gray-700 text-lg max-w-3xl mx-auto">
+            Experience the serenity of Mt. Kenya in our exclusive villas.
+          </p>
         </div>
       </div>
 
@@ -121,15 +121,21 @@ const MountainVillas: React.FC = () => {
 
                 {/* Images Grid */}
                 <div className="md:w-1/2 grid grid-cols-2 gap-4">
-                  <div className="col-span-2 h-64 rounded-xl overflow-hidden relative group cursor-pointer shadow-lg hover:shadow-xl transition-shadow duration-300" onClick={() => openGallery(villa.images, villa.details.title)}>
-                    <OptimizedImage 
-                      src={villa.heroImage} 
-                      alt={villa.details.title} 
-                      className="transition-transform duration-700 group-hover:scale-110"
-                      fill
-                      objectFit="cover"
-                    />
-                    <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
+                  <div>
+                    <div className="col-span-2 h-64 rounded-xl overflow-hidden relative group cursor-pointer shadow-lg hover:shadow-xl transition-shadow duration-300" onClick={() => openGallery(villa.images, villa.details.title)}>
+                      <OptimizedImage 
+                        src={villa.heroImage} 
+                        alt={villa.details.title} 
+                        className="transition-transform duration-700 group-hover:scale-110"
+                        fill
+                        objectFit="cover"
+                      />
+                      <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
+                    </div>
+                    <div className="mt-3">
+                      <h3 className="font-serif text-xl mb-1">{villa.details.title}</h3>
+                      <p className="text-sm text-gray-600">{villa.details.location.main} • {villa.details.location.sub}</p>
+                    </div>
                   </div>
                   {/* Display 2 more small images if available */}
                   <div className="h-40 rounded-xl overflow-hidden hidden md:block shadow-md hover:shadow-lg transition-shadow duration-300">
