@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { MapPin, Check, Camera } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import ImageSlideshowModal from '../components/ImageSlideshowModal';
 import OptimizedImage from '../components/OptimizedImage';
 import {
@@ -103,26 +104,34 @@ const MountainVillas: React.FC = () => {
                     </ul>
                   </div>
 
-                  <div className="flex gap-4">
-                    <button
+                  <div className="flex gap-4 flex-wrap">
+                    <motion.button
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
                       onClick={() => openGallery(villa.images, villa.details.title)}
-                      className="px-6 py-3 border border-dark text-dark rounded-full font-medium hover:bg-dark hover:text-white transition-all flex items-center gap-2 uppercase text-sm tracking-widest"
+                      className="px-6 py-3 border-2 border-dark text-dark rounded-full font-bold hover:bg-dark hover:text-white transition-all flex items-center gap-2 uppercase text-sm tracking-widest focus:outline-none focus:ring-2 focus:ring-dark/50"
                     >
                       <Camera size={18} /> View Gallery
-                    </button>
-                    <button
+                    </motion.button>
+                    <motion.button
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
                       onClick={() => navigate('/others')}
-                      className="px-6 py-3 bg-primary text-white rounded-full font-medium hover:bg-[#c4492e] transition-all uppercase text-sm tracking-widest"
+                      className="px-6 py-3 bg-primary text-white rounded-full font-bold hover:bg-[#c4492e] transition-all uppercase text-sm tracking-widest shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-primary/50"
                     >
                       Reserve Now
-                    </button>
+                    </motion.button>
                   </div>
                 </div>
 
                 {/* Images Grid */}
-                <div className="md:w-1/2 grid grid-cols-2 gap-4">
+                <div className="md:w-1/2 grid grid-cols-2 gap-6">
                   <div>
-                    <div className="col-span-2 h-64 rounded-xl overflow-hidden relative group cursor-pointer shadow-lg hover:shadow-xl transition-shadow duration-300" onClick={() => openGallery(villa.images, villa.details.title)}>
+                    <motion.div
+                      whileHover={{ y: -8 }}
+                      className="col-span-2 h-64 rounded-2xl overflow-hidden relative group cursor-pointer shadow-md hover:shadow-xl transition-all duration-300" 
+                      onClick={() => openGallery(villa.images, villa.details.title)}
+                    >
                       <OptimizedImage 
                         src={villa.heroImage} 
                         alt={villa.details.title} 
@@ -131,31 +140,37 @@ const MountainVillas: React.FC = () => {
                         objectFit="cover"
                       />
                       <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
-                    </div>
-                    <div className="mt-3">
-                      <h3 className="font-serif text-xl mb-1">{villa.details.title}</h3>
+                    </motion.div>
+                    <div className="mt-4">
+                      <h3 className="font-serif text-xl font-semibold mb-1">{villa.details.title}</h3>
                       <p className="text-sm text-gray-600">{villa.details.location.main} • {villa.details.location.sub}</p>
                     </div>
                   </div>
                   {/* Display 2 more small images if available */}
-                  <div className="h-40 rounded-xl overflow-hidden hidden md:block shadow-md hover:shadow-lg transition-shadow duration-300">
+                  <motion.div 
+                    whileHover={{ y: -6 }}
+                    className="h-40 rounded-xl overflow-hidden hidden md:block shadow-sm hover:shadow-md transition-all duration-300"
+                  >
                     <OptimizedImage 
                       src={villa.images[1] || villa.images[0]} 
                       alt="Detail 1"
-                      className=""
+                      className="hover:scale-105 transition-transform duration-500"
                       fill
                       objectFit="cover"
                     />
-                  </div>
-                  <div className="h-40 rounded-xl overflow-hidden hidden md:block shadow-md hover:shadow-lg transition-shadow duration-300">
+                  </motion.div>
+                  <motion.div 
+                    whileHover={{ y: -6 }}
+                    className="h-40 rounded-xl overflow-hidden hidden md:block shadow-sm hover:shadow-md transition-all duration-300"
+                  >
                     <OptimizedImage 
                       src={villa.images[2] || villa.images[0]} 
                       alt="Detail 2"
-                      className=""
+                      className="hover:scale-105 transition-transform duration-500"
                       fill
                       objectFit="cover"
                     />
-                  </div>
+                  </motion.div>
                 </div>
               </div>
             </div>

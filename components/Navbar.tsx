@@ -26,12 +26,12 @@ const Navbar: React.FC = () => {
 
   return (
     <nav
-      className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white/95 backdrop-blur-md shadow-lg py-3' : 'bg-transparent py-6'
+      className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white/98 backdrop-blur-md shadow-xl py-3' : 'bg-transparent py-6'
         }`}
     >
       <div className="container mx-auto px-6 flex justify-between items-center">
         {/* Logo */}
-        <Link to="/" className="flex items-center group hover:opacity-80 transition-opacity">
+        <Link to="/" className="flex items-center group hover:opacity-75 transition-opacity duration-200">
           <OptimizedImage 
              src="/assets/Logo/New Manyatta Logo.png"
             alt={APP_NAME}
@@ -41,19 +41,19 @@ const Navbar: React.FC = () => {
         </Link>
 
         {/* Desktop Nav */}
-        <div className="hidden md:flex items-center space-x-8">
+        <div className="hidden md:flex items-center space-x-1">
           {NAVIGATION_LINKS.map((link) => (
             <Link
               key={link.name}
               to={link.path}
-              className={`text-sm font-medium tracking-widest uppercase hover:text-primary transition-colors ${scrolled ? 'text-dark' : 'text-white drop-shadow-sm'
-                } ${location.pathname === link.path ? 'text-primary' : ''}`}
+              className={`text-sm font-medium tracking-widest uppercase px-4 py-2 rounded-lg transition-all duration-200 ${scrolled ? 'text-dark hover:bg-gray-100' : 'text-white hover:bg-white/10'
+                } ${location.pathname === link.path ? (scrolled ? 'text-primary bg-primary/10' : 'text-white bg-white/20') : ''}`}
             >
               {link.name}
             </Link>
           ))}
           <button
-            className="bg-primary hover:bg-[#c4492e] text-white px-6 py-2 rounded-full text-sm font-medium transition-all transform hover:scale-105 shadow-md"
+            className="bg-primary hover:bg-[#c4492e] text-white px-7 py-2.5 rounded-full text-sm font-bold transition-all transform hover:scale-105 hover:shadow-lg shadow-md ml-4 focus:outline-none focus:ring-2 focus:ring-primary/50"
             onClick={() => {
               navigate('/others');
             }}
@@ -73,18 +73,18 @@ const Navbar: React.FC = () => {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden absolute top-full left-0 w-full bg-white shadow-xl py-6 px-6 flex flex-col space-y-4 animate-fade-in-down">
+        <div className="md:hidden absolute top-full left-0 w-full bg-white shadow-2xl py-6 px-6 flex flex-col space-y-3 animate-fade-in-down border-t border-gray-100">
           {NAVIGATION_LINKS.map((link) => (
             <Link
               key={link.name}
               to={link.path}
-              className="text-dark font-serif text-xl hover:text-primary transition-colors"
+              className={`text-dark font-serif text-lg hover:text-primary px-4 py-2 rounded-lg transition-all duration-200 ${location.pathname === link.path ? 'text-primary bg-primary/10' : 'hover:bg-gray-50'}`}
             >
               {link.name}
             </Link>
           ))}
           <button
-            className="bg-primary text-white w-full py-3 rounded-lg mt-4 font-medium"
+            className="bg-primary hover:bg-[#c4492e] text-white w-full py-3 rounded-lg mt-4 font-bold transition-all focus:outline-none focus:ring-2 focus:ring-primary/50"
             onClick={() => {
               navigate('/others');
             }}

@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { Bed, Bath, Move, Check, Car, User, Camera } from 'lucide-react';
+import { Bed, Bath, Move, Check, Car, User, Camera, ArrowRight } from 'lucide-react';
 import { URBAN_APARTMENTS } from '../constants';
 import SectionHeader from '../components/SectionHeader';
 import { useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import ImageSlideshowModal from '../components/ImageSlideshowModal';
 
 const UrbanApartments: React.FC = () => {
@@ -47,114 +48,139 @@ const UrbanApartments: React.FC = () => {
           <SectionHeader title="Select Your Residence" subtitle="Premium Locations" />
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-            {URBAN_APARTMENTS.map((apt) => (
-              <div key={apt.id} className="group border border-gray-100 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all bg-white">
+            {URBAN_APARTMENTS.map((apt, idx) => (
+              <motion.div 
+                key={apt.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
+                className="group border border-gray-200 rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all bg-white hover:-translate-y-2"
+              >
                 {/* Image */}
                 <div
-                  className="h-64 overflow-hidden relative cursor-pointer"
+                  className="h-72 overflow-hidden relative cursor-pointer bg-gray-100"
                   onClick={() => openGallery(apt.images, apt.name)}
                 >
-                  <div className="absolute top-4 right-4 bg-dark text-white px-3 py-1 text-xs font-bold uppercase tracking-wider z-10 rounded">
+                  <div className="absolute top-4 right-4 bg-primary text-white px-3 py-2 text-xs font-bold uppercase tracking-wider z-10 rounded-lg shadow-lg">
                     {apt.rentShortTerm}
                   </div>
-                  <div className="absolute bottom-4 right-4 bg-black/60 text-white p-2 rounded-full z-10 hover:bg-primary transition-colors">
+                  <motion.div 
+                    whileHover={{ scale: 1.1 }}
+                    className="absolute bottom-4 right-4 bg-primary text-white p-3 rounded-full z-10 cursor-pointer shadow-lg hover:shadow-xl transition-shadow"
+                  >
                     <Camera size={20} />
-                  </div>
+                  </motion.div>
                   <img
                     src={apt.image}
                     alt={apt.name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                   />
                 </div>
 
                 {/* Details */}
                 <div className="p-8">
-                  <h3 className="font-serif text-3xl mb-2 text-dark">{apt.name}</h3>
-                  <div className="flex items-center gap-4 text-gray-500 text-sm mb-6">
-                    <span className="flex items-center gap-1"><Bed size={16} /> {apt.bedrooms} Bed</span>
-                    <span className="flex items-center gap-1"><Bath size={16} /> 2 Bath</span>
-                    <span className="flex items-center gap-1"><Move size={16} /> 120 sqm</span>
+                  <h3 className="font-serif text-3xl font-semibold mb-4 text-dark">{apt.name}</h3>
+                  <div className="flex items-center gap-6 text-gray-600 text-sm mb-6 font-medium">
+                    <span className="flex items-center gap-2 bg-gray-50 px-3 py-2 rounded-lg"><Bed size={18} className="text-primary" /> {apt.bedrooms} Bed</span>
+                    <span className="flex items-center gap-2 bg-gray-50 px-3 py-2 rounded-lg"><Bath size={18} className="text-primary" /> 2 Bath</span>
+                    <span className="flex items-center gap-2 bg-gray-50 px-3 py-2 rounded-lg"><Move size={18} className="text-primary" /> 120 sqm</span>
                   </div>
 
                   {/* Pricing Grid */}
-                  <div className="bg-stone-50 p-4 rounded-lg grid grid-cols-2 gap-4 mb-6">
+                  <div className="bg-gradient-to-r from-primary/5 to-primary/10 p-5 rounded-xl grid grid-cols-2 gap-4 mb-6 border border-primary/20">
                     {apt.salePrice && (
-                      <div className="col-span-2 border-b border-gray-200 pb-2 mb-2">
-                        <span className="block text-xs text-gray-400 uppercase">For Sale</span>
-                        <span className="block font-serif text-xl text-dark font-medium">{apt.salePrice}</span>
+                      <div className="col-span-2 border-b border-primary/20 pb-3 mb-2">
+                        <span className="block text-xs text-gray-500 font-bold uppercase">For Sale</span>
+                        <span className="block font-serif text-2xl text-dark font-bold">{apt.salePrice}</span>
                       </div>
                     )}
                     <div>
-                      <span className="block text-xs text-gray-400 uppercase">Long Term</span>
-                      <span className="block font-serif text-lg text-primary">{apt.rentLongTerm}</span>
+                      <span className="block text-xs text-gray-500 font-bold uppercase">Long Term</span>
+                      <span className="block font-serif text-xl text-primary font-bold">{apt.rentLongTerm}</span>
                     </div>
                     <div>
-                      <span className="block text-xs text-gray-400 uppercase">Short Stay</span>
-                      <span className="block font-serif text-lg text-primary">{apt.rentShortTerm}</span>
+                      <span className="block text-xs text-gray-500 font-bold uppercase">Short Stay</span>
+                      <span className="block font-serif text-xl text-primary font-bold">{apt.rentShortTerm}</span>
                     </div>
                   </div>
 
                   {/* Features */}
-                  <div className="space-y-2 mb-8">
+                  <div className="space-y-3 mb-8">
                     {apt.features.map((feat, i) => (
-                      <div key={i} className="flex items-center gap-2 text-sm text-gray-600">
-                        <Check size={14} className="text-primary" /> {feat}
-                      </div>
+                      <motion.div 
+                        key={i}
+                        initial={{ opacity: 0, x: -10 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: i * 0.05 }}
+                        className="flex items-center gap-3 text-sm text-gray-700 font-medium"
+                      >
+                        <div className="w-5 h-5 rounded-full bg-primary/20 flex items-center justify-center">
+                          <Check size={14} className="text-primary" />
+                        </div>
+                        {feat}
+                      </motion.div>
                     ))}
                   </div>
 
                   <div className="flex gap-3">
-                    <button
-                      className="flex-1 bg-dark text-white py-3 rounded text-sm font-medium uppercase tracking-wide hover:bg-black transition-colors"
+                    <motion.button
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="flex-1 bg-primary text-white py-3 rounded-lg text-sm font-bold uppercase tracking-wide hover:bg-[#c4492e] transition-all shadow-md hover:shadow-lg flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-primary/50"
                       onClick={() => navigate('/others')}
                       type="button"
                     >
-                      Book Stay
-                    </button>
-                    <button
-                      className="flex-1 border border-gray-200 text-dark py-3 rounded text-sm font-medium uppercase tracking-wide hover:bg-gray-50 transition-colors"
+                      Book Stay <ArrowRight size={16} />
+                    </motion.button>
+                    <motion.button
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="flex-1 border-2 border-dark text-dark py-3 rounded-lg text-sm font-bold uppercase tracking-wide hover:bg-dark hover:text-white transition-all focus:outline-none focus:ring-2 focus:ring-dark/50"
                       onClick={() => openGallery(apt.images, apt.name)}
                       type="button"
                     >
                       View Gallery
-                    </button>
+                    </motion.button>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
       {/* Services */}
-      <section className="py-20 bg-stone-100">
+      <section className="py-20 bg-gradient-to-b from-stone-50 to-white">
         <div className="container mx-auto px-6">
           <SectionHeader title="Concierge Services" subtitle="City Experiences" />
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-            <div className="bg-white p-8 rounded-xl shadow-sm">
-              <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-6 text-primary">
-                <Car size={32} />
-              </div>
-              <h4 className="font-serif text-xl mb-3">Chauffeur Services</h4>
-              <p className="text-gray-500 text-sm">Airport transfers and daily city navigation in luxury comfort.</p>
-            </div>
-
-            <div className="bg-white p-8 rounded-xl shadow-sm">
-              <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-6 text-primary">
-                <User size={32} />
-              </div>
-              <h4 className="font-serif text-xl mb-3">Private Guides</h4>
-              <p className="text-gray-500 text-sm">Discover the hidden gems of Nairobi with our local experts.</p>
-            </div>
-
-            <div className="bg-white p-8 rounded-xl shadow-sm">
-              <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-6 text-primary">
-                <Bed size={32} />
-              </div>
-              <h4 className="font-serif text-xl mb-3">Premium Housekeeping</h4>
-              <p className="text-gray-500 text-sm">Daily cleaning, laundry, and turndown services included.</p>
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              { icon: Car, title: "Chauffeur Services", desc: "Airport transfers and daily city navigation in luxury comfort." },
+              { icon: User, title: "Private Guides", desc: "Discover the hidden gems of Nairobi with our local experts." },
+              { icon: Bed, title: "Premium Housekeeping", desc: "Daily cleaning and maintenance keeping your space perfect." }
+            ].map((service, idx) => {
+              const Icon = service.icon;
+              return (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ duration: 0.5, delay: idx * 0.1 }}
+                  whileHover={{ y: -8 }}
+                  className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all border border-gray-100 text-center"
+                >
+                  <div className="w-20 h-20 bg-gradient-to-br from-primary/20 to-primary/10 rounded-full flex items-center justify-center mx-auto mb-6 text-primary group-hover:bg-primary/30 transition-colors">
+                    <Icon size={36} />
+                  </div>
+                  <h4 className="font-serif text-2xl mb-3 font-semibold">{service.title}</h4>
+                  <p className="text-gray-600 text-sm leading-relaxed">{service.desc}</p>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </section>

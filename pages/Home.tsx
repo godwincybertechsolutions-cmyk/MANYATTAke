@@ -90,9 +90,14 @@ const Home: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Card 1 */}
             <Link to="/mountain-villas" className="group cursor-pointer">
-              <div>
-                <div className="relative h-[500px] overflow-hidden rounded-xl mb-2 shadow-lg hover:shadow-2xl transition-shadow duration-300">
-                  <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors z-10"></div>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.5 }}
+              >
+                <div className="relative h-[500px] overflow-hidden rounded-2xl mb-6 shadow-lg hover:shadow-2xl transition-all duration-500 group-hover:-translate-y-2">
+                  <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors z-10 duration-300"></div>
                   <OptimizedImage
                     src="/assets/Burguret Mountainside Villa/Burguret. House Overall View.jpg"
                     alt="Mountainside Haven"
@@ -101,21 +106,28 @@ const Home: React.FC = () => {
                     objectFit="cover"
                   />
                 </div>
-                <div className="px-2 text-left">
-                  <div className="flex items-center gap-3 text-primary mb-2">
-                    <Mountain size={28} />
-                    <h3 className="font-serif text-2xl">Mountainside Villas</h3>
+                <div className="px-3">
+                  <div className="flex items-center gap-3 text-primary mb-3 group-hover:gap-4 transition-all duration-300">
+                    <div className="p-2 bg-primary/10 rounded-lg group-hover:bg-primary/20 transition-colors">
+                      <Mountain size={24} />
+                    </div>
+                    <h3 className="font-serif text-2xl font-semibold">Mountainside Villas</h3>
                   </div>
-                  <p className="text-gray-700 text-sm">Tranquil villas nestled in the misty slopes of Mt. Kenya.</p>
+                  <p className="text-gray-600 text-sm leading-relaxed">Tranquil villas nestled in the misty slopes of Mt. Kenya.</p>
                 </div>
-              </div>
+              </motion.div>
             </Link>
 
             {/* Card 2 */}
-            <Link to="/safaris" className="group cursor-pointer md:-mt-12">
-              <div>
-                <div className="relative h-[500px] overflow-hidden rounded-xl mb-2 shadow-2xl hover:shadow-2xl transition-shadow duration-300">
-                  <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors z-10"></div>
+            <Link to="/safaris" className="group cursor-pointer">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+              >
+                <div className="relative h-[500px] overflow-hidden rounded-2xl mb-6 shadow-lg hover:shadow-2xl transition-all duration-500 group-hover:-translate-y-2">
+                  <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors z-10 duration-300"></div>
                   <OptimizedImage
                     src="https://ecoadventuresafaris.com/wp-content/uploads/2023/01/Kenya-1-1200x675.jpg"
                     alt="Safari"
@@ -124,21 +136,28 @@ const Home: React.FC = () => {
                     objectFit="cover"
                   />
                 </div>
-                <div className="px-2 text-left">
-                  <div className="flex items-center gap-3 text-primary mb-2">
-                    <Binoculars size={28} />
-                    <h3 className="font-serif text-2xl">Safaris</h3>
+                <div className="px-3">
+                  <div className="flex items-center gap-3 text-primary mb-3 group-hover:gap-4 transition-all duration-300">
+                    <div className="p-2 bg-primary/10 rounded-lg group-hover:bg-primary/20 transition-colors">
+                      <Binoculars size={24} />
+                    </div>
+                    <h3 className="font-serif text-2xl font-semibold">Safaris</h3>
                   </div>
-                  <p className="text-gray-700 text-sm">Immersive game drives connecting you to nature's rhythm.</p>
+                  <p className="text-gray-600 text-sm leading-relaxed">Immersive game drives connecting you to nature's rhythm.</p>
                 </div>
-              </div>
+              </motion.div>
             </Link>
 
             {/* Card 3 */}
             <Link to="/urban-apartments" className="group cursor-pointer">
-              <div>
-                <div className="relative h-[500px] overflow-hidden rounded-xl mb-2 shadow-lg hover:shadow-2xl transition-shadow duration-300">
-                  <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors z-10"></div>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+              >
+                <div className="relative h-[500px] overflow-hidden rounded-2xl mb-6 shadow-lg hover:shadow-2xl transition-all duration-500 group-hover:-translate-y-2">
+                  <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors z-10 duration-300"></div>
                   <OptimizedImage
                     src="https://laurelandhomes.com/wp-content/uploads/2018/06/appearance.jpg"
                     alt="Urban Apartments"
@@ -147,14 +166,16 @@ const Home: React.FC = () => {
                     objectFit="cover"
                   />
                 </div>
-                <div className="px-2 text-left">
-                  <div className="flex items-center gap-3 text-primary mb-2">
-                    <Building2 size={28} />
-                    <h3 className="font-serif text-2xl">Apartments</h3>
+                <div className="px-3">
+                  <div className="flex items-center gap-3 text-primary mb-3 group-hover:gap-4 transition-all duration-300">
+                    <div className="p-2 bg-primary/10 rounded-lg group-hover:bg-primary/20 transition-colors">
+                      <Building2 size={24} />
+                    </div>
+                    <h3 className="font-serif text-2xl font-semibold">Apartments</h3>
                   </div>
-                  <p className="text-gray-700 text-sm">Sophisticated apartments in the heart of Nairobi.</p>
+                  <p className="text-gray-600 text-sm leading-relaxed">Sophisticated apartments in the heart of Nairobi.</p>
                 </div>
-              </div>
+              </motion.div>
             </Link>
           </div>
         </div>
