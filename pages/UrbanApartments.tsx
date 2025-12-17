@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { Bed, Bath, Move, Check, Car, User, Camera, ArrowRight } from 'lucide-react';
 import { URBAN_APARTMENTS } from '../constants';
 import SectionHeader from '../components/SectionHeader';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import OptimizedImage from '../components/OptimizedImage';
 import ImageSlideshowModal from '../components/ImageSlideshowModal';
 
 const UrbanApartments: React.FC = () => {
@@ -30,15 +31,32 @@ const UrbanApartments: React.FC = () => {
       />
 
       {/* Hero */}
-      <div className="relative h-[50vh] w-full bg-dark">
-        <img
+      <div className="relative h-[50vh] w-full overflow-hidden">
+        <OptimizedImage
           src="https://kingsdevelopersapi.co.ke/blog/d10dcefb-45ac-4081-80f8-2b0485469c4c/image-1732602254089-630681340.png"
           alt="Nairobi Skyline"
-          className="w-full h-full object-cover opacity-70"
+          fill
+          priority
+          objectFit="cover"
+          className="opacity-70"
         />
-        <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-6">
-          <h1 className="font-serif text-5xl md:text-6xl text-white mb-4">Nairobi Living</h1>
-          <p className="text-white/90 text-lg tracking-wide uppercase">Sophistication in the City</p>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent flex flex-col items-center justify-center text-center p-6">
+          <motion.h1 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="font-serif text-5xl md:text-6xl text-white mb-4"
+          >
+            Nairobi Living
+          </motion.h1>
+          <motion.p 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-white/90 text-lg tracking-wide uppercase"
+          >
+            Sophistication in the City
+          </motion.p>
         </div>
       </div>
 
@@ -71,10 +89,12 @@ const UrbanApartments: React.FC = () => {
                   >
                     <Camera size={20} />
                   </motion.div>
-                  <img
+                  <OptimizedImage
                     src={apt.image}
                     alt={apt.name}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                    fill
+                    objectFit="cover"
+                    className="group-hover:scale-110 transition-transform duration-700"
                   />
                 </div>
 

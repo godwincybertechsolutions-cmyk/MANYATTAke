@@ -3,6 +3,7 @@ import { Calendar, Users, MapPin, ChevronDown } from 'lucide-react';
 import { PropertyType } from '../types';
 // import { useAuth } from '../src/auth/AuthContext';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 const BookingWidget: React.FC = () => {
   const [activeTab, setActiveTab] = useState<PropertyType>('mountain');
@@ -13,27 +14,30 @@ const BookingWidget: React.FC = () => {
     <div className="w-full max-w-5xl mx-auto bg-white rounded-xl shadow-2xl overflow-hidden -mt-16 relative z-30 hidden md:block border border-gray-100">
       {/* Tabs */}
       <div className="flex border-b border-gray-100">
-        <button
+        <motion.button
+          whileHover={{ backgroundColor: "#f3f4f6" }}
           onClick={() => setActiveTab('mountain')}
-          className={`flex-1 py-4 text-center text-sm font-semibold uppercase tracking-wider transition-colors ${activeTab === 'mountain' ? 'bg-primary text-white' : 'text-gray-500 hover:bg-gray-50'
+          className={`flex-1 py-4 text-center text-sm font-semibold uppercase tracking-wider transition-all focus:outline-none focus:ring-2 focus:ring-primary focus:ring-inset ${activeTab === 'mountain' ? 'bg-primary text-white shadow-md' : 'text-gray-500'
             }`}
         >
           Mountain Villas
-        </button>
-        <button
+        </motion.button>
+        <motion.button
+          whileHover={{ backgroundColor: "#f3f4f6" }}
           onClick={() => setActiveTab('safari')}
-          className={`flex-1 py-4 text-center text-sm font-semibold uppercase tracking-wider transition-colors ${activeTab === 'safari' ? 'bg-primary text-white' : 'text-gray-500 hover:bg-gray-50'
+          className={`flex-1 py-4 text-center text-sm font-semibold uppercase tracking-wider transition-all focus:outline-none focus:ring-2 focus:ring-primary focus:ring-inset ${activeTab === 'safari' ? 'bg-primary text-white shadow-md' : 'text-gray-500'
             }`}
         >
           Safaris
-        </button>
-        <button
+        </motion.button>
+        <motion.button
+          whileHover={{ backgroundColor: "#f3f4f6" }}
           onClick={() => setActiveTab('urban')}
-          className={`flex-1 py-4 text-center text-sm font-semibold uppercase tracking-wider transition-colors ${activeTab === 'urban' ? 'bg-primary text-white' : 'text-gray-500 hover:bg-gray-50'
+          className={`flex-1 py-4 text-center text-sm font-semibold uppercase tracking-wider transition-all focus:outline-none focus:ring-2 focus:ring-primary focus:ring-inset ${activeTab === 'urban' ? 'bg-primary text-white shadow-md' : 'text-gray-500'
             }`}
         >
           Apartments
-        </button>
+        </motion.button>
       </div>
 
       {/* Form */}

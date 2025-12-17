@@ -1,6 +1,7 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, ChevronLeft, ChevronRight, Download } from 'lucide-react';
+import { X, ChevronLeft, ChevronRight } from 'lucide-react';
+import OptimizedImage from './OptimizedImage';
 
 interface ImageSlideshowModalProps {
     images: string[];
@@ -12,12 +13,21 @@ interface ImageSlideshowModalProps {
 const ImageSlideshowModal: React.FC<ImageSlideshowModalProps> = ({ images, isOpen, onClose, title }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isAutoPlay, setIsAutoPlay] = useState(false);
-    const [imageLoading, setImageLoading] = useState(true);
+    const [loadedImages, setLoadedImages] = useState<Set<number>>(new Set([0, 1]));
+
+    // Preload adjacent images
+    useEffect(() => {
+        const imagesToLoad = new Set([currentIndex]);
+        if (currentIndex > 0) imagesToLoad.add(currentIndex - 1);
+        if (currentIndex < images.length - 1) imagesToLoad.add(currentIndex + 1);
+        setLoadedImages((prev) => new Set([...prev, ...imagesToLoad]));
+    }, [currentIndex, images.length]);
 
     // Reset index when modal opens
     useEffect(() => {
         if (isOpen) {
             setCurrentIndex(0);
+            setLoadedImages(new Set([0, 1]));
             document.body.style.overflow = 'hidden';
         } else {
             document.body.style.overflow = 'unset';
@@ -54,13 +64,11 @@ const ImageSlideshowModal: React.FC<ImageSlideshowModalProps> = ({ images, isOpe
 
     const nextImage = useCallback((e?: React.MouseEvent | React.TouchEvent) => {
         e?.stopPropagation();
-        setImageLoading(true);
         setCurrentIndex((prev) => (prev + 1) % images.length);
     }, [images.length]);
 
     const prevImage = useCallback((e?: React.MouseEvent | React.TouchEvent) => {
         e?.stopPropagation();
-        setImageLoading(true);
         setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
     }, [images.length]);
 
@@ -127,36 +135,27 @@ const ImageSlideshowModal: React.FC<ImageSlideshowModalProps> = ({ images, isOpe
 
                     {/* Image Container */}
                     <div className="w-full h-full overflow-hidden flex flex-col items-center justify-center relative">
-                        {/* Loading State */}
-                        <AnimatePresence>
-                            {imageLoading && (
+                        {/* Main Image - Only render current and preloaded images */}
+                        <AnimatePresence mode="wait">
+                            {loadedImages.has(currentIndex) ? (
                                 <motion.div
-                                    initial={{ opacity: 1 }}
+                                    key={currentIndex}
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
                                     exit={{ opacity: 0 }}
-                                    className="absolute inset-0 flex items-center justify-center bg-black/50 backdrop-blur-sm z-30"
+                                    transition={{ duration: 0.3 }}
+                                    className="max-h-[75vh] w-auto max-w-full flex items-center justify-center"
                                 >
-                                    <motion.div
-                                        animate={{ rotate: 360 }}
-                                        transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-                                        className="w-12 h-12 border-3 border-white/30 border-t-white rounded-full"
+                                    <img
+                                        src={images[currentIndex]}
+                                        alt={`${title} - Image ${currentIndex + 1}`}
+                                        loading="eager"
+                                        decoding="async"
+                                        className="max-h-[75vh] w-auto max-w-full object-contain shadow-2xl rounded-lg"
                                     />
                                 </motion.div>
-                            )}
+                            ) : null}
                         </AnimatePresence>
-
-                        {/* Image with stagger animation */}
-                        <motion.img
-                            key={currentIndex}
-                            src={images[currentIndex]}
-                            alt={`${title} - Image ${currentIndex + 1}`}
-                            initial={{ opacity: 0, scale: 0.95 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            exit={{ opacity: 0, scale: 0.95 }}
-                            transition={{ duration: 0.3 }}
-                            className="max-h-[75vh] w-auto max-w-full object-contain shadow-2xl rounded-lg"
-                            onLoadingComplete={() => setImageLoading(false)}
-                            onLoad={() => setImageLoading(false)}
-                        />
 
                         {/* Info Section */}
                         <motion.div
@@ -170,13 +169,12 @@ const ImageSlideshowModal: React.FC<ImageSlideshowModalProps> = ({ images, isOpe
                             )}
                             <div className="flex items-center justify-center gap-4 text-white/70 text-sm font-light">
                                 <span>{currentIndex + 1} / {images.length}</span>
-                                <div className="flex gap-1">
+                                <div className="flex gap-1 flex-wrap max-w-xs">
                                     {images.map((_, idx) => (
                                         <motion.button
                                             key={idx}
                                             onClick={(e) => {
                                                 e.stopPropagation();
-                                                setImageLoading(true);
                                                 setCurrentIndex(idx);
                                             }}
                                             className={`h-1 rounded-full transition-all cursor-pointer ${
