@@ -57,12 +57,26 @@ const MountainVillas: React.FC = () => {
             priority
             objectFit="cover"
           />
-        </div>
-        <div className="container mx-auto px-6 py-6 text-center">
-          <h1 className="font-serif text-4xl md:text-6xl text-dark mb-3 uppercase">Mountainside Haven</h1>
-          <p className="text-gray-700 text-lg max-w-3xl mx-auto">
-            Experience the serenity of Mt. Kenya in our exclusive villas.
-          </p>
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent flex items-end justify-center pb-12">
+            <div className="text-center max-w-4xl px-6">
+              <motion.h1 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="font-serif text-5xl md:text-7xl text-white mb-4 uppercase"
+              >
+                Mountainside Villas
+              </motion.h1>
+              <motion.p 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+                className="text-white/90 text-lg max-w-3xl mx-auto"
+              >
+                Experience the serenity of Mt. Kenya in our exclusive villas.
+              </motion.p>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -125,8 +139,8 @@ const MountainVillas: React.FC = () => {
                 </div>
 
                 {/* Images Grid */}
-                <div className="md:w-1/2 grid grid-cols-2 gap-6">
-                  <div>
+                <div className="md:w-1/2">
+                  <div className="grid grid-cols-2 gap-6 mb-8">
                     <motion.div
                       whileHover={{ y: -8 }}
                       className="col-span-2 h-64 rounded-2xl overflow-hidden relative group cursor-pointer shadow-md hover:shadow-xl transition-all duration-300" 
@@ -141,36 +155,36 @@ const MountainVillas: React.FC = () => {
                       />
                       <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
                     </motion.div>
-                    <div className="mt-4">
-                      <h3 className="font-serif text-xl font-semibold mb-1">{villa.details.title}</h3>
-                      <p className="text-sm text-gray-600">{villa.details.location.main} • {villa.details.location.sub}</p>
-                    </div>
+                    {/* Display 2 more small images if available */}
+                    <motion.div 
+                      whileHover={{ y: -6 }}
+                      className="h-40 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300"
+                    >
+                      <OptimizedImage 
+                        src={villa.images[1] || villa.images[0]} 
+                        alt="Detail 1"
+                        className="hover:scale-105 transition-transform duration-500"
+                        fill
+                        objectFit="cover"
+                      />
+                    </motion.div>
+                    <motion.div 
+                      whileHover={{ y: -6 }}
+                      className="h-40 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300"
+                    >
+                      <OptimizedImage 
+                        src={villa.images[2] || villa.images[0]} 
+                        alt="Detail 2"
+                        className="hover:scale-105 transition-transform duration-500"
+                        fill
+                        objectFit="cover"
+                      />
+                    </motion.div>
                   </div>
-                  {/* Display 2 more small images if available */}
-                  <motion.div 
-                    whileHover={{ y: -6 }}
-                    className="h-40 rounded-xl overflow-hidden hidden md:block shadow-sm hover:shadow-md transition-all duration-300"
-                  >
-                    <OptimizedImage 
-                      src={villa.images[1] || villa.images[0]} 
-                      alt="Detail 1"
-                      className="hover:scale-105 transition-transform duration-500"
-                      fill
-                      objectFit="cover"
-                    />
-                  </motion.div>
-                  <motion.div 
-                    whileHover={{ y: -6 }}
-                    className="h-40 rounded-xl overflow-hidden hidden md:block shadow-sm hover:shadow-md transition-all duration-300"
-                  >
-                    <OptimizedImage 
-                      src={villa.images[2] || villa.images[0]} 
-                      alt="Detail 2"
-                      className="hover:scale-105 transition-transform duration-500"
-                      fill
-                      objectFit="cover"
-                    />
-                  </motion.div>
+                  <div className="bg-white border-l-4 border-primary pl-6 py-4">
+                    <h3 className="font-serif text-2xl font-semibold mb-2 text-dark">{villa.details.title}</h3>
+                    <p className="text-gray-700 text-base">{villa.details.location.main} • {villa.details.location.sub}</p>
+                  </div>
                 </div>
               </div>
             </div>
