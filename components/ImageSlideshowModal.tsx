@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, ChevronLeft, ChevronRight } from 'lucide-react';
-import OptimizedImage from './OptimizedImage';
+import { X, ChevronLeft, ChevronRight, Play, Pause } from 'lucide-react';
 
 interface ImageSlideshowModalProps {
     images: string[];
@@ -157,19 +156,34 @@ const ImageSlideshowModal: React.FC<ImageSlideshowModalProps> = ({ images, isOpe
                             ) : null}
                         </AnimatePresence>
 
-                        {/* Info Section */}
+                    {/* Info Section */}
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.2 }}
-                            className="mt-6 text-center"
+                            className="mt-6 text-center w-full"
                         >
                             {title && (
-                                <div className="text-white font-serif text-2xl tracking-wide mb-3">{title}</div>
+                                <div className="text-white font-serif text-2xl tracking-wide mb-4">{title}</div>
                             )}
-                            <div className="flex items-center justify-center gap-4 text-white/70 text-sm font-light">
-                                <span>{currentIndex + 1} / {images.length}</span>
-                                <div className="flex gap-1 flex-wrap max-w-xs">
+                            
+                            {/* Image Counter and Progress Indicators */}
+                            <div className="flex flex-col items-center gap-4">
+                                <div className="text-white/70 text-sm font-light">
+                                    <span className="text-white font-semibold">{currentIndex + 1}</span> / {images.length}
+                                </div>
+                                
+                                {/* Progress Bar */}
+                                <div className="w-full max-w-xs h-1 bg-white/20 rounded-full overflow-hidden">
+                                    <motion.div
+                                        animate={{ width: `${((currentIndex + 1) / images.length) * 100}%` }}
+                                        transition={{ duration: 0.3 }}
+                                        className="h-full bg-gradient-to-r from-primary to-primary/70"
+                                    />
+                                </div>
+                                
+                                {/* Dot Indicators */}
+                                <div className="flex gap-1 flex-wrap justify-center max-w-lg">
                                     {images.map((_, idx) => (
                                         <motion.button
                                             key={idx}
@@ -177,15 +191,51 @@ const ImageSlideshowModal: React.FC<ImageSlideshowModalProps> = ({ images, isOpe
                                                 e.stopPropagation();
                                                 setCurrentIndex(idx);
                                             }}
-                                            className={`h-1 rounded-full transition-all cursor-pointer ${
-                                                idx === currentIndex ? 'bg-white w-6' : 'bg-white/40 w-1'
+                                            className={`rounded-full transition-all cursor-pointer ${
+                                                idx === currentIndex ? 'bg-white w-8 h-2' : 'bg-white/40 w-2 h-2'
                                             }`}
-                                            whileHover={{ backgroundColor: 'rgba(255,255,255,0.6)' }}
+                                            whileHover={{ backgroundColor: 'rgba(255,255,255,0.7)' }}
+                                            title={`Go to image ${idx + 1}`}
                                         />
                                     ))}
                                 </div>
                             </div>
                         </motion.div>
+
+                        {/* Thumbnail Strip (shown for galleries with 6+ images) */}
+                        {images.length > 5 && (
+                            <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 0.4 }}
+                                className="mt-6 w-full flex gap-2 justify-center overflow-x-auto pb-2 px-4"
+                            >
+                                {images.slice(Math.max(0, currentIndex - 2), Math.min(images.length, currentIndex + 3)).map((_, relIdx) => {
+                                    const actualIdx = Math.max(0, currentIndex - 2) + relIdx;
+                                    return (
+                                        <motion.button
+                                            key={actualIdx}
+                                            onClick={(e) => {
+                                                e.stopPropagation();
+                                                setCurrentIndex(actualIdx);
+                                            }}
+                                            whileHover={{ scale: 1.1 }}
+                                            whileTap={{ scale: 0.95 }}
+                                            className={`flex-shrink-0 w-16 h-16 rounded-lg overflow-hidden border-2 transition-all ${
+                                                actualIdx === currentIndex ? 'border-white shadow-lg' : 'border-white/20 hover:border-white/50'
+                                            }`}
+                                            title={`Thumbnail ${actualIdx + 1}`}
+                                        >
+                                            <img 
+                                                src={images[actualIdx]} 
+                                                alt={`Thumbnail ${actualIdx + 1}`}
+                                                className="w-full h-full object-cover"
+                                            />
+                                        </motion.button>
+                                    );
+                                })}
+                            </motion.div>
+                        )}
 
                         {/* Controls */}
                         <motion.div

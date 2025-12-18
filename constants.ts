@@ -384,10 +384,10 @@ export const BLOG_POSTS = [
 ];
 
 export const GALLERY_IMAGES = [
-  "https://picsum.photos/seed/gallery1/800/600",
-  "https://picsum.photos/seed/gallery2/800/600",
-  "https://picsum.photos/seed/gallery3/800/600",
-  "https://picsum.photos/seed/gallery4/800/600",
-  "https://picsum.photos/seed/gallery5/800/600",
-  "https://picsum.photos/seed/gallery6/800/600"
+  "/assets/Burguret Mountainside Villa/Burguret. House Overall View.jpg",
+  "/assets/Laurel Hill Suites/L6 Rooftop Pool.jpg",
+  "/assets/Alba Gardens B1702/A17 Balcony.jpg",
+  "/assets/Burguret Mountainside Villa/Burguret. House Overall View.jpg",
+  "/assets/Laurel Hill Suites/L6 Lounge Area (b).jpg",
+  "/assets/Alba Gardens B1702/A17 Dining Area.jpg"
 ];

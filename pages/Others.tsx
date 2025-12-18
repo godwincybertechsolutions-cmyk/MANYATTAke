@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { Coffee, Heart, ArrowRight, ShoppingBag, Droplets, Camera, BookOpen } from 'lucide-react';
+import { motion } from 'framer-motion';
 import SectionHeader from '../components/SectionHeader';
 import StoryModal from '../components/StoryModal';
 import ImpactReportModal from '../components/ImpactReportModal';
+import OptimizedImage from '../components/OptimizedImage';
 import { COFFEE_PRODUCTS, CSR_PROJECTS, BLOG_POSTS, GALLERY_IMAGES } from '../constants';
 
 const Others: React.FC = () => {
@@ -12,18 +14,27 @@ const Others: React.FC = () => {
     <div className="w-full pt-20">
       {/* Hero */}
       <div className="relative h-[50vh] w-full bg-stone-900">
-        <img 
-          src="https://picsum.photos/seed/coffeehero/1920/1080" 
+        <OptimizedImage 
+          src="/assets/Coffee/MT Elgon Reserve Coffee Packaging.png" 
           alt="Curated Lifestyle" 
-          className="w-full h-full object-cover opacity-50"
+          fill
+          priority
+          objectFit="cover"
+          className="opacity-50"
         />
-        <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-6">
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/60"></div>
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="absolute inset-0 flex flex-col items-center justify-center text-center p-6"
+        >
            <span className="text-primary text-sm font-bold tracking-[0.3em] uppercase mb-4">Beyond the Stay</span>
            <h1 className="font-serif text-5xl md:text-6xl text-white mb-4">Curated & Community</h1>
            <p className="text-white/80 text-lg max-w-2xl font-light">
              From the rich soils of Mt. Elgon to the heart of our local communities.
            </p>
-        </div>
+        </motion.div>
       </div>
 
       {/* Coffee Showcase */}
@@ -47,12 +58,29 @@ const Others: React.FC = () => {
             </div>
             <div className="md:w-1/2 grid grid-cols-1 sm:grid-cols-2 gap-6">
               {COFFEE_PRODUCTS.map((product) => (
-                <div key={product.id} className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 group hover:shadow-lg transition-all">
+                <motion.div 
+                  key={product.id} 
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ duration: 0.5 }}
+                  className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 group hover:shadow-lg hover:-translate-y-1 transition-all"
+                >
                   <div className="aspect-square bg-gray-100 rounded-lg mb-4 overflow-hidden relative">
-                    <img src={product.image} alt={product.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                    <button className="absolute bottom-3 right-3 bg-white p-2 rounded-full shadow-md text-primary hover:bg-primary hover:text-white transition-colors">
+                    <OptimizedImage 
+                      src={product.image} 
+                      alt={product.name} 
+                      fill
+                      objectFit="cover"
+                      className="group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <motion.button 
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="absolute bottom-3 right-3 bg-white p-2 rounded-full shadow-md text-primary hover:bg-primary hover:text-white transition-colors z-10"
+                    >
                       <ShoppingBag size={18} />
-                    </button>
+                    </motion.button>
                   </div>
                   <h3 className="font-serif text-xl mb-1">{product.name}</h3>
                   <p className="text-xs text-gray-500 mb-3 uppercase tracking-wide">{product.roast}</p>
@@ -60,7 +88,7 @@ const Others: React.FC = () => {
                     <span className="font-medium text-dark">{product.price}</span>
                     <span className="text-xs text-gray-400 italic">{product.notes}</span>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
@@ -86,20 +114,37 @@ const Others: React.FC = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             {CSR_PROJECTS.map((project, index) => (
-              <div key={index} className="flex flex-col md:flex-row gap-6 bg-gray-800 rounded-xl overflow-hidden hover:bg-gray-750 transition-colors cursor-pointer group" onClick={() => setSelectedReport(index)}>
-                <div className="md:w-2/5 h-64 md:h-auto overflow-hidden">
-                  <img src={project.image} alt={project.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+              <motion.div 
+                key={index} 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="flex flex-col md:flex-row gap-6 bg-gray-800 rounded-xl overflow-hidden hover:bg-gray-750 transition-colors cursor-pointer group" 
+                onClick={() => setSelectedReport(index)}
+              >
+                <div className="md:w-2/5 h-64 md:h-auto overflow-hidden relative">
+                  <OptimizedImage 
+                    src={project.image} 
+                    alt={project.title} 
+                    fill
+                    objectFit="cover"
+                    className="group-hover:scale-105 transition-transform duration-300"
+                  />
                 </div>
                 <div className="p-8 md:w-3/5 flex flex-col justify-center">
                   <h3 className="font-serif text-2xl mb-4 text-primary">{project.title}</h3>
                   <p className="text-gray-300 leading-relaxed mb-6">
                     {project.description}
                   </p>
-                  <button className="inline-flex items-center gap-2 text-sm font-medium hover:text-primary transition-colors">
+                  <motion.button 
+                    whileHover={{ gap: "0.75rem" }}
+                    className="inline-flex items-center gap-2 text-sm font-medium hover:text-primary transition-all"
+                  >
                     Read Impact Report <ArrowRight size={16} />
-                  </button>
+                  </motion.button>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -119,9 +164,22 @@ const Others: React.FC = () => {
               
               <div className="space-y-10">
                 {BLOG_POSTS.map((post, index) => (
-                  <div key={index} className="group flex flex-col sm:flex-row gap-6 items-start border-b border-gray-100 pb-10 last:border-0 cursor-pointer">
-                    <div className="w-full sm:w-48 h-32 rounded-lg overflow-hidden shrink-0">
-                      <img src={post.image} alt={post.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                  <motion.div 
+                    key={index} 
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true, margin: "-100px" }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    className="group flex flex-col sm:flex-row gap-6 items-start border-b border-gray-100 pb-10 last:border-0 cursor-pointer"
+                  >
+                    <div className="w-full sm:w-48 h-32 rounded-lg overflow-hidden shrink-0 relative">
+                      <OptimizedImage 
+                        src={post.image} 
+                        alt={post.title} 
+                        fill
+                        objectFit="cover"
+                        className="group-hover:scale-110 transition-transform duration-500"
+                      />
                     </div>
                     <div>
                       <span className="text-xs font-bold text-primary uppercase tracking-wider mb-2 block">{post.date}</span>
@@ -129,9 +187,15 @@ const Others: React.FC = () => {
                       <p className="text-gray-500 leading-relaxed text-sm mb-4">
                         {post.excerpt}
                       </p>
-                      <button onClick={() => setSelectedStory(index)} className="text-dark text-sm font-medium underline decoration-gray-300 hover:decoration-primary underline-offset-4 transition-all">Read Story</button>
+                      <motion.button 
+                        whileHover={{ textDecoration: "underline", color: "#DD5536" }}
+                        onClick={() => setSelectedStory(index)} 
+                        className="text-dark text-sm font-medium underline decoration-gray-300 underline-offset-4 transition-all"
+                      >
+                        Read Story
+                      </motion.button>
                     </div>
-                  </div>
+                  </motion.div>
                 ))}
               </div>
             </div>
@@ -145,10 +209,20 @@ const Others: React.FC = () => {
               
               <div className="grid grid-cols-2 gap-3">
                 {GALLERY_IMAGES.map((img, index) => (
-                  <div key={index} className={`rounded-lg overflow-hidden relative group cursor-pointer ${index === 0 ? 'col-span-2 aspect-video' : 'aspect-square'}`}>
-                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors z-10"></div>
-                    <img src={img} alt="Gallery" className="w-full h-full object-cover" />
-                  </div>
+                  <motion.div 
+                    key={index} 
+                    whileHover={{ scale: 1.05 }}
+                    className={`rounded-lg overflow-hidden relative group cursor-pointer ${index === 0 ? 'col-span-2 aspect-video' : 'aspect-square'}`}
+                  >
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors z-10"></div>
+                    <OptimizedImage 
+                      src={img} 
+                      alt={`Gallery ${index + 1}`} 
+                      fill
+                      objectFit="cover"
+                      className="group-hover:scale-110 transition-transform duration-500"
+                    />
+                  </motion.div>
                 ))}
               </div>
               <button className="w-full mt-6 py-3 border border-dark text-dark hover:bg-dark hover:text-white transition-colors rounded text-sm font-medium uppercase tracking-widest">
