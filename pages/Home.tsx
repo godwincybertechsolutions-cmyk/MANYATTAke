@@ -188,7 +188,7 @@ const Home: React.FC = () => {
         <div className="container mx-auto px-6 text-center relative z-10">
           <span className="text-6xl text-primary font-serif opacity-30">"</span>
           <p className="font-serif text-3xl md:text-5xl text-dark leading-tight max-w-4xl mx-auto mb-8">
-            We don't just offer a place to sleep. We offer a passage into the heart of Kenya, curated with elegance and warmth.
+            For us, it is not just about the stay, it is everything about the stay.
           </p>
           <div className="flex items-center justify-center gap-4">
             <div className="h-px w-12 bg-gray-300"></div>

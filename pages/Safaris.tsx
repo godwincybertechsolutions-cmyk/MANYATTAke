@@ -30,7 +30,7 @@ const Safaris: React.FC = () => {
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-6">
           <span className="text-primary text-sm font-bold tracking-[0.3em] uppercase mb-4">Journeys That Transform</span>
           <h1 className="font-serif text-5xl md:text-7xl text-white max-w-4xl leading-tight">
-            Connect to Kenya's <br /> <span className="italic">Wild Soul</span>
+            Your Journey, <br /> <span className="italic">Our Story</span>
           </h1>
         </div>
       </div>
@@ -39,7 +39,9 @@ const Safaris: React.FC = () => {
       <section className="py-20 bg-white">
         <div className="container mx-auto px-6 max-w-4xl text-center">
           <p className="font-serif text-2xl md:text-3xl text-dark leading-relaxed">
-            "Our safaris are not just about seeing animals. They are about understanding the rhythm of the land, the silence of the savannah, and the ancient stories written in the dust."
+            "With over 25 years of expertise in Safaris, we have mastered the art of curating fun
+exceptional journey experiences. Our deep-rooted knowledge and passion for Kenya's
+landscapes, wildlife, and cultures ensure that every adventure is enriching and unforgettable."
           </p>
         </div>
       </section>
