@@ -215,11 +215,11 @@ export const NARUMORU_VILLA_DETAILS = {
 export const SAFARI_ITINERARIES: Itinerary[] = [
   {
     id: "weekend",
-    title: "Weekend Escape",
+    title: "Weekend Safari",
     duration: "2 Nights",
     locations: ["Aberdare Park", "Ol Pejeta", "Solio Ranch"],
     description: "A quick but intense immersion into the wild, perfect for spotting Rhinos and elusive forest dwellers.",
-    image: "/assets/Burguret Mountainside Villa/Burguret. House Overall View.jpg",
+    image: "/assets/Curated Itineraries Images/unnamed (10).png",
     pricePerPerson: "USD 850",
     days: [
       {
@@ -238,11 +238,11 @@ export const SAFARI_ITINERARIES: Itinerary[] = [
   },
   {
     id: "mountain",
-    title: "Mountain Circuit",
+    title: "Best of Mt Kenya",
     duration: "3 Nights",
     locations: ["Mt. Kenya Slopes", "Samburu Reserve"],
     description: "Experience the drastic change in landscapes from lush forests to semi-arid beauty.",
-    image: "/assets/Burguret Mountainside Villa/Burguret. Outside Patio View.jpg",
+    image: "/assets/Curated Itineraries Images/unnamed (11).png",
     pricePerPerson: "USD 1,450",
     days: [
       {
@@ -267,11 +267,11 @@ export const SAFARI_ITINERARIES: Itinerary[] = [
   },
   {
     id: "grand",
-    title: "Mt. Kenya Grand Tour",
+    title: "Mt Kenya Circuit",
     duration: "8 Nights",
     locations: ["Lake Baringo", "Narumoru", "Meru National Park"],
     description: "The ultimate expedition covering rift valley lakes, highland forests, and remote wilderness.",
-    image: "/assets/Burguret Mountainside Villa/Burguret. Swimming Pool 1.jpg",
+    image: "/assets/Curated Itineraries Images/unnamed (12).png",
     pricePerPerson: "USD 3,200",
     days: [
       { day: 1, title: "Rift Valley Descent", activities: ["Drive to Lake Baringo", "Bird watching boat ride"], lodging: "Island Camp Baringo" },
