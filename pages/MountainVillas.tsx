@@ -13,13 +13,13 @@ const VILLAS = [
     id: 'burguret',
     details: BURGURET_VILLA_DETAILS,
     images: BURGURET_IMAGES,
-    heroImage: "/assets/Burguret Mountainside Villa/Burguret. House Overall View.jpg"
+    heroImage: "/assets/Burguret Mountainside Villa Section/Burguret. House Entrance.jpg"
   },
   {
     id: 'narumoru',
     details: NARUMORU_VILLA_DETAILS,
     images: NARUMORU_VILLA_DETAILS.images || [],
-    heroImage: "https://picsum.photos/seed/narumoru_hero/1920/1080"
+    heroImage: "/assets/Burguret Mountainside Villa Section/Burguret. House Entrance.jpg"
   }
 ];
 

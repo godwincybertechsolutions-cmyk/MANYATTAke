@@ -101,7 +101,7 @@ const Home: React.FC = () => {
                 <div className="relative h-[300px] sm:h-[500px] overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 group-hover:-translate-y-2 focus:outline-none focus:ring-2 focus:ring-primary">
                   <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors z-10 duration-300"></div>
                   <OptimizedImage
-                    src="/assets/Burguret Mountainside Villa/Burguret. House Overall View.jpg"
+                    src="/assets/Burguret Mountainside Villa Section/Burguret. Swimming Pool 1.jpg"
                     alt="Mountainside Haven"
                     className="transition-transform duration-700 group-hover:scale-110"
                     fill
@@ -131,7 +131,7 @@ const Home: React.FC = () => {
                 <div className="relative h-[300px] sm:h-[500px] overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 group-hover:-translate-y-2">
                   <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors z-10 duration-300"></div>
                   <OptimizedImage
-                    src="https://ecoadventuresafaris.com/wp-content/uploads/2023/01/Kenya-1-1200x675.jpg"
+                    src="/assets/Burguret Mountainside Villa Section/Burguret. House Entrance.jpg"
                     alt="Safari"
                     className="transition-transform duration-700 group-hover:scale-110"
                     fill
@@ -161,7 +161,7 @@ const Home: React.FC = () => {
                 <div className="relative h-[300px] sm:h-[500px] overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 group-hover:-translate-y-2">
                   <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors z-10 duration-300"></div>
                   <OptimizedImage
-                    src="https://laurelandhomes.com/wp-content/uploads/2018/06/appearance.jpg"
+                    src="/assets/Laurel Hill Suites Hero/L6 Reception.jpg"
                     alt="Urban Apartments"
                     className="transition-transform duration-700 group-hover:scale-110"
                     fill
