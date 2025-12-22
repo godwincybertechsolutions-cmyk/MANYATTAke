@@ -33,6 +33,9 @@ const StoryModal: React.FC<StoryModalProps> = ({ isOpen, onClose, title, date, i
                     exit={{ opacity: 0 }}
                     onClick={onClose}
                     className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4"
+                    role="dialog"
+                    aria-modal="true"
+                    aria-label={title}
                 >
                     <motion.div
                         initial={{ opacity: 0, y: 20, scale: 0.95 }}
@@ -47,7 +50,8 @@ const StoryModal: React.FC<StoryModalProps> = ({ isOpen, onClose, title, date, i
                             whileHover={{ scale: 1.1 }}
                             whileTap={{ scale: 0.9 }}
                             onClick={onClose}
-                            className="absolute top-4 right-4 z-50 p-2 bg-white/80 hover:bg-white text-dark rounded-full transition-colors shadow-md"
+                            className="absolute top-4 right-4 z-50 p-2 bg-white/80 hover:bg-white text-dark rounded-full transition-colors shadow-md focus:outline-none focus:ring-2 focus:ring-primary"
+                            aria-label="Close dialog"
                         >
                             <X size={24} />
                         </motion.button>

@@ -100,14 +100,18 @@ const ImageSlideshowModal: React.FC<ImageSlideshowModalProps> = ({ images, isOpe
                 transition={{ duration: 0.2 }}
                 className="fixed inset-0 z-50 flex items-center justify-center bg-black/98 backdrop-blur-sm p-4"
                 onClick={onClose}
+                role="dialog"
+                aria-modal="true"
+                aria-label={`Image gallery: ${title || 'Gallery'}`}
             >
                 {/* Close Button */}
                 <motion.button
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
                     onClick={onClose}
-                    className="absolute top-4 right-4 text-white/70 hover:text-white transition-colors z-50 p-2 hover:bg-white/10 rounded-full"
+                    className="absolute top-4 right-4 text-white/70 hover:text-white transition-colors z-50 p-2 hover:bg-white/10 rounded-full focus:outline-none focus:ring-2 focus:ring-white"
                     title="Close (ESC)"
+                    aria-label="Close gallery"
                 >
                     <X size={32} />
                 </motion.button>
@@ -125,8 +129,9 @@ const ImageSlideshowModal: React.FC<ImageSlideshowModalProps> = ({ images, isOpe
                             whileHover={{ scale: 1.1, x: -4 }}
                             whileTap={{ scale: 0.9 }}
                             onClick={prevImage}
-                            className="absolute left-2 md:-left-16 top-1/2 -translate-y-1/2 p-3 bg-white/10 hover:bg-white/20 text-white rounded-full transition-all z-20 backdrop-blur-sm"
+                            className="absolute left-2 md:-left-16 top-1/2 -translate-y-1/2 p-3 bg-white/10 hover:bg-white/20 text-white rounded-full transition-all z-20 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-white"
                             title="Previous (←)"
+                            aria-label="Previous image"
                         >
                             <ChevronLeft size={28} />
                         </motion.button>
@@ -265,8 +270,9 @@ const ImageSlideshowModal: React.FC<ImageSlideshowModalProps> = ({ images, isOpe
                             whileHover={{ scale: 1.1, x: 4 }}
                             whileTap={{ scale: 0.9 }}
                             onClick={nextImage}
-                            className="absolute right-2 md:-right-16 top-1/2 -translate-y-1/2 p-3 bg-white/10 hover:bg-white/20 text-white rounded-full transition-all z-20 backdrop-blur-sm"
+                            className="absolute right-2 md:-right-16 top-1/2 -translate-y-1/2 p-3 bg-white/10 hover:bg-white/20 text-white rounded-full transition-all z-20 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-white"
                             title="Next (→)"
+                            aria-label="Next image"
                         >
                             <ChevronRight size={28} />
                         </motion.button>

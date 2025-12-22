@@ -206,9 +206,9 @@ export const NARUMORU_VILLA_DETAILS = {
     { name: "Meru National Park", time: "2-3 hours" }
   ],
   images: [
-    "https://picsum.photos/seed/narumoru1/800/600",
-    "https://picsum.photos/seed/narumoru2/800/600",
-    "https://picsum.photos/seed/narumoru3/800/600"
+    "/assets/Burguret Mountainside Villa/Burguret. Living room 1.jpg",
+    "/assets/Burguret Mountainside Villa/Burguret. Master Bedroom .jpg",
+    "/assets/Laurel Hill Suites/L6 Rooftop Pool.jpg"
   ]
 };
 
@@ -219,7 +219,7 @@ export const SAFARI_ITINERARIES: Itinerary[] = [
     duration: "2 Nights",
     locations: ["Aberdare Park", "Ol Pejeta", "Solio Ranch"],
     description: "A quick but intense immersion into the wild, perfect for spotting Rhinos and elusive forest dwellers.",
-    image: "https://www.kenyasafari.com/images/the-ark-elephants-aberdare-590x390.jpg",
+    image: "/assets/Burguret Mountainside Villa/Burguret. House Overall View.jpg",
     pricePerPerson: "USD 850",
     days: [
       {
@@ -242,7 +242,7 @@ export const SAFARI_ITINERARIES: Itinerary[] = [
     duration: "3 Nights",
     locations: ["Mt. Kenya Slopes", "Samburu Reserve"],
     description: "Experience the drastic change in landscapes from lush forests to semi-arid beauty.",
-    image: "https://www.samburureserve.com/images/samburu-national-reserve-kenya.jpg",
+    image: "/assets/Burguret Mountainside Villa/Burguret. Outside Patio View.jpg",
     pricePerPerson: "USD 1,450",
     days: [
       {
@@ -271,7 +271,7 @@ export const SAFARI_ITINERARIES: Itinerary[] = [
     duration: "8 Nights",
     locations: ["Lake Baringo", "Narumoru", "Meru National Park"],
     description: "The ultimate expedition covering rift valley lakes, highland forests, and remote wilderness.",
-    image: "https://rhinowatchlodge.com/wp-content/uploads/2020/05/Rhino-Watch-Safari-Lodge-5.jpg",
+    image: "/assets/Burguret Mountainside Villa/Burguret. Swimming Pool 1.jpg",
     pricePerPerson: "USD 3,200",
     days: [
       { day: 1, title: "Rift Valley Descent", activities: ["Drive to Lake Baringo", "Bird watching boat ride"], lodging: "Island Camp Baringo" },
@@ -333,7 +333,7 @@ export const CSR_PROJECTS = [
   {
     title: "Reforestation Initiative",
     description: "For every booking, we plant 5 indigenous trees in the Mt. Kenya forest reserve.",
-    image: "https://i.guim.co.uk/img/media/c6fc22bc8bdbcde8a8f52a9132f07f7458140b0e/0_11_4032_2419/master/4032.jpg?width=1200&height=900&quality=85&auto=format&fit=crop&s=519393977c1d3ffce8f325bf3fdaa571",
+    image: "/assets/Burguret Mountainside Villa/Burguret. Outside Lounge Area.jpg",
     reportContent: "Our Reforestation Initiative represents a commitment to environmental stewardship. Since 2022, we have partnered with local conservation organizations to plant over 50,000 indigenous trees across the Mt. Kenya ecosystem.\n\nEach guest stay contributes to this effort. For every night booked at our properties, we plant 5 native trees including African Olive, Yellowwood, and Cedar species. These trees not only combat deforestation but also provide habitat for endangered species like the Colobus monkey and various bird species.\n\nThe initiative has created employment for over 200 local community members who serve as tree nursery operators and foresters. Beyond environmental impact, we've established a community forest fund that supports education and healthcare in participating villages.\n\nOur goal is to restore 100,000 trees by 2027, sequestering approximately 10,000 tons of carbon while strengthening the local ecosystem that makes Kenya such a precious destination.",
     impact: [
       { label: "Trees Planted", value: "50,000+" },
@@ -345,7 +345,7 @@ export const CSR_PROJECTS = [
   {
     title: "Local Education Fund",
     description: "Supporting primary schools in Narumoru with books, desks, and solar lighting.",
-    image: "https://images.squarespace-cdn.com/content/v1/674774e95d92814e89fc20b1/0918a9a8-9b92-4c67-bab6-407df4bd2967/30a97c86aee7100671a115256d318853.jpeg",
+    image: "/assets/Laurel Hill Suites/L6 Lounge Area (b).jpg",
     reportContent: "The Local Education Fund is our answer to educational inequality in rural Kenya. We recognized that children in remote areas like Narumoru face unique challenges: limited resources, overcrowded classrooms, and lack of electricity.\n\nSince inception, we have invested over 5 million Kenyan Shillings directly into local schools. Our contributions include modern school desks for 15 classrooms, a library with over 3,000 books covering mathematics, science, and literature, and solar power installations in 8 schools.\n\nWe've also established scholarship programs for 150 high-performing students from low-income families, covering school fees and materials. Additionally, our 'Teacher Empowerment' program provides professional development training for educators, focusing on modern pedagogical methods and digital literacy.\n\nThe impact is measurable: schools we support have seen a 35% improvement in KCPE (Kenya Certificate of Primary Education) exam performance within three years. More importantly, these initiatives foster hope and opportunity in communities that have long felt overlooked by development.",
     impact: [
       { label: "Students Supported", value: "150" },
@@ -361,7 +361,7 @@ export const BLOG_POSTS = [
     title: "The Magic of Misty Mornings",
     date: "October 12, 2023",
     excerpt: "Why waking up at 5 AM on the slopes of Mt. Kenya is a spiritual experience.",
-    image: "https://picsum.photos/seed/blog1/600/400",
+    image: "/assets/Burguret Mountainside Villa/Burguret. House Entrance.jpg",
     author: "Sarah Kipchoge",
     fullContent: "There's something profoundly magical about waking before dawn on the slopes of Mt. Kenya. As the first light breaks over the horizon, the mountain itself seems to awaken, shrouded in layers of mist that dance and swirl like living spirits.\n\nThe silence is almost tangible. In these early hours, before the day truly begins, you exist in a space between worlds—between sleep and wakefulness, between earth and sky, between the known and the mysterious.\n\nOur guests often report that these moments offer unexpected clarity. Perhaps it's the elevation, the pure mountain air filling your lungs with oxygen. Perhaps it's the absence of the constant digital noise that fills our urban lives. Or perhaps it's simply the privilege of witnessing nature's most tender moment of the day.\n\nThe mist gradually clears as the sun rises higher, revealing the vast forest below and the distant plains beyond. Wildlife begins to stir—birds call out their morning songs, and occasionally you might spot a Colobus monkey moving gracefully through the canopy.\n\nWe encourage our guests to silence their phones during these moments, to sit with a warm cup of our Mt. Elgon coffee, and to simply be present. In our fast-paced world, these misty mornings remind us what it means to truly be alive."
   },
@@ -369,7 +369,7 @@ export const BLOG_POSTS = [
     title: "Top 5 Safari Essentials",
     date: "September 28, 2023",
     excerpt: "Packing right can make the difference between a good trip and an unforgettable one.",
-    image: "https://picsum.photos/seed/blog2/600/400",
+    image: "/assets/Burguret Mountainside Villa/Burguret. Living Room Overview.jpg",
     author: "James Mwangi",
     fullContent: "After years of guiding safaris across Kenya's greatest reserves, I've learned that preparation transforms an ordinary trip into an unforgettable adventure. Here are the five essentials that no safari traveler should be without.\n\n1. **Quality Binoculars**: Invest in a good pair of binoculars. The difference between spotting a distant leopard with clarity and struggling with cheap optics is night and day. We recommend 10x42 magnification for safari.\n\n2. **Sun Protection Beyond Sunscreen**: The African sun is no joke. Bring a wide-brimmed hat, UV-protective clothing, and quality sunglasses. Sunburns can ruin your experience and impact wildlife observation due to discomfort.\n\n3. **A Good Field Guide**: Download an offline identification guide for birds, mammals, and plants. The knowledge adds immense depth to your observations and creates wonderful conversations with guides.\n\n4. **Layers for Temperature Swings**: Early morning game drives are cold. Bring a warm fleece or jacket that you can remove as the day heats up. Temperature variations can be 20+ degrees Celsius from dawn to midday.\n\n5. **A Journal**: Perhaps the most underrated essential. Photographing everything means you'll remember the images but forget the feelings. A simple notebook captures emotions, observations, and insights that transform memories into meaningful narratives.\n\nThese essentials, combined with an open heart and patient observation, create the foundation for authentic safari experiences that stay with you for life."
   },
@@ -377,7 +377,7 @@ export const BLOG_POSTS = [
     title: "Nairobi's Hidden Gems",
     date: "August 15, 2023",
     excerpt: "Beyond the traffic: finding art, culture, and peace in the capital.",
-    image: "https://picsum.photos/seed/blog3/600/400",
+    image: "/assets/Laurel Hill Suites/L6 Reception.jpg",
     author: "Amara Okonkwo",
     fullContent: "Nairobi gets a bad rap. Most travelers see it as a necessary evil—a transit point between the airport and 'real' Kenya. But this vibrant capital city harbors incredible hidden gems that reveal the soul of modern Kenya.\n\nStart in the Karen neighborhood, where art galleries and studios showcase contemporary Kenyan artists whose work challenges narratives and pushes boundaries. The Nairobi Gallery showcases both established and emerging voices in African art.\n\nFor culture, venture to the Giraffe Centre in Langata, where you can feed endangered Rothschild giraffes while supporting conservation efforts. It's simultaneously humbling and magical.\n\nFoodie? Head to Muthaiga or Westlands after sunset. Beyond the well-known restaurants, local food courts serve authentic Kenyan cuisine—nyama choma, githeri, ugali prepared exactly as grandmothers have made it for generations. These aren't tourist traps; they're where Nairobi eats.\n\nFor peace amidst urban chaos, the Nairobi National Park offers wildlife viewing just 7 kilometers from the city center. Lions, zebras, and giraffes with the skyline as backdrop create a surreal juxtaposition.\n\nFinally, don't miss the night markets and bazaars of Gikomba, where Nairobi's entrepreneurial spirit shines brightest. Here, young Kenyans are creating the future—designing fashion, crafting leather goods, and building businesses with ambition that's deeply inspiring.\n\nNairobi isn't a destination to rush through. It's a city that rewards curiosity, conversation, and a willingness to venture beyond guidebooks."
   }

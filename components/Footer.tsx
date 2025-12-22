@@ -6,8 +6,8 @@ import { Link } from 'react-router-dom';
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-dark text-white pt-20 pb-10">
-      <div className="container mx-auto px-6">
+    <footer className="bg-dark text-white pt-20 pb-10" role="contentinfo">
+      <div className="container mx-auto px-4 sm:px-6">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 border-b border-gray-700 pb-12">
           
           {/* Brand */}
@@ -25,9 +25,9 @@ const Footer: React.FC = () => {
               Bridging the gap between the majestic peaks of Mt. Kenya, the wild soul of the savannah, and the sophisticated pulse of Nairobi.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="text-gray-400 hover:text-primary transition-colors"><Instagram size={20} /></a>
-              <a href="#" className="text-gray-400 hover:text-primary transition-colors"><Facebook size={20} /></a>
-              <a href="#" className="text-gray-400 hover:text-primary transition-colors"><Twitter size={20} /></a>
+              <a href="#" className="text-gray-400 hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary rounded-lg p-1" aria-label="Instagram"><Instagram size={20} /></a>
+              <a href="#" className="text-gray-400 hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary rounded-lg p-1" aria-label="Facebook"><Facebook size={20} /></a>
+              <a href="#" className="text-gray-400 hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary rounded-lg p-1" aria-label="Twitter"><Twitter size={20} /></a>
             </div>
           </div>
 
@@ -82,8 +82,8 @@ const Footer: React.FC = () => {
         <div className="pt-8 text-center text-gray-600 text-xs flex flex-col md:flex-row justify-between items-center">
           <p>&copy; {new Date().getFullYear()} {APP_NAME}. All rights reserved.</p>
           <div className="flex space-x-6 mt-4 md:mt-0">
-            <a href="#" className="hover:text-gray-400">Privacy Policy</a>
-            <a href="#" className="hover:text-gray-400">Terms of Service</a>
+            <a href="#" className="hover:text-gray-400 focus:outline-none focus:ring-2 focus:ring-primary rounded px-2 py-1">Privacy Policy</a>
+            <a href="#" className="hover:text-gray-400 focus:outline-none focus:ring-2 focus:ring-primary rounded px-2 py-1">Terms of Service</a>
           </div>
         </div>
       </div>

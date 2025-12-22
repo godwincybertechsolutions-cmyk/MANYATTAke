@@ -28,10 +28,12 @@ const Navbar: React.FC = () => {
     <nav
       className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white/98 backdrop-blur-md shadow-xl py-3' : 'bg-transparent py-6'
         }`}
+      role="navigation"
+      aria-label="Main navigation"
     >
-      <div className="container mx-auto px-6 flex justify-between items-center">
+      <div className="container mx-auto px-4 sm:px-6 flex justify-between items-center">
         {/* Logo */}
-        <Link to="/" className="flex items-center group hover:opacity-75 transition-opacity duration-200">
+        <Link to="/" className="flex items-center group hover:opacity-75 transition-opacity duration-200" aria-label="New Manyatta Home">
           <OptimizedImage 
              src="/assets/Logo/New Manyatta Logo.png"
             alt={APP_NAME}
@@ -64,8 +66,11 @@ const Navbar: React.FC = () => {
 
         {/* Mobile Toggle */}
         <button
-          className="md:hidden text-primary"
+          className="md:hidden text-primary focus:outline-none focus:ring-2 focus:ring-primary rounded-lg p-2"
           onClick={() => setIsOpen(!isOpen)}
+          aria-expanded={isOpen}
+          aria-controls="mobile-menu"
+          aria-label="Toggle navigation menu"
         >
           {isOpen ? <X size={28} /> : <Menu size={28} color={scrolled ? '#2F2F2F' : '#FFFFFF'} />}
         </button>
@@ -73,7 +78,7 @@ const Navbar: React.FC = () => {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden absolute top-full left-0 w-full bg-white shadow-2xl py-6 px-6 flex flex-col space-y-3 animate-fade-in-down border-t border-gray-100">
+        <div className="md:hidden absolute top-full left-0 w-full bg-white shadow-2xl py-6 px-4 sm:px-6 flex flex-col space-y-3 animate-fade-in-down border-t border-gray-100" id="mobile-menu">
           {NAVIGATION_LINKS.map((link) => (
             <Link
               key={link.name}
@@ -84,9 +89,10 @@ const Navbar: React.FC = () => {
             </Link>
           ))}
           <button
-            className="bg-primary hover:bg-[#c4492e] text-white w-full py-3 rounded-lg mt-4 font-bold transition-all focus:outline-none focus:ring-2 focus:ring-primary/50"
+            className="bg-primary hover:bg-[#c4492e] text-white w-full py-3 rounded-lg mt-4 font-bold transition-all focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
             onClick={() => {
               navigate('/others');
+              setIsOpen(false);
             }}
           >
             Book Your Stay

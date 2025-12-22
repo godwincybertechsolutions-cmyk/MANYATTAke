@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import { MapPin, Check, Camera } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import { motion } from 'framer-motion';
 import ImageSlideshowModal from '../components/ImageSlideshowModal';
-import OptimizedImage from '../components/OptimizedImage';
 import {
   BURGURET_VILLA_DETAILS,
   BURGURET_IMAGES,
@@ -47,35 +45,18 @@ const MountainVillas: React.FC = () => {
       />
 
       {/* Hero */}
-      <div>
-        <div className="relative h-[60vh] w-full overflow-hidden">
-          <OptimizedImage
-            src="/assets/Burguret Mountainside Villa/Burguret. Outside Lounge Area.jpg"
-            alt="Mountainside Haven"
-            className=""
-            fill
-            priority
-            objectFit="cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent flex items-end justify-center pb-12">
-            <div className="text-center max-w-4xl px-6">
-              <motion.h1 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="font-serif text-5xl md:text-7xl text-white mb-4 uppercase"
-              >
-                Mountainside Villas
-              </motion.h1>
-              <motion.p 
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.6, delay: 0.4 }}
-                className="text-white/90 text-lg max-w-3xl mx-auto"
-              >
-                Experience the serenity of Mt. Kenya in our exclusive villas.
-              </motion.p>
-            </div>
+      <div className="relative h-[60vh] w-full">
+        <img
+          src="/assets/Burguret Mountainside Villa/Burguret. House Overall View.jpg"
+          alt="Mountainside Haven"
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-black/40 flex items-center justify-center text-center">
+          <div className="max-w-4xl px-6">
+            <h1 className="font-serif text-5xl md:text-7xl text-white mb-6 uppercase">Mountainside Haven</h1>
+            <p className="text-white/90 text-xl font-light max-w-2xl mx-auto mb-8 tracking-wide">
+              Experience the serenity of Mt. Kenya in our exclusive villas.
+            </p>
           </div>
         </div>
       </div>
@@ -118,72 +99,34 @@ const MountainVillas: React.FC = () => {
                     </ul>
                   </div>
 
-                  <div className="flex gap-4 flex-wrap">
-                    <motion.button
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
+                  <div className="flex gap-4">
+                    <button
                       onClick={() => openGallery(villa.images, villa.details.title)}
-                      className="px-6 py-3 border-2 border-dark text-dark rounded-full font-bold hover:bg-dark hover:text-white transition-all flex items-center gap-2 uppercase text-sm tracking-widest focus:outline-none focus:ring-2 focus:ring-dark/50"
+                      className="px-6 py-3 border border-dark text-dark rounded-full font-medium hover:bg-dark hover:text-white transition-all flex items-center gap-2 uppercase text-sm tracking-widest"
                     >
                       <Camera size={18} /> View Gallery
-                    </motion.button>
-                    <motion.button
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
+                    </button>
+                    <button
                       onClick={() => navigate('/others')}
-                      className="px-6 py-3 bg-primary text-white rounded-full font-bold hover:bg-[#c4492e] transition-all uppercase text-sm tracking-widest shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-primary/50"
+                      className="px-6 py-3 bg-primary text-white rounded-full font-medium hover:bg-[#c4492e] transition-all uppercase text-sm tracking-widest"
                     >
                       Reserve Now
-                    </motion.button>
+                    </button>
                   </div>
                 </div>
 
                 {/* Images Grid */}
-                <div className="md:w-1/2">
-                  <div className="grid grid-cols-2 gap-6 mb-8">
-                    <motion.div
-                      whileHover={{ y: -8 }}
-                      className="col-span-2 h-64 rounded-2xl overflow-hidden relative group cursor-pointer shadow-md hover:shadow-xl transition-all duration-300" 
-                      onClick={() => openGallery(villa.images, villa.details.title)}
-                    >
-                      <OptimizedImage 
-                        src={villa.heroImage} 
-                        alt={villa.details.title} 
-                        className="transition-transform duration-700 group-hover:scale-110"
-                        fill
-                        objectFit="cover"
-                      />
-                      <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
-                    </motion.div>
-                    {/* Display 2 more small images if available */}
-                    <motion.div 
-                      whileHover={{ y: -6 }}
-                      className="h-40 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300"
-                    >
-                      <OptimizedImage 
-                        src={villa.images[1] || villa.images[0]} 
-                        alt="Detail 1"
-                        className="hover:scale-105 transition-transform duration-500"
-                        fill
-                        objectFit="cover"
-                      />
-                    </motion.div>
-                    <motion.div 
-                      whileHover={{ y: -6 }}
-                      className="h-40 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300"
-                    >
-                      <OptimizedImage 
-                        src={villa.images[2] || villa.images[0]} 
-                        alt="Detail 2"
-                        className="hover:scale-105 transition-transform duration-500"
-                        fill
-                        objectFit="cover"
-                      />
-                    </motion.div>
+                <div className="md:w-1/2 grid grid-cols-2 gap-4">
+                  <div className="col-span-2 h-64 rounded-xl overflow-hidden relative group cursor-pointer" onClick={() => openGallery(villa.images, villa.details.title)}>
+                    <img src={villa.heroImage} alt={villa.details.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                    <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
                   </div>
-                  <div className="bg-white border-l-4 border-primary pl-6 py-4">
-                    <h3 className="font-serif text-2xl font-semibold mb-2 text-dark">{villa.details.title}</h3>
-                    <p className="text-gray-700 text-base">{villa.details.location.main} • {villa.details.location.sub}</p>
+                  {/* Display 2 more small images if available */}
+                  <div className="h-40 rounded-xl overflow-hidden hidden md:block">
+                    <img src={villa.images[1] || villa.images[0]} className="w-full h-full object-cover" alt="Detail 1" />
+                  </div>
+                  <div className="h-40 rounded-xl overflow-hidden hidden md:block">
+                    <img src={villa.images[2] || villa.images[0]} className="w-full h-full object-cover" alt="Detail 2" />
                   </div>
                 </div>
               </div>
