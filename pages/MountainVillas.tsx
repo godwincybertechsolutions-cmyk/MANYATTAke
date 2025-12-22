@@ -47,7 +47,7 @@ const MountainVillas: React.FC = () => {
       {/* Hero */}
       <div className="relative h-[60vh] w-full">
         <img
-          src="/assets/Burguret Mountainside Villa/Burguret. House Overall View.jpg"
+          src="/assets/Mountain Villas Hero Image/Burguret. Outside Patio View 2.jpg"
           alt="Mountainside Haven"
           className="w-full h-full object-cover"
         />

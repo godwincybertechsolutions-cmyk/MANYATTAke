@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { Coffee, Heart, ArrowRight, ShoppingBag, Droplets, Camera, BookOpen } from 'lucide-react';
+import { Coffee, Heart, ArrowRight, ShoppingBag, Droplets, BookOpen } from 'lucide-react';
 import { motion } from 'framer-motion';
 import SectionHeader from '../components/SectionHeader';
 import StoryModal from '../components/StoryModal';
 import ImpactReportModal from '../components/ImpactReportModal';
 import OptimizedImage from '../components/OptimizedImage';
-import { COFFEE_PRODUCTS, CSR_PROJECTS, BLOG_POSTS, GALLERY_IMAGES } from '../constants';
+import { COFFEE_PRODUCTS, CSR_PROJECTS, BLOG_POSTS } from '../constants';
 
 const Others: React.FC = () => {
   const [selectedStory, setSelectedStory] = useState<number | null>(null);
@@ -15,7 +15,7 @@ const Others: React.FC = () => {
       {/* Hero */}
       <div className="relative h-[50vh] w-full bg-stone-900">
         <OptimizedImage 
-          src="/assets/Coffee/MT Elgon Reserve Coffee Packaging.png" 
+          src="/assets/Others Hero Image/The-Narumoru-Route-Climb-up-Mount-Kenya.jpg" 
           alt="Curated Lifestyle" 
           fill
           priority
@@ -197,39 +197,6 @@ const Others: React.FC = () => {
                     </div>
                   </motion.div>
                 ))}
-              </div>
-            </div>
-
-            {/* Gallery Sidebar (1/3 width) */}
-            <div>
-              <div className="flex items-center gap-3 mb-10">
-                <Camera className="text-primary" />
-                <h2 className="font-serif text-3xl text-dark">Gallery</h2>
-              </div>
-              
-              <div className="grid grid-cols-2 gap-3">
-                {GALLERY_IMAGES.map((img, index) => (
-                  <motion.div 
-                    key={index} 
-                    whileHover={{ scale: 1.05 }}
-                    className={`rounded-lg overflow-hidden relative group cursor-pointer ${index === 0 ? 'col-span-2 aspect-video' : 'aspect-square'}`}
-                  >
-                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors z-10"></div>
-                    <OptimizedImage 
-                      src={img} 
-                      alt={`Gallery ${index + 1}`} 
-                      fill
-                      objectFit="cover"
-                      className="group-hover:scale-110 transition-transform duration-500"
-                    />
-                  </motion.div>
-                ))}
-              </div>
-              <button className="w-full mt-6 py-3 border border-dark text-dark hover:bg-dark hover:text-white transition-colors rounded text-sm font-medium uppercase tracking-widest">
-                View Full Gallery
-              </button>
-            </div>
-
           </div>
         </div>
       </section>

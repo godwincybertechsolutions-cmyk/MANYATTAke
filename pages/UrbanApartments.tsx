@@ -33,7 +33,7 @@ const UrbanApartments: React.FC = () => {
       {/* Hero */}
       <div className="relative h-[50vh] w-full overflow-hidden">
         <OptimizedImage
-          src="/assets/Laurel Hill Suites Hero/L6 Reception.jpg"
+          src="/assets/Apartments Hero Image/nairobi-worlds-best-city-to-visit.jpg"
           alt="Nairobi Skyline"
           fill
           priority
