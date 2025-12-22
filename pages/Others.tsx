@@ -15,7 +15,7 @@ const Others: React.FC = () => {
       {/* Hero */}
       <div className="relative h-[50vh] w-full bg-stone-900">
         <OptimizedImage 
-          src="/assets/Others Hero Image/The-Narumoru-Route-Climb-up-Mount-Kenya.jpg" 
+          src="/assets/Others%20Hero%20Image/The-Narumoru-Route-Climb-up-Mount-Kenya.jpg" 
           alt="Curated Lifestyle" 
           fill
           priority

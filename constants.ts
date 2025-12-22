@@ -219,7 +219,7 @@ export const SAFARI_ITINERARIES: Itinerary[] = [
     duration: "2 Nights",
     locations: ["Aberdare Park", "Ol Pejeta", "Solio Ranch"],
     description: "A quick but intense immersion into the wild, perfect for spotting Rhinos and elusive forest dwellers.",
-    image: "/assets/Curated Itineraries Images/unnamed (10).png",
+    image: "/assets/Curated%20Itineraries%20Images/unnamed%20(10).png",
     pricePerPerson: "USD 850",
     days: [
       {
@@ -242,7 +242,7 @@ export const SAFARI_ITINERARIES: Itinerary[] = [
     duration: "3 Nights",
     locations: ["Mt. Kenya Slopes", "Samburu Reserve"],
     description: "Experience the drastic change in landscapes from lush forests to semi-arid beauty.",
-    image: "/assets/Curated Itineraries Images/unnamed (11).png",
+    image: "/assets/Curated%20Itineraries%20Images/unnamed%20(11).png",
     pricePerPerson: "USD 1,450",
     days: [
       {
@@ -271,7 +271,7 @@ export const SAFARI_ITINERARIES: Itinerary[] = [
     duration: "8 Nights",
     locations: ["Lake Baringo", "Narumoru", "Meru National Park"],
     description: "The ultimate expedition covering rift valley lakes, highland forests, and remote wilderness.",
-    image: "/assets/Curated Itineraries Images/unnamed (12).png",
+    image: "/assets/Curated%20Itineraries%20Images/unnamed%20(12).png",
     pricePerPerson: "USD 3,200",
     days: [
       { day: 1, title: "Rift Valley Descent", activities: ["Drive to Lake Baringo", "Bird watching boat ride"], lodging: "Island Camp Baringo" },

@@ -101,7 +101,7 @@ const Home: React.FC = () => {
                 <div className="relative h-[300px] sm:h-[500px] overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 group-hover:-translate-y-2 focus:outline-none focus:ring-2 focus:ring-primary">
                   <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors z-10 duration-300"></div>
                   <OptimizedImage
-                    src="/assets/Trinity of Experience/Mountainside Villas/Burguret. Outside Patio View 2.jpg"
+                    src="/assets/Trinity%20of%20Experience/Mountainside%20Villas/Burguret.%20Outside%20Patio%20View%202.jpg"
                     alt="Mountainside Haven"
                     className="transition-transform duration-700 group-hover:scale-110"
                     fill
@@ -131,7 +131,7 @@ const Home: React.FC = () => {
                 <div className="relative h-[300px] sm:h-[500px] overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 group-hover:-translate-y-2">
                   <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors z-10 duration-300"></div>
                   <OptimizedImage
-                    src="/assets/Trinity of Experience/Safaris/unnamed (13).png"
+                    src="/assets/Trinity%20of%20Experience/Safaris/unnamed%20(13).png"
                     alt="Safari"
                     className="transition-transform duration-700 group-hover:scale-110"
                     fill
@@ -161,7 +161,7 @@ const Home: React.FC = () => {
                 <div className="relative h-[300px] sm:h-[500px] overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 group-hover:-translate-y-2">
                   <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors z-10 duration-300"></div>
                   <OptimizedImage
-                    src="/assets/Trinity of Experience/Apartments/L6 Rooftop Pool.jpg"
+                    src="/assets/Trinity%20of%20Experience/Apartments/L6%20Rooftop%20Pool.jpg"
                     alt="Urban Apartments"
                     className="transition-transform duration-700 group-hover:scale-110"
                     fill
