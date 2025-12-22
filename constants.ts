@@ -294,7 +294,7 @@ export const URBAN_APARTMENTS = [
     salePrice: "Ksh 10.5M",
     rentLongTerm: "Ksh 170K/month",
     rentShortTerm: "Ksh 8,400/night",
-    image: "/assets/Laurel Hill Suites Hero/L6 Reception.jpg",
+    image: "/assets/Premium%20Locations/L6%20Reception.jpg",
     features: ["City View", "Rooftop Pool", "Gym Access"],
     images: LAUREL_IMAGES
   },
@@ -304,7 +304,7 @@ export const URBAN_APARTMENTS = [
     bedrooms: 2,
     rentLongTerm: "Ksh 250K/month",
     rentShortTerm: "Ksh 14,400/night",
-    image: "/assets/Alba Gardens Hero/A17 Reception.jpg",
+    image: "/assets/Premium%20Locations/A17%20Reception.jpg",
     features: ["Garden Terrace", "Double Parking", "Smart Home System"],
     images: ALBA_IMAGES
   }

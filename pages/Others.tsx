@@ -110,7 +110,11 @@ const Others: React.FC = () => {
       {/* CSR Section */}
       <section className="py-24 bg-dark text-white">
         <div className="container mx-auto px-6">
-          <SectionHeader title="Giving Back" subtitle="Our Responsibility" dark />
+          <div className="text-center mb-16 max-w-2xl mx-auto px-4">
+            <span className="text-xs font-bold uppercase tracking-[0.2em] mb-4 block text-primary"><a href="#our-responsibility" className="hover:text-white transition-colors">Our Responsibility</a></span>
+            <h2 className="font-serif text-4xl md:text-5xl font-medium mb-6 text-white">Giving Back</h2>
+            <div className="w-24 h-1 bg-primary mx-auto rounded-full"></div>
+          </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             {CSR_PROJECTS.map((project, index) => (
@@ -153,13 +157,18 @@ const Others: React.FC = () => {
       {/* Blog & Gallery Split */}
       <section className="py-24 bg-white">
         <div className="container mx-auto px-6">
+          <div className="text-center mb-16 max-w-2xl mx-auto px-4 lg:hidden">
+            <span className="text-xs font-bold uppercase tracking-[0.2em] mb-4 block text-primary"><a href="#the-journal" className="hover:text-dark transition-colors">The Journal</a></span>
+            <h2 className="font-serif text-4xl md:text-5xl font-medium mb-6 text-dark">Stories</h2>
+            <div className="w-24 h-1 bg-primary mx-auto rounded-full"></div>
+          </div>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
             
             {/* Blog Section (2/3 width) */}
             <div className="lg:col-span-2">
               <div className="flex items-center gap-3 mb-10">
                 <BookOpen className="text-primary" />
-                <h2 className="font-serif text-3xl text-dark">The Journal</h2>
+                <a href="#the-journal" className="font-serif text-3xl text-dark hover:text-primary transition-colors">The Journal</a>
               </div>
               
               <div className="space-y-10">
