@@ -11,7 +11,7 @@ const Others: React.FC = () => {
   const [selectedStory, setSelectedStory] = useState<number | null>(null);
   const [selectedReport, setSelectedReport] = useState<number | null>(null);
   return (
-    <div className="w-full pt-20">
+    <div className="w-full">
       {/* Hero */}
       <div className="relative h-[50vh] w-full bg-stone-900">
         <OptimizedImage 

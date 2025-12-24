@@ -36,7 +36,7 @@ const MountainVillas: React.FC = () => {
   };
 
   return (
-    <div className="w-full pt-20">
+    <div className="w-full">
       <ImageSlideshowModal
         isOpen={modalOpen}
         onClose={() => setModalOpen(false)}

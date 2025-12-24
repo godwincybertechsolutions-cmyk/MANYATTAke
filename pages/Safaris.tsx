@@ -16,7 +16,7 @@ const Safaris: React.FC = () => {
   };
 
   return (
-    <div className="w-full pt-20">
+    <div className="w-full">
       {/* Hero */}
       <div className="relative h-[60vh] w-full bg-dark overflow-hidden">
         <OptimizedImage
