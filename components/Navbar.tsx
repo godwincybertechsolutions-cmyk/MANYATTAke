@@ -26,7 +26,7 @@ const Navbar: React.FC = () => {
 
   return (
     <nav
-      className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white/98 backdrop-blur-md shadow-xl py-3' : 'bg-transparent py-6'
+      className={`fixed top-0 left-0 right-0 w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white/98 backdrop-blur-md shadow-lg py-3' : 'bg-transparent py-6'
         }`}
       role="navigation"
       aria-label="Main navigation"

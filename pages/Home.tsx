@@ -12,7 +12,7 @@ const Home: React.FC = () => {
   const location = useLocation();
 
   return (
-    <div className="w-full">
+    <div className="w-full pt-20">
       {/* Hero Section */}
       <div className="relative h-screen w-full overflow-hidden">
         {/* Mock Video Background (using image with scale animation) */}
