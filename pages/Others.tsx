@@ -64,7 +64,7 @@ const Others: React.FC = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-100px" }}
                   transition={{ duration: 0.5 }}
-                  className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 group hover:shadow-lg hover:-translate-y-1 transition-all"
+                  className="bg-white p-6 rounded-2xl shadow-md border border-gray-100 group hover:shadow-lg hover:-translate-y-2 transition-all duration-300 hover:border-primary/30"
                 >
                   <div className="aspect-square bg-gray-100 rounded-lg mb-4 overflow-hidden relative">
                     <OptimizedImage 
@@ -124,7 +124,7 @@ const Others: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="flex flex-col md:flex-row gap-6 bg-gray-800 rounded-xl overflow-hidden hover:bg-gray-750 transition-colors cursor-pointer group" 
+                className="flex flex-col md:flex-row gap-6 bg-gray-800 rounded-2xl overflow-hidden hover:bg-gray-750 transition-all duration-300 cursor-pointer group hover:-translate-y-2 hover:shadow-xl" 
                 onClick={() => setSelectedReport(index)}
               >
                 <div className="md:w-2/5 h-64 md:h-auto overflow-hidden relative">
@@ -179,7 +179,7 @@ const Others: React.FC = () => {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true, margin: "-100px" }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
-                    className="group flex flex-col sm:flex-row gap-6 items-start border-b border-gray-100 pb-10 last:border-0 cursor-pointer"
+                    className="group flex flex-col sm:flex-row gap-6 items-start border-b border-gray-200 pb-10 last:border-0 cursor-pointer hover:bg-stone-50 p-4 -mx-4 rounded-lg transition-all duration-300"
                   >
                     <div className="w-full sm:w-48 h-32 rounded-lg overflow-hidden shrink-0 relative">
                       <OptimizedImage 

@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-dark text-white pt-20 pb-10" role="contentinfo">
+    <footer className="bg-dark text-white pt-20 pb-10 border-t border-gray-700" role="contentinfo">
       <div className="container mx-auto px-4 sm:px-6">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 border-b border-gray-700 pb-12">
           
@@ -35,11 +35,11 @@ const Footer: React.FC = () => {
           <div>
             <h4 className="font-serif text-lg mb-6 text-primary">Explore</h4>
             <ul className="space-y-3 text-sm text-gray-400">
-              <li><Link to="/mountain-villas" className="hover:text-white transition-colors">Mountain Villas</Link></li>
-              <li><Link to="/safaris" className="hover:text-white transition-colors">Safari Experiences</Link></li>
-              <li><Link to="/urban-apartments" className="hover:text-white transition-colors">Urban Living</Link></li>
-              <li><Link to="/others" className="hover:text-white transition-colors">Our Story</Link></li>
-              <li><a href="#gallery" className="hover:text-white transition-colors">Gallery</a></li>
+              <li><Link to="/mountain-villas" className="hover:text-white transition-colors duration-200 hover:translate-x-1">Mountain Villas</Link></li>
+              <li><Link to="/safaris" className="hover:text-white transition-colors duration-200 hover:translate-x-1">Safari Experiences</Link></li>
+              <li><Link to="/urban-apartments" className="hover:text-white transition-colors duration-200 hover:translate-x-1">Urban Living</Link></li>
+              <li><Link to="/others" className="hover:text-white transition-colors duration-200 hover:translate-x-1">Our Story</Link></li>
+              <li><a href="#gallery" className="hover:text-white transition-colors duration-200 hover:translate-x-1">Gallery</a></li>
             </ul>
           </div>
 

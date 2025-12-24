@@ -11,7 +11,7 @@ const BookingWidget: React.FC = () => {
   const location = useLocation();
 
   return (
-    <div className="w-full max-w-5xl mx-auto bg-white rounded-xl shadow-2xl overflow-hidden -mt-16 relative z-30 hidden lg:block border border-gray-100" role="region" aria-label="Availability checker">
+    <div className="w-full max-w-5xl mx-auto bg-white rounded-2xl shadow-2xl overflow-hidden -mt-16 relative z-30 hidden lg:block border border-gray-100 hover:shadow-3xl transition-shadow duration-300" role="region" aria-label="Availability checker">
       {/* Tabs */}
       <div className="flex border-b border-gray-100" role="tablist">
         <motion.button
@@ -93,7 +93,7 @@ const BookingWidget: React.FC = () => {
         {/* CTA */}
         <button
           type="submit"
-          className="bg-dark hover:bg-black text-white rounded-lg flex flex-col items-center justify-center transition-all shadow-lg py-3 lg:h-full focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+          className="bg-dark hover:bg-black text-white rounded-lg flex flex-col items-center justify-center transition-all duration-300 shadow-lg hover:shadow-xl py-3 lg:h-full focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 active:scale-95"
         >
           <span className="text-xs opacity-80 uppercase tracking-widest">Check</span>
           <span className="font-serif text-lg lg:text-xl italic">Availability</span>

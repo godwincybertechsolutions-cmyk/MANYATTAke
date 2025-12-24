@@ -10,14 +10,14 @@ interface Props {
 const SectionHeader: React.FC<Props> = ({ title, subtitle, dark = false }) => {
   return (
     <motion.div 
-      className="text-center mb-16 max-w-2xl mx-auto px-4"
+      className="text-center mb-20 max-w-3xl mx-auto px-4"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-100px" }}
       transition={{ duration: 0.6 }}
     >
       <motion.span 
-        className={`text-xs font-bold uppercase tracking-[0.2em] mb-4 block ${dark ? 'text-primary' : 'text-primary'}`}
+        className={`text-xs font-bold uppercase tracking-[0.3em] mb-6 block inline-block px-4 py-2 rounded-full ${dark ? 'bg-primary/10 text-primary' : 'bg-primary/10 text-primary'}`}
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true, margin: "-100px" }}
@@ -26,7 +26,7 @@ const SectionHeader: React.FC<Props> = ({ title, subtitle, dark = false }) => {
         {subtitle}
       </motion.span>
       <motion.h2 
-        className={`font-serif text-4xl md:text-5xl font-medium mb-6 ${dark ? 'text-white' : 'text-dark'}`}
+        className={`font-serif text-4xl md:text-5xl font-medium mb-8 ${dark ? 'text-white' : 'text-dark'}`}
         initial={{ opacity: 0, y: 10 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
@@ -35,7 +35,7 @@ const SectionHeader: React.FC<Props> = ({ title, subtitle, dark = false }) => {
         {title}
       </motion.h2>
       <motion.div 
-        className="w-24 h-1 bg-primary mx-auto rounded-full"
+        className="w-24 h-1.5 bg-gradient-to-r from-primary to-primary/60 mx-auto rounded-full"
         initial={{ width: 0 }}
         whileInView={{ width: 96 }}
         viewport={{ once: true, margin: "-100px" }}

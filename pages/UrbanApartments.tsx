@@ -73,7 +73,7 @@ const UrbanApartments: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
-                className="group border border-gray-200 rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all bg-white hover:-translate-y-2"
+                className="group border border-gray-200 rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 bg-white hover:-translate-y-3 hover:border-primary/30"
               >
                 {/* Image */}
                 <div

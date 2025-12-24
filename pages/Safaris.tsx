@@ -53,7 +53,14 @@ landscapes, wildlife, and cultures ensure that every adventure is enriching and 
 
           <div className="grid gap-12">
             {SAFARI_ITINERARIES.map((itinerary) => (
-              <div key={itinerary.id} className="bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100">
+              <motion.div 
+                key={itinerary.id} 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.5 }}
+                className="bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:border-primary/20 hover:-translate-y-2 cursor-pointer group"
+              >
                 <div className="flex flex-col md:flex-row">
                   {/* Image Section */}
                   <div className="w-full md:w-2/5 h-64 md:h-auto relative">
@@ -94,16 +101,16 @@ landscapes, wildlife, and cultures ensure that every adventure is enriching and 
                     <div className="flex gap-4">
                       <button
                         onClick={() => toggleItinerary(itinerary.id)}
-                        className={`flex-1 flex items-center justify-center gap-2 px-6 py-3 rounded text-sm font-medium transition-colors uppercase tracking-wide ${expandedItinerary === itinerary.id
-                          ? 'bg-dark text-white'
-                          : 'border border-primary text-primary hover:bg-orange-50'
+                        className={`flex-1 flex items-center justify-center gap-2 px-6 py-3 rounded-lg text-sm font-medium transition-all uppercase tracking-wide ${expandedItinerary === itinerary.id
+                          ? 'bg-dark text-white shadow-lg'
+                          : 'border border-primary text-primary hover:bg-primary/10 hover:shadow-md'
                           }`}
                       >
                         {expandedItinerary === itinerary.id ? 'Close Itinerary' : 'View Day-by-Day'}
                         {expandedItinerary === itinerary.id ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
                       </button>
                       <button
-                        className="flex-1 bg-primary hover:bg-[#c4492e] text-white px-6 py-3 rounded text-sm font-medium transition-colors uppercase tracking-wide shadow-md"
+                        className="flex-1 bg-primary hover:bg-[#c4492e] text-white px-6 py-3 rounded-lg text-sm font-medium transition-all uppercase tracking-wide shadow-md hover:shadow-lg active:scale-95"
                         onClick={() => {
                           navigate('/others');
                         }}
@@ -121,7 +128,8 @@ landscapes, wildlife, and cultures ensure that every adventure is enriching and 
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
-                      className="bg-stone-50 border-t border-gray-100 overflow-hidden"
+                      transition={{ duration: 0.3 }}
+                      className="bg-gradient-to-b from-stone-50 to-white border-t border-gray-200 overflow-hidden"
                     >
                       <div className="p-8 md:p-10">
                         <h4 className="font-serif text-xl mb-6 text-dark border-b border-gray-200 pb-2">Daily Schedule</h4>
@@ -152,7 +160,7 @@ landscapes, wildlife, and cultures ensure that every adventure is enriching and 
                     </motion.div>
                   )}
                 </AnimatePresence>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>

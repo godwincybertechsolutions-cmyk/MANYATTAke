@@ -48,14 +48,17 @@ const Navbar: React.FC = () => {
             <Link
               key={link.name}
               to={link.path}
-              className={`text-sm font-medium tracking-widest uppercase px-4 py-2 rounded-lg transition-all duration-200 ${scrolled ? 'text-dark hover:bg-gray-100' : 'text-white hover:bg-white/10'
-                } ${location.pathname === link.path ? (scrolled ? 'text-primary bg-primary/10' : 'text-white bg-white/20') : ''}`}
+              className={`text-sm font-medium tracking-widest uppercase px-4 py-2 rounded-lg transition-all duration-300 relative ${scrolled ? 'text-dark hover:text-primary' : 'text-white hover:text-primary/80'
+                } ${location.pathname === link.path ? (scrolled ? 'text-primary' : 'text-white') : ''}`}
             >
               {link.name}
+              {location.pathname === link.path && (
+                <div className="absolute bottom-1 left-4 right-4 h-0.5 bg-primary rounded-full"></div>
+              )}
             </Link>
           ))}
           <button
-            className="bg-primary hover:bg-[#c4492e] text-white px-7 py-2.5 rounded-full text-sm font-bold transition-all transform hover:scale-105 hover:shadow-lg shadow-md ml-4 focus:outline-none focus:ring-2 focus:ring-primary/50"
+            className="bg-primary hover:bg-[#c4492e] text-white px-7 py-2.5 rounded-full text-sm font-bold transition-all transform hover:scale-105 hover:shadow-xl shadow-lg ml-4 focus:outline-none focus:ring-2 focus:ring-primary/50 active:scale-95"
             onClick={() => {
               navigate('/others');
             }}

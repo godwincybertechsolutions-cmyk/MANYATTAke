@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { MapPin, Check, Camera } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import ImageSlideshowModal from '../components/ImageSlideshowModal';
 import {
   BURGURET_VILLA_DETAILS,
@@ -62,9 +63,16 @@ const MountainVillas: React.FC = () => {
       </div>
 
       {/* Villas List */}
-      <div className="flex flex-col gap-20 py-20 bg-white">
+      <div className="flex flex-col gap-0 py-20 bg-white">
         {VILLAS.map((villa, index) => (
-          <div key={villa.id} className={`common-section ${index % 2 === 1 ? 'bg-stone-50 py-20' : ''}`}>
+          <motion.div 
+            key={villa.id} 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.5 }}
+            className={`common-section ${index % 2 === 1 ? 'bg-stone-50' : 'bg-white'} py-20`}
+          >
             <div className="container mx-auto px-6">
               <div className={`flex flex-col md:flex-row gap-12 items-start ${index % 2 === 1 ? 'md:flex-row-reverse' : ''}`}>
 
@@ -81,8 +89,8 @@ const MountainVillas: React.FC = () => {
                     {villa.details.description}
                   </p>
 
-                  <div className="p-6 bg-white/50 rounded-xl border border-gray-100 shadow-sm mb-8">
-                    <h4 className="font-serif text-xl mb-4">Villa Highlights</h4>
+                  <div className="p-7 bg-gradient-to-br from-primary/5 via-primary/3 to-transparent rounded-2xl border border-primary/20 shadow-sm mb-8 hover:border-primary/40 transition-colors">
+                    <h4 className="font-serif text-xl mb-4 text-dark">Villa Highlights</h4>
                     <ul className="space-y-3">
                       <li className="flex items-start gap-3 text-sm text-gray-600">
                         <Check className="text-primary shrink-0 mt-0.5" size={16} />
@@ -102,13 +110,13 @@ const MountainVillas: React.FC = () => {
                   <div className="flex gap-4">
                     <button
                       onClick={() => openGallery(villa.images, villa.details.title)}
-                      className="px-6 py-3 border border-dark text-dark rounded-full font-medium hover:bg-dark hover:text-white transition-all flex items-center gap-2 uppercase text-sm tracking-widest"
+                      className="px-6 py-3 border border-dark text-dark rounded-full font-medium hover:bg-dark hover:text-white transition-all duration-300 flex items-center gap-2 uppercase text-sm tracking-widest shadow-sm hover:shadow-md active:scale-95"
                     >
                       <Camera size={18} /> View Gallery
                     </button>
                     <button
                       onClick={() => navigate('/others')}
-                      className="px-6 py-3 bg-primary text-white rounded-full font-medium hover:bg-[#c4492e] transition-all uppercase text-sm tracking-widest"
+                      className="px-6 py-3 bg-primary hover:bg-[#c4492e] text-white rounded-full font-medium transition-all duration-300 uppercase text-sm tracking-widest shadow-md hover:shadow-lg active:scale-95"
                     >
                       Reserve Now
                     </button>
