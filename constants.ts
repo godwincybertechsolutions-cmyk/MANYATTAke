@@ -391,3 +391,5 @@ export const GALLERY_IMAGES = [
   "/assets/Laurel Hill Suites/L6 Lounge Area (b).jpg",
   "/assets/Alba Gardens B1702/A17 Dining Area.jpg"
 ];
+
+export const CONTACT_PHONE = "+254 (0) 722 123 456";
