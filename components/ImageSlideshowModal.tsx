@@ -44,29 +44,35 @@ const ImageSlideshowModal: React.FC<ImageSlideshowModalProps> = ({ images, isOpe
         }));
     }, [images]);
 
-    // Preload adjacent images
+    // Preload adjacent images with optimized concurrent loading
     useEffect(() => {
         const preloadImage = (index: number) => {
-            if (imageLoadStates[index] === undefined) {
-                const img = new Image();
-                img.src = images[index];
-                img.onload = () => handleImageLoad(index);
-                img.onerror = () => handleImageError(index);
-            }
+            if (imageLoadStates[index] !== undefined) return; // Skip if already loaded or attempted
+            
+            const img = new Image();
+            img.loading = 'eager';
+            img.src = images[index];
+            img.onload = () => handleImageLoad(index);
+            img.onerror = () => handleImageError(index);
         };
 
-        // Always preload current image
+        // Preload current image first (priority)
         preloadImage(currentIndex);
         
-        // Preload next image
-        if (currentIndex < images.length - 1) {
-            preloadImage(currentIndex + 1);
-        }
-        
-        // Preload previous image
-        if (currentIndex > 0) {
-            preloadImage(currentIndex - 1);
-        }
+        // Then preload adjacent images with slight delay to avoid network congestion
+        const timer = setTimeout(() => {
+            // Preload next image
+            if (currentIndex < images.length - 1) {
+                preloadImage(currentIndex + 1);
+            }
+            
+            // Preload previous image
+            if (currentIndex > 0) {
+                preloadImage(currentIndex - 1);
+            }
+        }, 100);
+
+        return () => clearTimeout(timer);
     }, [currentIndex, images, handleImageLoad, handleImageError, imageLoadStates]);
 
     // Reset when modal opens

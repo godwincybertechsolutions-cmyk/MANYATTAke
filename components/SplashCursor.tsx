@@ -19,18 +19,18 @@ interface SplashCursorProps {
 }
 
 function SplashCursor({
-  SIM_RESOLUTION = 128,
-  DYE_RESOLUTION = 1440,
-  CAPTURE_RESOLUTION = 512,
-  DENSITY_DISSIPATION = 2.8,
-  VELOCITY_DISSIPATION = 1.5,
-  PRESSURE = 0.1,
-  PRESSURE_ITERATIONS = 20,
-  CURL = 2.5,
-  SPLAT_RADIUS = 0.15,
-  SPLAT_FORCE = 4000,
-  SHADING = true,
-  COLOR_UPDATE_SPEED = 8,
+  SIM_RESOLUTION = 96,
+  DYE_RESOLUTION = 1024,
+  CAPTURE_RESOLUTION = 256,
+  DENSITY_DISSIPATION = 2.5,
+  VELOCITY_DISSIPATION = 1.3,
+  PRESSURE = 0.08,
+  PRESSURE_ITERATIONS = 15,
+  CURL = 2.0,
+  SPLAT_RADIUS = 0.12,
+  SPLAT_FORCE = 3000,
+  SHADING = false,
+  COLOR_UPDATE_SPEED = 6,
   BACK_COLOR = { r: 0.2, g: 0.1, b: 0.05 },
   TRANSPARENT = true
 }: SplashCursorProps) {
@@ -724,6 +724,13 @@ function SplashCursor({
       return false;
     }
 
+    // Adaptive resolution for lower-end devices
+    const devicePixelRatio = window.devicePixelRatio || 1;
+    if (devicePixelRatio > 2) {
+      config.SIM_RESOLUTION = 64;
+      config.DYE_RESOLUTION = 768;
+    }
+
     function updateColors(dt: number) {
       colorUpdateTimer += dt * config.COLOR_UPDATE_SPEED;
       if (colorUpdateTimer >= 1) {
@@ -773,7 +780,8 @@ function SplashCursor({
       pressureProgram.bind();
       gl.uniform2f(pressureProgram.uniforms.texelSize, velocity.texelSizeX, velocity.texelSizeY);
       gl.uniform1i(pressureProgram.uniforms.uDivergence, divergence.attach(0));
-      for (let i = 0; i < config.PRESSURE_ITERATIONS; i++) {
+      const iterations = devicePixelRatio > 2 ? 10 : config.PRESSURE_ITERATIONS;
+      for (let i = 0; i < iterations; i++) {
         gl.uniform1i(pressureProgram.uniforms.uPressure, pressure.read.attach(1));
         blit(pressure.write);
         pressure.swap();
@@ -993,7 +1001,14 @@ function SplashCursor({
     }
 
     let firstMouseMoveHandled = false;
+    let lastMouseMoveTime = 0;
+    const MOUSE_THROTTLE = 16; // ~60fps throttle
+    
     function handleMouseMove(e: MouseEvent) {
+      const now = Date.now();
+      if (now - lastMouseMoveTime < MOUSE_THROTTLE) return;
+      lastMouseMoveTime = now;
+      
       let pointer = pointers[0];
       let posX = scaleByPixelRatio((e as any).clientX);
       let posY = scaleByPixelRatio((e as any).clientY);
