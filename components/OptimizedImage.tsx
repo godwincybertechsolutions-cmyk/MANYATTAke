@@ -47,12 +47,11 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
   }, [priority]);
 
   // Convert jpg to webp, fallback to original
-  // Convert jpg to webp, fallback to original. Prefer webp only for non-priority images.
+  // Keep original format - don't try to convert to webp since we don't have webp versions
   const getImageSrc = (imgSrc: string, preferWebp = true) => {
     if (!imgSrc) return blurPlaceholder;
-    if (imgSrc.startsWith('http')) return imgSrc; // External images as-is
-    if (!preferWebp) return imgSrc;
-    return imgSrc.replace(/\.(jpg|jpeg|png)$/i, '.webp');
+    // Always return the original path - we don't have webp versions available
+    return imgSrc;
   };
 
   const handleLoad = () => {
