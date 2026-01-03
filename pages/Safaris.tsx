@@ -3,6 +3,7 @@ import { Map, Clock, ArrowRight, Compass, ChevronDown, ChevronUp, MapPin, BedDou
 import { SAFARI_ITINERARIES } from '../constants';
 import SectionHeader from '../components/SectionHeader';
 import OptimizedImage from '../components/OptimizedImage';
+import GlareHover from '../components/GlareHover';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigate, useLocation } from 'react-router-dom';
 
@@ -64,13 +65,22 @@ landscapes, wildlife, and cultures ensure that every adventure is enriching and 
                 <div className="flex flex-col md:flex-row">
                   {/* Image Section */}
                   <div className="w-full md:w-2/5 h-64 md:h-auto relative">
-                    <OptimizedImage
-                      src={itinerary.image}
-                      alt={itinerary.title}
-                      className=""
-                      fill
-                      objectFit="cover"
-                    />
+                    <GlareHover
+                      glareColor="#ffffff"
+                      glareOpacity={0.2}
+                      glareAngle={-30}
+                      glareSize={400}
+                      transitionDuration={700}
+                      playOnce={false}
+                    >
+                      <OptimizedImage
+                        src={itinerary.image}
+                        alt={itinerary.title}
+                        className=""
+                        fill
+                        objectFit="cover"
+                      />
+                    </GlareHover>
                     <div className="absolute top-4 left-4 bg-white/90 backdrop-blur px-4 py-2 rounded-full flex items-center gap-2 shadow-sm">
                       <Clock size={14} className="text-primary" />
                       <span className="text-xs font-bold uppercase tracking-wide">{itinerary.duration}</span>

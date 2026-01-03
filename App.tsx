@@ -3,6 +3,7 @@ import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-d
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import ErrorBoundary from './components/ErrorBoundary';
+import SplashCursor from './components/SplashCursor';
 import Home from './pages/Home';
 import MountainVillas from './pages/MountainVillas';
 import Safaris from './pages/Safaris';
@@ -24,6 +25,7 @@ const App: React.FC = () => {
   return (
     <ErrorBoundary>
       <Router>
+        <SplashCursor />
         <ScrollToTop />
         <div className="flex flex-col min-h-screen bg-white font-sans text-dark selection:bg-primary selection:text-white">
           <Navbar />

@@ -3,6 +3,7 @@ import { MapPin, Check, Camera } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import ImageSlideshowModal from '../components/ImageSlideshowModal';
+import GlareHover from '../components/GlareHover';
 import {
   BURGURET_VILLA_DETAILS,
   BURGURET_IMAGES,
@@ -126,8 +127,17 @@ const MountainVillas: React.FC = () => {
                 {/* Images Grid */}
                 <div className="md:w-1/2 grid grid-cols-2 gap-4">
                   <div className="col-span-2 h-64 rounded-xl overflow-hidden relative group cursor-pointer" onClick={() => openGallery(villa.images, villa.details.title)}>
-                    <img src={villa.heroImage} alt={villa.details.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-                    <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
+                    <GlareHover
+                      glareColor="#ffffff"
+                      glareOpacity={0.25}
+                      glareAngle={-25}
+                      glareSize={350}
+                      transitionDuration={600}
+                      playOnce={false}
+                    >
+                      <img src={villa.heroImage} alt={villa.details.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                      <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
+                    </GlareHover>
                   </div>
                   {/* Display 2 more small images if available */}
                   <div className="h-40 rounded-xl overflow-hidden hidden md:block">
