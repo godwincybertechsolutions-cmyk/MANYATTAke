@@ -2,6 +2,16 @@ import React from 'react';
 
 export type PropertyType = 'mountain' | 'safari' | 'urban';
 
+export interface NavigationLink {
+  name: string;
+  path: string;
+  submenu?: {
+    name: string;
+    path: string;
+    icon?: React.ReactNode;
+  }[];
+}
+
 export interface Amenity {
   icon: React.ReactNode;
   label: string;

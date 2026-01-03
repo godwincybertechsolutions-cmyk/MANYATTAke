@@ -1,14 +1,16 @@
-import { Itinerary } from './types';
+import { Itinerary, NavigationLink } from './types';
 
 export const APP_NAME = "New Manyatta Kenya";
 
-export const NAVIGATION_LINKS = [
+const navigationLinks: NavigationLink[] = [
   { name: 'Home', path: '/' },
   { name: 'Mountain Villas', path: '/mountain-villas' },
   { name: 'Safaris', path: '/safaris' },
   { name: 'Apartments', path: '/urban-apartments' },
   { name: 'More', path: '/others' },
 ];
+
+export const NAVIGATION_LINKS = navigationLinks;
 
 // Image Galleries
 export const LAUREL_IMAGES = [
