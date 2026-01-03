@@ -94,87 +94,73 @@ const Navbar: React.FC = () => {
       onKeyDown={handleKeyDown}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center">
-          {/* Logo */}
-          <Link 
-            to="/" 
-            className="flex items-center group hover:opacity-90 transition-all duration-300 active:scale-95"
-            aria-label={`${APP_NAME} - Home`}
-            onClick={handleLogoClick}
-          >
-            <OptimizedImage 
-              src="/assets/Logo/New Manyatta Logo.png"
-              alt={APP_NAME}
-              className={`transition-all duration-300 ${scrolled ? 'h-10' : 'h-14'}`}
-              priority
-              width={scrolled ? 120 : 160}
-              height={scrolled ? 40 : 56}
-            />
-          </Link>
-
-          {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-1">
-            {NAVIGATION_LINKS.map((link) => (
-              <div
-                key={link.name}
-                className="relative"
-                onMouseEnter={() => link.submenu && handleDropdownEnter(link.name)}
-                onMouseLeave={handleDropdownLeave}
-              >
-                <Link
-                  to={link.path}
-                  className={`text-sm font-medium tracking-wider uppercase px-5 py-2.5 rounded-xl transition-all duration-300 group relative ${
-                    scrolled 
-                      ? 'text-gray-800 hover:text-primary' 
-                      : 'text-white hover:text-primary/90'
-                  } ${
-                    isActiveLink(link.path) 
-                      ? (scrolled ? 'text-primary' : 'text-white bg-white/10') 
-                      : ''
-                  }`}
-                  aria-current={isActiveLink(link.path) ? 'page' : undefined}
+        <div className="flex justify-between items-center gap-6">
+          {/* Desktop Navigation & CTA - Left Side */}
+          <div className="hidden lg:flex items-center gap-4 flex-1">
+            {/* Desktop Navigation */}
+            <div className="flex items-center space-x-1">
+              {NAVIGATION_LINKS.map((link) => (
+                <div
+                  key={link.name}
+                  className="relative"
+                  onMouseEnter={() => link.submenu && handleDropdownEnter(link.name)}
+                  onMouseLeave={handleDropdownLeave}
                 >
-                  <span className="relative z-10">{link.name}</span>
-                  
-                  {/* Active link indicator */}
-                  {isActiveLink(link.path) && (
-                    <motion.span
-                      layoutId="activeIndicator"
-                      className="absolute inset-0 bg-gradient-to-r from-primary/20 to-primary/5 rounded-xl -z-10"
-                    />
-                  )}
-                  
-                  {/* Hover effect */}
-                  <span className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-r from-white/5 to-transparent" />
-                </Link>
+                  <Link
+                    to={link.path}
+                    className={`text-sm font-medium tracking-wider uppercase px-5 py-2.5 rounded-xl transition-all duration-300 group relative ${
+                      scrolled 
+                        ? 'text-gray-800 hover:text-primary' 
+                        : 'text-white hover:text-primary/90'
+                    } ${
+                      isActiveLink(link.path) 
+                        ? (scrolled ? 'text-primary' : 'text-white bg-white/10') 
+                        : ''
+                    }`}
+                    aria-current={isActiveLink(link.path) ? 'page' : undefined}
+                  >
+                    <span className="relative z-10">{link.name}</span>
+                    
+                    {/* Active link indicator */}
+                    {isActiveLink(link.path) && (
+                      <motion.span
+                        layoutId="activeIndicator"
+                        className="absolute inset-0 bg-gradient-to-r from-primary/20 to-primary/5 rounded-xl -z-10"
+                      />
+                    )}
+                    
+                    {/* Hover effect */}
+                    <span className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-r from-white/5 to-transparent" />
+                  </Link>
 
-                {/* Dropdown menu */}
-                {link.submenu && activeDropdown === link.name && (
-                  <div className="absolute top-full left-0 mt-2 w-56 bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-gray-100/50 py-3 animate-fade-in-up">
-                    {link.submenu.map((subItem) => (
-                      <Link
-                        key={subItem.name}
-                        to={subItem.path}
-                        className="block px-5 py-3 text-gray-700 hover:text-primary hover:bg-primary/5 transition-all duration-200 group"
-                        onClick={() => setActiveDropdown(null)}
-                      >
-                        <span className="flex items-center gap-3">
-                          {subItem.icon && <subItem.icon size={16} />}
-                          {subItem.name}
-                          <span className="ml-auto opacity-0 group-hover:opacity-100 transition-opacity">
-                            →
+                  {/* Dropdown menu */}
+                  {link.submenu && activeDropdown === link.name && (
+                    <div className="absolute top-full left-0 mt-2 w-56 bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-gray-100/50 py-3 animate-fade-in-up">
+                      {link.submenu.map((subItem) => (
+                        <Link
+                          key={subItem.name}
+                          to={subItem.path}
+                          className="block px-5 py-3 text-gray-700 hover:text-primary hover:bg-primary/5 transition-all duration-200 group"
+                          onClick={() => setActiveDropdown(null)}
+                        >
+                          <span className="flex items-center gap-3">
+                            {subItem.icon && <subItem.icon size={16} />}
+                            {subItem.name}
+                            <span className="ml-auto opacity-0 group-hover:opacity-100 transition-opacity">
+                              →
+                            </span>
                           </span>
-                        </span>
-                      </Link>
-                    ))}
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
 
-          {/* Desktop Call to Action */}
-          <div className="hidden lg:flex items-center gap-4">
+            {/* Divider */}
+            <div className={`h-6 w-px ${scrolled ? 'bg-gray-200' : 'bg-white/20'}`} />
+
             {/* Phone Number */}
             {CONTACT_PHONE && (
               <a
@@ -205,9 +191,26 @@ const Navbar: React.FC = () => {
             </button>
           </div>
 
+          {/* Logo - Right Side */}
+          <Link 
+            to="/" 
+            className="flex items-center group hover:opacity-90 transition-all duration-300 active:scale-95 lg:ml-auto"
+            aria-label={`${APP_NAME} - Home`}
+            onClick={handleLogoClick}
+          >
+            <OptimizedImage 
+              src="/assets/Logo/New Manyatta Logo.png"
+              alt={APP_NAME}
+              className={`transition-all duration-300 ${scrolled ? 'h-10' : 'h-14'}`}
+              priority
+              width={scrolled ? 120 : 160}
+              height={scrolled ? 40 : 56}
+            />
+          </Link>
+
           {/* Mobile Toggle Button */}
           <button
-            className={`lg:hidden p-3 rounded-xl transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary/50 ${
+            className={`lg:hidden p-3 rounded-xl transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary/50 ml-auto ${
               scrolled 
                 ? 'text-gray-800 hover:bg-gray-100' 
                 : 'text-white hover:bg-white/10'
