@@ -333,27 +333,15 @@ export const COFFEE_PRODUCTS = [
 
 export const CSR_PROJECTS = [
   {
-    title: "Reforestation Initiative",
-    description: "For every booking, we plant 5 indigenous trees in the Mt. Kenya forest reserve.",
-    image: "/assets/Burguret Mountainside Villa/Burguret. Outside Lounge Area.jpg",
-    reportContent: "Our Reforestation Initiative represents a commitment to environmental stewardship. Since 2022, we have partnered with local conservation organizations to plant over 50,000 indigenous trees across the Mt. Kenya ecosystem.\n\nEach guest stay contributes to this effort. For every night booked at our properties, we plant 5 native trees including African Olive, Yellowwood, and Cedar species. These trees not only combat deforestation but also provide habitat for endangered species like the Colobus monkey and various bird species.\n\nThe initiative has created employment for over 200 local community members who serve as tree nursery operators and foresters. Beyond environmental impact, we've established a community forest fund that supports education and healthcare in participating villages.\n\nOur goal is to restore 100,000 trees by 2027, sequestering approximately 10,000 tons of carbon while strengthening the local ecosystem that makes Kenya such a precious destination.",
+    title: "Youth Talent Foundation",
+    description: "Empowering the next generation through sports and mentorship. New Manyatta sponsors the Narumoru United local football team, providing training, equipment, and educational support.",
+    image: "/assets/Responsibility/Legacy Academy.jpg",
+    reportContent: "The Youth Talent Foundation represents our commitment to nurturing young talent in Narumoru. Recognizing that sports is a powerful vehicle for change, we established a partnership with Narumoru United, our local football team, to transform lives through athletics and mentorship.\n\nOur sponsorship covers comprehensive support: professional coaching, quality equipment, training facilities access, and nutritional programs for over 80 young athletes. But our vision extends beyond the pitch. We've integrated an educational component where players receive tutoring in mathematics, English, and life skills alongside their athletic training.\n\nThe foundation has already impacted 200+ young people in the community. Players who were previously at risk of dropping out of school now balance education with sport. Three of our sponsored athletes have earned scholarships to national sports academies, opening doors that seemed impossible before.\n\nWe organize annual tournaments that bring together youth teams from across the region, creating pathways for talent discovery and healthy competition. Local businesses sponsor prizes and opportunities, strengthening the entire community ecosystem.\n\nBeyond the field, we've established mentorship programs where successful professionals meet with young athletes, sharing their journeys and inspiring belief in possibility. The message is clear: where you come from doesn't determine where you can go.",
     impact: [
-      { label: "Trees Planted", value: "50,000+" },
-      { label: "Community Jobs", value: "200+" },
-      { label: "Carbon Sequestered", value: "5,000T" },
-      { label: "Species Protected", value: "50+" }
-    ]
-  },
-  {
-    title: "Local Education Fund",
-    description: "Supporting primary schools in Narumoru with books, desks, and solar lighting.",
-    image: "/assets/Laurel Hill Suites/L6 Lounge Area (b).jpg",
-    reportContent: "The Local Education Fund is our answer to educational inequality in rural Kenya. We recognized that children in remote areas like Narumoru face unique challenges: limited resources, overcrowded classrooms, and lack of electricity.\n\nSince inception, we have invested over 5 million Kenyan Shillings directly into local schools. Our contributions include modern school desks for 15 classrooms, a library with over 3,000 books covering mathematics, science, and literature, and solar power installations in 8 schools.\n\nWe've also established scholarship programs for 150 high-performing students from low-income families, covering school fees and materials. Additionally, our 'Teacher Empowerment' program provides professional development training for educators, focusing on modern pedagogical methods and digital literacy.\n\nThe impact is measurable: schools we support have seen a 35% improvement in KCPE (Kenya Certificate of Primary Education) exam performance within three years. More importantly, these initiatives foster hope and opportunity in communities that have long felt overlooked by development.",
-    impact: [
-      { label: "Students Supported", value: "150" },
-      { label: "Schools Equipped", value: "8" },
-      { label: "Books Provided", value: "3,000+" },
-      { label: "Test Score Improvement", value: "35%" }
+      { label: "Youth Athletes Supported", value: "80+" },
+      { label: "Lives Impacted", value: "200+" },
+      { label: "Scholarship Winners", value: "3" },
+      { label: "Community Tournaments", value: "Annual" }
     ]
   }
 ];
