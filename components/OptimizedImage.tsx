@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import imageCompression from 'browser-image-compression';
 
 interface OptimizedImageProps {
   src: string;
@@ -10,6 +11,9 @@ interface OptimizedImageProps {
   priority?: boolean;
   onLoad?: () => void;
   blurPlaceholder?: string;
+  compressionQuality?: number; // 0.1 to 1.0, default 0.8
+  maxWidth?: number; // Max width in pixels, default 1920
+  maxHeight?: number; // Max height in pixels, default 1080
 }
 
 const OptimizedImage: React.FC<OptimizedImageProps> = ({
@@ -20,11 +24,50 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
   objectFit = 'cover',
   priority = false,
   onLoad,
-  blurPlaceholder = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300"%3E%3Crect fill="%23e5e7eb" width="400" height="300"/%3E%3C/svg%3E'
+  blurPlaceholder = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300"%3E%3Crect fill="%23e5e7eb" width="400" height="300"/%3E%3C/svg%3E',
+  compressionQuality = 0.8,
+  maxWidth = 1920,
+  maxHeight = 1080
 }) => {
   const [isLoaded, setIsLoaded] = useState(priority);
   const [showImage, setShowImage] = useState(priority);
+  const [compressedSrc, setCompressedSrc] = useState<string>(priority ? src : blurPlaceholder);
+  const [isCompressing, setIsCompressing] = useState(false);
   const imgRef = useRef<HTMLImageElement>(null);
+
+  // Compress image on initial load or when src changes
+  useEffect(() => {
+    const compressImage = async () => {
+      if (!src || src.startsWith('data:') || !isLoaded) return;
+      
+      try {
+        setIsCompressing(true);
+        const blob = await fetch(src).then(res => res.blob());
+        const file = new File([blob], 'image', { type: blob.type });
+        
+        const options = {
+          maxSizeMB: 0.5,
+          maxWidthOrHeight: priority ? maxWidth : Math.min(1024, maxWidth),
+          useWebWorker: true,
+          quality: compressionQuality,
+          fileType: blob.type || 'image/jpeg'
+        };
+
+        const compressedBlob = await imageCompression(file, options);
+        const url = URL.createObjectURL(compressedBlob);
+        setCompressedSrc(url);
+        setIsCompressing(false);
+      } catch (error) {
+        console.warn('Image compression failed, using original:', error);
+        setCompressedSrc(src);
+        setIsCompressing(false);
+      }
+    };
+
+    if (priority) {
+      compressImage();
+    }
+  }, [src, priority, compressionQuality, maxWidth]);
 
   useEffect(() => {
     if (priority) return;
@@ -46,12 +89,43 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
     return () => observer.disconnect();
   }, [priority]);
 
+  // Compress image when it becomes visible
+  useEffect(() => {
+    if (!isLoaded || priority) return;
+
+    const compressImage = async () => {
+      if (!src || src.startsWith('data:')) return;
+      
+      try {
+        const blob = await fetch(src).then(res => res.blob());
+        const file = new File([blob], 'image', { type: blob.type });
+        
+        const options = {
+          maxSizeMB: 0.3,
+          maxWidthOrHeight: 1024,
+          useWebWorker: true,
+          quality: compressionQuality,
+          fileType: blob.type || 'image/jpeg'
+        };
+
+        const compressedBlob = await imageCompression(file, options);
+        const url = URL.createObjectURL(compressedBlob);
+        setCompressedSrc(url);
+      } catch (error) {
+        console.warn('Image compression failed, using original:', error);
+        setCompressedSrc(src);
+      }
+    };
+
+    compressImage();
+  }, [isLoaded, src, priority, compressionQuality]);
+
   // Convert jpg to webp, fallback to original
   // Keep original format - don't try to convert to webp since we don't have webp versions
   const getImageSrc = (imgSrc: string, preferWebp = true) => {
     if (!imgSrc) return blurPlaceholder;
-    // Always return the original path - we don't have webp versions available
-    return imgSrc;
+    // Return compressed version if available
+    return compressedSrc || imgSrc;
   };
 
   const handleLoad = () => {
@@ -94,7 +168,7 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
             }`}
             onLoad={handleLoad}
             onError={() => {
-              // Fallback to original if webp fails
+              // Fallback to original if compression fails
               if (imgRef.current) {
                 imgRef.current.src = src;
               }
@@ -108,7 +182,7 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
   return (
     <motion.img
       ref={imgRef}
-      src={priority ? src : blurPlaceholder}
+      src={priority ? compressedSrc : blurPlaceholder}
       alt={alt}
       loading={priority ? 'eager' : 'lazy'}
       className={`${objectFitClass} transition-opacity duration-300 ${
@@ -122,7 +196,7 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
         srcSet: `${getImageSrc(src)} 1x`
       })}
       onError={() => {
-        // Fallback to original if webp fails
+        // Fallback to original if compression fails
         if (imgRef.current) {
           imgRef.current.src = src;
         }
