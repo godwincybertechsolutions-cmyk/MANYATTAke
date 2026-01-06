@@ -96,7 +96,7 @@ const Navbar: React.FC = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center gap-6">
           {/* Desktop Navigation & CTA - Left Side */}
-          <div className="hidden lg:flex items-center gap-4 flex-1">
+          <div className="hidden lg:flex items-center gap-4 flex-1 order-1">
             {/* Desktop Navigation */}
             <div className="flex items-center space-x-1">
               {NAVIGATION_LINKS.map((link) => (
@@ -194,7 +194,7 @@ const Navbar: React.FC = () => {
           {/* Logo - Right Side */}
           <Link 
             to="/" 
-            className="flex items-center group hover:opacity-90 transition-all duration-300 active:scale-95 lg:ml-auto"
+            className="flex items-center group hover:opacity-90 transition-all duration-300 active:scale-95 order-2 ml-auto md:order-2"
             aria-label={`${APP_NAME} - Home`}
             onClick={handleLogoClick}
           >
@@ -210,7 +210,7 @@ const Navbar: React.FC = () => {
 
           {/* Mobile Toggle Button */}
           <button
-            className={`lg:hidden p-3 rounded-xl transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary/50 ml-auto ${
+            className={`lg:hidden p-3 rounded-xl transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary/50 order-3 ${
               scrolled 
                 ? 'text-gray-800 hover:bg-gray-100' 
                 : 'text-white hover:bg-white/10'
