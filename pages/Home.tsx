@@ -51,7 +51,6 @@ const Home: React.FC = () => {
             transition={{ delay: 0.7 }}
             className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-serif text-white mb-6 sm:mb-8 leading-tight max-w-5xl"
           >
-            From Mountain Peaks <br /> to Urban Retreats
           </motion.h1>
           <motion.p
             initial={{ opacity: 0 }}
