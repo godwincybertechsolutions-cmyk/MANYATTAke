@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import { ArrowRight, Mountain, Binoculars, Building2 } from 'lucide-react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
@@ -13,6 +14,20 @@ const Home: React.FC = () => {
 
   return (
     <div className="w-full">
+      <Helmet>
+        <title>New Manyatta Kenya | Luxury Mountain Villas, Safaris & Urban Apartments</title>
+        <meta name="description" content="Discover New Manyatta Kenya - luxury mountain villas in Narumoru, exclusive safari experiences, and premium apartments in Nairobi. Book your unforgettable Kenyan retreat today." />
+        <meta name="keywords" content="Kenya villas, mountain villas Narumoru, safari experiences, luxury apartments Nairobi, Manyatta Kenya" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="New Manyatta Kenya | Luxury Properties & Experiences" />
+        <meta property="og:description" content="Luxury mountain villas, safaris, and premium apartments in Kenya" />
+        <meta property="og:image" content="https://picsum.photos/seed/kenyahero/1200/630" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="New Manyatta Kenya" />
+        <meta name="twitter:description" content="Discover luxury properties and experiences in Kenya" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="canonical" href="https://newmanyattakenya.com/" />
+      </Helmet>
       {/* Hero Section */}
       <div className="relative h-screen w-full overflow-hidden">
         {/* Mock Video Background (using image with scale animation) */}

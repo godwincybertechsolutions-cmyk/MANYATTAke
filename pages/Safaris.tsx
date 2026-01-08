@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { Map, Clock, ArrowRight, Compass, ChevronDown, ChevronUp, MapPin, BedDouble } from 'lucide-react';
 import { SAFARI_ITINERARIES } from '../constants';
 import SectionHeader from '../components/SectionHeader';
@@ -18,6 +19,17 @@ const Safaris: React.FC = () => {
 
   return (
     <div className="w-full">
+      <Helmet>
+        <title>Safari Experiences | Kenya Wildlife Tours | New Manyatta Kenya</title>
+        <meta name="description" content="Experience the thrill of Kenya safaris with New Manyatta. Explore Tsavo, Amboseli, and Maasai Mara. Curated itineraries for unforgettable wildlife adventures." />
+        <meta name="keywords" content="Kenya safaris, wildlife tours, Tsavo safari, Amboseli safari, Maasai Mara, safari itineraries" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Safari Experiences | Kenya Wildlife Adventures" />
+        <meta property="og:description" content="Curated safari experiences across Kenya's best national parks" />
+        <meta property="og:image" content="https://www.onthegotours.com/repository/Tsavo-West-National-Park-watering-hole--Kenya-safaris--On-The-Go-Tours-831311706788391_crop_flip_2250_1200_f2f2f2_center-center.jpg" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <link rel="canonical" href="https://newmanyattakenya.com/#/safaris" />
+      </Helmet>
       {/* Hero */}
       <div className="relative h-[60vh] w-full bg-dark overflow-hidden">
         <OptimizedImage

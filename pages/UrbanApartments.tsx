@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { Bed, Bath, Move, Check, Car, User, Camera, ArrowRight } from 'lucide-react';
 import { URBAN_APARTMENTS } from '../constants';
 import SectionHeader from '../components/SectionHeader';
@@ -23,6 +24,17 @@ const UrbanApartments: React.FC = () => {
 
   return (
     <div className="w-full">
+      <Helmet>
+        <title>Urban Apartments | Premium Nairobi Properties | New Manyatta Kenya</title>
+        <meta name="description" content="Discover luxury apartments in Nairobi with modern amenities, stunning views, and convenient locations. Perfect for long-term rentals and short-term stays." />
+        <meta name="keywords" content="Nairobi apartments, luxury apartments, rental apartments, urban living Kenya" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Urban Apartments | Luxury Living in Nairobi" />
+        <meta property="og:description" content="Premium apartments in Nairobi for rent and sale" />
+        <meta property="og:image" content="/assets/Apartments Hero Image/Alba_Gardens_Banner.jpg" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <link rel="canonical" href="https://newmanyattakenya.com/#/urban-apartments" />
+      </Helmet>
       <ImageSlideshowModal
         isOpen={modalOpen}
         onClose={() => setModalOpen(false)}

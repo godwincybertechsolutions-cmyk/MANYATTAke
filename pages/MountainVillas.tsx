@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { MapPin, Check, Camera } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
@@ -39,6 +40,17 @@ const MountainVillas: React.FC = () => {
 
   return (
     <div className="w-full">
+      <Helmet>
+        <title>Mountain Villas | Luxury Stays in Narumoru | New Manyatta Kenya</title>
+        <meta name="description" content="Discover exquisite mountain villas in Narumoru, Kenya. Enjoy premium amenities, breathtaking views, and unforgettable mountain retreats. Book your luxury villa experience now." />
+        <meta name="keywords" content="mountain villas, Narumoru villas, luxury villas Kenya, mountain retreat" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Mountain Villas | Luxury Mountain Retreats in Kenya" />
+        <meta property="og:description" content="Luxury mountain villas with breathtaking views in Narumoru" />
+        <meta property="og:image" content="/assets/Mountain Villas Hero Image/Burguret. House Entrance.jpg" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <link rel="canonical" href="https://newmanyattakenya.com/#/mountain-villas" />
+      </Helmet>
       <ImageSlideshowModal
         isOpen={modalOpen}
         onClose={() => setModalOpen(false)}

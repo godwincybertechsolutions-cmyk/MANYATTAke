@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { Coffee, Heart, ArrowRight, ShoppingBag, Droplets, BookOpen } from 'lucide-react';
 import { motion } from 'framer-motion';
 import SectionHeader from '../components/SectionHeader';
@@ -12,6 +13,17 @@ const Others: React.FC = () => {
   const [selectedReport, setSelectedReport] = useState<number | null>(null);
   return (
     <div className="w-full">
+      <Helmet>
+        <title>Experiences, Stories & Lifestyle | New Manyatta Kenya</title>
+        <meta name="description" content="Explore curated lifestyle experiences, authentic Kenyan coffee, CSR initiatives, and travel stories. Discover the magic of Manyatta through our unique offerings." />
+        <meta name="keywords" content="Kenya lifestyle, authentic coffee, CSR projects, travel stories, Manyatta experiences" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Curated Experiences & Lifestyle | New Manyatta Kenya" />
+        <meta property="og:description" content="Discover curated lifestyle experiences and authentic Kenyan stories" />
+        <meta property="og:image" content="/assets/Others Hero Image/The-Narumoru-Route-Climb-up-Mount-Kenya.jpg" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <link rel="canonical" href="https://newmanyattakenya.com/#/others" />
+      </Helmet>
       {/* Hero */}
       <div className="relative h-[50vh] w-full bg-stone-900">
         <OptimizedImage 
