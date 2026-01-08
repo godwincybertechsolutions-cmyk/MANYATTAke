@@ -47,30 +47,49 @@ const BookingWidget: React.FC = () => {
       </div>
 
       {/* Form */}
-      <form className="p-4 sm:p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 items-end" onSubmit={(e) => { e.preventDefault(); navigate('/others'); }}>
+      <form 
+        className="p-4 sm:p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 items-end" 
+        onSubmit={(e) => { e.preventDefault(); navigate('/others'); }}
+        aria-label="Property booking form"
+      >
         {/* Location/Type Selector */}
         <div className="relative group cursor-pointer border-r border-gray-200 pr-4">
-          <label className="text-xs text-gray-400 font-medium uppercase mb-1 block" htmlFor="experience">Experience</label>
+          <label 
+            className="text-xs text-gray-400 font-medium uppercase mb-1 block" 
+            htmlFor="property-type"
+          >
+            Experience
+          </label>
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2 text-dark font-serif text-lg" id="experience">
+            <div 
+              className="flex items-center gap-2 text-dark font-serif text-lg" 
+              id="property-type"
+              role="status"
+              aria-live="polite"
+            >
               <MapPin size={18} className="text-primary" aria-hidden="true" />
               <span>
                 {activeTab === 'mountain' ? 'Narumoru' : activeTab === 'safari' ? 'All Parks' : 'Nairobi'}
               </span>
             </div>
-            <ChevronDown size={16} className="text-gray-400 group-hover:text-primary transition-colors" />
+            <ChevronDown size={16} className="text-gray-400 group-hover:text-primary transition-colors" aria-hidden="true" />
           </div>
         </div>
 
         {/* Check In */}
         <div className="border-r border-gray-200 pr-4">
-          <label className="text-xs text-gray-400 font-medium uppercase mb-1 block" htmlFor="check-in">Check In</label>
+          <label 
+            className="text-xs text-gray-400 font-medium uppercase mb-1 block" 
+            htmlFor="check-in-date"
+          >
+            Check In
+          </label>
           <div className="flex items-center gap-2 text-dark font-serif text-lg">
             <Calendar size={18} className="text-primary" aria-hidden="true" />
             <input
-              id="check-in"
+              id="check-in-date"
               type="date"
-              className="outline-none w-full text-dark font-serif bg-transparent uppercase text-sm cursor-pointer focus:outline-none"
+              className="outline-none w-full text-dark font-serif bg-transparent uppercase text-sm cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary rounded px-1"
               aria-label="Check in date"
             />
           </div>
@@ -78,13 +97,18 @@ const BookingWidget: React.FC = () => {
 
         {/* Check Out */}
         <div className="border-r border-gray-200 pr-4">
-          <label className="text-xs text-gray-400 font-medium uppercase mb-1 block" htmlFor="check-out">Check Out</label>
+          <label 
+            className="text-xs text-gray-400 font-medium uppercase mb-1 block" 
+            htmlFor="check-out-date"
+          >
+            Check Out
+          </label>
           <div className="flex items-center gap-2 text-dark font-serif text-lg">
             <Calendar size={18} className="text-primary" aria-hidden="true" />
             <input
-              id="check-out"
+              id="check-out-date"
               type="date"
-              className="outline-none w-full text-dark font-serif bg-transparent uppercase text-sm cursor-pointer focus:outline-none"
+              className="outline-none w-full text-dark font-serif bg-transparent uppercase text-sm cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary rounded px-1"
               aria-label="Check out date"
             />
           </div>

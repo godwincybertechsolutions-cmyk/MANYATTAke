@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ChevronLeft, ChevronRight, Play, Pause, Loader2 } from 'lucide-react';
+import { useFocusTrap, useBodyScroll, useEscapeKey } from '../hooks/useAccessibility';
 
 interface ImageSlideshowModalProps {
     images: string[];
@@ -26,6 +27,11 @@ const ImageSlideshowModal: React.FC<ImageSlideshowModalProps> = ({ images, isOpe
     
     const imageRefs = useRef<HTMLImageElement[]>([]);
     const touchStartTime = useRef<number>(0);
+    
+    // Accessibility hooks
+    const modalRef = useFocusTrap(isOpen);
+    useBodyScroll(isOpen);
+    useEscapeKey(isOpen, onClose);
 
     // Handle image load
     const handleImageLoad = useCallback((index: number) => {
@@ -192,6 +198,7 @@ const ImageSlideshowModal: React.FC<ImageSlideshowModalProps> = ({ images, isOpe
     return (
         <AnimatePresence>
             <motion.div
+                ref={modalRef}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
@@ -201,6 +208,7 @@ const ImageSlideshowModal: React.FC<ImageSlideshowModalProps> = ({ images, isOpe
                 role="dialog"
                 aria-modal="true"
                 aria-label={`Image gallery: ${title || 'Gallery'}`}
+                tabIndex={-1}
             >
                 {/* Close Button */}
                 <motion.button

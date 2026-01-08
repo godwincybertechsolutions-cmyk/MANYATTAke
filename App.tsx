@@ -32,9 +32,20 @@ const App: React.FC = () => {
         <Router>
           <SplashCursor />
           <ScrollToTop />
+          {/* Skip to main content link for keyboard users */}
+          <a 
+            href="#main-content"
+            className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[60] focus:bg-primary focus:text-white focus:px-4 focus:py-2 focus:rounded"
+          >
+            Skip to main content
+          </a>
           <div className="flex flex-col min-h-screen bg-white font-sans text-dark selection:bg-primary selection:text-white">
             <Navbar />
-            <main className="flex-grow pt-24">
+            <main 
+              id="main-content"
+              className="flex-grow pt-24"
+              role="main"
+            >
               <Suspense fallback={<PageLoader />}>
                 <Routes>
                   <Route path="/" element={<Home />} />
