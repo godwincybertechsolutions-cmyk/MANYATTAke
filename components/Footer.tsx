@@ -4,8 +4,13 @@ import { APP_NAME } from '../constants';
 import { TYPOGRAPHY, SPACING, COLORS, TRANSITIONS } from '../tokens';
 import OptimizedImage from './OptimizedImage';
 import { Link } from 'react-router-dom';
+import { getAdaptiveLogoPath } from '../hooks/useAdaptiveLogo';
 
 const Footer: React.FC = () => {
+  // Footer has dark background, so use inverted logo for better contrast
+  const footerLogoBg = 'rgb(20, 20, 20)'; // Dark background
+  const logoPath = getAdaptiveLogoPath(footerLogoBg);
+
   return (
     <footer className="bg-dark text-white pt-20 pb-10 border-t border-gray-700" style={{ color: COLORS.white }} role="contentinfo">
       <div className="container mx-auto px-4 sm:px-6">
@@ -19,7 +24,7 @@ const Footer: React.FC = () => {
                 aria-label={`${APP_NAME} - Go to home`}
               >
                 <OptimizedImage 
-                  src="/assets/Logo/New Manyatta Logo.png"
+                  src={logoPath}
                   alt={APP_NAME}
                   className="h-16"
                   priority

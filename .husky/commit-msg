@@ -1,0 +1,22 @@
+#!/bin/sh
+# Husky commit-msg hook
+# Validates commit message format
+
+COMMIT_MSG_FILE=$1
+COMMIT_MSG=$(cat "$COMMIT_MSG_FILE")
+
+# Commit message format: type(scope): message
+# Example: feat(auth): add login form
+COMMIT_REGEX="^(feat|fix|docs|style|refactor|perf|test|chore|ci)(\(.+\))?: .{1,50}"
+
+if ! echo "$COMMIT_MSG" | grep -qE "$COMMIT_REGEX"; then
+  echo "❌ Invalid commit message format"
+  echo ""
+  echo "Format: type(scope): message"
+  echo "Example: feat(modals): add focus trap"
+  echo ""
+  echo "Valid types: feat, fix, docs, style, refactor, perf, test, chore, ci"
+  exit 1
+fi
+
+echo "✅ Commit message format valid"

@@ -4,6 +4,7 @@ import { Menu, X, Phone, Calendar } from 'lucide-react';
 import { NAVIGATION_LINKS, APP_NAME, CONTACT_PHONE } from '../constants';
 import { TYPOGRAPHY, SPACING, COLORS, Z_INDEX, TRANSITIONS, MEDIA_QUERIES } from '../tokens';
 import OptimizedImage from './OptimizedImage';
+import { useAdaptiveLogo } from '../hooks/useAdaptiveLogo';
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -13,6 +14,9 @@ const Navbar: React.FC = () => {
   const navigate = useNavigate();
   const mobileMenuRef = useRef<HTMLDivElement>(null);
   const timeoutRef = useRef<NodeJS.Timeout>();
+  
+  // Get adaptive logo based on scroll state
+  const logoConfig = useAdaptiveLogo(scrolled);
 
   // Handle scroll effect
   useEffect(() => {
@@ -201,12 +205,13 @@ const Navbar: React.FC = () => {
             onClick={handleLogoClick}
           >
             <OptimizedImage 
-              src="/assets/Logo/New Manyatta Logo.png"
-              alt={APP_NAME}
+              src={logoConfig.src}
+              alt={logoConfig.alt}
               className={`transition-all duration-300 ${scrolled ? 'h-10' : 'h-14'}`}
               priority
               width={scrolled ? 120 : 160}
               height={scrolled ? 40 : 56}
+              title={`Logo (${logoConfig.isInverted ? 'Inverted' : 'Original'} - Contrast: ${logoConfig.contrastRatio}:1)`}
             />
           </Link>
 
