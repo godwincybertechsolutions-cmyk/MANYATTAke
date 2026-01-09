@@ -4,12 +4,7 @@ import { MapPin, Check, Camera } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import ImageSlideshowModal from '../components/ImageSlideshowModal';
-import GlareHover from '../components/GlareHover';
-import {
-  BURGURET_VILLA_DETAILS,
-  BURGURET_IMAGES,
-  NARUMORU_VILLA_DETAILS
-} from '../constants';
+import OptimizedImage from '../components/OptimizedImage';
 
 const VILLAS = [
   {
@@ -60,10 +55,12 @@ const MountainVillas: React.FC = () => {
 
       {/* Hero */}
       <div className="relative h-[60vh] w-full">
-        <img
+        <OptimizedImage
           src="/assets/Mountain%20Villas%20Hero%20Image/Burguret.%20Outside%20Patio%20View%202.jpg"
           alt="Mountainside Haven"
-          className="w-full h-full object-cover"
+          className="w-full h-full"
+          priority
+          fill
         />
         <div className="absolute inset-0 bg-black/40 flex items-center justify-center text-center">
           <div className="max-w-4xl px-6">
@@ -147,16 +144,21 @@ const MountainVillas: React.FC = () => {
                       transitionDuration={600}
                       playOnce={false}
                     >
-                      <img src={villa.heroImage} alt={villa.details.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                      <OptimizedImage 
+                        src={villa.heroImage} 
+                        alt={villa.details.title} 
+                        className="w-full h-full transition-transform duration-700 group-hover:scale-110" 
+                        fill
+                      />
                       <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
                     </GlareHover>
                   </div>
                   {/* Display 2 more small images if available */}
                   <div className="h-40 rounded-xl overflow-hidden hidden md:block">
-                    <img src={villa.images[1] || villa.images[0]} className="w-full h-full object-cover" alt="Detail 1" />
+                    <OptimizedImage src={villa.images[1] || villa.images[0]} className="w-full h-full" alt="Detail 1" fill />
                   </div>
                   <div className="h-40 rounded-xl overflow-hidden hidden md:block">
-                    <img src={villa.images[2] || villa.images[0]} className="w-full h-full object-cover" alt="Detail 2" />
+                    <OptimizedImage src={villa.images[2] || villa.images[0]} className="w-full h-full" alt="Detail 2" fill />
                   </div>
                 </div>
               </div>

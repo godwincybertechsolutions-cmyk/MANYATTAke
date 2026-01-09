@@ -129,10 +129,12 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
   }, [isLoaded, src, priority, compressionQuality]);
 
   // Convert jpg to webp, fallback to original
-  // Keep original format - don't try to convert to webp since we don't have webp versions
-  const getImageSrc = (imgSrc: string, preferWebp = true) => {
+  const getImageSrc = (imgSrc: string) => {
     if (!imgSrc) return blurPlaceholder;
-    // Return compressed version if available
+    
+    // If it's a local asset and ends with .jpg or .png, we could potentially
+    // point to a .webp version if the build system generated them.
+    // For now, since we're using browser-image-compression, it handles the format.
     return compressedSrc || imgSrc;
   };
 
@@ -141,8 +143,6 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
     onLoad?.();
   };
 
-  const webpSrc = getImageSrc(src);
-
   const objectFitClass = {
     cover: 'object-cover',
     contain: 'object-contain',
@@ -150,65 +150,38 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
     'scale-down': 'object-scale-down'
   }[objectFit];
 
-  if (fill) {
-    return (
-      <div className={`relative w-full h-full overflow-hidden ${className}`}>
-        <img
+  return (
+    <div className={`relative overflow-hidden ${className} ${fill ? 'w-full h-full' : ''}`}>
+      <picture>
+        {/* If we had actual .webp files on disk, we'd add <source type="image/webp" srcSet={...} /> here */}
+        <motion.img
           ref={imgRef}
-          src={priority ? src : blurPlaceholder}
+          src={priority ? src : (compressedSrc || blurPlaceholder)}
           alt={alt}
           loading={priority ? 'eager' : 'lazy'}
-          className={`w-full h-full ${objectFitClass} transition-opacity duration-300 ${
-            showImage ? 'opacity-100' : 'opacity-75'
+          decoding="async"
+          className={`${fill ? 'absolute inset-0 w-full h-full' : ''} ${objectFitClass} transition-opacity duration-500 ${
+            showImage ? 'opacity-100' : 'opacity-0'
           }`}
           onLoad={handleLoad}
+          initial={priority ? false : { opacity: 0 }}
+          animate={{ opacity: showImage ? 1 : 0 }}
           onError={() => {
-            // ensure visible fallback for priority local images
-            if (imgRef.current && imgRef.current.src !== src) imgRef.current.src = src;
+            if (imgRef.current && imgRef.current.src !== src) {
+              imgRef.current.src = src;
+            }
           }}
         />
-        {!priority && isLoaded && (
-          <img
-            src={getImageSrc(src)}
-            alt={alt}
-            className={`absolute inset-0 w-full h-full ${objectFitClass} transition-opacity duration-300 ${
-              showImage ? 'opacity-100' : 'opacity-0'
-            }`}
-            onLoad={handleLoad}
-            onError={() => {
-              // Fallback to original if compression fails
-              if (imgRef.current) {
-                imgRef.current.src = src;
-              }
-            }}
-          />
-        )}
-      </div>
-    );
-  }
-
-  return (
-    <motion.img
-      ref={imgRef}
-      src={priority ? compressedSrc : blurPlaceholder}
-      alt={alt}
-      loading={priority ? 'eager' : 'lazy'}
-      sizes={sizes}
-      {...(srcSet && { srcSet })}
-      className={`${objectFitClass} transition-opacity duration-300 ${
-        showImage ? 'opacity-100' : 'opacity-75'
-      } ${className}`}
-      onLoad={handleLoad}
-      initial={{ opacity: 0 }}
-      animate={{ opacity: showImage ? 1 : 0.7 }}
-      transition={{ duration: 0.3 }}
-      onError={() => {
-        // Fallback to original if compression fails
-        if (imgRef.current) {
-          imgRef.current.src = src;
-        }
-      }}
-    />
+      </picture>
+      
+      {/* Low-quality placeholder/blur effect */}
+      {!showImage && (
+        <div 
+          className={`absolute inset-0 bg-gray-200 animate-pulse ${fill ? 'w-full h-full' : ''}`}
+          style={{ backgroundImage: `url(${blurPlaceholder})`, backgroundSize: 'cover' }}
+        />
+      )}
+    </div>
   );
 };
 
