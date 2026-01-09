@@ -14,6 +14,10 @@ interface OptimizedImageProps {
   compressionQuality?: number; // 0.1 to 1.0, default 0.8
   maxWidth?: number; // Max width in pixels, default 1920
   maxHeight?: number; // Max height in pixels, default 1080
+  width?: number; // Width for responsive sizing
+  height?: number; // Height for responsive sizing
+  sizes?: string; // CSS media queries for responsive image sizes
+  srcSet?: string; // Custom srcset (if not auto-generated)
 }
 
 const OptimizedImage: React.FC<OptimizedImageProps> = ({
@@ -27,7 +31,11 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
   blurPlaceholder = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300"%3E%3Crect fill="%23e5e7eb" width="400" height="300"/%3E%3C/svg%3E',
   compressionQuality = 0.8,
   maxWidth = 1920,
-  maxHeight = 1080
+  maxHeight = 1080,
+  width,
+  height,
+  sizes,
+  srcSet
 }) => {
   const [isLoaded, setIsLoaded] = useState(priority);
   const [showImage, setShowImage] = useState(priority);
@@ -185,6 +193,8 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
       src={priority ? compressedSrc : blurPlaceholder}
       alt={alt}
       loading={priority ? 'eager' : 'lazy'}
+      sizes={sizes}
+      {...(srcSet && { srcSet })}
       className={`${objectFitClass} transition-opacity duration-300 ${
         showImage ? 'opacity-100' : 'opacity-75'
       } ${className}`}
@@ -192,9 +202,6 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
       initial={{ opacity: 0 }}
       animate={{ opacity: showImage ? 1 : 0.7 }}
       transition={{ duration: 0.3 }}
-      {...(!priority && isLoaded && {
-        srcSet: `${getImageSrc(src)} 1x`
-      })}
       onError={() => {
         // Fallback to original if compression fails
         if (imgRef.current) {

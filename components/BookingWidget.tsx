@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Calendar, Users, MapPin, ChevronDown } from 'lucide-react';
 import { PropertyType } from '../types';
+import { COLORS, TYPOGRAPHY, TRANSITIONS, SPACING } from '../tokens';
 // import { useAuth } from '../src/auth/AuthContext';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
@@ -11,7 +12,7 @@ const BookingWidget: React.FC = () => {
   const location = useLocation();
 
   return (
-    <div className="w-full max-w-5xl mx-auto bg-white rounded-2xl shadow-2xl overflow-hidden -mt-16 relative z-30 hidden lg:block border border-gray-100 hover:shadow-3xl transition-shadow duration-300" role="region" aria-label="Availability checker">
+    <div className="w-full max-w-5xl mx-auto bg-white rounded-2xl shadow-2xl overflow-hidden -mt-16 relative z-30 hidden lg:block border border-gray-100 hover:shadow-3xl transition-shadow duration-300" style={{ backgroundColor: COLORS.white, color: COLORS.dark }} role="region" aria-label="Availability checker">
       {/* Tabs */}
       <div className="flex border-b border-gray-100" role="tablist">
         <motion.button
@@ -19,8 +20,12 @@ const BookingWidget: React.FC = () => {
           onClick={() => setActiveTab('mountain')}
           role="tab"
           aria-selected={activeTab === 'mountain'}
-          className={`flex-1 py-4 text-center text-sm font-semibold uppercase tracking-wider transition-all focus:outline-none focus:ring-2 focus:ring-primary focus:ring-inset ${activeTab === 'mountain' ? 'bg-primary text-white shadow-md' : 'text-gray-500'
+          className={`flex-1 py-4 text-center text-sm font-semibold uppercase tracking-wider transition-all focus:outline-none focus:ring-2 focus:ring-offset-0 focus:ring-offset-transparent ${activeTab === 'mountain' ? 'shadow-md' : 'text-gray-500'
             }`}
+          style={{
+            backgroundColor: activeTab === 'mountain' ? COLORS.primary : 'transparent',
+            color: activeTab === 'mountain' ? COLORS.white : COLORS.gray[500],
+          }}
         >
           Mountain Villas
         </motion.button>
@@ -29,8 +34,12 @@ const BookingWidget: React.FC = () => {
           onClick={() => setActiveTab('safari')}
           role="tab"
           aria-selected={activeTab === 'safari'}
-          className={`flex-1 py-4 text-center text-sm font-semibold uppercase tracking-wider transition-all focus:outline-none focus:ring-2 focus:ring-primary focus:ring-inset ${activeTab === 'safari' ? 'bg-primary text-white shadow-md' : 'text-gray-500'
+          className={`flex-1 py-4 text-center text-sm font-semibold uppercase tracking-wider transition-all focus:outline-none focus:ring-2 focus:ring-offset-0 focus:ring-offset-transparent ${activeTab === 'safari' ? 'shadow-md' : 'text-gray-500'
             }`}
+          style={{
+            backgroundColor: activeTab === 'safari' ? COLORS.primary : 'transparent',
+            color: activeTab === 'safari' ? COLORS.white : COLORS.gray[500],
+          }}
         >
           Safaris
         </motion.button>
@@ -39,8 +48,12 @@ const BookingWidget: React.FC = () => {
           onClick={() => setActiveTab('urban')}
           role="tab"
           aria-selected={activeTab === 'urban'}
-          className={`flex-1 py-4 text-center text-sm font-semibold uppercase tracking-wider transition-all focus:outline-none focus:ring-2 focus:ring-primary focus:ring-inset ${activeTab === 'urban' ? 'bg-primary text-white shadow-md' : 'text-gray-500'
+          className={`flex-1 py-4 text-center text-sm font-semibold uppercase tracking-wider transition-all focus:outline-none focus:ring-2 focus:ring-offset-0 focus:ring-offset-transparent ${activeTab === 'urban' ? 'shadow-md' : 'text-gray-500'
             }`}
+          style={{
+            backgroundColor: activeTab === 'urban' ? COLORS.primary : 'transparent',
+            color: activeTab === 'urban' ? COLORS.white : COLORS.gray[500],
+          }}
         >
           Apartments
         </motion.button>

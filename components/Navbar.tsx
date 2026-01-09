@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X, Phone, Calendar } from 'lucide-react';
 import { NAVIGATION_LINKS, APP_NAME, CONTACT_PHONE } from '../constants';
+import { TYPOGRAPHY, SPACING, COLORS, Z_INDEX, TRANSITIONS, MEDIA_QUERIES } from '../tokens';
 import OptimizedImage from './OptimizedImage';
 
 const Navbar: React.FC = () => {
@@ -89,6 +90,7 @@ const Navbar: React.FC = () => {
           ? 'bg-white/98 backdrop-blur-lg shadow-lg py-3 border-b border-gray-100/20' 
           : 'bg-gradient-to-b from-black/20 to-transparent py-6'
       }`}
+      style={{ zIndex: Z_INDEX.fixed }}
       role="navigation"
       aria-label="Main navigation"
       onKeyDown={handleKeyDown}

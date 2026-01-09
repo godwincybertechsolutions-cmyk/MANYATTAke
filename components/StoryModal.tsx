@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
+import { useFocusTrap, useBodyScroll, useEscapeKey } from '../hooks/useAccessibility';
 
 interface StoryModalProps {
     isOpen: boolean;
@@ -13,16 +14,10 @@ interface StoryModalProps {
 }
 
 const StoryModal: React.FC<StoryModalProps> = ({ isOpen, onClose, title, date, image, content, author }) => {
-    React.useEffect(() => {
-        if (isOpen) {
-            document.body.style.overflow = 'hidden';
-        } else {
-            document.body.style.overflow = 'unset';
-        }
-        return () => {
-            document.body.style.overflow = 'unset';
-        };
-    }, [isOpen]);
+    const modalRef = useFocusTrap(isOpen);
+    useBodyScroll(isOpen);
+    useEscapeKey(isOpen, onClose);
+    const contentRef = useRef<HTMLDivElement>(null);
 
     return (
         <AnimatePresence>
@@ -35,9 +30,12 @@ const StoryModal: React.FC<StoryModalProps> = ({ isOpen, onClose, title, date, i
                     className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4"
                     role="dialog"
                     aria-modal="true"
-                    aria-label={title}
+                    aria-labelledby="story-modal-title"
+                    aria-describedby="story-modal-content"
+                    tabIndex={-1}
                 >
                     <motion.div
+                        ref={modalRef}
                         initial={{ opacity: 0, y: 20, scale: 0.95 }}
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: 20, scale: 0.95 }}
@@ -52,18 +50,26 @@ const StoryModal: React.FC<StoryModalProps> = ({ isOpen, onClose, title, date, i
                             onClick={onClose}
                             className="absolute top-4 right-4 z-50 p-2 bg-white/80 hover:bg-white text-dark rounded-full transition-colors shadow-md focus:outline-none focus:ring-2 focus:ring-primary"
                             aria-label="Close dialog"
+                            title="Close (ESC)"
                         >
-                            <X size={24} />
+                            <X size={24} aria-hidden="true" />
                         </motion.button>
 
                         {/* Content */}
-                        <div className="max-h-[90vh] overflow-y-auto">
+                        <div 
+                            ref={contentRef}
+                            id="story-modal-content"
+                            className="max-h-[90vh] overflow-y-auto"
+                            role="document"
+                        >
                             {/* Hero Image */}
                             <motion.div
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
                                 transition={{ delay: 0.1 }}
                                 className="w-full h-80 overflow-hidden"
+                                role="img"
+                                aria-label={`${title} - featured image`}
                             >
                                 <img src={image} alt={title} className="w-full h-full object-cover" />
                             </motion.div>
@@ -75,8 +81,13 @@ const StoryModal: React.FC<StoryModalProps> = ({ isOpen, onClose, title, date, i
                                 transition={{ delay: 0.2 }}
                                 className="p-8 md:p-12"
                             >
-                                <span className="text-xs font-bold text-primary uppercase tracking-wider mb-3 block">{date}</span>
-                                <h1 className="font-serif text-4xl md:text-5xl text-dark mb-4 leading-tight">{title}</h1>
+                                <span className="text-xs font-bold text-primary uppercase tracking-wider mb-3 block" aria-label={`Published on ${date}`}>{date}</span>
+                                <h1 
+                                    id="story-modal-title"
+                                    className="font-serif text-4xl md:text-5xl text-dark mb-4 leading-tight"
+                                >
+                                    {title}
+                                </h1>
                                 
                                 {author && (
                                     <p className="text-sm text-gray-500 mb-8 italic">By {author}</p>

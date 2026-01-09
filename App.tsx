@@ -6,6 +6,7 @@ import Footer from './components/Footer';
 import ErrorBoundary from './components/ErrorBoundary';
 import SplashCursor from './components/SplashCursor';
 import PageLoader from './components/PageLoader';
+import webVitalsMonitor from './services/webVitalsMonitor';
 
 // Lazy load page components for code splitting
 const Home = React.lazy(() => import('./pages/Home'));
@@ -26,6 +27,30 @@ const ScrollToTop = () => {
 };
 
 const App: React.FC = () => {
+  // Initialize Web Vitals monitoring
+  useEffect(() => {
+    // Setup report callback for Web Vitals
+    webVitalsMonitor.onReport((report) => {
+      if (process.env.NODE_ENV === 'development') {
+        console.log('[Web Vitals Report]', report);
+      }
+      // In production, you'd send this to your analytics service:
+      // sendToAnalytics(report);
+    });
+
+    // Send final report when page is about to unload
+    const handleBeforeUnload = () => {
+      webVitalsMonitor.sendReport();
+    };
+
+    window.addEventListener('beforeunload', handleBeforeUnload);
+
+    return () => {
+      window.removeEventListener('beforeunload', handleBeforeUnload);
+      // Cleanup observers when app unmounts
+      webVitalsMonitor.destroy();
+    };
+  }, []);
   return (
     <ErrorBoundary>
       <HelmetProvider>

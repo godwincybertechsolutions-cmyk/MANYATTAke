@@ -1,12 +1,13 @@
 import React from 'react';
 import { Instagram, Facebook, Twitter, Mail, Phone, MapPin } from 'lucide-react';
 import { APP_NAME } from '../constants';
+import { TYPOGRAPHY, SPACING, COLORS, TRANSITIONS } from '../tokens';
 import OptimizedImage from './OptimizedImage';
 import { Link } from 'react-router-dom';
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-dark text-white pt-20 pb-10 border-t border-gray-700" role="contentinfo">
+    <footer className="bg-dark text-white pt-20 pb-10 border-t border-gray-700" style={{ color: COLORS.white }} role="contentinfo">
       <div className="container mx-auto px-4 sm:px-6">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 border-b border-gray-700 pb-12">
           
