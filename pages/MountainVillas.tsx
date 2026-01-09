@@ -5,12 +5,6 @@ import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import ImageSlideshowModal from '../components/ImageSlideshowModal';
 import OptimizedImage from '../components/OptimizedImage';
-import GlareHover from '../components/GlareHover';
-import {
-  BURGURET_VILLA_DETAILS,
-  BURGURET_IMAGES,
-  NARUMORU_VILLA_DETAILS
-} from '../constants';
 
 const VILLAS = [
   {
