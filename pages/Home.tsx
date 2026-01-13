@@ -15,7 +15,7 @@ const Home: React.FC = () => {
   return (
     <div className="w-full">
       <Helmet>
-        <title>New Manyatta Kenya | Luxury Mountain Villas, Safaris & Urban Apartments</title>
+        <title>New Manyatta Kenya | Mountain Villas, Safaris & Urban Apartments</title>
         <meta name="description" content="Discover New Manyatta Kenya - luxury mountain villas in Narumoru, exclusive safari experiences, and premium apartments in Nairobi. Book your unforgettable Kenyan retreat today." />
         <meta name="keywords" content="Kenya villas, mountain villas Narumoru, safari experiences, luxury apartments Nairobi, Manyatta Kenya" />
         <meta property="og:type" content="website" />
