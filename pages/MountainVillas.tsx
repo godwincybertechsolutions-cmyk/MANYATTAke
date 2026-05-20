@@ -10,6 +10,9 @@ import {
   BURGURET_IMAGES,
   NARUMORU_VILLA_DETAILS
 } from '../constants';
+import type { BookingLocationState } from '../types';
+import { useAuth } from '../src/auth/AuthContext';
+import { resolvePropertySlug } from '../constants';
 
 const VILLAS = [
   {
@@ -28,7 +31,21 @@ const VILLAS = [
 
 const MountainVillas: React.FC = () => {
   const navigate = useNavigate();
+  const { user } = useAuth();
   const [modalOpen, setModalOpen] = useState(false);
+
+  const reserveVilla = (villaId: string, title: string) => {
+    const state: BookingLocationState = {
+      slug: resolvePropertySlug(villaId),
+      name: title,
+      type: 'mountain',
+    };
+    if (!user) {
+      navigate('/auth', { state: { from: '/booking', ...state } });
+      return;
+    }
+    navigate('/booking', { state });
+  };
   const [selectedImages, setSelectedImages] = useState<string[]>([]);
   const [selectedTitle, setSelectedTitle] = useState("");
 
@@ -128,7 +145,7 @@ const MountainVillas: React.FC = () => {
                       <Camera size={18} /> View Gallery
                     </button>
                     <button
-                      onClick={() => navigate('/others')}
+                      onClick={() => reserveVilla(villa.id, villa.details.title)}
                       className="px-6 py-3 bg-primary hover:bg-[#c4492e] text-white rounded-full font-medium transition-all duration-300 uppercase text-sm tracking-widest shadow-md hover:shadow-lg active:scale-95"
                     >
                       Reserve Now

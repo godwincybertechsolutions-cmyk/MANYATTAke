@@ -59,15 +59,58 @@ export interface Apartment {
   features: string[];
 }
 
-// Database Schema Types (Matches Implementation Plan)
-export interface Property {
+// Database schema types (matches Supabase SQL you executed)
+export type BookingStatus = 'requested' | 'confirmed' | 'cancelled' | 'completed';
+
+export interface DbUserProfile {
   id: string;
-  type: 'mountain_villa' | 'safari' | 'apartment';
+  email: string;
+  first_name: string | null;
+  last_name: string | null;
+  phone: string | null;
+  nationality: string | null;
+  is_admin: boolean;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface DbProperty {
+  id: string;
+  type: PropertyType;
   name: string;
+  slug: string;
+  description: string | null;
   location: string;
-  description: string;
-  base_price: number;
-  currency: 'KES' | 'USD';
-  max_guests: number;
-  status: 'available' | 'maintenance';
+  price_per_night: number;
+  currency: string;
+  capacity: number;
+  bedrooms: number | null;
+  bathrooms: number | null;
+  amenities: string[] | null;
+  images: string[] | null;
+  is_available: boolean;
+  created_at: string;
+}
+
+export interface DbBooking {
+  id: string;
+  user_id: string;
+  property_id: string | null;
+  check_in_date: string;
+  check_out_date: string;
+  number_of_guests: number;
+  total_price: number;
+  currency: string;
+  status: BookingStatus;
+  special_requests: string | null;
+  created_at: string;
+  updated_at: string;
+}
+
+/** Passed via react-router location.state when navigating to /booking */
+export interface BookingLocationState {
+  propertyId?: string;
+  slug?: string;
+  name: string;
+  type?: PropertyType;
 }

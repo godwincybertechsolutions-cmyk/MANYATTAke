@@ -2,6 +2,19 @@ import { Itinerary, NavigationLink } from './types';
 
 export const APP_NAME = "New Manyatta Kenya";
 
+/** Maps frontend listing ids to Supabase property slugs */
+export const PROPERTY_SLUG_BY_FRONTEND_ID: Record<string, string> = {
+  burguret: 'burguret-villa',
+  narumoru: 'narumoru-villa',
+  weekend: 'weekend-safari',
+  laurel: 'laurel-hill-suites',
+  alba: 'alba-gardens',
+};
+
+export function resolvePropertySlug(frontendId: string): string {
+  return PROPERTY_SLUG_BY_FRONTEND_ID[frontendId] ?? frontendId;
+}
+
 const navigationLinks: NavigationLink[] = [
   { name: 'Home', path: '/' },
   { name: 'Mountain Villas', path: '/mountain-villas' },

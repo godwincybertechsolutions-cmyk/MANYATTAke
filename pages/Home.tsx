@@ -2,15 +2,23 @@ import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import { ArrowRight, Mountain, Binoculars, Building2 } from 'lucide-react';
-import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import BookingWidget from '../components/BookingWidget';
 import SectionHeader from '../components/SectionHeader';
 import OptimizedImage from '../components/OptimizedImage';
-// import { useAuth } from '../src/auth/AuthContext';
+import { useAuth } from '../src/auth/AuthContext';
 
 const Home: React.FC = () => {
   const navigate = useNavigate();
-  const location = useLocation();
+  const { user } = useAuth();
+
+  const handleStartJourney = () => {
+    if (user) {
+      navigate('/booking');
+      return;
+    }
+    navigate('/auth', { state: { tab: 'signup', from: '/booking' } });
+  };
 
   return (
     <div className="w-full">
@@ -21,7 +29,13 @@ const Home: React.FC = () => {
         <meta property="og:type" content="website" />
         <meta property="og:title" content="New Manyatta Kenya | Luxury Properties & Experiences" />
         <meta property="og:description" content="Luxury mountain villas, safaris, and premium apartments in Kenya" />
-        <meta property="og:image" content="https://picsum.photos/seed/kenyahero/1200/630" />
+        <meta property="og:image" content="/assets/Mountain%20Villas%20Hero%20Image/Burguret.%20Outside%20Patio%20View%202.jpg" />
+        <link
+          rel="preload"
+          as="image"
+          href="/assets/Mountain%20Villas%20Hero%20Image/Burguret.%20Outside%20Patio%20View%202.jpg"
+          fetchPriority="high"
+        />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="New Manyatta Kenya" />
         <meta name="twitter:description" content="Discover luxury properties and experiences in Kenya" />
@@ -31,21 +45,16 @@ const Home: React.FC = () => {
       {/* Hero Section */}
       <div className="relative h-screen w-full overflow-hidden">
         {/* Mock Video Background (using image with scale animation) */}
-        <motion.div
-          className="absolute inset-0 w-full h-full"
-          initial={{ scale: 1.1 }}
-          animate={{ scale: 1 }}
-          transition={{ duration: 10, repeat: Infinity, repeatType: "reverse" }}
-        >
+        <div className="absolute inset-0 w-full h-full">
           <OptimizedImage
-            src="https://picsum.photos/seed/kenyahero/1920/1080"
-            alt="Kenya Landscape"
+            src="/assets/Mountain%20Villas%20Hero%20Image/Burguret.%20Outside%20Patio%20View%202.jpg"
+            alt="Kenya landscape — New Manyatta Kenya"
             className="w-full h-full"
             fill
             priority
             objectFit="cover"
           />
-        </motion.div>
+        </div>
 
         {/* Overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/60"></div>
@@ -83,9 +92,7 @@ const Home: React.FC = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="bg-primary hover:bg-[#c4492e] text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full text-xs sm:text-sm font-bold tracking-widest uppercase transition-all flex items-center gap-3 group focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2"
-            onClick={() => {
-              navigate('/others');
-            }}
+            onClick={handleStartJourney}
           >
             Start Your Journey
             <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />

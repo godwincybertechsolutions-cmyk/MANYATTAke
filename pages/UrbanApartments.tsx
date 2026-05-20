@@ -4,13 +4,30 @@ import { Bed, Bath, Move, Check, Car, User, Camera, ArrowRight } from 'lucide-re
 import { URBAN_APARTMENTS } from '../constants';
 import SectionHeader from '../components/SectionHeader';
 import { useNavigate } from 'react-router-dom';
+import type { BookingLocationState } from '../types';
+import { useAuth } from '../src/auth/AuthContext';
+import { resolvePropertySlug } from '../constants';
 import { motion } from 'framer-motion';
 import OptimizedImage from '../components/OptimizedImage';
 import ImageSlideshowModal from '../components/ImageSlideshowModal';
 
 const UrbanApartments: React.FC = () => {
   const navigate = useNavigate();
+  const { user } = useAuth();
   const [modalOpen, setModalOpen] = useState(false);
+
+  const bookApartment = (aptId: string, name: string) => {
+    const state: BookingLocationState = {
+      slug: resolvePropertySlug(aptId),
+      name,
+      type: 'urban',
+    };
+    if (!user) {
+      navigate('/auth', { state: { from: '/booking', ...state } });
+      return;
+    }
+    navigate('/booking', { state });
+  };
   const [selectedImages, setSelectedImages] = useState<string[]>([]);
   const [selectedName, setSelectedName] = useState("");
 
@@ -161,7 +178,7 @@ const UrbanApartments: React.FC = () => {
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                       className="flex-1 bg-primary text-white py-3 rounded-lg text-sm font-bold uppercase tracking-wide hover:bg-[#c4492e] transition-all shadow-md hover:shadow-lg flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-primary/50"
-                      onClick={() => navigate('/others')}
+                      onClick={() => bookApartment(apt.id, apt.name)}
                       type="button"
                     >
                       Book Stay <ArrowRight size={16} />

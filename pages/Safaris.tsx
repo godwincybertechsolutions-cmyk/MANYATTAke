@@ -7,11 +7,28 @@ import OptimizedImage from '../components/OptimizedImage';
 import GlareHover from '../components/GlareHover';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigate, useLocation } from 'react-router-dom';
+import type { BookingLocationState } from '../types';
+import { useAuth } from '../src/auth/AuthContext';
+import { resolvePropertySlug } from '../constants';
 
 const Safaris: React.FC = () => {
   const [expandedItinerary, setExpandedItinerary] = useState<string | null>(null);
   const navigate = useNavigate();
   const location = useLocation();
+  const { user } = useAuth();
+
+  const bookSafari = (itineraryId: string, title: string) => {
+    const state: BookingLocationState = {
+      slug: resolvePropertySlug(itineraryId),
+      name: title,
+      type: 'safari',
+    };
+    if (!user) {
+      navigate('/auth', { state: { from: '/booking', ...state } });
+      return;
+    }
+    navigate('/booking', { state });
+  };
 
   const toggleItinerary = (id: string) => {
     setExpandedItinerary(expandedItinerary === id ? null : id);
@@ -133,9 +150,7 @@ landscapes, wildlife, and cultures ensure that every adventure is enriching and 
                       </button>
                       <button
                         className="flex-1 bg-primary hover:bg-[#c4492e] text-white px-6 py-3 rounded-lg text-sm font-medium transition-all uppercase tracking-wide shadow-md hover:shadow-lg active:scale-95"
-                        onClick={() => {
-                          navigate('/others');
-                        }}
+                        onClick={() => bookSafari(itinerary.id, itinerary.title)}
                       >
                         Book Now
                       </button>
