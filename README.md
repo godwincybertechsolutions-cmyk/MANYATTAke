@@ -1,20 +1,51 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# New Manyatta Kenya
 
-# Run and deploy your AI Studio app
+Luxury hospitality web app for mountain villas, safari experiences, and urban apartments in Kenya. Built with React, Vite, TypeScript, and Supabase.
 
-This contains everything you need to run your app locally.
+## Prerequisites
 
-View your app in AI Studio: https://ai.studio/apps/drive/1m9IwPWLIjHqfFTvlkZqXx7CI7SGD_mbK
+- [Node.js](https://nodejs.org/) 18+
+- A [Supabase](https://supabase.com/) project (auth, properties, bookings)
 
-## Run Locally
-
-**Prerequisites:**  Node.js
-
+## Run locally
 
 1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+
+   ```bash
+   npm install
+   ```
+
+2. Copy environment variables:
+
+   ```bash
+   cp .env.example .env.local
+   ```
+
+   Set `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` from your Supabase project settings.
+
+3. Start the dev server:
+
+   ```bash
+   npm run dev
+   ```
+
+   Open [http://localhost:3000](http://localhost:3000).
+
+## Scripts
+
+| Command           | Description              |
+| ----------------- | ------------------------ |
+| `npm run dev`     | Development server       |
+| `npm run build`   | Production build         |
+| `npm run preview` | Preview production build |
+
+## Database setup
+
+Run the SQL schema in the Supabase SQL editor (see `supabase/fix-user-profiles.sql` for profile/booking fixes after the initial schema).
+
+## Project structure
+
+- `pages/` — Route pages (Home, villas, safaris, booking, auth, profile)
+- `components/` — UI components
+- `services/` — Supabase client, auth, bookings, properties
+- `src/auth/` — Auth context provider
