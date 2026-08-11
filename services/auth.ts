@@ -43,19 +43,41 @@ export async function signOut() {
 }
 
 export async function getCurrentUser(): Promise<User | null> {
-  const { data: { user }, error } = await supabase.auth.getUser();
-  if (error) throw error;
-  return user;
+  try {
+    const { data, error } = await supabase.auth.getUser();
+    if (error) {
+      console.warn('[auth] getCurrentUser error:', error.message);
+      return null;
+    }
+    return data?.user ?? null;
+  } catch (err) {
+    console.warn('[auth] getCurrentUser exception:', err);
+    return null;
+  }
 }
 
 export async function getSession(): Promise<Session | null> {
-  const { data: { session }, error } = await supabase.auth.getSession();
-  if (error) throw error;
-  return session;
+  try {
+    const { data, error } = await supabase.auth.getSession();
+    if (error) {
+      console.warn('[auth] getSession error:', error.message);
+      return null;
+    }
+    return data?.session ?? null;
+  } catch (err) {
+    console.warn('[auth] getSession exception:', err);
+    return null;
+  }
 }
 
 export function onAuthStateChange(
   callback: (event: AuthChangeEvent, session: Session | null) => void
 ) {
-  return supabase.auth.onAuthStateChange(callback);
+  try {
+    return supabase.auth.onAuthStateChange(callback);
+  } catch (err) {
+    console.warn('[auth] onAuthStateChange error:', err);
+    return { data: { subscription: { unsubscribe: () => {} } } };
+  }
 }
+

@@ -39,27 +39,39 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
       }
     };
 
-    const { data: { subscription } } = authService.onAuthStateChange(
-      (_event, newSession) => {
+    let subscription: { unsubscribe: () => void } | undefined;
+
+    try {
+      const authRes = authService.onAuthStateChange((_event, newSession) => {
         if (!mounted) return;
         setSession(newSession);
         setUser(newSession?.user ?? null);
         setLoading(false);
         syncProfile(newSession?.user ?? null);
-      }
-    );
+      });
+      subscription = authRes?.data?.subscription;
+    } catch (err) {
+      console.warn('[AuthContext] onAuthStateChange subscription error:', err);
+    }
 
-    authService.getSession().then((s) => {
-      if (!mounted) return;
-      setSession(s);
-      setUser(s?.user ?? null);
-      setLoading(false);
-      syncProfile(s?.user ?? null);
-    });
+    authService
+      .getSession()
+      .then((s) => {
+        if (!mounted) return;
+        setSession(s);
+        setUser(s?.user ?? null);
+        syncProfile(s?.user ?? null);
+      })
+      .catch((err) => {
+        console.warn('[AuthContext] getSession error:', err);
+      })
+      .finally(() => {
+        if (mounted) setLoading(false);
+      });
 
     return () => {
       mounted = false;
-      subscription.unsubscribe();
+      subscription?.unsubscribe?.();
     };
   }, []);
 
