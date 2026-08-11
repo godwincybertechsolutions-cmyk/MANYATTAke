@@ -3,7 +3,6 @@ import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import { ArrowRight, Mountain, Binoculars, Building2 } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
-import BookingWidget from '../components/BookingWidget';
 import SectionHeader from '../components/SectionHeader';
 import OptimizedImage from '../components/OptimizedImage';
 import { useAuth } from '../src/auth/AuthContext';
@@ -98,11 +97,6 @@ const Home: React.FC = () => {
             <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
           </motion.button>
         </div>
-      </div>
-
-      {/* Booking Widget Wrapper */}
-      <div className="container mx-auto px-4 relative z-40 mb-20">
-        <BookingWidget />
       </div>
 
       {/* Experience Teasers */}
