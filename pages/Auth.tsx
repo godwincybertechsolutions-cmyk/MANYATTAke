@@ -4,6 +4,7 @@ import { useNavigate, useLocation, Link } from 'react-router-dom';
 import { LogIn, UserPlus, Mail, Lock, User } from 'lucide-react';
 import { useAuth } from '../src/auth/AuthContext';
 import { COLORS, COMPONENT_STYLES, TYPOGRAPHY, TRANSITIONS } from '../tokens';
+import { getSupabaseErrorMessage } from '../utils/supabaseError';
 
 type AuthTab = 'signin' | 'signup';
 
@@ -66,7 +67,7 @@ const Auth: React.FC = () => {
         });
       }
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Authentication failed.');
+      setError(getSupabaseErrorMessage(err, 'Authentication failed. Please check your credentials and connection.'));
     } finally {
       setSubmitting(false);
     }

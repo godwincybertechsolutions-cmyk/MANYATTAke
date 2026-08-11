@@ -1,4 +1,4 @@
-import { supabase } from './supabase';
+import { supabase, isSupabaseConfigured } from './supabase';
 import type { AuthChangeEvent, Session, User } from '@supabase/supabase-js';
 import { ensureUserProfile } from './userProfile';
 
@@ -12,6 +12,11 @@ export async function signUp(
   password: string,
   options?: SignUpOptions
 ) {
+  if (!isSupabaseConfigured) {
+    throw new Error(
+      'Supabase environment variables are missing on Vercel. Please configure VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY in your Vercel Project Settings, then redeploy.'
+    );
+  }
   const { data, error } = await supabase.auth.signUp({
     email,
     password,
@@ -28,6 +33,11 @@ export async function signUp(
 }
 
 export async function signIn(email: string, password: string) {
+  if (!isSupabaseConfigured) {
+    throw new Error(
+      'Supabase environment variables are missing on Vercel. Please configure VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY in your Vercel Project Settings, then redeploy.'
+    );
+  }
   const { data, error } = await supabase.auth.signInWithPassword({
     email,
     password,
