@@ -1,6 +1,6 @@
 import React from 'react';
 import { Instagram, Facebook, Twitter, Mail, Phone, MapPin } from 'lucide-react';
-import { APP_NAME } from '../constants';
+import { APP_NAME, CONTACT_PHONE, CONTACT_PHONE_DISPLAY, CONTACT_EMAIL } from '../constants';
 import { TYPOGRAPHY, SPACING, COLORS, TRANSITIONS } from '../tokens';
 import OptimizedImage from './OptimizedImage';
 import { Link } from 'react-router-dom';
@@ -75,15 +75,15 @@ const Footer: React.FC = () => {
             <address className="not-italic text-sm text-gray-400 space-y-4">
               <p className="flex items-start gap-3">
                 <MapPin size={18} className="mt-1 flex-shrink-0" aria-hidden="true" />
-                <span>123 Wildlife Drive,<br/>Narumoru, Kenya</span>
+                <span>Narumoru / Nairobi,<br/>Kenya</span>
               </p>
               <p className="flex items-center gap-3">
                 <Phone size={18} aria-hidden="true" />
-                <a href="tel:+254700000000" className="hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-primary rounded px-1">+254 700 000 000</a>
+                <a href={`tel:${CONTACT_PHONE}`} className="hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-primary rounded px-1">{CONTACT_PHONE_DISPLAY}</a>
               </p>
               <p className="flex items-center gap-3">
                 <Mail size={18} aria-hidden="true" />
-                <a href="mailto:concierge@newmanyatta.co.ke" className="hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-primary rounded px-1">concierge@newmanyatta.co.ke</a>
+                <a href={`mailto:${CONTACT_EMAIL}`} className="hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-primary rounded px-1">{CONTACT_EMAIL}</a>
               </p>
             </address>
           </div>

@@ -395,4 +395,6 @@ export const GALLERY_IMAGES = [
   "/assets/Alba Gardens B1702/A17 Dining Area.jpg"
 ];
 
-export const CONTACT_PHONE = "+254 (0) 722 123 456";
+export const CONTACT_PHONE = "+254723366462";
+export const CONTACT_PHONE_DISPLAY = "+254 723 366 462";
+export const CONTACT_EMAIL = "info@newmanyatta.ke";

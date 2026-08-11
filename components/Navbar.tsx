@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Menu, X, Phone, Calendar, User, LogOut } from 'lucide-react';
-import { NAVIGATION_LINKS, APP_NAME, CONTACT_PHONE } from '../constants';
+import { NAVIGATION_LINKS, APP_NAME, CONTACT_PHONE, CONTACT_PHONE_DISPLAY } from '../constants';
 import { prefetchRoute } from '../utils/routePrefetch';
 import { Z_INDEX } from '../tokens';
 import { useAuth } from '../src/auth/AuthContext';
@@ -160,10 +160,10 @@ const Navbar: React.FC = () => {
                     ? 'text-gray-600 hover:text-primary bg-gray-50'
                     : 'text-white/90 hover:bg-white/10'
                 }`}
-                aria-label={`Call ${CONTACT_PHONE}`}
+                aria-label={`Call ${CONTACT_PHONE_DISPLAY}`}
               >
                 <Phone size={16} className="shrink-0" />
-                <span className="truncate max-w-[8rem]">{CONTACT_PHONE}</span>
+                <span className="truncate max-w-[9rem]">{CONTACT_PHONE_DISPLAY}</span>
               </a>
             )}
 
@@ -275,7 +275,7 @@ const Navbar: React.FC = () => {
                 className="flex items-center justify-center gap-2 w-full py-3.5 rounded-xl bg-gray-50 text-gray-800 font-medium"
               >
                 <Phone size={18} />
-                {CONTACT_PHONE}
+                {CONTACT_PHONE_DISPLAY}
               </a>
             )}
 
