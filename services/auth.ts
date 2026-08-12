@@ -21,6 +21,7 @@ export async function signUp(
     email,
     password,
     options: {
+      emailRedirectTo: `${window.location.origin}/#/auth/confirm`,
       data: {
         first_name: options?.firstName ?? '',
         last_name: options?.lastName ?? '',

@@ -16,6 +16,7 @@ const Safaris = React.lazy(() => import('./pages/Safaris'));
 const UrbanApartments = React.lazy(() => import('./pages/UrbanApartments'));
 const Others = React.lazy(() => import('./pages/Others'));
 const Auth = React.lazy(() => import('./pages/Auth'));
+const AuthConfirm = React.lazy(() => import('./pages/AuthConfirm'));
 const Booking = React.lazy(() => import('./pages/Booking'));
 const Profile = React.lazy(() => import('./pages/Profile'));
 
@@ -78,6 +79,7 @@ const App: React.FC = () => {
                     <Route path="/urban-apartments" element={<UrbanApartments />} />
                     <Route path="/others" element={<Others />} />
                     <Route path="/auth" element={<Auth />} />
+                    <Route path="/auth/confirm" element={<AuthConfirm />} />
                     <Route
                       path="/booking"
                       element={
