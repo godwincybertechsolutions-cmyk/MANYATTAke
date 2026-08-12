@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { Map, Clock, ArrowRight, Compass, ChevronDown, ChevronUp, MapPin, BedDouble } from 'lucide-react';
+import { Map, Clock, Compass, ChevronDown, ChevronUp, MapPin, BedDouble } from 'lucide-react';
 import { SAFARI_ITINERARIES } from '../constants';
 import SectionHeader from '../components/SectionHeader';
 import OptimizedImage from '../components/OptimizedImage';
@@ -223,9 +223,9 @@ landscapes, wildlife, and cultures ensure that every adventure is enriching and 
             <p className="text-gray-400 max-w-lg mx-auto mb-8 relative z-10">
               Visualize your journey from the highlands to the plains. See how our properties connect to key wildlife corridors.
             </p>
-            <button className="bg-white text-black hover:bg-gray-200 px-8 py-3 rounded-full font-bold uppercase text-sm tracking-widest relative z-10 transition-colors">
-              Explore Route
-            </button>
+            <div className="relative z-10 inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-6 py-3 text-xs font-bold uppercase tracking-[0.2em] text-white backdrop-blur-sm">
+              Coming Soon
+            </div>
           </div>
         </div>
       </section>
@@ -238,9 +238,9 @@ landscapes, wildlife, and cultures ensure that every adventure is enriching and 
           <p className="text-white/90 text-lg mb-8 max-w-2xl mx-auto">
             Want to combine a beach holiday with a mountain trek? Or a city tour with a game drive? Our concierge team builds bespoke itineraries.
           </p>
-          <button className="bg-dark hover:bg-black text-white px-10 py-4 rounded-full font-bold uppercase text-sm tracking-widest inline-flex items-center gap-2">
-            Customize Your Safari <ArrowRight size={16} />
-          </button>
+          <div className="inline-flex items-center gap-2 rounded-full border border-white/40 bg-white/10 px-6 py-3 text-xs font-bold uppercase tracking-[0.2em] text-white backdrop-blur-sm">
+            Customize Your Safari · Coming Soon
+          </div>
         </div>
       </section>
     </div>
