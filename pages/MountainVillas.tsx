@@ -80,6 +80,11 @@ const MountainVillas: React.FC = () => {
         <img
           src="/assets/Mountain%20Villas%20Hero%20Image/Burguret.%20Outside%20Patio%20View%202.jpg"
           alt="Mountainside Haven"
+          width={1920}
+          height={1080}
+          loading="eager"
+          fetchPriority="high"
+          decoding="async"
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-black/40 flex items-center justify-center text-center">
@@ -164,16 +169,16 @@ const MountainVillas: React.FC = () => {
                       transitionDuration={600}
                       playOnce={false}
                     >
-                      <img src={villa.heroImage} alt={villa.details.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                      <img src={villa.heroImage} alt={`${villa.details.title} exterior`} width={1200} height={800} loading="lazy" decoding="async" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
                       <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
                     </GlareHover>
                   </div>
                   {/* Display 2 more small images if available */}
                   <div className="h-40 rounded-xl overflow-hidden hidden md:block">
-                    <img src={villa.images[1] || villa.images[0]} className="w-full h-full object-cover" alt="Detail 1" />
+                    <img src={villa.images[1] || villa.images[0]} width={600} height={400} loading="lazy" decoding="async" className="w-full h-full object-cover" alt={`${villa.details.title} interior detail`} />
                   </div>
                   <div className="h-40 rounded-xl overflow-hidden hidden md:block">
-                    <img src={villa.images[2] || villa.images[0]} className="w-full h-full object-cover" alt="Detail 2" />
+                    <img src={villa.images[2] || villa.images[0]} width={600} height={400} loading="lazy" decoding="async" className="w-full h-full object-cover" alt={`${villa.details.title} amenity detail`} />
                   </div>
                 </div>
               </div>
