@@ -16,17 +16,17 @@ import { resolvePropertySlug } from '../constants';
 
 const VILLAS = [
   {
+    id: 'narumoru',
+    details: NARUMORU_VILLA_DETAILS,
+    images: NARUMORU_VILLA_DETAILS.images || [],
+    heroImage: "/assets/Burguret Mountainside Villa Section/Burguret. House Entrance.jpg"
+  },
+  {
     id: 'burguret',
     details: BURGURET_VILLA_DETAILS,
     images: BURGURET_IMAGES,
     heroImage: "/assets/Burguret Mountainside Villa Section/Burguret. House Entrance.jpg"
   },
-  {
-    id: 'narumoru',
-    details: NARUMORU_VILLA_DETAILS,
-    images: NARUMORU_VILLA_DETAILS.images || [],
-    heroImage: "/assets/Burguret Mountainside Villa Section/Burguret. House Entrance.jpg"
-  }
 ];
 
 const MountainVillas: React.FC = () => {

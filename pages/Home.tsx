@@ -81,7 +81,6 @@ const Home: React.FC = () => {
             transition={{ delay: 1 }}
             className="text-white/80 font-light text-base sm:text-lg italic mb-8 sm:mb-12"
           >
-            Your Kenyan Sanctuary Awaits
           </motion.p>
 
           <motion.button
@@ -102,7 +101,7 @@ const Home: React.FC = () => {
       {/* Experience Teasers */}
       <section className="py-16 sm:py-20 bg-white">
         <div className="container mx-auto px-4 sm:px-6">
-          <SectionHeader title="The Trinity of Experience" subtitle="Curated For You" />
+          <SectionHeader title="Homes & Safaris" subtitle="Curated For You" />
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {/* Card 1 */}
@@ -136,42 +135,12 @@ const Home: React.FC = () => {
             </Link>
 
             {/* Card 2 */}
-            <Link to="/safaris" className="group cursor-pointer">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-              >
-                <div className="relative h-[300px] sm:h-[500px] overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 group-hover:-translate-y-2">
-                  <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors z-10 duration-300"></div>
-                  <OptimizedImage
-                    src="/assets/Trinity%20of%20Experience/Safaris/unnamed%20(13).png"
-                    alt="Safari"
-                    className="transition-transform duration-700 group-hover:scale-110"
-                    fill
-                    objectFit="cover"
-                  />
-                  <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-20">
-                    <div className="flex items-center gap-3 text-white mb-2 group-hover:gap-4 transition-all duration-300">
-                      <div className="p-2 bg-primary rounded-lg flex-shrink-0">
-                        <Binoculars size={20} />
-                      </div>
-                      <h3 className="font-serif text-xl sm:text-2xl font-semibold">Safaris</h3>
-                    </div>
-                    <p className="text-white/90 text-sm leading-relaxed">Immersive game drives connecting you to nature's rhythm.</p>
-                  </div>
-                </div>
-              </motion.div>
-            </Link>
-
-            {/* Card 3 */}
             <Link to="/urban-apartments" className="group cursor-pointer">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.5, delay: 0.2 }}
+                transition={{ duration: 0.5, delay: 0.1 }}
               >
                 <div className="relative h-[300px] sm:h-[500px] overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 group-hover:-translate-y-2">
                   <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors z-10 duration-300"></div>
@@ -190,6 +159,36 @@ const Home: React.FC = () => {
                       <h3 className="font-serif text-xl sm:text-2xl font-semibold">Apartments</h3>
                     </div>
                     <p className="text-white/90 text-sm leading-relaxed">Sophisticated apartments in the heart of Nairobi.</p>
+                  </div>
+                </div>
+              </motion.div>
+            </Link>
+
+            {/* Card 3 */}
+            <Link to="/safaris" className="group cursor-pointer">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+              >
+                <div className="relative h-[300px] sm:h-[500px] overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 group-hover:-translate-y-2">
+                  <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors z-10 duration-300"></div>
+                  <OptimizedImage
+                    src="/assets/Trinity%20of%20Experience/Safaris/unnamed%20(13).png"
+                    alt="Safari"
+                    className="transition-transform duration-700 group-hover:scale-110"
+                    fill
+                    objectFit="cover"
+                  />
+                  <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-20">
+                    <div className="flex items-center gap-3 text-white mb-2 group-hover:gap-4 transition-all duration-300">
+                      <div className="p-2 bg-primary rounded-lg flex-shrink-0">
+                        <Binoculars size={20} />
+                      </div>
+                      <h3 className="font-serif text-xl sm:text-2xl font-semibold">Safaris</h3>
+                    </div>
+                    <p className="text-white/90 text-sm leading-relaxed">Immersive game drives connecting you to nature&apos;s rhythm.</p>
                   </div>
                 </div>
               </motion.div>

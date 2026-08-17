@@ -79,7 +79,7 @@ landscapes, wildlife, and cultures ensure that every adventure is enriching and 
       {/* Interactive Itineraries */}
       <section className="py-20 bg-stone-100">
         <div className="container mx-auto px-6">
-          <SectionHeader title="Curated Itineraries" subtitle="Interactive Builder" />
+          <SectionHeader title="Curated Itineraries" />
 
           <div className="grid gap-12">
             {SAFARI_ITINERARIES.map((itinerary) => (
