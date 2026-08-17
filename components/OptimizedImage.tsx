@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 
 interface OptimizedImageProps {
   src: string;
@@ -27,12 +27,11 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
   onLoad,
   width,
   height,
-  sizes = fill ? '100vw' : undefined,
+  sizes,
   srcSet,
 }) => {
-  const [loaded, setLoaded] = useState(false);
-  const [shouldLoad, setShouldLoad] = useState(priority);
-  const [failed, setFailed] = useState(false);
+  const [visible, setVisible] = useState(priority);
+  const [resolvedSrc, setResolvedSrc] = useState(priority ? src : BLUR_PLACEHOLDER);
   const imgRef = useRef<HTMLImageElement>(null);
 
   const objectFitClass = {
@@ -44,83 +43,64 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
 
   useEffect(() => {
     if (priority) {
-      setShouldLoad(true);
+      setResolvedSrc(src);
+      setVisible(true);
       return;
     }
 
-    const element = imgRef.current;
-    if (!element || typeof IntersectionObserver === 'undefined') {
-      setShouldLoad(true);
-      return;
-    }
+    const el = imgRef.current;
+    if (!el) return;
 
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setShouldLoad(true);
+          setResolvedSrc(src);
           observer.disconnect();
         }
       },
-      { rootMargin: '240px' }
+      { rootMargin: '120px' }
     );
 
-    observer.observe(element);
+    observer.observe(el);
     return () => observer.disconnect();
-  }, [priority, src]);
+  }, [src, priority]);
 
   const handleLoad = () => {
-    setLoaded(true);
+    setVisible(true);
     onLoad?.();
   };
 
-  const imageClassName = `${objectFitClass} block transition-opacity duration-300 ${
-    loaded ? 'opacity-100' : 'opacity-0'
-  } ${fill ? 'h-full w-full' : ''} ${className}`;
-
-  const image = (
-    <img
-      ref={imgRef}
-      src={shouldLoad ? src : BLUR_PLACEHOLDER}
-      alt={alt}
-      loading={priority ? 'eager' : 'lazy'}
-      decoding="async"
-      fetchPriority={priority ? 'high' : 'auto'}
-      sizes={sizes}
-      srcSet={shouldLoad ? srcSet : undefined}
-      width={fill ? undefined : width}
-      height={fill ? undefined : height}
-      className={imageClassName}
-      onLoad={handleLoad}
-      onError={() => {
-        setFailed(true);
-        setLoaded(true);
-      }}
-    />
-  );
+  const imgProps = {
+    ref: imgRef,
+    src: resolvedSrc,
+    alt,
+    loading: (priority ? 'eager' : 'lazy') as 'eager' | 'lazy',
+    decoding: (priority ? 'sync' : 'async') as 'sync' | 'async',
+    fetchPriority: priority ? ('high' as const) : undefined,
+    sizes,
+    srcSet,
+    width: fill ? undefined : width,
+    height: fill ? undefined : height,
+    className: `${objectFitClass} transition-opacity duration-300 ${
+      visible ? 'opacity-100' : 'opacity-0'
+    } ${fill ? `w-full h-full ${className}` : className}`,
+    onLoad: handleLoad,
+    onError: (e: React.SyntheticEvent<HTMLImageElement>) => {
+      const img = e.currentTarget;
+      if (img.src !== src) img.src = src;
+      setVisible(true);
+    },
+  };
 
   if (fill) {
     return (
-      <div className={`relative h-full w-full overflow-hidden bg-gray-100 ${className}`}>
-        {failed && (
-          <div className="absolute inset-0 flex items-center justify-center bg-gray-100 px-4 text-center text-sm text-gray-500">
-            Image unavailable
-          </div>
-        )}
-        {image}
+      <div className={`relative w-full h-full overflow-hidden ${className}`}>
+        <img {...imgProps} className={`${objectFitClass} w-full h-full transition-opacity duration-300 ${visible ? 'opacity-100' : 'opacity-0'}`} />
       </div>
     );
   }
 
-  return (
-    <span className="relative block overflow-hidden bg-gray-100" style={{ aspectRatio: width && height ? `${width} / ${height}` : undefined }}>
-      {failed && (
-        <span className="absolute inset-0 flex items-center justify-center px-4 text-center text-sm text-gray-500">
-          Image unavailable
-        </span>
-      )}
-      {image}
-    </span>
-  );
+  return <img {...imgProps} />;
 };
 
 export default OptimizedImage;
