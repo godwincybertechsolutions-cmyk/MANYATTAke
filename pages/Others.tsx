@@ -22,7 +22,7 @@ const Others: React.FC = () => {
         <meta property="og:description" content="Discover curated lifestyle experiences and authentic Kenyan stories" />
         <meta property="og:image" content="/assets/Others Hero Image/The-Narumoru-Route-Climb-up-Mount-Kenya.jpg" />
         <meta name="twitter:card" content="summary_large_image" />
-        <link rel="canonical" href="https://newmanyattakenya.com/#/others" />
+        <link rel="canonical" href="https://newmanyattakenya.com/others" />
       </Helmet>
       {/* Hero */}
       <div className="relative h-[50vh] w-full bg-stone-900">

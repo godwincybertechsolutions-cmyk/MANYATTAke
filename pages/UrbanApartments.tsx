@@ -50,7 +50,7 @@ const UrbanApartments: React.FC = () => {
         <meta property="og:description" content="Premium apartments in Nairobi for rent and sale" />
         <meta property="og:image" content="/assets/Apartments Hero Image/Alba_Gardens_Banner.jpg" />
         <meta name="twitter:card" content="summary_large_image" />
-        <link rel="canonical" href="https://newmanyattakenya.com/#/urban-apartments" />
+        <link rel="canonical" href="https://newmanyattakenya.com/urban-apartments" />
       </Helmet>
       <ImageSlideshowModal
         isOpen={modalOpen}

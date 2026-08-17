@@ -45,7 +45,7 @@ const Safaris: React.FC = () => {
         <meta property="og:description" content="Curated safari experiences across Kenya's best national parks" />
         <meta property="og:image" content="https://www.onthegotours.com/repository/Tsavo-West-National-Park-watering-hole--Kenya-safaris--On-The-Go-Tours-831311706788391_crop_flip_2250_1200_f2f2f2_center-center.jpg" />
         <meta name="twitter:card" content="summary_large_image" />
-        <link rel="canonical" href="https://newmanyattakenya.com/#/safaris" />
+        <link rel="canonical" href="https://newmanyattakenya.com/safaris" />
       </Helmet>
       {/* Hero */}
       <div className="relative h-[60vh] w-full bg-dark overflow-hidden">
