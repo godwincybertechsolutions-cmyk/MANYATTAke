@@ -31,7 +31,7 @@ const Footer: React.FC = () => {
             </p>
             <div className="flex space-x-4" role="list" aria-label="Social media links">
               <a 
-                href="#" 
+                href="/" 
                 className="text-gray-400 hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary rounded-lg p-1" 
                 aria-label="Follow us on Instagram"
                 role="listitem"
@@ -39,7 +39,7 @@ const Footer: React.FC = () => {
                 <Instagram size={20} aria-hidden="true" />
               </a>
               <a 
-                href="#" 
+                href="/" 
                 className="text-gray-400 hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary rounded-lg p-1" 
                 aria-label="Follow us on Facebook"
                 role="listitem"
@@ -47,7 +47,7 @@ const Footer: React.FC = () => {
                 <Facebook size={20} aria-hidden="true" />
               </a>
               <a 
-                href="#" 
+                href="/" 
                 className="text-gray-400 hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary rounded-lg p-1" 
                 aria-label="Follow us on Twitter"
                 role="listitem"
@@ -115,13 +115,13 @@ const Footer: React.FC = () => {
           <p>&copy; {new Date().getFullYear()} {APP_NAME}. All rights reserved.</p>
           <nav className="flex space-x-6 mt-4 md:mt-0" aria-label="Legal links">
             <a 
-              href="#" 
+              href="/" 
               className="hover:text-gray-400 focus:outline-none focus:ring-2 focus:ring-primary rounded px-2 py-1"
             >
               Privacy Policy
             </a>
             <a 
-              href="#" 
+              href="/" 
               className="hover:text-gray-400 focus:outline-none focus:ring-2 focus:ring-primary rounded px-2 py-1"
             >
               Terms of Service

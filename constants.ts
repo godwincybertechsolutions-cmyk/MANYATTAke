@@ -18,8 +18,8 @@ export function resolvePropertySlug(frontendId: string): string {
 const navigationLinks: NavigationLink[] = [
   { name: 'Home', path: '/' },
   { name: 'Mountain Villas', path: '/mountain-villas' },
-  { name: 'Safaris', path: '/safaris' },
   { name: 'Apartments', path: '/urban-apartments' },
+  { name: 'Safaris', path: '/safaris' },
   { name: 'More', path: '/others' },
 ];
 

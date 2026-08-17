@@ -16,17 +16,17 @@ import { resolvePropertySlug } from '../constants';
 
 const VILLAS = [
   {
+    id: 'narumoru',
+    details: NARUMORU_VILLA_DETAILS,
+    images: NARUMORU_VILLA_DETAILS.images || [],
+    heroImage: "/assets/Burguret Mountainside Villa Section/Burguret. House Entrance.jpg"
+  },
+  {
     id: 'burguret',
     details: BURGURET_VILLA_DETAILS,
     images: BURGURET_IMAGES,
     heroImage: "/assets/Burguret Mountainside Villa Section/Burguret. House Entrance.jpg"
   },
-  {
-    id: 'narumoru',
-    details: NARUMORU_VILLA_DETAILS,
-    images: NARUMORU_VILLA_DETAILS.images || [],
-    heroImage: "/assets/Burguret Mountainside Villa Section/Burguret. House Entrance.jpg"
-  }
 ];
 
 const MountainVillas: React.FC = () => {
@@ -66,7 +66,7 @@ const MountainVillas: React.FC = () => {
         <meta property="og:description" content="Luxury mountain villas with breathtaking views in Narumoru" />
         <meta property="og:image" content="/assets/Mountain Villas Hero Image/Burguret. House Entrance.jpg" />
         <meta name="twitter:card" content="summary_large_image" />
-        <link rel="canonical" href="https://newmanyattakenya.com/#/mountain-villas" />
+        <link rel="canonical" href="https://newmanyattakenya.com/mountain-villas" />
       </Helmet>
       <ImageSlideshowModal
         isOpen={modalOpen}
