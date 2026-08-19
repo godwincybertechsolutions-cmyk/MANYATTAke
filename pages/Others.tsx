@@ -109,10 +109,10 @@ const Others: React.FC = () => {
           <div className="mt-16 bg-white border border-gray-100 rounded-3xl p-8 sm:p-12 shadow-sm">
             <div className="text-center max-w-xl mx-auto mb-10">
               <span className="text-primary text-xs font-bold uppercase tracking-[0.2em] block mb-2">
-                Official Collection
+                Merch
               </span>
-              <h3 className="font-serif text-3xl md:text-4xl text-dark mb-3">
-                New Manyatta Merchandise
+              <h3 className="font-serif text-4xl md:text-5xl text-dark mb-3">
+                Official Collection
               </h3>
               <p className="text-gray-500 text-sm leading-relaxed">
                 Take a piece of your Kenyan retreat home with our curated signature apparel, handmade bush journals, and safari gear.
@@ -122,6 +122,9 @@ const Others: React.FC = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               <div className="bg-stone-50 p-6 rounded-2xl border border-gray-100 flex flex-col justify-between hover:shadow-md transition-shadow">
                 <div>
+                  <div className="aspect-[4/3] rounded-xl overflow-hidden mb-5 bg-stone-100">
+                    <OptimizedImage src="/assets/Merchandise/signature-safari-cap.png" alt="Signature Safari Cap" fill objectFit="cover" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" />
+                  </div>
                   <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-700 bg-emerald-100 px-2.5 py-1 rounded-full inline-block mb-3">
                     Apparel
                   </span>
@@ -145,6 +148,9 @@ const Others: React.FC = () => {
 
               <div className="bg-stone-50 p-6 rounded-2xl border border-gray-100 flex flex-col justify-between hover:shadow-md transition-shadow">
                 <div>
+                  <div className="aspect-[4/3] rounded-xl overflow-hidden mb-5 bg-stone-100">
+                    <OptimizedImage src="/assets/Merchandise/highland-travel-journal.png" alt="Highland Travel Journal" fill objectFit="cover" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" />
+                  </div>
                   <span className="text-[10px] font-bold uppercase tracking-wider text-amber-700 bg-amber-100 px-2.5 py-1 rounded-full inline-block mb-3">
                     Crafted Leather
                   </span>
@@ -168,6 +174,9 @@ const Others: React.FC = () => {
 
               <div className="bg-stone-50 p-6 rounded-2xl border border-gray-100 flex flex-col justify-between hover:shadow-md transition-shadow">
                 <div>
+                  <div className="aspect-[4/3] rounded-xl overflow-hidden mb-5 bg-stone-100">
+                    <OptimizedImage src="/assets/Merchandise/canvas-excursion-tote.png" alt="Canvas Excursion Tote" fill objectFit="cover" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" />
+                  </div>
                   <span className="text-[10px] font-bold uppercase tracking-wider text-blue-700 bg-blue-100 px-2.5 py-1 rounded-full inline-block mb-3">
                     Accessories
                   </span>

@@ -58,7 +58,7 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
           observer.disconnect();
         }
       },
-      { rootMargin: '120px' }
+      { rootMargin: '600px 0px', threshold: 0.01 }
     );
 
     observer.observe(el);
