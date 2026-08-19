@@ -70,16 +70,17 @@ const MountainVillas: React.FC = () => {
       />
 
       {/* Hero */}
-      <div className="relative h-[60vh] w-full">
-        <img
-          src="/assets/Mountain%20Villas%20Hero%20Image/Burguret.%20Outside%20Patio%20View%202.jpg"
-          alt="Mountainside Haven"
-          className="w-full h-full object-cover"
+      <div className="relative h-[58vh] min-h-[420px] w-full sm:h-[60vh]">
+        <AssetSlideshow
+          images={NARUMORU_VILLA_DETAILS.images || []}
+          alt="Narumoru Mountain Villa"
+          className="h-full w-full"
+          imageClassName="object-center"
         />
-        <div className="absolute inset-0 bg-black/40 flex items-center justify-center text-center">
-          <div className="max-w-4xl px-6">
-            <h1 className="font-serif text-5xl md:text-7xl text-white mb-6 uppercase">Mountainside Haven</h1>
-            <p className="text-white/90 text-xl font-light max-w-2xl mx-auto mb-8 tracking-wide">
+        <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-black/20 text-center">
+          <div className="max-w-4xl px-5 sm:px-6">
+            <h1 className="font-serif text-4xl uppercase leading-tight text-white sm:text-5xl md:text-7xl">Mountain Villas</h1>
+            <p className="mx-auto mt-4 max-w-2xl text-base font-light tracking-wide text-white/90 sm:text-xl">
               Experience the serenity of Mt. Kenya in our exclusive villas.
             </p>
           </div>
@@ -97,11 +98,11 @@ const MountainVillas: React.FC = () => {
             transition={{ duration: 0.5 }}
             className={`common-section ${index % 2 === 1 ? 'bg-stone-50' : 'bg-white'} py-20`}
           >
-            <div className="container mx-auto px-6">
-              <div className={`flex flex-col md:flex-row gap-12 items-start ${index % 2 === 1 ? 'md:flex-row-reverse' : ''}`}>
+            <div className="container mx-auto px-4 sm:px-6">
+              <div className={`flex flex-col gap-8 sm:gap-12 md:flex-row md:items-start ${index % 2 === 1 ? 'md:flex-row-reverse' : ''}`}>
 
                 {/* Text Content */}
-                <div className="md:w-1/2">
+                <div className="w-full md:w-1/2">
                   <span className="text-primary font-bold uppercase tracking-widest text-xs mb-4 block">Exclusive Villa</span>
                   <h2 className="font-serif text-4xl mb-6 text-dark">{villa.details.title}</h2>
                   <div className="flex items-center gap-2 text-primary font-medium mb-6">
@@ -131,16 +132,16 @@ const MountainVillas: React.FC = () => {
                     </ul>
                   </div>
 
-                  <div className="flex gap-4">
+                  <div className="grid grid-cols-1 gap-3 sm:flex sm:gap-4">
                     <button
                       onClick={() => openGallery(villa.images, villa.details.title)}
-                      className="px-6 py-3 border border-dark text-dark rounded-full font-medium hover:bg-dark hover:text-white transition-all duration-300 flex items-center gap-2 uppercase text-sm tracking-widest shadow-sm hover:shadow-md active:scale-95"
+                      className="flex min-h-12 w-full items-center justify-center gap-2 rounded-full border border-dark px-5 py-3 text-sm font-medium uppercase tracking-widest text-dark shadow-sm transition-all duration-300 hover:bg-dark hover:text-white hover:shadow-md active:scale-95 sm:w-auto"
                     >
                       <Camera size={18} /> View Gallery
                     </button>
                     <button
                       onClick={() => reserveVilla(villa.id, villa.details.title)}
-                      className="px-6 py-3 bg-primary hover:bg-[#c4492e] text-white rounded-full font-medium transition-all duration-300 uppercase text-sm tracking-widest shadow-md hover:shadow-lg active:scale-95"
+                      className="min-h-12 w-full rounded-full bg-primary px-5 py-3 text-sm font-medium uppercase tracking-widest text-white shadow-md transition-all duration-300 hover:bg-[#c4492e] hover:shadow-lg active:scale-95 sm:w-auto"
                     >
                       Reserve Now
                     </button>

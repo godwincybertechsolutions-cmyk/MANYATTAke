@@ -104,22 +104,18 @@ const Home: React.FC = () => {
 
       <section className="border-b border-gray-200/60 bg-stone-50 py-14 sm:py-16">
         <div className="container mx-auto px-4 sm:px-6">
-          <div className="mx-auto flex max-w-6xl flex-col gap-8 rounded-3xl bg-dark p-6 text-white shadow-xl sm:p-10 lg:flex-row lg:items-center lg:justify-between">
+          <div className="mx-auto flex max-w-6xl flex-col gap-8 rounded-3xl bg-dark p-5 text-white shadow-xl sm:p-10 lg:flex-row lg:items-center lg:justify-between">
             <div className="max-w-xl">
-              <span className="mb-3 block text-xs font-bold uppercase tracking-[0.25em] text-primary">Your Kenya concierge</span>
-              <h3 className="font-serif text-3xl sm:text-4xl">Chat with us before you arrive.</h3>
-              <p className="mt-4 leading-relaxed text-white/70">Ask about availability, tailor-made stays, transfers, or the best way to experience Mt. Kenya. Our team is one message away.</p>
+              <h3 className="font-serif text-3xl sm:text-4xl">Chat with Us</h3>
             </div>
             <div className="grid w-full gap-3 sm:grid-cols-2 lg:max-w-xl">
-              {[{ name: 'Concierge 01', display: CONCIERGE_1_DISPLAY, whatsapp: CONCIERGE_1_WHATSAPP, phone: CONCIERGE_1_PHONE }, { name: 'Concierge 02', display: CONCIERGE_2_DISPLAY, whatsapp: CONCIERGE_2_WHATSAPP, phone: CONCIERGE_2_PHONE }].map((contact) => (
-                <div key={contact.name} className="rounded-2xl border border-white/15 bg-white/10 p-4 backdrop-blur-sm">
-                  <p className="text-sm font-semibold">{contact.name}</p>
-                  <p className="mt-1 text-sm text-white/60">Available for enquiries</p>
-                  <div className="mt-4 flex gap-2">
-                    <a href={contact.whatsapp} target="_blank" rel="noopener noreferrer" aria-label={`Chat with ${contact.name} on WhatsApp`} className="flex flex-1 items-center justify-center gap-2 rounded-full bg-primary px-3 py-2.5 text-xs font-bold uppercase tracking-wider transition hover:bg-primary/85 focus:outline-none focus:ring-2 focus:ring-white"><MessageCircle size={16} /> WhatsApp</a>
-                    <a href={`tel:${contact.phone}`} aria-label={`Call ${contact.name}`} className="flex size-10 items-center justify-center rounded-full border border-white/25 text-white transition hover:bg-white hover:text-dark focus:outline-none focus:ring-2 focus:ring-white"><Phone size={16} /></a>
+              {[{ display: CONCIERGE_1_DISPLAY, whatsapp: CONCIERGE_1_WHATSAPP, phone: CONCIERGE_1_PHONE }, { display: CONCIERGE_2_DISPLAY, whatsapp: CONCIERGE_2_WHATSAPP, phone: CONCIERGE_2_PHONE }].map((contact) => (
+                <div key={contact.phone} className="rounded-2xl border border-white/15 bg-white/10 p-3 backdrop-blur-sm sm:p-4">
+                  <div className="flex gap-2">
+                    <a href={contact.whatsapp} target="_blank" rel="noopener noreferrer" aria-label={`Chat on WhatsApp at ${contact.display}`} className="flex min-h-11 flex-1 items-center justify-center gap-2 rounded-full bg-primary px-3 py-2.5 text-xs font-bold uppercase tracking-wider transition hover:bg-primary/85 focus:outline-none focus:ring-2 focus:ring-white"><MessageCircle size={16} /> WhatsApp</a>
+                    <a href={`tel:${contact.phone}`} aria-label={`Call ${contact.display}`} className="flex size-11 shrink-0 items-center justify-center rounded-full border border-white/25 text-white transition hover:bg-white hover:text-dark focus:outline-none focus:ring-2 focus:ring-white"><Phone size={16} /></a>
                   </div>
-                  <p className="mt-3 text-center text-xs text-white/55">{contact.display}</p>
+                  <p className="mt-3 text-center text-xs text-white/65">{contact.display}</p>
                 </div>
               ))}
             </div>
