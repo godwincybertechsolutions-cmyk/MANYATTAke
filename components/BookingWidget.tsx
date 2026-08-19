@@ -1,159 +1,70 @@
 import React, { useState } from 'react';
-import { Calendar, MapPin, ChevronDown } from 'lucide-react';
+import { Calendar, MapPin, ArrowRight, Check, Users } from 'lucide-react';
 import { PropertyType } from '../types';
 import type { BookingLocationState } from '../types';
 import { COLORS } from '../tokens';
 import { useNavigate } from 'react-router-dom';
-import { motion } from 'framer-motion';
+
+const experiences: { type: PropertyType; label: string; location: string }[] = [
+  { type: 'mountain', label: 'Mountain Villas', location: 'Narumoru' },
+  { type: 'safari', label: 'Safaris', location: 'All Parks' },
+  { type: 'urban', label: 'Apartments', location: 'Nairobi' },
+];
 
 const BookingWidget: React.FC = () => {
   const [activeTab, setActiveTab] = useState<PropertyType>('mountain');
   const [checkIn, setCheckIn] = useState('');
   const [checkOut, setCheckOut] = useState('');
+  const [guests, setGuests] = useState('2 guests');
   const navigate = useNavigate();
+  const selected = experiences.find((item) => item.type === activeTab) ?? experiences[0];
 
   const goToBooking = () => {
     const state: BookingLocationState = {
       type: activeTab,
-      name:
-        activeTab === 'mountain'
-          ? 'Mountain Villa'
-          : activeTab === 'safari'
-            ? 'Safari Experience'
-            : 'Urban Apartment',
+      name: activeTab === 'mountain' ? 'Mountain Villa' : activeTab === 'safari' ? 'Safari Experience' : 'Urban Apartment',
     };
-
     navigate('/booking', { state });
   };
 
   return (
-    <div className="w-full max-w-5xl mx-auto bg-white rounded-2xl shadow-2xl overflow-hidden -mt-16 relative z-30 hidden lg:block border border-gray-100 hover:shadow-3xl transition-shadow duration-300" style={{ backgroundColor: COLORS.white, color: COLORS.dark }} role="region" aria-label="Availability checker">
-      <div className="flex border-b border-gray-100" role="tablist">
-        <motion.button
-          whileHover={{ backgroundColor: "#f3f4f6" }}
-          onClick={() => setActiveTab('mountain')}
-          role="tab"
-          aria-selected={activeTab === 'mountain'}
-          className={`flex-1 py-4 text-center text-sm font-semibold uppercase tracking-wider transition-all focus:outline-none focus:ring-2 focus:ring-offset-0 focus:ring-offset-transparent ${activeTab === 'mountain' ? 'shadow-md' : 'text-gray-500'
-            }`}
-          style={{
-            backgroundColor: activeTab === 'mountain' ? COLORS.primary : 'transparent',
-            color: activeTab === 'mountain' ? COLORS.white : COLORS.gray[500],
-          }}
-        >
-          Mountain Villas
-        </motion.button>
-        <motion.button
-          whileHover={{ backgroundColor: "#f3f4f6" }}
-          onClick={() => setActiveTab('safari')}
-          role="tab"
-          aria-selected={activeTab === 'safari'}
-          className={`flex-1 py-4 text-center text-sm font-semibold uppercase tracking-wider transition-all focus:outline-none focus:ring-2 focus:ring-offset-0 focus:ring-offset-transparent ${activeTab === 'safari' ? 'shadow-md' : 'text-gray-500'
-            }`}
-          style={{
-            backgroundColor: activeTab === 'safari' ? COLORS.primary : 'transparent',
-            color: activeTab === 'safari' ? COLORS.white : COLORS.gray[500],
-          }}
-        >
-          Safaris
-        </motion.button>
-        <motion.button
-          whileHover={{ backgroundColor: "#f3f4f6" }}
-          onClick={() => setActiveTab('urban')}
-          role="tab"
-          aria-selected={activeTab === 'urban'}
-          className={`flex-1 py-4 text-center text-sm font-semibold uppercase tracking-wider transition-all focus:outline-none focus:ring-2 focus:ring-offset-0 focus:ring-offset-transparent ${activeTab === 'urban' ? 'shadow-md' : 'text-gray-500'
-            }`}
-          style={{
-            backgroundColor: activeTab === 'urban' ? COLORS.primary : 'transparent',
-            color: activeTab === 'urban' ? COLORS.white : COLORS.gray[500],
-          }}
-        >
-          Apartments
-        </motion.button>
+    <section className="relative z-30 mx-auto hidden w-full max-w-6xl -mt-20 lg:block" aria-label="Plan your stay">
+      <div className="overflow-hidden rounded-3xl border border-stone-200 bg-white shadow-2xl" style={{ color: COLORS.dark }}>
+        <div className="flex items-center justify-between border-b border-stone-200 px-6 py-5">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">Plan your stay</p>
+            <h2 className="mt-1 font-serif text-2xl text-dark">Find your Manyatta experience</h2>
+          </div>
+          <span className="hidden items-center gap-2 text-xs text-gray-500 md:flex"><Check size={15} className="text-primary" /> Flexible dates welcome</span>
+        </div>
+        <div className="flex gap-2 bg-stone-50 p-3" role="tablist" aria-label="Choose an experience">
+          {experiences.map((experience) => (
+            <button key={experience.type} type="button" role="tab" aria-selected={activeTab === experience.type} onClick={() => setActiveTab(experience.type)} className={`rounded-xl px-5 py-3 text-sm font-semibold transition-colors ${activeTab === experience.type ? 'bg-primary text-white shadow-sm' : 'text-gray-500 hover:bg-white hover:text-dark'}`}>
+              {experience.label}
+            </button>
+          ))}
+        </div>
+        <form className="grid grid-cols-1 gap-4 p-5 md:grid-cols-2 xl:grid-cols-[1.15fr_1fr_1fr_0.9fr_auto]" onSubmit={(event) => { event.preventDefault(); goToBooking(); }} aria-label="Property booking form">
+          <div className="rounded-2xl border border-stone-200 bg-stone-50 px-4 py-3">
+            <label className="mb-1 block text-[11px] font-semibold uppercase tracking-widest text-gray-500" htmlFor="booking-experience">Experience</label>
+            <div className="flex items-center gap-2"><MapPin size={18} className="text-primary" aria-hidden="true" /><span id="booking-experience" className="font-serif text-lg text-dark">{selected.location}</span></div>
+          </div>
+          <div className="rounded-2xl border border-stone-200 bg-stone-50 px-4 py-3">
+            <label className="mb-1 block text-[11px] font-semibold uppercase tracking-widest text-gray-500" htmlFor="check-in-date">Check in</label>
+            <div className="flex items-center gap-2"><Calendar size={18} className="text-primary" aria-hidden="true" /><input id="check-in-date" type="date" value={checkIn} onChange={(event) => setCheckIn(event.target.value)} className="w-full bg-transparent text-sm text-dark outline-none" aria-label="Check in date" /></div>
+          </div>
+          <div className="rounded-2xl border border-stone-200 bg-stone-50 px-4 py-3">
+            <label className="mb-1 block text-[11px] font-semibold uppercase tracking-widest text-gray-500" htmlFor="check-out-date">Check out</label>
+            <div className="flex items-center gap-2"><Calendar size={18} className="text-primary" aria-hidden="true" /><input id="check-out-date" type="date" min={checkIn || undefined} value={checkOut} onChange={(event) => setCheckOut(event.target.value)} className="w-full bg-transparent text-sm text-dark outline-none" aria-label="Check out date" /></div>
+          </div>
+          <div className="rounded-2xl border border-stone-200 bg-stone-50 px-4 py-3">
+            <label className="mb-1 block text-[11px] font-semibold uppercase tracking-widest text-gray-500" htmlFor="guest-count">Guests</label>
+            <div className="flex items-center gap-2"><Users size={18} className="text-primary" aria-hidden="true" /><select id="guest-count" value={guests} onChange={(event) => setGuests(event.target.value)} className="w-full bg-transparent text-sm text-dark outline-none"><option>1 guest</option><option>2 guests</option><option>3 guests</option><option>4+ guests</option></select></div>
+          </div>
+          <button type="submit" className="flex min-h-14 items-center justify-center gap-3 rounded-2xl bg-dark px-6 text-sm font-semibold uppercase tracking-widest text-white transition-colors hover:bg-primary focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2">Check availability <ArrowRight size={18} aria-hidden="true" /></button>
+        </form>
       </div>
-
-      <form
-        className="p-4 sm:p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 items-end"
-        onSubmit={(e) => {
-          e.preventDefault();
-          goToBooking();
-        }}
-        aria-label="Property booking form"
-      >
-        <div className="relative group cursor-pointer border-r border-gray-200 pr-4">
-          <label
-            className="text-xs text-gray-400 font-medium uppercase mb-1 block"
-            htmlFor="property-type"
-          >
-            Experience
-          </label>
-          <div className="flex items-center justify-between">
-            <div
-              className="flex items-center gap-2 text-dark font-serif text-lg"
-              id="property-type"
-              role="status"
-              aria-live="polite"
-            >
-              <MapPin size={18} className="text-primary" aria-hidden="true" />
-              <span>
-                {activeTab === 'mountain' ? 'Narumoru' : activeTab === 'safari' ? 'All Parks' : 'Nairobi'}
-              </span>
-            </div>
-            <ChevronDown size={16} className="text-gray-400 group-hover:text-primary transition-colors" aria-hidden="true" />
-          </div>
-        </div>
-
-        <div className="border-r border-gray-200 pr-4">
-          <label
-            className="text-xs text-gray-400 font-medium uppercase mb-1 block"
-            htmlFor="check-in-date"
-          >
-            Check In
-          </label>
-          <div className="flex items-center gap-2 text-dark font-serif text-lg">
-            <Calendar size={18} className="text-primary" aria-hidden="true" />
-            <input
-              id="check-in-date"
-              type="date"
-              value={checkIn}
-              onChange={(e) => setCheckIn(e.target.value)}
-              className="outline-none w-full text-dark font-serif bg-transparent uppercase text-sm cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary rounded px-1"
-              aria-label="Check in date"
-            />
-          </div>
-        </div>
-
-        <div className="border-r border-gray-200 pr-4">
-          <label
-            className="text-xs text-gray-400 font-medium uppercase mb-1 block"
-            htmlFor="check-out-date"
-          >
-            Check Out
-          </label>
-          <div className="flex items-center gap-2 text-dark font-serif text-lg">
-            <Calendar size={18} className="text-primary" aria-hidden="true" />
-            <input
-              id="check-out-date"
-              type="date"
-              value={checkOut}
-              min={checkIn || undefined}
-              onChange={(e) => setCheckOut(e.target.value)}
-              className="outline-none w-full text-dark font-serif bg-transparent uppercase text-sm cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary rounded px-1"
-              aria-label="Check out date"
-            />
-          </div>
-        </div>
-
-        <button
-          type="submit"
-          className="bg-dark hover:bg-black text-white rounded-lg flex flex-col items-center justify-center transition-all duration-300 shadow-lg hover:shadow-xl py-3 lg:h-full focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 active:scale-95"
-        >
-          <span className="text-xs opacity-80 uppercase tracking-widest">Book</span>
-          <span className="font-serif text-lg lg:text-xl italic">Now</span>
-        </button>
-      </form>
-    </div>
+    </section>
   );
 };
 

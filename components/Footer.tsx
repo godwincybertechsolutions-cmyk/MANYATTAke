@@ -1,5 +1,6 @@
 import React from 'react';
-import { Instagram, Facebook, Twitter, Mail, Phone, MapPin } from 'lucide-react';
+import { Mail, Phone, MapPin } from 'lucide-react';
+import { FaFacebookF, FaInstagram, FaTiktok } from 'react-icons/fa';
 import { APP_NAME, CONTACT_PHONE, CONTACT_PHONE_DISPLAY, CONTACT_EMAIL } from '../constants';
 import { TYPOGRAPHY, SPACING, COLORS, TRANSITIONS } from '../tokens';
 import OptimizedImage from './OptimizedImage';
@@ -19,40 +20,22 @@ const Footer: React.FC = () => {
                 aria-label={`${APP_NAME} - Go to home`}
               >
                 <OptimizedImage 
-                  src="/assets/Logo/New Manyatta Logo.png"
-                  alt={APP_NAME}
-                  className="h-16"
+                  src="/assets/Logo/New Manyatta Kenya Logo - Upscaled.webp"
+                  alt="New Manyatta Kenya logo"
+                  className="h-16 w-auto object-contain mix-blend-screen"
                   priority
                 />
-                <span className="font-serif text-2xl font-bold hidden sm:block">{APP_NAME}</span>
+                <span className="font-serif text-2xl font-bold hidden sm:block">By Manyatta Tabasamu</span>
               </Link>
             <p className="text-gray-400 text-sm leading-relaxed">
               Bridging the gap between the majestic peaks of Mt. Kenya, the wild soul of the savannah, and the sophisticated pulse of Nairobi.
             </p>
             <div className="flex space-x-4" role="list" aria-label="Social media links">
-              <a 
-                href="/" 
-                className="text-gray-400 hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary rounded-lg p-1" 
-                aria-label="Follow us on Instagram"
-                role="listitem"
-              >
-                <Instagram size={20} aria-hidden="true" />
+              <a href="https://www.tiktok.com/@newmanyatta_ke" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary rounded-lg p-1" aria-label="Follow @newmanyatta_ke on TikTok" role="listitem">
+                <FaTiktok size={20} aria-hidden="true" />
               </a>
-              <a 
-                href="/" 
-                className="text-gray-400 hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary rounded-lg p-1" 
-                aria-label="Follow us on Facebook"
-                role="listitem"
-              >
-                <Facebook size={20} aria-hidden="true" />
-              </a>
-              <a 
-                href="/" 
-                className="text-gray-400 hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary rounded-lg p-1" 
-                aria-label="Follow us on Twitter"
-                role="listitem"
-              >
-                <Twitter size={20} aria-hidden="true" />
+              <a href="https://www.instagram.com/newmanyatta_ke" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary rounded-lg p-1" aria-label="Follow @newmanyatta_ke on Instagram" role="listitem">
+                <FaInstagram size={20} aria-hidden="true" />
               </a>
             </div>
           </div>
@@ -85,6 +68,12 @@ const Footer: React.FC = () => {
                 <Mail size={18} aria-hidden="true" />
                 <a href={`mailto:${CONTACT_EMAIL}`} className="hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-primary rounded px-1">{CONTACT_EMAIL}</a>
               </p>
+              <div className="flex items-center gap-4 pt-2" aria-label="Social media links">
+                <a href="https://www.tiktok.com/@newmanyatta_ke" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors" aria-label="TikTok: @newmanyatta_ke"><FaTiktok size={18} /></a>
+                <a href="https://www.instagram.com/newmanyatta_ke" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors" aria-label="Instagram: @newmanyatta_ke"><FaInstagram size={18} /></a>
+                <a href="https://www.facebook.com/newmanyatta_ke" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors" aria-label="Facebook: @newmanyatta_ke"><FaFacebookF size={18} /></a>
+                <span className="text-xs text-gray-500">@newmanyatta_ke</span>
+              </div>
             </address>
           </div>
 

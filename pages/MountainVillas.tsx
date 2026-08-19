@@ -79,8 +79,8 @@ const MountainVillas: React.FC = () => {
         />
         <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-black/20 text-center">
           <div className="max-w-4xl px-5 sm:px-6">
-            <h1 className="font-serif text-4xl uppercase leading-tight text-white sm:text-5xl md:text-7xl">Mountain Villas</h1>
-            <p className="mx-auto mt-4 max-w-2xl text-base font-light tracking-wide text-white/90 sm:text-xl">
+            <h1 className="font-serif text-5xl text-white mb-4 md:text-6xl">Mountain Villas</h1>
+            <p className="text-white/90 text-lg tracking-wide uppercase">
               Experience the serenity of Mt. Kenya in our exclusive villas.
             </p>
           </div>

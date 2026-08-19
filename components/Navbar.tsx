@@ -6,7 +6,7 @@ import { NAVIGATION_LINKS, APP_NAME, CONTACT_PHONE, CONTACT_PHONE_DISPLAY } from
 import { prefetchRoute } from '../utils/routePrefetch';
 import { Z_INDEX } from '../tokens';
 
-const LOGO_SRC = '/assets/Logo/New Manyatta Logo.png';
+const LOGO_SRC = '/assets/Logo/New Manyatta Kenya Logo - Upscaled.webp';
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -87,38 +87,28 @@ const Navbar: React.FC = () => {
     >
       <div className="max-w-7xl mx-auto px-3 sm:px-5 lg:px-8">
         <div className="flex items-center justify-between gap-2 sm:gap-4 min-h-[3.25rem] sm:min-h-[3.5rem]">
-          {/* Logo — circular frame */}
+          {/* Logo — blended directly into the navigation */}
           <Link
             to="/"
             onClick={handleLogoClick}
             className="shrink-0 flex items-center gap-2 sm:gap-3 group"
             aria-label={`${APP_NAME} — Home`}
           >
+            <img
+              src={LOGO_SRC}
+              alt="New Manyatta Kenya logo"
+              width={112}
+              height={112}
+              className={`${logoSize} w-auto object-contain object-center mix-blend-multiply transition-transform duration-300 group-hover:scale-105 group-active:scale-95`}
+              decoding="async"
+              fetchPriority="high"
+            />
             <span
-              className={`${logoSize} rounded-full flex items-center justify-center overflow-hidden border-2 shadow-lg transition-all duration-300 group-hover:scale-105 group-active:scale-95 ${
-                scrolled
-                  ? 'border-primary/20 bg-white'
-                  : 'border-white/80 bg-white/95 ring-2 ring-white/30'
-              }`}
-            >
-              <img
-                src={LOGO_SRC}
-                alt=""
-                width={56}
-                height={56}
-                className="w-[78%] h-[78%] object-contain object-center"
-                decoding="async"
-              />
-            </span>
-            <span
-              className={`hidden sm:block font-serif text-sm md:text-base font-semibold leading-tight max-w-[7rem] md:max-w-none transition-colors ${
+              className={`hidden sm:block font-serif text-sm md:text-base font-semibold leading-tight max-w-[11rem] md:max-w-none transition-colors ${
                 scrolled ? 'text-dark' : 'text-white drop-shadow-sm'
               }`}
             >
-              <span className="block truncate">New Manyatta</span>
-              <span className="block text-[10px] md:text-xs font-sans font-medium tracking-widest uppercase opacity-80">
-                Kenya
-              </span>
+              By Manyatta Tabasamu
             </span>
           </Link>
 
