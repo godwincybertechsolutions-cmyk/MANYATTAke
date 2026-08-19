@@ -4,9 +4,7 @@ const routeImports: Record<string, () => Promise<unknown>> = {
   '/safaris': () => import('../pages/Safaris'),
   '/urban-apartments': () => import('../pages/UrbanApartments'),
   '/others': () => import('../pages/Others'),
-  '/auth': () => import('../pages/Auth'),
   '/booking': () => import('../pages/Booking'),
-  '/profile': () => import('../pages/Profile'),
 };
 
 const prefetched = new Set<string>();

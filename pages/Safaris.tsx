@@ -8,14 +8,12 @@ import GlareHover from '../components/GlareHover';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigate, useLocation } from 'react-router-dom';
 import type { BookingLocationState } from '../types';
-import { useAuth } from '../src/auth/AuthContext';
 import { resolvePropertySlug } from '../constants';
 
 const Safaris: React.FC = () => {
   const [expandedItinerary, setExpandedItinerary] = useState<string | null>(null);
   const navigate = useNavigate();
   const location = useLocation();
-  const { user } = useAuth();
 
   const bookSafari = (itineraryId: string, title: string) => {
     const state: BookingLocationState = {
@@ -23,10 +21,6 @@ const Safaris: React.FC = () => {
       name: title,
       type: 'safari',
     };
-    if (!user) {
-      navigate('/auth', { state: { from: '/booking', ...state } });
-      return;
-    }
     navigate('/booking', { state });
   };
 

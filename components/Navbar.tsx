@@ -1,11 +1,10 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Menu, X, Phone, Calendar, User, LogOut } from 'lucide-react';
+import { Menu, X, Phone, Calendar } from 'lucide-react';
 import { NAVIGATION_LINKS, APP_NAME, CONTACT_PHONE, CONTACT_PHONE_DISPLAY } from '../constants';
 import { prefetchRoute } from '../utils/routePrefetch';
 import { Z_INDEX } from '../tokens';
-import { useAuth } from '../src/auth/AuthContext';
 
 const LOGO_SRC = '/assets/Logo/New Manyatta Logo.png';
 
@@ -14,7 +13,6 @@ const Navbar: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
-  const { user, signOut, loading: authLoading } = useAuth();
   const mobileMenuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -56,9 +54,7 @@ const Navbar: React.FC = () => {
   );
 
   const goToBooking = () => {
-    navigate(user ? '/booking' : '/auth', {
-      state: user ? undefined : { tab: 'signup', from: '/booking' },
-    });
+    navigate('/booking');
     setIsOpen(false);
   };
 
@@ -167,45 +163,6 @@ const Navbar: React.FC = () => {
               </a>
             )}
 
-            {!authLoading &&
-              (user ? (
-                <>
-                  <Link
-                    to="/profile"
-                    className={`flex items-center gap-1 px-2.5 lg:px-3 py-2 rounded-full text-xs font-medium transition-colors ${
-                      scrolled
-                        ? 'text-gray-700 hover:text-primary bg-gray-50'
-                        : 'text-white hover:bg-white/10'
-                    }`}
-                  >
-                    <User size={16} />
-                    <span className="hidden lg:inline">Profile</span>
-                  </Link>
-                  <button
-                    type="button"
-                    onClick={() => signOut()}
-                    className={`p-2 rounded-full transition-colors ${
-                      scrolled ? 'text-gray-500 hover:text-primary' : 'text-white/80 hover:text-white'
-                    }`}
-                    aria-label="Sign out"
-                  >
-                    <LogOut size={18} />
-                  </button>
-                </>
-              ) : (
-                <Link
-                  to="/auth"
-                  state={{ tab: 'signin' }}
-                  className={`px-3 py-2 rounded-full text-xs font-semibold uppercase tracking-wide transition-colors ${
-                    scrolled
-                      ? 'text-gray-700 border border-gray-200 hover:border-primary'
-                      : 'text-white border border-white/40 hover:bg-white/10'
-                  }`}
-                >
-                  Sign in
-                </Link>
-              ))}
-
             <button
               type="button"
               onClick={goToBooking}
@@ -278,49 +235,6 @@ const Navbar: React.FC = () => {
                 {CONTACT_PHONE_DISPLAY}
               </a>
             )}
-
-            {!authLoading &&
-              (user ? (
-                <>
-                  <Link
-                    to="/profile"
-                    onClick={() => setIsOpen(false)}
-                    className="flex items-center justify-center gap-2 w-full py-3.5 rounded-xl bg-gray-50 font-medium text-gray-800"
-                  >
-                    <User size={18} />
-                    My Profile
-                  </Link>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      signOut();
-                      setIsOpen(false);
-                    }}
-                    className="w-full py-3 rounded-xl border border-gray-200 text-gray-600 font-medium"
-                  >
-                    Sign out
-                  </button>
-                </>
-              ) : (
-                <>
-                  <Link
-                    to="/auth"
-                    state={{ tab: 'signup', from: '/booking' }}
-                    onClick={() => setIsOpen(false)}
-                    className="flex items-center justify-center w-full py-3.5 rounded-xl bg-primary text-white font-bold uppercase tracking-wide text-sm"
-                  >
-                    Sign up
-                  </Link>
-                  <Link
-                    to="/auth"
-                    state={{ tab: 'signin' }}
-                    onClick={() => setIsOpen(false)}
-                    className="flex items-center justify-center w-full py-3 rounded-xl border-2 border-primary text-primary font-semibold text-sm"
-                  >
-                    Sign in
-                  </Link>
-                </>
-              ))}
 
             <button
               type="button"

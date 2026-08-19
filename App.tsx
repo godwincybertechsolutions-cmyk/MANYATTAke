@@ -6,8 +6,6 @@ import Footer from './components/Footer';
 import ErrorBoundary from './components/ErrorBoundary';
 import LazySplashCursor from './components/LazySplashCursor';
 import RouteSkeleton from './components/RouteSkeleton';
-import ProtectedRoute from './components/ProtectedRoute';
-import { AuthProvider } from './src/auth/AuthContext';
 import { prefetchCommonRoutes } from './utils/routePrefetch';
 
 const Home = React.lazy(() => import('./pages/Home'));
@@ -15,10 +13,7 @@ const MountainVillas = React.lazy(() => import('./pages/MountainVillas'));
 const Safaris = React.lazy(() => import('./pages/Safaris'));
 const UrbanApartments = React.lazy(() => import('./pages/UrbanApartments'));
 const Others = React.lazy(() => import('./pages/Others'));
-const Auth = React.lazy(() => import('./pages/Auth'));
-const AuthConfirm = React.lazy(() => import('./pages/AuthConfirm'));
 const Booking = React.lazy(() => import('./pages/Booking'));
-const Profile = React.lazy(() => import('./pages/Profile'));
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -58,51 +53,32 @@ const App: React.FC = () => {
   return (
     <ErrorBoundary>
       <HelmetProvider>
-        <AuthProvider>
-          <Router>
-            <LazySplashCursor />
-            <ScrollToTop />
-            <a
-              href="#main-content"
-              className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[60] focus:bg-primary focus:text-white focus:px-4 focus:py-2 focus:rounded"
-            >
-              Skip to main content
-            </a>
-            <div className="flex flex-col min-h-screen bg-white font-sans text-dark selection:bg-primary selection:text-white">
-              <Navbar />
-              <main id="main-content" className="flex-grow pt-24" role="main">
-                <Suspense fallback={<RouteSkeleton />}>
-                  <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/mountain-villas" element={<MountainVillas />} />
-                    <Route path="/safaris" element={<Safaris />} />
-                    <Route path="/urban-apartments" element={<UrbanApartments />} />
-                    <Route path="/others" element={<Others />} />
-                    <Route path="/auth" element={<Auth />} />
-                    <Route path="/auth/confirm" element={<AuthConfirm />} />
-                    <Route
-                      path="/booking"
-                      element={
-                        <ProtectedRoute>
-                          <Booking />
-                        </ProtectedRoute>
-                      }
-                    />
-                    <Route
-                      path="/profile"
-                      element={
-                        <ProtectedRoute>
-                          <Profile />
-                        </ProtectedRoute>
-                      }
-                    />
-                  </Routes>
-                </Suspense>
-              </main>
-              <Footer />
-            </div>
-          </Router>
-        </AuthProvider>
+        <Router>
+          <LazySplashCursor />
+          <ScrollToTop />
+          <a
+            href="#main-content"
+            className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[60] focus:bg-primary focus:text-white focus:px-4 focus:py-2 focus:rounded"
+          >
+            Skip to main content
+          </a>
+          <div className="flex flex-col min-h-screen bg-white font-sans text-dark selection:bg-primary selection:text-white">
+            <Navbar />
+            <main id="main-content" className="flex-grow pt-24" role="main">
+              <Suspense fallback={<RouteSkeleton />}>
+                <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/mountain-villas" element={<MountainVillas />} />
+                  <Route path="/safaris" element={<Safaris />} />
+                  <Route path="/urban-apartments" element={<UrbanApartments />} />
+                  <Route path="/others" element={<Others />} />
+                  <Route path="/booking" element={<Booking />} />
+                </Routes>
+              </Suspense>
+            </main>
+            <Footer />
+          </div>
+        </Router>
       </HelmetProvider>
     </ErrorBoundary>
   );

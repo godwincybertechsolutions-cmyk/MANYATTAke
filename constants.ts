@@ -398,3 +398,12 @@ export const GALLERY_IMAGES = [
 export const CONTACT_PHONE = "+254723366462";
 export const CONTACT_PHONE_DISPLAY = "+254 723 366 462";
 export const CONTACT_EMAIL = "info@newmanyatta.ke";
+
+export const ADMIN_1_PHONE = "+254723366462";
+export const ADMIN_1_DISPLAY = "+254 723 366 462";
+export const ADMIN_1_WHATSAPP = "https://wa.me/254723366462";
+
+export const ADMIN_2_PHONE = "+254741059240";
+export const ADMIN_2_DISPLAY = "+254 741 059 240";
+export const ADMIN_2_WHATSAPP = "https://wa.me/254741059240";
+

@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { Calendar, Users, MapPin, Loader2 } from 'lucide-react';
+import { Calendar, Users, MapPin, Loader2, User, Mail, Phone, MessageCircle, CheckCircle2 } from 'lucide-react';
 import { COLORS, COMPONENT_STYLES, TYPOGRAPHY } from '../tokens';
 import type { BookingLocationState, DbProperty, PropertyType } from '../types';
 import {
@@ -9,8 +9,15 @@ import {
   getPropertyBySlug,
   getProperties,
 } from '../services/properties';
-import { createBooking, calculateBookingTotal } from '../services/bookings';
+import { calculateBookingTotal } from '../services/bookings';
 import { getSupabaseErrorMessage } from '../utils/supabaseError';
+import {
+  ADMIN_1_DISPLAY,
+  ADMIN_1_PHONE,
+  ADMIN_2_DISPLAY,
+  ADMIN_2_PHONE,
+  CONTACT_EMAIL,
+} from '../constants';
 
 const TYPE_LABELS: Record<PropertyType, string> = {
   mountain: 'Mountain Villas',
@@ -30,6 +37,12 @@ const Booking: React.FC = () => {
   const [property, setProperty] = useState<DbProperty | null>(null);
   const [catalog, setCatalog] = useState<DbProperty[]>([]);
 
+  // Guest Details
+  const [guestName, setGuestName] = useState('');
+  const [guestEmail, setGuestEmail] = useState('');
+  const [guestPhone, setGuestPhone] = useState('');
+
+  // Booking Details
   const [checkInDate, setCheckInDate] = useState('');
   const [checkOutDate, setCheckOutDate] = useState('');
   const [numberOfGuests, setNumberOfGuests] = useState(2);
@@ -37,6 +50,7 @@ const Booking: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [formattedMessage, setFormattedMessage] = useState('');
 
   useEffect(() => {
     let cancelled = false;
@@ -106,10 +120,39 @@ const Booking: React.FC = () => {
     }
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const constructBookingMessage = (): string => {
+    if (!property) return '';
+    return (
+      `*NEW BOOKING REQUEST - NEW MANYATTA KENYA*\n\n` +
+      `*Guest Name:* ${guestName.trim()}\n` +
+      `*Email:* ${guestEmail.trim()}\n` +
+      `*Phone:* ${guestPhone.trim()}\n` +
+      `*Listing:* ${property.name}\n` +
+      `*Location:* ${property.location}\n` +
+      `*Check-in:* ${checkInDate}\n` +
+      `*Check-out:* ${checkOutDate}\n` +
+      `*Guests:* ${numberOfGuests}\n` +
+      `*Estimated Total:* ${property.currency} ${estimatedTotal.toLocaleString()}\n` +
+      `*Special Requests:* ${specialRequests.trim() || 'None'}`
+    );
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
 
+    if (!guestName.trim()) {
+      setError('Please enter your full name.');
+      return;
+    }
+    if (!guestEmail.trim() || !guestEmail.includes('@')) {
+      setError('Please enter a valid email address.');
+      return;
+    }
+    if (!guestPhone.trim()) {
+      setError('Please enter your phone/WhatsApp number.');
+      return;
+    }
     if (!property) {
       setError('Please select a listing.');
       return;
@@ -128,32 +171,97 @@ const Booking: React.FC = () => {
     }
 
     setSubmitting(true);
-    try {
-      await createBooking({
-        propertyId: property.id,
-        checkInDate,
-        checkOutDate,
-        numberOfGuests,
-        totalPrice: estimatedTotal,
-        currency: property.currency,
-        specialRequests: specialRequests || undefined,
-      });
-      setSuccess(true);
-      setTimeout(() => navigate('/profile'), 2000);
-    } catch (err) {
-      setError(getSupabaseErrorMessage(err, 'Booking failed.'));
-    } finally {
-      setSubmitting(false);
-    }
+    const msg = constructBookingMessage();
+    setFormattedMessage(msg);
+    setSuccess(true);
+    setSubmitting(false);
+
+    // Auto launch WhatsApp for Admin 1
+    const cleanAdmin1 = ADMIN_1_PHONE.replace(/[^0-9]/g, '');
+    const whatsappUrl = `https://wa.me/${cleanAdmin1}?text=${encodeURIComponent(msg)}`;
+    window.open(whatsappUrl, '_blank');
+  };
+
+  const getAdmin1WhatsappUrl = () => {
+    const cleanNumber = ADMIN_1_PHONE.replace(/[^0-9]/g, '');
+    return `https://wa.me/${cleanNumber}?text=${encodeURIComponent(formattedMessage)}`;
+  };
+
+  const getAdmin2WhatsappUrl = () => {
+    const cleanNumber = ADMIN_2_PHONE.replace(/[^0-9]/g, '');
+    return `https://wa.me/${cleanNumber}?text=${encodeURIComponent(formattedMessage)}`;
+  };
+
+  const getEmailMailtoUrl = () => {
+    const subject = `Booking Request - ${property?.name ?? 'New Manyatta'}`;
+    return `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(formattedMessage)}`;
   };
 
   if (success) {
     return (
-      <div className="container mx-auto px-6 py-20 text-center max-w-lg">
-        <h2 className="font-serif text-3xl text-dark mb-4">Request received</h2>
-        <p className="text-gray-600">
-          Your booking request has been submitted. Redirecting to your profile…
-        </p>
+      <div className="w-full bg-stone-50 min-h-[70vh] py-16 flex items-center justify-center">
+        <Helmet>
+          <title>Booking Request Sent | New Manyatta Kenya</title>
+        </Helmet>
+        <div className="container mx-auto px-4 max-w-lg">
+          <div className="bg-white rounded-3xl p-8 shadow-xl border border-gray-100 text-center space-y-6">
+            <div className="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto">
+              <CheckCircle2 size={36} />
+            </div>
+
+            <div>
+              <h2 className="font-serif text-3xl text-dark mb-2">Request Ready to Send!</h2>
+              <p className="text-gray-600 text-sm leading-relaxed">
+                We opened WhatsApp with your booking details formatted. If WhatsApp didn't open automatically, use any of the buttons below to reach our admins directly via WhatsApp or Email.
+              </p>
+            </div>
+
+            <div className="bg-stone-50 p-4 rounded-2xl text-left border border-gray-200/80 text-xs font-mono text-gray-700 whitespace-pre-wrap">
+              {formattedMessage}
+            </div>
+
+            <div className="space-y-3 pt-2">
+              <a
+                href={getAdmin1WhatsappUrl()}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white py-3.5 px-6 rounded-full font-bold uppercase tracking-wider text-xs shadow-md transition-all"
+              >
+                <MessageCircle size={18} />
+                Send via WhatsApp (Admin 1: {ADMIN_1_DISPLAY})
+              </a>
+
+              <a
+                href={getAdmin2WhatsappUrl()}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white py-3.5 px-6 rounded-full font-bold uppercase tracking-wider text-xs shadow-md transition-all"
+              >
+                <MessageCircle size={18} />
+                Send via WhatsApp (Admin 2: {ADMIN_2_DISPLAY})
+              </a>
+
+              <a
+                href={getEmailMailtoUrl()}
+                className="w-full flex items-center justify-center gap-2 bg-dark hover:bg-black text-white py-3.5 px-6 rounded-full font-bold uppercase tracking-wider text-xs shadow-md transition-all"
+              >
+                <Mail size={18} />
+                Send via Email ({CONTACT_EMAIL})
+              </a>
+            </div>
+
+            <button
+              type="button"
+              onClick={() => {
+                setSuccess(false);
+                setFormattedMessage('');
+              }}
+              className="text-xs text-gray-500 hover:text-primary underline font-medium pt-2 block mx-auto"
+            >
+              Modify Booking Details
+            </button>
+          </div>
+        </div>
       </div>
     );
   }
@@ -171,14 +279,17 @@ const Booking: React.FC = () => {
             className="text-xs font-bold uppercase tracking-[0.3em] mb-2 block"
             style={{ color: COLORS.primary }}
           >
-            Reservations
+            Direct Reservations
           </span>
           <h1
             className="font-serif text-4xl md:text-5xl text-dark"
             style={{ fontFamily: TYPOGRAPHY.fontFamily.serif }}
           >
-            Complete your booking
+            Complete your booking request
           </h1>
+          <p className="text-sm text-gray-500 mt-2 max-w-md mx-auto">
+            No registration required. Submit your request directly to our company WhatsApp and Email.
+          </p>
         </header>
 
         <div className={`${COMPONENT_STYLES.card.base} p-8`}>
@@ -189,6 +300,7 @@ const Booking: React.FC = () => {
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-6">
+              {/* Listing Header */}
               <div className="flex items-start gap-2 text-dark pb-4 border-b border-gray-100">
                 <MapPin size={18} className="text-primary shrink-0 mt-1" />
                 <div>
@@ -207,6 +319,7 @@ const Booking: React.FC = () => {
                 </p>
               )}
 
+              {/* Category Filter */}
               <div className="flex flex-wrap gap-2">
                 {(['all', 'mountain', 'safari', 'urban'] as const).map((t) => (
                   <button
@@ -224,6 +337,7 @@ const Booking: React.FC = () => {
                 ))}
               </div>
 
+              {/* Property Select */}
               <div>
                 <label htmlFor="listing-select" className="text-xs font-bold uppercase text-gray-500 mb-1 block">
                   Listing
@@ -244,10 +358,74 @@ const Booking: React.FC = () => {
                 </select>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {/* Guest Details Section */}
+              <div className="pt-2 border-t border-gray-100 space-y-4">
+                <span className="text-xs font-bold uppercase tracking-widest text-primary block">
+                  Guest Information
+                </span>
+                
+                <div>
+                  <label htmlFor="guest-name" className="text-xs font-bold uppercase text-gray-500 mb-1 block">
+                    Full Name *
+                  </label>
+                  <div className="relative">
+                    <User size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+                    <input
+                      id="guest-name"
+                      type="text"
+                      required
+                      value={guestName}
+                      onChange={(e) => setGuestName(e.target.value)}
+                      placeholder="e.g. Jane Doe"
+                      className={COMPONENT_STYLES.input.base + ' pl-10'}
+                    />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label htmlFor="guest-email" className="text-xs font-bold uppercase text-gray-500 mb-1 block">
+                      Email Address *
+                    </label>
+                    <div className="relative">
+                      <Mail size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+                      <input
+                        id="guest-email"
+                        type="email"
+                        required
+                        value={guestEmail}
+                        onChange={(e) => setGuestEmail(e.target.value)}
+                        placeholder="jane@example.com"
+                        className={COMPONENT_STYLES.input.base + ' pl-10'}
+                      />
+                    </div>
+                  </div>
+
+                  <div>
+                    <label htmlFor="guest-phone" className="text-xs font-bold uppercase text-gray-500 mb-1 block">
+                      Phone / WhatsApp Number *
+                    </label>
+                    <div className="relative">
+                      <Phone size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+                      <input
+                        id="guest-phone"
+                        type="tel"
+                        required
+                        value={guestPhone}
+                        onChange={(e) => setGuestPhone(e.target.value)}
+                        placeholder="+254 700 000 000"
+                        className={COMPONENT_STYLES.input.base + ' pl-10'}
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Dates */}
+              <div className="pt-2 border-t border-gray-100 grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label htmlFor="check-in" className="text-xs font-bold uppercase text-gray-500 mb-1 block">
-                    Check in
+                    Check in *
                   </label>
                   <div className="relative">
                     <Calendar size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-primary" />
@@ -264,7 +442,7 @@ const Booking: React.FC = () => {
                 </div>
                 <div>
                   <label htmlFor="check-out" className="text-xs font-bold uppercase text-gray-500 mb-1 block">
-                    Check out
+                    Check out *
                   </label>
                   <div className="relative">
                     <Calendar size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-primary" />
@@ -281,9 +459,10 @@ const Booking: React.FC = () => {
                 </div>
               </div>
 
+              {/* Guests */}
               <div>
                 <label htmlFor="guests" className="text-xs font-bold uppercase text-gray-500 mb-1 block">
-                  Guests
+                  Number of Guests
                 </label>
                 <div className="relative">
                   <Users size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-primary" />
@@ -299,6 +478,7 @@ const Booking: React.FC = () => {
                 </div>
               </div>
 
+              {/* Special Requests */}
               <div>
                 <label htmlFor="requests" className="text-xs font-bold uppercase text-gray-500 mb-1 block">
                   Special requests (optional)
@@ -313,6 +493,7 @@ const Booking: React.FC = () => {
                 />
               </div>
 
+              {/* Total Calculation */}
               {estimatedTotal > 0 && property && (
                 <div
                   className="rounded-xl px-5 py-4 flex justify-between items-center"
@@ -335,12 +516,14 @@ const Booking: React.FC = () => {
                 </p>
               )}
 
+              {/* Submit Button */}
               <button
                 type="submit"
                 disabled={submitting || !property}
-                className={`w-full py-4 rounded-full font-bold uppercase tracking-widest text-white disabled:opacity-50 ${COMPONENT_STYLES.button.primary}`}
+                className={`w-full py-4 rounded-full font-bold uppercase tracking-widest text-white flex items-center justify-center gap-2 disabled:opacity-50 ${COMPONENT_STYLES.button.primary}`}
               >
-                {submitting ? 'Submitting…' : 'Submit booking request'}
+                <MessageCircle size={20} />
+                <span>Submit Booking via WhatsApp & Email</span>
               </button>
             </form>
           )}

@@ -5,7 +5,6 @@ import { URBAN_APARTMENTS } from '../constants';
 import SectionHeader from '../components/SectionHeader';
 import { useNavigate } from 'react-router-dom';
 import type { BookingLocationState } from '../types';
-import { useAuth } from '../src/auth/AuthContext';
 import { resolvePropertySlug } from '../constants';
 import { motion } from 'framer-motion';
 import OptimizedImage from '../components/OptimizedImage';
@@ -13,7 +12,6 @@ import ImageSlideshowModal from '../components/ImageSlideshowModal';
 
 const UrbanApartments: React.FC = () => {
   const navigate = useNavigate();
-  const { user } = useAuth();
   const [modalOpen, setModalOpen] = useState(false);
 
   const bookApartment = (aptId: string, name: string) => {
@@ -22,10 +20,6 @@ const UrbanApartments: React.FC = () => {
       name,
       type: 'urban',
     };
-    if (!user) {
-      navigate('/auth', { state: { from: '/booking', ...state } });
-      return;
-    }
     navigate('/booking', { state });
   };
   const [selectedImages, setSelectedImages] = useState<string[]>([]);

@@ -1,22 +1,22 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
-import { ArrowRight, Mountain, Binoculars, Building2 } from 'lucide-react';
+import { ArrowRight, Mountain, Binoculars, Building2, MessageCircle } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import SectionHeader from '../components/SectionHeader';
 import OptimizedImage from '../components/OptimizedImage';
-import { useAuth } from '../src/auth/AuthContext';
+import {
+  ADMIN_1_WHATSAPP,
+  ADMIN_1_DISPLAY,
+  ADMIN_2_WHATSAPP,
+  ADMIN_2_DISPLAY,
+} from '../constants';
 
 const Home: React.FC = () => {
   const navigate = useNavigate();
-  const { user } = useAuth();
 
   const handleStartJourney = () => {
-    if (user) {
-      navigate('/booking');
-      return;
-    }
-    navigate('/auth', { state: { tab: 'signup', from: '/booking' } });
+    navigate('/booking');
   };
 
   return (
@@ -97,6 +97,45 @@ const Home: React.FC = () => {
           </motion.button>
         </div>
       </div>
+
+      {/* Admin WhatsApp Quick Contacts Section */}
+      <section className="py-10 bg-stone-50 border-b border-gray-200/60">
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="max-w-4xl mx-auto bg-white rounded-2xl p-6 sm:p-8 shadow-md border border-gray-100 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div className="text-center md:text-left">
+              <span className="text-xs font-bold uppercase tracking-widest text-emerald-600 block mb-1">
+                Direct Assistance
+              </span>
+              <h3 className="font-serif text-xl sm:text-2xl text-dark font-semibold">
+                Chat Directly With Our Admins
+              </h3>
+              <p className="text-sm text-gray-500 mt-1">
+                Have questions or need immediate booking support? Reach out directly on WhatsApp.
+              </p>
+            </div>
+            <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto shrink-0">
+              <a
+                href={ADMIN_1_WHATSAPP}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-3 rounded-full text-xs font-bold uppercase tracking-wider shadow-sm transition-all hover:scale-105"
+              >
+                <MessageCircle size={18} />
+                <span>Admin 1: {ADMIN_1_DISPLAY}</span>
+              </a>
+              <a
+                href={ADMIN_2_WHATSAPP}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-3 rounded-full text-xs font-bold uppercase tracking-wider shadow-sm transition-all hover:scale-105"
+              >
+                <MessageCircle size={18} />
+                <span>Admin 2: {ADMIN_2_DISPLAY}</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Experience Teasers */}
       <section className="py-16 sm:py-20 bg-white">

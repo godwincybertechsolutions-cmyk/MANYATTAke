@@ -3,7 +3,6 @@ import { Calendar, MapPin, ChevronDown } from 'lucide-react';
 import { PropertyType } from '../types';
 import type { BookingLocationState } from '../types';
 import { COLORS } from '../tokens';
-import { useAuth } from '../src/auth/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
@@ -12,7 +11,6 @@ const BookingWidget: React.FC = () => {
   const [checkIn, setCheckIn] = useState('');
   const [checkOut, setCheckOut] = useState('');
   const navigate = useNavigate();
-  const { user } = useAuth();
 
   const goToBooking = () => {
     const state: BookingLocationState = {
@@ -25,12 +23,7 @@ const BookingWidget: React.FC = () => {
             : 'Urban Apartment',
     };
 
-    const path = '/booking';
-    if (!user) {
-      navigate('/auth', { state: { from: path, ...state } });
-      return;
-    }
-    navigate(path, { state });
+    navigate('/booking', { state });
   };
 
   return (

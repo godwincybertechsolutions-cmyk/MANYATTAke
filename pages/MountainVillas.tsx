@@ -11,7 +11,6 @@ import {
   NARUMORU_VILLA_DETAILS
 } from '../constants';
 import type { BookingLocationState } from '../types';
-import { useAuth } from '../src/auth/AuthContext';
 import { resolvePropertySlug } from '../constants';
 
 const VILLAS = [
@@ -31,7 +30,6 @@ const VILLAS = [
 
 const MountainVillas: React.FC = () => {
   const navigate = useNavigate();
-  const { user } = useAuth();
   const [modalOpen, setModalOpen] = useState(false);
 
   const reserveVilla = (villaId: string, title: string) => {
@@ -40,10 +38,6 @@ const MountainVillas: React.FC = () => {
       name: title,
       type: 'mountain',
     };
-    if (!user) {
-      navigate('/auth', { state: { from: '/booking', ...state } });
-      return;
-    }
     navigate('/booking', { state });
   };
   const [selectedImages, setSelectedImages] = useState<string[]>([]);
