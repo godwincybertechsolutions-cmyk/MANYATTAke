@@ -103,15 +103,9 @@ const Home: React.FC = () => {
         <div className="container mx-auto px-4 sm:px-6">
           <div className="max-w-4xl mx-auto bg-white rounded-2xl p-6 sm:p-8 shadow-md border border-gray-100 flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="text-center md:text-left">
-              <span className="text-xs font-bold uppercase tracking-widest text-emerald-600 block mb-1">
-                Direct Assistance
-              </span>
-              <h3 className="font-serif text-xl sm:text-2xl text-dark font-semibold">
-                Chat Directly With Our Concierges
+              <h3 className="font-serif text-2xl sm:text-3xl text-dark font-semibold">
+                Chat with Us
               </h3>
-              <p className="text-sm text-gray-500 mt-1">
-                Have questions or need immediate booking support? Reach out directly on WhatsApp.
-              </p>
             </div>
             <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto shrink-0">
               <a
