@@ -22,7 +22,7 @@ const Footer: React.FC = () => {
                 <OptimizedImage 
                   src="/assets/Logo/New Manyatta Kenya Logo - Upscaled.webp"
                   alt="New Manyatta Kenya logo"
-                  className="h-16 w-auto object-contain"
+                  className="h-16 w-auto object-contain mix-blend-screen"
                   priority
                 />
                 <span className="font-serif text-2xl font-bold hidden sm:block">By Manyatta Tabasamu</span>

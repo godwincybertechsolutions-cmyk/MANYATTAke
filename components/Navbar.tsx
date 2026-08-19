@@ -99,7 +99,7 @@ const Navbar: React.FC = () => {
               alt="New Manyatta Kenya logo"
               width={112}
               height={112}
-              className={`${logoSize} w-auto object-contain object-center transition-transform duration-300 group-hover:scale-105 group-active:scale-95`}
+              className={`${logoSize} w-auto object-contain object-center mix-blend-multiply transition-transform duration-300 group-hover:scale-105 group-active:scale-95`}
               decoding="async"
               fetchPriority="high"
             />
