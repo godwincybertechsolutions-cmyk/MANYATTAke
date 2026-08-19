@@ -1,0 +1,85 @@
+import React, { useEffect, useState } from 'react';
+import { ChevronLeft, ChevronRight, Pause, Play } from 'lucide-react';
+
+type AssetSlideshowProps = {
+  images: string[];
+  alt: string;
+  className?: string;
+  imageClassName?: string;
+  interval?: number;
+  onOpenGallery?: () => void;
+};
+
+const AssetSlideshow: React.FC<AssetSlideshowProps> = ({
+  images,
+  alt,
+  className = '',
+  imageClassName = '',
+  interval = 6000,
+  onOpenGallery,
+}) => {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(true);
+
+  useEffect(() => {
+    if (!isPlaying || images.length < 2) return;
+    const timer = window.setInterval(() => {
+      setActiveIndex((current) => (current + 1) % images.length);
+    }, interval);
+    return () => window.clearInterval(timer);
+  }, [images.length, interval, isPlaying]);
+
+  if (!images.length) return null;
+
+  const goTo = (index: number) => {
+    setActiveIndex((index + images.length) % images.length);
+    setIsPlaying(false);
+  };
+
+  return (
+    <div className={`relative overflow-hidden ${className}`} onClick={onOpenGallery}>
+      {images.map((image, index) => (
+        <img
+          key={image}
+          src={image}
+          alt={`${alt} — image ${index + 1} of ${images.length}`}
+          className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-1000 ${imageClassName} ${index === activeIndex ? 'opacity-100' : 'opacity-0'}`}
+          loading={index === 0 ? 'eager' : 'lazy'}
+        />
+      ))}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-black/20" />
+      {images.length > 1 && (
+        <>
+          <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 p-5 sm:p-7" onClick={(event) => event.stopPropagation()}>
+            <div className="flex items-center gap-2" aria-label="Slideshow progress">
+              {images.map((image, index) => (
+                <button
+                  key={image}
+                  type="button"
+                  aria-label={`Show image ${index + 1}`}
+                  aria-current={index === activeIndex}
+                  onClick={() => goTo(index)}
+                  className={`h-1.5 rounded-full transition-all ${index === activeIndex ? 'w-8 bg-white' : 'w-2 bg-white/55 hover:bg-white/80'}`}
+                />
+              ))}
+            </div>
+            <div className="flex items-center gap-2">
+              <button type="button" aria-label="Previous image" onClick={() => goTo(activeIndex - 1)} className="rounded-full bg-black/35 p-2 text-white backdrop-blur-sm hover:bg-black/55 focus:outline-none focus:ring-2 focus:ring-white">
+                <ChevronLeft size={18} />
+              </button>
+              <button type="button" aria-label={isPlaying ? 'Pause slideshow' : 'Play slideshow'} onClick={() => setIsPlaying((playing) => !playing)} className="rounded-full bg-black/35 p-2 text-white backdrop-blur-sm hover:bg-black/55 focus:outline-none focus:ring-2 focus:ring-white">
+                {isPlaying ? <Pause size={16} /> : <Play size={16} />}
+              </button>
+              <button type="button" aria-label="Next image" onClick={() => goTo(activeIndex + 1)} className="rounded-full bg-black/35 p-2 text-white backdrop-blur-sm hover:bg-black/55 focus:outline-none focus:ring-2 focus:ring-white">
+                <ChevronRight size={18} />
+              </button>
+            </div>
+          </div>
+        </>
+      )}
+    </div>
+  );
+};
+
+export default AssetSlideshow;
+export type { AssetSlideshowProps };

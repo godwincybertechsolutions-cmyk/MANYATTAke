@@ -4,7 +4,7 @@ import { MapPin, Check, Camera } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import ImageSlideshowModal from '../components/ImageSlideshowModal';
-import GlareHover from '../components/GlareHover';
+import AssetSlideshow from '../components/AssetSlideshow';
 import {
   BURGURET_VILLA_DETAILS,
   BURGURET_IMAGES,
@@ -18,7 +18,7 @@ const VILLAS = [
     id: 'narumoru',
     details: NARUMORU_VILLA_DETAILS,
     images: NARUMORU_VILLA_DETAILS.images || [],
-    heroImage: "/assets/Burguret Mountainside Villa Section/Burguret. House Entrance.jpg"
+    heroImage: "/assets/NARUMORU%20VACATION%20HOME%20PICS/PHOTO-2026-05-22-11-53-03.jpg"
   },
   {
     id: 'burguret',
@@ -147,27 +147,15 @@ const MountainVillas: React.FC = () => {
                   </div>
                 </div>
 
-                {/* Images Grid */}
-                <div className="md:w-1/2 grid grid-cols-2 gap-4">
-                  <div className="col-span-2 h-64 rounded-xl overflow-hidden relative group cursor-pointer" onClick={() => openGallery(villa.images, villa.details.title)}>
-                    <GlareHover
-                      glareColor="#ffffff"
-                      glareOpacity={0.25}
-                      glareAngle={-25}
-                      glareSize={350}
-                      transitionDuration={600}
-                      playOnce={false}
-                    >
-                      <img src={villa.heroImage} alt={villa.details.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-                      <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
-                    </GlareHover>
+                <div className="grid gap-4 md:w-1/2 md:grid-cols-2">
+                  <div className="group relative col-span-2 h-72 cursor-pointer overflow-hidden rounded-2xl sm:h-80">
+                    <AssetSlideshow images={villa.images} alt={villa.details.title} className="h-full w-full" onOpenGallery={() => openGallery(villa.images, villa.details.title)} />
                   </div>
-                  {/* Display 2 more small images if available */}
-                  <div className="h-40 rounded-xl overflow-hidden hidden md:block">
-                    <img src={villa.images[1] || villa.images[0]} className="w-full h-full object-cover" alt="Detail 1" />
+                  <div className="hidden h-44 overflow-hidden rounded-2xl md:block">
+                    <img src={villa.id === 'narumoru' ? '/assets/NARUMORU%20VACATION%20HOME%20PICS/PHOTO-2026-05-18-21-12-43.jpg' : villa.images[1] || villa.images[0]} className="h-full w-full object-cover" alt={`${villa.details.title} interior`} />
                   </div>
-                  <div className="h-40 rounded-xl overflow-hidden hidden md:block">
-                    <img src={villa.images[2] || villa.images[0]} className="w-full h-full object-cover" alt="Detail 2" />
+                  <div className="hidden h-44 overflow-hidden rounded-2xl md:block">
+                    <img src={villa.id === 'narumoru' ? '/assets/NARUMORU%20VACATION%20HOME%20PICS/PHOTO-2026-05-18-21-13-55.jpg' : villa.images[2] || villa.images[0]} className="h-full w-full object-cover" alt={`${villa.details.title} detail`} />
                   </div>
                 </div>
               </div>

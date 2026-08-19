@@ -229,9 +229,16 @@ export const NARUMORU_VILLA_DETAILS = {
     { name: "Meru National Park", time: "2-3 hours" }
   ],
   images: [
-    "/assets/Burguret Mountainside Villa/Burguret. Living room 1.jpg",
-    "/assets/Burguret Mountainside Villa/Burguret. Master Bedroom .jpg",
-    "/assets/Laurel Hill Suites/L6 Rooftop Pool.jpg"
+    "/assets/NARUMORU%20VACATION%20HOME%20PICS/PHOTO-2026-05-22-11-53-03.jpg",
+    "/assets/NARUMORU%20VACATION%20HOME%20PICS/PHOTO-2026-05-18-21-12-43.jpg",
+    "/assets/NARUMORU%20VACATION%20HOME%20PICS/PHOTO-2026-05-18-21-13-55.jpg",
+    "/assets/NARUMORU%20VACATION%20HOME%20PICS/PHOTO-2026-05-18-21-14-20.jpg",
+    "/assets/NARUMORU%20VACATION%20HOME%20PICS/PHOTO-2026-05-18-21-14-51.jpg",
+    "/assets/NARUMORU%20VACATION%20HOME%20PICS/PHOTO-2026-05-18-21-15-24.jpg",
+    "/assets/NARUMORU%20VACATION%20HOME%20PICS/PHOTO-2026-05-18-21-16-55.jpg",
+    "/assets/NARUMORU%20VACATION%20HOME%20PICS/PHOTO-2026-05-18-21-17-22.jpg",
+    "/assets/NARUMORU%20VACATION%20HOME%20PICS/PHOTO-2026-05-22-11-53-04.jpg",
+    "/assets/NARUMORU%20VACATION%20HOME%20PICS/PHOTO-2026-05-22-11-53-05.jpg"
   ]
 };
 
