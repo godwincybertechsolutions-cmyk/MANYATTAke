@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Helmet } from 'react-helmet-async';
-import { MapPin, Check, Camera } from 'lucide-react';
+import { MapPin, Check } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import ImageSlideshowModal from '../components/ImageSlideshowModal';
 import AssetSlideshow from '../components/AssetSlideshow';
 import {
   BURGURET_VILLA_DETAILS,
@@ -30,8 +29,6 @@ const VILLAS = [
 
 const MountainVillas: React.FC = () => {
   const navigate = useNavigate();
-  const [modalOpen, setModalOpen] = useState(false);
-
   const reserveVilla = (villaId: string, title: string) => {
     const state: BookingLocationState = {
       slug: resolvePropertySlug(villaId),
@@ -40,15 +37,6 @@ const MountainVillas: React.FC = () => {
     };
     navigate('/booking', { state });
   };
-  const [selectedImages, setSelectedImages] = useState<string[]>([]);
-  const [selectedTitle, setSelectedTitle] = useState("");
-
-  const openGallery = (images: string[], title: string) => {
-    setSelectedImages(images);
-    setSelectedTitle(title);
-    setModalOpen(true);
-  };
-
   return (
     <div className="w-full">
       <Helmet>
@@ -62,13 +50,6 @@ const MountainVillas: React.FC = () => {
         <meta name="twitter:card" content="summary_large_image" />
         <link rel="canonical" href="https://newmanyattakenya.com/mountain-villas" />
       </Helmet>
-      <ImageSlideshowModal
-        isOpen={modalOpen}
-        onClose={() => setModalOpen(false)}
-        images={selectedImages}
-        title={selectedTitle}
-      />
-
       {/* Hero */}
       <div className="relative h-[58vh] min-h-[420px] w-full sm:h-[60vh]">
         <AssetSlideshow
@@ -132,16 +113,10 @@ const MountainVillas: React.FC = () => {
                     </ul>
                   </div>
 
-                  <div className="grid grid-cols-1 gap-3 sm:flex sm:gap-4">
-                    <button
-                      onClick={() => openGallery(villa.images, villa.details.title)}
-                      className="flex min-h-12 w-full items-center justify-center gap-2 rounded-full border border-dark px-5 py-3 text-sm font-medium uppercase tracking-widest text-dark shadow-sm transition-all duration-300 hover:bg-dark hover:text-white hover:shadow-md active:scale-95 sm:w-auto"
-                    >
-                      <Camera size={18} /> View Gallery
-                    </button>
+                  <div className="flex">
                     <button
                       onClick={() => reserveVilla(villa.id, villa.details.title)}
-                      className="min-h-12 w-full rounded-full bg-primary px-5 py-3 text-sm font-medium uppercase tracking-widest text-white shadow-md transition-all duration-300 hover:bg-[#c4492e] hover:shadow-lg active:scale-95 sm:w-auto"
+                      className="min-h-12 w-full rounded-full bg-primary px-5 py-3 text-sm font-medium uppercase tracking-widest text-white shadow-md transition-all duration-300 hover:bg-[#c4492e] hover:shadow-lg active:scale-95 sm:w-auto sm:px-8"
                     >
                       Reserve Now
                     </button>
@@ -150,7 +125,7 @@ const MountainVillas: React.FC = () => {
 
                 <div className="grid gap-4 md:w-1/2 md:grid-cols-2">
                   <div className="group relative col-span-2 h-72 cursor-pointer overflow-hidden rounded-2xl sm:h-80">
-                    <AssetSlideshow images={villa.images} alt={villa.details.title} className="h-full w-full" onOpenGallery={() => openGallery(villa.images, villa.details.title)} />
+                    <AssetSlideshow images={villa.images} alt={villa.details.title} className="h-full w-full" />
                   </div>
                   <div className="hidden h-44 overflow-hidden rounded-2xl md:block">
                     <img src={villa.id === 'narumoru' ? '/assets/NARUMORU%20VACATION%20HOME%20PICS/PHOTO-2026-05-18-21-12-43.jpg' : villa.images[1] || villa.images[0]} className="h-full w-full object-cover" alt={`${villa.details.title} interior`} />

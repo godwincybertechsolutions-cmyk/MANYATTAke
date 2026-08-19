@@ -42,9 +42,13 @@ const AssetSlideshow: React.FC<AssetSlideshowProps> = ({
         <img
           key={image}
           src={image}
+          srcSet={`${image} 1x`}
+          sizes="(max-width: 640px) 100vw, 50vw"
           alt={`${alt} — image ${index + 1} of ${images.length}`}
           className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-1000 ${imageClassName} ${index === activeIndex ? 'opacity-100' : 'opacity-0'}`}
           loading={index === 0 ? 'eager' : 'lazy'}
+          decoding={index === 0 ? 'sync' : 'async'}
+          fetchPriority={index === 0 ? 'high' : 'auto'}
         />
       ))}
       <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-black/20" />

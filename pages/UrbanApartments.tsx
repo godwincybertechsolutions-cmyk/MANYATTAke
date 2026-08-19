@@ -1,19 +1,17 @@
 import React, { useState, useMemo } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { Bed, Bath, Move, Check, Car, User, Camera, ArrowRight } from 'lucide-react';
+import { Bed, Bath, Move, Check, Car, User, ArrowRight } from 'lucide-react';
 import { URBAN_APARTMENTS } from '../constants';
 import SectionHeader from '../components/SectionHeader';
 import { useNavigate } from 'react-router-dom';
 import type { BookingLocationState } from '../types';
 import { resolvePropertySlug } from '../constants';
 import { motion } from 'framer-motion';
+import AssetSlideshow from '../components/AssetSlideshow';
 import OptimizedImage from '../components/OptimizedImage';
-import ImageSlideshowModal from '../components/ImageSlideshowModal';
 
 const UrbanApartments: React.FC = () => {
   const navigate = useNavigate();
-  const [modalOpen, setModalOpen] = useState(false);
-
   const bookApartment = (aptId: string, name: string) => {
     const state: BookingLocationState = {
       slug: resolvePropertySlug(aptId),
@@ -22,17 +20,6 @@ const UrbanApartments: React.FC = () => {
     };
     navigate('/booking', { state });
   };
-  const [selectedImages, setSelectedImages] = useState<string[]>([]);
-  const [selectedName, setSelectedName] = useState("");
-
-  const openGallery = (images: string[], name: string) => {
-    if (images && images.length > 0) {
-      setSelectedImages(images);
-      setSelectedName(name);
-      setModalOpen(true);
-    }
-  };
-
   return (
     <div className="w-full">
       <Helmet>
@@ -46,13 +33,6 @@ const UrbanApartments: React.FC = () => {
         <meta name="twitter:card" content="summary_large_image" />
         <link rel="canonical" href="https://newmanyattakenya.com/urban-apartments" />
       </Helmet>
-      <ImageSlideshowModal
-        isOpen={modalOpen}
-        onClose={() => setModalOpen(false)}
-        images={selectedImages}
-        title={selectedName}
-      />
-
       {/* Hero */}
       <div className="relative h-[50vh] w-full overflow-hidden">
         <OptimizedImage
@@ -98,27 +78,11 @@ const UrbanApartments: React.FC = () => {
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
                 className="group border border-gray-200 rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 bg-white hover:-translate-y-3 hover:border-primary/30"
               >
-                {/* Image */}
-                <div
-                  className="h-72 overflow-hidden relative cursor-pointer bg-gray-100"
-                  onClick={() => openGallery(apt.images, apt.name)}
-                >
-                  <div className="absolute top-4 right-4 bg-primary text-white px-3 py-2 text-xs font-bold uppercase tracking-wider z-10 rounded-lg shadow-lg">
+                <div className="relative h-72 overflow-hidden bg-gray-100">
+                  <div className="absolute right-4 top-4 z-10 rounded-lg bg-primary px-3 py-2 text-xs font-bold uppercase tracking-wider text-white shadow-lg">
                     {apt.rentShortTerm}
                   </div>
-                  <motion.div 
-                    whileHover={{ scale: 1.1 }}
-                    className="absolute bottom-4 right-4 bg-primary text-white p-3 rounded-full z-10 cursor-pointer shadow-lg hover:shadow-xl transition-shadow"
-                  >
-                    <Camera size={20} />
-                  </motion.div>
-                  <OptimizedImage
-                    src={apt.image}
-                    alt={apt.name}
-                    fill
-                    objectFit="cover"
-                    className="group-hover:scale-110 transition-transform duration-700"
-                  />
+                  <AssetSlideshow images={apt.images} alt={apt.name} className="h-full w-full" />
                 </div>
 
                 {/* Details */}
@@ -167,24 +131,15 @@ const UrbanApartments: React.FC = () => {
                     ))}
                   </div>
 
-                  <div className="flex gap-3">
+                  <div className="flex">
                     <motion.button
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="flex-1 bg-primary text-white py-3 rounded-lg text-sm font-bold uppercase tracking-wide hover:bg-[#c4492e] transition-all shadow-md hover:shadow-lg flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-primary/50"
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      className="flex min-h-12 w-full items-center justify-center gap-2 rounded-lg bg-primary py-3 text-sm font-bold uppercase tracking-wide text-white shadow-md transition-all hover:bg-[#c4492e] hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-primary/50"
                       onClick={() => bookApartment(apt.id, apt.name)}
                       type="button"
                     >
                       Book Stay <ArrowRight size={16} />
-                    </motion.button>
-                    <motion.button
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="flex-1 border-2 border-dark text-dark py-3 rounded-lg text-sm font-bold uppercase tracking-wide hover:bg-dark hover:text-white transition-all focus:outline-none focus:ring-2 focus:ring-dark/50"
-                      onClick={() => openGallery(apt.images, apt.name)}
-                      type="button"
-                    >
-                      View Gallery
                     </motion.button>
                   </div>
                 </div>
