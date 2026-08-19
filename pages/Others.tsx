@@ -6,7 +6,7 @@ import SectionHeader from '../components/SectionHeader';
 import StoryModal from '../components/StoryModal';
 import ImpactReportModal from '../components/ImpactReportModal';
 import OptimizedImage from '../components/OptimizedImage';
-import { COFFEE_PRODUCTS, CSR_PROJECTS, BLOG_POSTS } from '../constants';
+import { COFFEE_PRODUCTS, CSR_PROJECTS, BLOG_POSTS, CONCIERGE_OKEKE_WHATSAPP } from '../constants';
 
 const Others: React.FC = () => {
   const [selectedStory, setSelectedStory] = useState<number | null>(null);
@@ -105,16 +105,90 @@ const Others: React.FC = () => {
             </div>
           </div>
 
-          {/* Future Additions Placeholder */}
-          <div className="bg-white border border-dashed border-gray-300 rounded-xl p-12 text-center relative overflow-hidden">
-             <div className="absolute top-0 right-0 p-4 opacity-10">
-               <Droplets size={120} />
-             </div>
-             <span className="inline-block px-3 py-1 bg-orange-100 text-primary text-xs font-bold rounded-full mb-4 uppercase tracking-wider">Coming Soon</span>
-             <h3 className="font-serif text-2xl mb-2">Organic Highland Honey</h3>
-             <p className="text-gray-500 max-w-lg mx-auto">
-               We are currently working with local apiaries to bring you pure, unprocessed honey from the Aberdare forests. Stay tuned.
-             </p>
+          {/* Official Merchandise Section */}
+          <div className="mt-16 bg-white border border-gray-100 rounded-3xl p-8 sm:p-12 shadow-sm">
+            <div className="text-center max-w-xl mx-auto mb-10">
+              <span className="text-primary text-xs font-bold uppercase tracking-[0.2em] block mb-2">
+                Official Collection
+              </span>
+              <h3 className="font-serif text-3xl md:text-4xl text-dark mb-3">
+                New Manyatta Merchandise
+              </h3>
+              <p className="text-gray-500 text-sm leading-relaxed">
+                Take a piece of your Kenyan retreat home with our curated signature apparel, handmade bush journals, and safari gear.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="bg-stone-50 p-6 rounded-2xl border border-gray-100 flex flex-col justify-between hover:shadow-md transition-shadow">
+                <div>
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-700 bg-emerald-100 px-2.5 py-1 rounded-full inline-block mb-3">
+                    Apparel
+                  </span>
+                  <h4 className="font-serif text-xl text-dark mb-2">Signature Safari Cap</h4>
+                  <p className="text-xs text-gray-500 mb-4 leading-relaxed">
+                    Breathable, UV-protected embroidered safari hat designed for highland hikes and game drives.
+                  </p>
+                </div>
+                <div className="flex items-center justify-between pt-4 border-t border-gray-200/60">
+                  <span className="font-medium text-dark text-sm">Ksh 3,500</span>
+                  <a
+                    href={CONCIERGE_OKEKE_WHATSAPP}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs font-bold text-primary hover:underline"
+                  >
+                    Order via Concierge &rarr;
+                  </a>
+                </div>
+              </div>
+
+              <div className="bg-stone-50 p-6 rounded-2xl border border-gray-100 flex flex-col justify-between hover:shadow-md transition-shadow">
+                <div>
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-amber-700 bg-amber-100 px-2.5 py-1 rounded-full inline-block mb-3">
+                    Crafted Leather
+                  </span>
+                  <h4 className="font-serif text-xl text-dark mb-2">Highland Travel Journal</h4>
+                  <p className="text-xs text-gray-500 mb-4 leading-relaxed">
+                    Handcrafted genuine Kenyan leather journal with refillable parchment pages.
+                  </p>
+                </div>
+                <div className="flex items-center justify-between pt-4 border-t border-gray-200/60">
+                  <span className="font-medium text-dark text-sm">Ksh 4,800</span>
+                  <a
+                    href={CONCIERGE_OKEKE_WHATSAPP}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs font-bold text-primary hover:underline"
+                  >
+                    Order via Concierge &rarr;
+                  </a>
+                </div>
+              </div>
+
+              <div className="bg-stone-50 p-6 rounded-2xl border border-gray-100 flex flex-col justify-between hover:shadow-md transition-shadow">
+                <div>
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-blue-700 bg-blue-100 px-2.5 py-1 rounded-full inline-block mb-3">
+                    Accessories
+                  </span>
+                  <h4 className="font-serif text-xl text-dark mb-2">Canvas Excursion Tote</h4>
+                  <p className="text-xs text-gray-500 mb-4 leading-relaxed">
+                    Heavy-duty organic cotton canvas tote crafted for city trips and safari day-pack essentials.
+                  </p>
+                </div>
+                <div className="flex items-center justify-between pt-4 border-t border-gray-200/60">
+                  <span className="font-medium text-dark text-sm">Ksh 2,900</span>
+                  <a
+                    href={CONCIERGE_OKEKE_WHATSAPP}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs font-bold text-primary hover:underline"
+                  >
+                    Order via Concierge &rarr;
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>

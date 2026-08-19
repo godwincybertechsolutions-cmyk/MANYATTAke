@@ -22,4 +22,5 @@ export function prefetchCommonRoutes(): void {
   prefetchRoute('/mountain-villas');
   prefetchRoute('/safaris');
   prefetchRoute('/urban-apartments');
+  prefetchRoute('/others');
 }

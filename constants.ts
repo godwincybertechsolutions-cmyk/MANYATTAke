@@ -118,9 +118,9 @@ export const BURGURET_IMAGES = [
 ];
 
 export const BURGURET_VILLA_DETAILS = {
-  title: "Burguret Mountainside Villa",
+  title: "Burguret Mountain Villa",
   subtitle: "Three Bedroom Villa on the Slopes of Mt. Kenya",
-  description: "The Burguret Mountainside Villa is a 3-bedroom luxurious bungalow seated on 2.2 acres of African Bush Land filled with 'Leleshwa' Cedar trees. It is a seamless fusion of old British architectural style and Kenyan Lamu coastal designs with most of its furniture handmade from the Coast using Oak tree 'Mvule'.",
+  description: "The Burguret Mountain Villa is a 3-bedroom luxurious bungalow seated on 2.2 acres of African Bush Land filled with 'Leleshwa' Cedar trees. It is a seamless fusion of old British architectural style and Kenyan Lamu coastal designs with most of its furniture handmade from the Coast using Oak tree 'Mvule'.",
   location: {
     main: "Burguret, Kenya",
     sub: "Slopes of Mt Kenya",
@@ -180,11 +180,19 @@ export const MOUNTAIN_VILLA_PRICING = [
   }
 ];
 
+export const CONCIERGE_OKEKE_PHONE = "+254723366462";
+export const CONCIERGE_OKEKE_DISPLAY = "+254 723 366 462";
+export const CONCIERGE_OKEKE_WHATSAPP = "https://wa.me/254723366462";
+
+export const CONCIERGE_CHRISTABEL_PHONE = "+254741059240";
+export const CONCIERGE_CHRISTABEL_DISPLAY = "+254 741 059 240";
+export const CONCIERGE_CHRISTABEL_WHATSAPP = "https://wa.me/254741059240";
+
 // REMOVED DUPLICATE - Keep only one NARUMORU_VILLA_DETAILS
 export const NARUMORU_VILLA_DETAILS = {
-  title: "Narumoru Mountainside Villa",
+  title: "Narumoru Mountain Villa",
   subtitle: "Three Bedroom Villa on the Slopes of Mt. Kenya",
-  description: "The Narumoru Mountainside Villa is one of the most beautiful homes in the area with unique handmade designs and is set on an extraordinary 8-acre piece of forest with over a half kilometer river frontage. Aside from visits from the wildlife such as the Colobus, antelopes, and hundreds of various birds, the Villa offers a quintessence of privacy, and a calm serene surrounding filled with nature.",
+  description: "The Narumoru Mountain Villa is one of the most beautiful homes in the area with unique handmade designs and is set on an extraordinary 8-acre piece of forest with over a half kilometer river frontage. Aside from visits from the wildlife such as the Colobus, antelopes, and hundreds of various birds, the Villa offers a quintessence of privacy, and a calm serene surrounding filled with nature.",
   location: {
     main: "Narumoru, Kenya",
     sub: "Bordering Mt Kenya National Park",

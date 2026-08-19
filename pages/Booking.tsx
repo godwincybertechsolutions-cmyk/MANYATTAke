@@ -12,10 +12,10 @@ import {
 import { calculateBookingTotal } from '../services/bookings';
 import { getSupabaseErrorMessage } from '../utils/supabaseError';
 import {
-  ADMIN_1_DISPLAY,
-  ADMIN_1_PHONE,
-  ADMIN_2_DISPLAY,
-  ADMIN_2_PHONE,
+  CONCIERGE_OKEKE_DISPLAY,
+  CONCIERGE_OKEKE_PHONE,
+  CONCIERGE_CHRISTABEL_DISPLAY,
+  CONCIERGE_CHRISTABEL_PHONE,
   CONTACT_EMAIL,
 } from '../constants';
 
@@ -176,19 +176,19 @@ const Booking: React.FC = () => {
     setSuccess(true);
     setSubmitting(false);
 
-    // Auto launch WhatsApp for Admin 1
-    const cleanAdmin1 = ADMIN_1_PHONE.replace(/[^0-9]/g, '');
-    const whatsappUrl = `https://wa.me/${cleanAdmin1}?text=${encodeURIComponent(msg)}`;
+    // Auto launch WhatsApp for Concierge Okeke
+    const cleanOkeke = CONCIERGE_OKEKE_PHONE.replace(/[^0-9]/g, '');
+    const whatsappUrl = `https://wa.me/${cleanOkeke}?text=${encodeURIComponent(msg)}`;
     window.open(whatsappUrl, '_blank');
   };
 
-  const getAdmin1WhatsappUrl = () => {
-    const cleanNumber = ADMIN_1_PHONE.replace(/[^0-9]/g, '');
+  const getConciergeOkekeWhatsappUrl = () => {
+    const cleanNumber = CONCIERGE_OKEKE_PHONE.replace(/[^0-9]/g, '');
     return `https://wa.me/${cleanNumber}?text=${encodeURIComponent(formattedMessage)}`;
   };
 
-  const getAdmin2WhatsappUrl = () => {
-    const cleanNumber = ADMIN_2_PHONE.replace(/[^0-9]/g, '');
+  const getConciergeChristabelWhatsappUrl = () => {
+    const cleanNumber = CONCIERGE_CHRISTABEL_PHONE.replace(/[^0-9]/g, '');
     return `https://wa.me/${cleanNumber}?text=${encodeURIComponent(formattedMessage)}`;
   };
 
@@ -212,7 +212,7 @@ const Booking: React.FC = () => {
             <div>
               <h2 className="font-serif text-3xl text-dark mb-2">Request Ready to Send!</h2>
               <p className="text-gray-600 text-sm leading-relaxed">
-                We opened WhatsApp with your booking details formatted. If WhatsApp didn't open automatically, use any of the buttons below to reach our admins directly via WhatsApp or Email.
+                We opened WhatsApp with your booking details formatted. If WhatsApp didn't open automatically, use any of the buttons below to reach our concierges directly via WhatsApp or Email.
               </p>
             </div>
 
@@ -222,23 +222,23 @@ const Booking: React.FC = () => {
 
             <div className="space-y-3 pt-2">
               <a
-                href={getAdmin1WhatsappUrl()}
+                href={getConciergeOkekeWhatsappUrl()}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white py-3.5 px-6 rounded-full font-bold uppercase tracking-wider text-xs shadow-md transition-all"
               >
                 <MessageCircle size={18} />
-                Send via WhatsApp (Admin 1: {ADMIN_1_DISPLAY})
+                Send via WhatsApp (Concierge Okeke: {CONCIERGE_OKEKE_DISPLAY})
               </a>
 
               <a
-                href={getAdmin2WhatsappUrl()}
+                href={getConciergeChristabelWhatsappUrl()}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white py-3.5 px-6 rounded-full font-bold uppercase tracking-wider text-xs shadow-md transition-all"
               >
                 <MessageCircle size={18} />
-                Send via WhatsApp (Admin 2: {ADMIN_2_DISPLAY})
+                Send via WhatsApp (Concierge Christabel: {CONCIERGE_CHRISTABEL_DISPLAY})
               </a>
 
               <a

@@ -6,10 +6,10 @@ import { Link, useNavigate } from 'react-router-dom';
 import SectionHeader from '../components/SectionHeader';
 import OptimizedImage from '../components/OptimizedImage';
 import {
-  ADMIN_1_WHATSAPP,
-  ADMIN_1_DISPLAY,
-  ADMIN_2_WHATSAPP,
-  ADMIN_2_DISPLAY,
+  CONCIERGE_OKEKE_WHATSAPP,
+  CONCIERGE_OKEKE_DISPLAY,
+  CONCIERGE_CHRISTABEL_WHATSAPP,
+  CONCIERGE_CHRISTABEL_DISPLAY,
 } from '../constants';
 
 const Home: React.FC = () => {
@@ -98,7 +98,7 @@ const Home: React.FC = () => {
         </div>
       </div>
 
-      {/* Admin WhatsApp Quick Contacts Section */}
+      {/* Concierge WhatsApp Quick Contacts Section */}
       <section className="py-10 bg-stone-50 border-b border-gray-200/60">
         <div className="container mx-auto px-4 sm:px-6">
           <div className="max-w-4xl mx-auto bg-white rounded-2xl p-6 sm:p-8 shadow-md border border-gray-100 flex flex-col md:flex-row items-center justify-between gap-6">
@@ -107,7 +107,7 @@ const Home: React.FC = () => {
                 Direct Assistance
               </span>
               <h3 className="font-serif text-xl sm:text-2xl text-dark font-semibold">
-                Chat Directly With Our Admins
+                Chat Directly With Our Concierges
               </h3>
               <p className="text-sm text-gray-500 mt-1">
                 Have questions or need immediate booking support? Reach out directly on WhatsApp.
@@ -115,22 +115,22 @@ const Home: React.FC = () => {
             </div>
             <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto shrink-0">
               <a
-                href={ADMIN_1_WHATSAPP}
+                href={CONCIERGE_OKEKE_WHATSAPP}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-3 rounded-full text-xs font-bold uppercase tracking-wider shadow-sm transition-all hover:scale-105"
               >
                 <MessageCircle size={18} />
-                <span>Admin 1: {ADMIN_1_DISPLAY}</span>
+                <span>Concierge Okeke: {CONCIERGE_OKEKE_DISPLAY}</span>
               </a>
               <a
-                href={ADMIN_2_WHATSAPP}
+                href={CONCIERGE_CHRISTABEL_WHATSAPP}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-3 rounded-full text-xs font-bold uppercase tracking-wider shadow-sm transition-all hover:scale-105"
               >
                 <MessageCircle size={18} />
-                <span>Admin 2: {ADMIN_2_DISPLAY}</span>
+                <span>Concierge Christabel: {CONCIERGE_CHRISTABEL_DISPLAY}</span>
               </a>
             </div>
           </div>
@@ -155,7 +155,7 @@ const Home: React.FC = () => {
                   <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors z-10 duration-300"></div>
                   <OptimizedImage
                     src="/assets/Trinity%20of%20Experience/Mountainside%20Villas/Burguret.%20Outside%20Patio%20View%202.jpg"
-                    alt="Mountainside Haven"
+                    alt="Mountain Villa Haven"
                     className="transition-transform duration-700 group-hover:scale-110"
                     fill
                     objectFit="cover"
@@ -165,7 +165,7 @@ const Home: React.FC = () => {
                       <div className="p-2 bg-primary rounded-lg flex-shrink-0">
                         <Mountain size={20} />
                       </div>
-                      <h3 className="font-serif text-xl sm:text-2xl font-semibold">Mountainside Villas</h3>
+                      <h3 className="font-serif text-xl sm:text-2xl font-semibold">Mountain Villas</h3>
                     </div>
                     <p className="text-white/90 text-sm leading-relaxed">Tranquil villas nestled in the misty slopes of Mt. Kenya.</p>
                   </div>
@@ -239,7 +239,6 @@ const Home: React.FC = () => {
       {/* Quote Section */}
       <section className="py-24 bg-stone-100 relative overflow-hidden">
         <div className="container mx-auto px-6 text-center relative z-10">
-          <span className="text-6xl text-primary font-serif opacity-30">"</span>
           <p className="font-serif text-3xl md:text-5xl text-dark leading-tight max-w-4xl mx-auto mb-8">
             For us, it is not just about the stay, it is everything about the stay.
           </p>
