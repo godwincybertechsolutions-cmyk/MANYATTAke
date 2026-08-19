@@ -12,10 +12,10 @@ import {
 import { calculateBookingTotal } from '../services/bookings';
 import { getSupabaseErrorMessage } from '../utils/supabaseError';
 import {
-  CONCIERGE_OKEKE_DISPLAY,
-  CONCIERGE_OKEKE_PHONE,
-  CONCIERGE_CHRISTABEL_DISPLAY,
-  CONCIERGE_CHRISTABEL_PHONE,
+  CONCIERGE_1_DISPLAY,
+  CONCIERGE_1_PHONE,
+  CONCIERGE_2_DISPLAY,
+  CONCIERGE_2_PHONE,
   CONTACT_EMAIL,
 } from '../constants';
 
@@ -176,19 +176,19 @@ const Booking: React.FC = () => {
     setSuccess(true);
     setSubmitting(false);
 
-    // Auto launch WhatsApp for Concierge Okeke
-    const cleanOkeke = CONCIERGE_OKEKE_PHONE.replace(/[^0-9]/g, '');
-    const whatsappUrl = `https://wa.me/${cleanOkeke}?text=${encodeURIComponent(msg)}`;
+    // Auto launch WhatsApp for Concierge 1
+    const clean1 = CONCIERGE_1_PHONE.replace(/[^0-9]/g, '');
+    const whatsappUrl = `https://wa.me/${clean1}?text=${encodeURIComponent(msg)}`;
     window.open(whatsappUrl, '_blank');
   };
 
-  const getConciergeOkekeWhatsappUrl = () => {
-    const cleanNumber = CONCIERGE_OKEKE_PHONE.replace(/[^0-9]/g, '');
+  const getConcierge1WhatsappUrl = () => {
+    const cleanNumber = CONCIERGE_1_PHONE.replace(/[^0-9]/g, '');
     return `https://wa.me/${cleanNumber}?text=${encodeURIComponent(formattedMessage)}`;
   };
 
-  const getConciergeChristabelWhatsappUrl = () => {
-    const cleanNumber = CONCIERGE_CHRISTABEL_PHONE.replace(/[^0-9]/g, '');
+  const getConcierge2WhatsappUrl = () => {
+    const cleanNumber = CONCIERGE_2_PHONE.replace(/[^0-9]/g, '');
     return `https://wa.me/${cleanNumber}?text=${encodeURIComponent(formattedMessage)}`;
   };
 
@@ -222,23 +222,23 @@ const Booking: React.FC = () => {
 
             <div className="space-y-3 pt-2">
               <a
-                href={getConciergeOkekeWhatsappUrl()}
+                href={getConcierge1WhatsappUrl()}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white py-3.5 px-6 rounded-full font-bold uppercase tracking-wider text-xs shadow-md transition-all"
               >
                 <MessageCircle size={18} />
-                Send via WhatsApp (Concierge Okeke: {CONCIERGE_OKEKE_DISPLAY})
+                Send via WhatsApp (Concierge: {CONCIERGE_1_DISPLAY})
               </a>
 
               <a
-                href={getConciergeChristabelWhatsappUrl()}
+                href={getConcierge2WhatsappUrl()}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white py-3.5 px-6 rounded-full font-bold uppercase tracking-wider text-xs shadow-md transition-all"
               >
                 <MessageCircle size={18} />
-                Send via WhatsApp (Concierge Christabel: {CONCIERGE_CHRISTABEL_DISPLAY})
+                Send via WhatsApp (Concierge: {CONCIERGE_2_DISPLAY})
               </a>
 
               <a

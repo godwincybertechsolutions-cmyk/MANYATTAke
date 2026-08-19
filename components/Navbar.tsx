@@ -24,11 +24,14 @@ const Navbar: React.FC = () => {
 
   useEffect(() => {
     setIsOpen(false);
+  }, [location.pathname]);
+
+  useEffect(() => {
     document.body.style.overflow = isOpen ? 'hidden' : '';
     return () => {
       document.body.style.overflow = '';
     };
-  }, [isOpen, location.pathname]);
+  }, [isOpen]);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {

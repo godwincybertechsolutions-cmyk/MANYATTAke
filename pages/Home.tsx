@@ -6,10 +6,10 @@ import { Link, useNavigate } from 'react-router-dom';
 import SectionHeader from '../components/SectionHeader';
 import OptimizedImage from '../components/OptimizedImage';
 import {
-  CONCIERGE_OKEKE_WHATSAPP,
-  CONCIERGE_OKEKE_DISPLAY,
-  CONCIERGE_CHRISTABEL_WHATSAPP,
-  CONCIERGE_CHRISTABEL_DISPLAY,
+  CONCIERGE_1_WHATSAPP,
+  CONCIERGE_1_DISPLAY,
+  CONCIERGE_2_WHATSAPP,
+  CONCIERGE_2_DISPLAY,
 } from '../constants';
 
 const Home: React.FC = () => {
@@ -115,22 +115,22 @@ const Home: React.FC = () => {
             </div>
             <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto shrink-0">
               <a
-                href={CONCIERGE_OKEKE_WHATSAPP}
+                href={CONCIERGE_1_WHATSAPP}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-3 rounded-full text-xs font-bold uppercase tracking-wider shadow-sm transition-all hover:scale-105"
               >
                 <MessageCircle size={18} />
-                <span>Concierge Okeke: {CONCIERGE_OKEKE_DISPLAY}</span>
+                <span>Concierge: {CONCIERGE_1_DISPLAY}</span>
               </a>
               <a
-                href={CONCIERGE_CHRISTABEL_WHATSAPP}
+                href={CONCIERGE_2_WHATSAPP}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-3 rounded-full text-xs font-bold uppercase tracking-wider shadow-sm transition-all hover:scale-105"
               >
                 <MessageCircle size={18} />
-                <span>Concierge Christabel: {CONCIERGE_CHRISTABEL_DISPLAY}</span>
+                <span>Concierge: {CONCIERGE_2_DISPLAY}</span>
               </a>
             </div>
           </div>

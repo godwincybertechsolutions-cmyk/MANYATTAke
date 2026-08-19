@@ -6,7 +6,7 @@ import SectionHeader from '../components/SectionHeader';
 import StoryModal from '../components/StoryModal';
 import ImpactReportModal from '../components/ImpactReportModal';
 import OptimizedImage from '../components/OptimizedImage';
-import { COFFEE_PRODUCTS, CSR_PROJECTS, BLOG_POSTS, CONCIERGE_OKEKE_WHATSAPP } from '../constants';
+import { COFFEE_PRODUCTS, CSR_PROJECTS, BLOG_POSTS, CONCIERGE_1_WHATSAPP } from '../constants';
 
 const Others: React.FC = () => {
   const [selectedStory, setSelectedStory] = useState<number | null>(null);
@@ -133,7 +133,7 @@ const Others: React.FC = () => {
                 <div className="flex items-center justify-between pt-4 border-t border-gray-200/60">
                   <span className="font-medium text-dark text-sm">Ksh 3,500</span>
                   <a
-                    href={CONCIERGE_OKEKE_WHATSAPP}
+                    href={CONCIERGE_1_WHATSAPP}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-xs font-bold text-primary hover:underline"
@@ -156,7 +156,7 @@ const Others: React.FC = () => {
                 <div className="flex items-center justify-between pt-4 border-t border-gray-200/60">
                   <span className="font-medium text-dark text-sm">Ksh 4,800</span>
                   <a
-                    href={CONCIERGE_OKEKE_WHATSAPP}
+                    href={CONCIERGE_1_WHATSAPP}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-xs font-bold text-primary hover:underline"
@@ -179,7 +179,7 @@ const Others: React.FC = () => {
                 <div className="flex items-center justify-between pt-4 border-t border-gray-200/60">
                   <span className="font-medium text-dark text-sm">Ksh 2,900</span>
                   <a
-                    href={CONCIERGE_OKEKE_WHATSAPP}
+                    href={CONCIERGE_1_WHATSAPP}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-xs font-bold text-primary hover:underline"
