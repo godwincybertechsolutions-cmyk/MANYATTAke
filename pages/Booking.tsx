@@ -228,7 +228,7 @@ const Booking: React.FC = () => {
                 className="w-full flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white py-3.5 px-6 rounded-full font-bold uppercase tracking-wider text-xs shadow-md transition-all"
               >
                 <MessageCircle size={18} />
-                Send via WhatsApp (Concierge: {CONCIERGE_1_DISPLAY})
+                <span>{CONCIERGE_1_DISPLAY}</span>
               </a>
 
               <a
@@ -238,7 +238,7 @@ const Booking: React.FC = () => {
                 className="w-full flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white py-3.5 px-6 rounded-full font-bold uppercase tracking-wider text-xs shadow-md transition-all"
               >
                 <MessageCircle size={18} />
-                Send via WhatsApp (Concierge: {CONCIERGE_2_DISPLAY})
+                <span>{CONCIERGE_2_DISPLAY}</span>
               </a>
 
               <a

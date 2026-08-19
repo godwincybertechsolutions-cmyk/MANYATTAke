@@ -121,7 +121,7 @@ const Home: React.FC = () => {
                 className="flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-3 rounded-full text-xs font-bold uppercase tracking-wider shadow-sm transition-all hover:scale-105"
               >
                 <MessageCircle size={18} />
-                <span>Concierge: {CONCIERGE_1_DISPLAY}</span>
+                <span>{CONCIERGE_1_DISPLAY}</span>
               </a>
               <a
                 href={CONCIERGE_2_WHATSAPP}
@@ -130,7 +130,7 @@ const Home: React.FC = () => {
                 className="flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-3 rounded-full text-xs font-bold uppercase tracking-wider shadow-sm transition-all hover:scale-105"
               >
                 <MessageCircle size={18} />
-                <span>Concierge: {CONCIERGE_2_DISPLAY}</span>
+                <span>{CONCIERGE_2_DISPLAY}</span>
               </a>
             </div>
           </div>
