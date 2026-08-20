@@ -126,7 +126,7 @@ const Home: React.FC = () => {
       {/* Experience Teasers */}
       <section className="py-16 sm:py-20 bg-white">
         <div className="container mx-auto px-4 sm:px-6">
-          <SectionHeader title="Homes & Safaris" subtitle="Curated For You" />
+          <SectionHeader title="Homes & Safaris" />
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {/* Card 1 */}
