@@ -41,11 +41,7 @@ const Others: React.FC = () => {
           transition={{ duration: 0.6 }}
           className="absolute inset-0 flex flex-col items-center justify-center text-center p-6"
         >
-           <span className="text-primary text-sm font-bold tracking-[0.3em] uppercase mb-4">Beyond the Stay</span>
-           <h1 className="font-serif text-5xl md:text-6xl text-white mb-4">Curated & Community</h1>
-           <p className="text-white/80 text-lg max-w-2xl font-light">
-             From the rich soils of Mt. Elgon to the heart of our local communities.
-           </p>
+           <h1 className="font-serif text-5xl md:text-6xl text-white">Curated & Community</h1>
         </motion.div>
       </div>
 
@@ -108,95 +104,54 @@ const Others: React.FC = () => {
           {/* Official Merchandise Section */}
           <div className="mt-16 bg-white border border-gray-100 rounded-3xl p-8 sm:p-12 shadow-sm">
             <div className="text-center max-w-xl mx-auto mb-10">
-              <span className="text-primary text-xs font-bold uppercase tracking-[0.2em] block mb-2">
-                Merch
-              </span>
-              <h3 className="font-serif text-4xl md:text-5xl text-dark mb-3">
-                Official Collection
+              <h3 className="font-serif text-4xl md:text-5xl text-dark">
+                Official Merchendise
               </h3>
-              <p className="text-gray-500 text-sm leading-relaxed">
-                Take a piece of your Kenyan retreat home with our curated signature apparel, handmade bush journals, and safari gear.
-              </p>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              <div className="bg-stone-50 p-6 rounded-2xl border border-gray-100 flex flex-col justify-between hover:shadow-md transition-shadow">
-                <div>
-                  <div className="aspect-[4/3] rounded-xl overflow-hidden mb-5 bg-stone-100">
-                    <OptimizedImage src="/assets/Merchandise/signature-safari-cap.png" alt="Signature Safari Cap" fill objectFit="cover" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" />
+              {[
+                {
+                  name: 'T-shirts',
+                  image: '/assets/Merchandise/signature-tshirt.png',
+                  alt: 'Manyatta signature T-shirt',
+                  description: 'Soft premium cotton apparel inspired by the Kenyan highlands.',
+                  price: 'Ksh 2,800',
+                },
+                {
+                  name: 'Caps',
+                  image: '/assets/Merchandise/signature-safari-cap.png',
+                  alt: 'Manyatta signature cap',
+                  description: 'Breathable embroidered cap made for sunny days and open-air adventures.',
+                  price: 'Ksh 3,500',
+                },
+                {
+                  name: 'Hoodies',
+                  image: '/assets/Merchandise/signature-hoodie.png',
+                  alt: 'Manyatta signature hoodie',
+                  description: 'A warm everyday layer for cool highland mornings and evenings.',
+                  price: 'Ksh 4,500',
+                },
+              ].map((item) => (
+                <div key={item.name} className="bg-stone-50 p-6 rounded-2xl border border-gray-100 flex flex-col justify-between hover:shadow-md transition-shadow">
+                  <div>
+                    <div className="aspect-[4/3] rounded-xl overflow-hidden mb-5 bg-stone-100">
+                      <OptimizedImage src={item.image} alt={item.alt} fill objectFit="cover" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" />
+                    </div>
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-700 bg-emerald-100 px-2.5 py-1 rounded-full inline-block mb-3">
+                      Apparel
+                    </span>
+                    <h4 className="font-serif text-xl text-dark mb-2">{item.name}</h4>
+                    <p className="text-xs text-gray-500 mb-4 leading-relaxed">{item.description}</p>
                   </div>
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-700 bg-emerald-100 px-2.5 py-1 rounded-full inline-block mb-3">
-                    Apparel
-                  </span>
-                  <h4 className="font-serif text-xl text-dark mb-2">Signature Safari Cap</h4>
-                  <p className="text-xs text-gray-500 mb-4 leading-relaxed">
-                    Breathable, UV-protected embroidered safari hat designed for highland hikes and game drives.
-                  </p>
-                </div>
-                <div className="flex items-center justify-between pt-4 border-t border-gray-200/60">
-                  <span className="font-medium text-dark text-sm">Ksh 3,500</span>
-                  <a
-                    href={CONCIERGE_1_WHATSAPP}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-xs font-bold text-primary hover:underline"
-                  >
-                    Order via Concierge &rarr;
-                  </a>
-                </div>
-              </div>
-
-              <div className="bg-stone-50 p-6 rounded-2xl border border-gray-100 flex flex-col justify-between hover:shadow-md transition-shadow">
-                <div>
-                  <div className="aspect-[4/3] rounded-xl overflow-hidden mb-5 bg-stone-100">
-                    <OptimizedImage src="/assets/Merchandise/highland-travel-journal.png" alt="Highland Travel Journal" fill objectFit="cover" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" />
+                  <div className="flex items-center justify-between pt-4 border-t border-gray-200/60">
+                    <span className="font-medium text-dark text-sm">{item.price}</span>
+                    <a href={CONCIERGE_1_WHATSAPP} target="_blank" rel="noopener noreferrer" className="text-xs font-bold text-primary hover:underline">
+                      Order via Concierge &rarr;
+                    </a>
                   </div>
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-amber-700 bg-amber-100 px-2.5 py-1 rounded-full inline-block mb-3">
-                    Crafted Leather
-                  </span>
-                  <h4 className="font-serif text-xl text-dark mb-2">Highland Travel Journal</h4>
-                  <p className="text-xs text-gray-500 mb-4 leading-relaxed">
-                    Handcrafted genuine Kenyan leather journal with refillable parchment pages.
-                  </p>
                 </div>
-                <div className="flex items-center justify-between pt-4 border-t border-gray-200/60">
-                  <span className="font-medium text-dark text-sm">Ksh 4,800</span>
-                  <a
-                    href={CONCIERGE_1_WHATSAPP}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-xs font-bold text-primary hover:underline"
-                  >
-                    Order via Concierge &rarr;
-                  </a>
-                </div>
-              </div>
-
-              <div className="bg-stone-50 p-6 rounded-2xl border border-gray-100 flex flex-col justify-between hover:shadow-md transition-shadow">
-                <div>
-                  <div className="aspect-[4/3] rounded-xl overflow-hidden mb-5 bg-stone-100">
-                    <OptimizedImage src="/assets/Merchandise/canvas-excursion-tote.png" alt="Canvas Excursion Tote" fill objectFit="cover" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" />
-                  </div>
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-blue-700 bg-blue-100 px-2.5 py-1 rounded-full inline-block mb-3">
-                    Accessories
-                  </span>
-                  <h4 className="font-serif text-xl text-dark mb-2">Canvas Excursion Tote</h4>
-                  <p className="text-xs text-gray-500 mb-4 leading-relaxed">
-                    Heavy-duty organic cotton canvas tote crafted for city trips and safari day-pack essentials.
-                  </p>
-                </div>
-                <div className="flex items-center justify-between pt-4 border-t border-gray-200/60">
-                  <span className="font-medium text-dark text-sm">Ksh 2,900</span>
-                  <a
-                    href={CONCIERGE_1_WHATSAPP}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-xs font-bold text-primary hover:underline"
-                  >
-                    Order via Concierge &rarr;
-                  </a>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </div>
