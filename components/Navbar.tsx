@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Menu, X, Phone, Calendar } from 'lucide-react';
-import { NAVIGATION_LINKS, APP_NAME, CONTACT_PHONE, CONTACT_PHONE_DISPLAY } from '../constants';
+import { Menu, X, Calendar } from 'lucide-react';
+import { NAVIGATION_LINKS, APP_NAME } from '../constants';
 import { prefetchRoute } from '../utils/routePrefetch';
 import { Z_INDEX } from '../tokens';
 
@@ -141,21 +141,6 @@ const Navbar: React.FC = () => {
 
           {/* Desktop actions */}
           <div className="hidden md:flex items-center gap-1.5 lg:gap-2 shrink-0">
-            {CONTACT_PHONE && (
-              <a
-                href={`tel:${CONTACT_PHONE}`}
-                className={`hidden xl:flex items-center gap-1.5 px-3 py-2 rounded-full text-xs font-medium transition-colors ${
-                  scrolled
-                    ? 'text-gray-600 hover:text-primary bg-gray-50'
-                    : 'text-white/90 hover:bg-white/10'
-                }`}
-                aria-label={`Call ${CONTACT_PHONE_DISPLAY}`}
-              >
-                <Phone size={16} className="shrink-0" />
-                <span className="truncate max-w-[9rem]">{CONTACT_PHONE_DISPLAY}</span>
-              </a>
-            )}
-
             <button
               type="button"
               onClick={goToBooking}
@@ -218,17 +203,6 @@ const Navbar: React.FC = () => {
           ))}
 
           <div className="pt-4 mt-2 border-t border-gray-100 space-y-2">
-            {CONTACT_PHONE && (
-              <a
-                href={`tel:${CONTACT_PHONE}`}
-                onClick={() => setIsOpen(false)}
-                className="flex items-center justify-center gap-2 w-full py-3.5 rounded-xl bg-gray-50 text-gray-800 font-medium"
-              >
-                <Phone size={18} />
-                {CONTACT_PHONE_DISPLAY}
-              </a>
-            )}
-
             <button
               type="button"
               onClick={goToBooking}
