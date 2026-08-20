@@ -13,6 +13,15 @@ import ImageSlideshowModal from '../components/ImageSlideshowModal';
 const UrbanApartments: React.FC = () => {
   const navigate = useNavigate();
   const [modalOpen, setModalOpen] = useState(false);
+  const [selectedLocation, setSelectedLocation] = useState('All locations');
+  const locations = ['All locations', 'Upper Hill', 'Kilimani', 'Riverside', 'Westlands', 'Kileleshwa'];
+
+  const filteredApartments = useMemo(
+    () => selectedLocation === 'All locations'
+      ? URBAN_APARTMENTS
+      : URBAN_APARTMENTS.filter((apt) => apt.location === selectedLocation),
+    [selectedLocation]
+  );
 
   const bookApartment = (aptId: string, name: string) => {
     const state: BookingLocationState = {
@@ -86,10 +95,26 @@ const UrbanApartments: React.FC = () => {
       {/* Comparison Section */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-6">
-          <SectionHeader title="Select Your Residence" subtitle="Premium Locations" />
+          <SectionHeader title="Select Your Residence" />
+
+          <div className="mb-10 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+            <label htmlFor="residence-location" className="text-sm font-semibold uppercase tracking-wider text-gray-600">
+              Filter by location
+            </label>
+            <select
+              id="residence-location"
+              value={selectedLocation}
+              onChange={(event) => setSelectedLocation(event.target.value)}
+              className="rounded-lg border border-gray-200 bg-white px-4 py-3 text-sm font-medium text-dark shadow-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
+            >
+              {locations.map((location) => (
+                <option key={location} value={location}>{location}</option>
+              ))}
+            </select>
+          </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-            {URBAN_APARTMENTS.map((apt, idx) => (
+            {filteredApartments.map((apt, idx) => (
               <motion.div 
                 key={apt.id}
                 initial={{ opacity: 0, y: 20 }}

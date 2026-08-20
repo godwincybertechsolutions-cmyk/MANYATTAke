@@ -318,9 +318,10 @@ export const SAFARI_ITINERARIES: Itinerary[] = [
 
 export const URBAN_APARTMENTS = [
   {
-    id: "laurel",
-    name: "Laurel Hill Suites",
-    bedrooms: 1,
+  id: "laurel",
+  name: "Laurel Hill Suites",
+  location: "Kilimani",
+  bedrooms: 1,
     salePrice: "Ksh 10.5M",
     rentLongTerm: "Ksh 170K/month",
     rentShortTerm: "Ksh 8,400/night",
@@ -329,9 +330,10 @@ export const URBAN_APARTMENTS = [
     images: LAUREL_IMAGES
   },
   {
-    id: "alba",
-    name: "Alba Gardens",
-    bedrooms: 2,
+  id: "alba",
+  name: "Alba Gardens",
+  location: "Riverside",
+  bedrooms: 2,
     rentLongTerm: "Ksh 250K/month",
     rentShortTerm: "Ksh 14,400/night",
     image: "/assets/Premium%20Locations/A17%20Reception.jpg",
