@@ -250,6 +250,7 @@ export const SAFARI_ITINERARIES: Itinerary[] = [
     locations: ["Aberdare Park", "Ol Pejeta", "Solio Ranch"],
     description: "A quick but intense immersion into the wild, perfect for spotting Rhinos and elusive forest dwellers.",
     image: "/assets/Curated%20Itineraries%20Images/unnamed%20(10).png",
+    pdf: "/assets/NM%20Safari%20Itinerary-WEEKEND%20SAFARI_compressed.pdf",
     pricePerPerson: "USD 850",
     days: [
       {
@@ -273,6 +274,7 @@ export const SAFARI_ITINERARIES: Itinerary[] = [
     locations: ["Mt. Kenya Slopes", "Samburu Reserve"],
     description: "Experience the drastic change in landscapes from lush forests to semi-arid beauty.",
     image: "/assets/Curated%20Itineraries%20Images/unnamed%20(11).png",
+    pdf: "/assets/NM%20Safari%20Itinerary-BEST%20OF%20MT%20KENYA_compressed.pdf",
     pricePerPerson: "USD 1,450",
     days: [
       {

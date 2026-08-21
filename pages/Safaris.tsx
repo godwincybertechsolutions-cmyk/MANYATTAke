@@ -85,24 +85,32 @@ landscapes, wildlife, and cultures ensure that every adventure is enriching and 
                 className="bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:border-primary/20 hover:-translate-y-2 cursor-pointer group"
               >
                 <div className="flex flex-col md:flex-row">
-                  {/* Image Section */}
-                  <div className="w-full md:w-2/5 h-64 md:h-auto relative">
-                    <GlareHover
-                      glareColor="#ffffff"
-                      glareOpacity={0.2}
-                      glareAngle={-30}
-                      glareSize={400}
-                      transitionDuration={700}
-                      playOnce={false}
-                    >
-                      <OptimizedImage
-                        src={itinerary.image}
-                        alt={itinerary.title}
-                        className=""
-                        fill
-                        objectFit="cover"
+                  {/* Brochure Section */}
+                  <div className="w-full md:w-2/5 h-[26rem] md:h-auto min-h-[26rem] relative bg-stone-100">
+                    {itinerary.pdf ? (
+                      <iframe
+                        src={`${itinerary.pdf}#toolbar=0&navpanes=0&view=FitH`}
+                        title={`${itinerary.title} safari itinerary brochure`}
+                        className="absolute inset-0 h-full w-full border-0"
                       />
-                    </GlareHover>
+                    ) : (
+                      <GlareHover
+                        glareColor="#ffffff"
+                        glareOpacity={0.2}
+                        glareAngle={-30}
+                        glareSize={400}
+                        transitionDuration={700}
+                        playOnce={false}
+                      >
+                        <OptimizedImage
+                          src={itinerary.image}
+                          alt={itinerary.title}
+                          className=""
+                          fill
+                          objectFit="cover"
+                        />
+                      </GlareHover>
+                    )}
                     <div className="absolute top-4 left-4 bg-white/90 backdrop-blur px-4 py-2 rounded-full flex items-center gap-2 shadow-sm">
                       <Clock size={14} className="text-primary" />
                       <span className="text-xs font-bold uppercase tracking-wide">{itinerary.duration}</span>

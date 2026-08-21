@@ -44,6 +44,7 @@ export interface Itinerary {
   locations: string[];
   description: string;
   image: string;
+  pdf?: string;
   pricePerPerson: string;
   days: ItineraryDay[];
 }
