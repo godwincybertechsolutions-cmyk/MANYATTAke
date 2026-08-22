@@ -9,11 +9,13 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigate, useLocation } from 'react-router-dom';
 import type { BookingLocationState } from '../types';
 import { resolvePropertySlug } from '../constants';
+import { usePreferences } from '../context/PreferencesContext';
 
 const Safaris: React.FC = () => {
   const [expandedItinerary, setExpandedItinerary] = useState<string | null>(null);
   const navigate = useNavigate();
   const location = useLocation();
+  const { formatPrice } = usePreferences();
 
   const bookSafari = (itineraryId: string, title: string) => {
     const state: BookingLocationState = {
@@ -114,7 +116,7 @@ landscapes, wildlife, and cultures ensure that every adventure is enriching and 
                     <div className="flex justify-between items-start mb-4">
                       <h3 className="font-serif text-3xl text-dark">{itinerary.title}</h3>
                       <span className="bg-orange-50 text-primary px-4 py-2 rounded-lg font-bold text-sm">
-                        {itinerary.pricePerPerson} <span className="text-xs font-normal">/ pp</span>
+                        {formatPrice(itinerary.pricePerPerson)} <span className="text-xs font-normal">/ pp</span>
                       </span>
                     </div>
 
@@ -162,6 +164,29 @@ landscapes, wildlife, and cultures ensure that every adventure is enriching and 
                       className="bg-gradient-to-b from-stone-50 to-white border-t border-gray-200 overflow-hidden"
                     >
                       <div className="p-8 md:p-10">
+                        {itinerary.itineraryPdf && (
+                          <div className="mb-8 overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm">
+                            <div className="flex flex-col gap-4 border-b border-gray-200 p-5 sm:flex-row sm:items-center sm:justify-between">
+                              <div>
+                                <h4 className="font-serif text-xl text-dark">Full Itinerary PDF</h4>
+                                <p className="mt-1 text-sm text-gray-500">Review the complete {itinerary.title} itinerary.</p>
+                              </div>
+                              <a
+                                href={itinerary.itineraryPdf}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center justify-center rounded-full bg-primary px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-white transition hover:bg-primary/85 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                              >
+                                Open PDF
+                              </a>
+                            </div>
+                            <iframe
+                              src={`${itinerary.itineraryPdf}#view=FitH`}
+                              title={`${itinerary.title} full itinerary PDF`}
+                              className="h-[480px] w-full bg-stone-50 sm:h-[620px]"
+                            />
+                          </div>
+                        )}
                         <h4 className="font-serif text-xl mb-6 text-dark border-b border-gray-200 pb-2">Daily Schedule</h4>
                         <div className="space-y-6 relative before:absolute before:left-[19px] before:top-2 before:h-full before:w-0.5 before:bg-gray-200">
                           {itinerary.days.map((day) => (

@@ -7,10 +7,12 @@ import StoryModal from '../components/StoryModal';
 import ImpactReportModal from '../components/ImpactReportModal';
 import OptimizedImage from '../components/OptimizedImage';
 import { COFFEE_PRODUCTS, CSR_PROJECTS, BLOG_POSTS, CONCIERGE_1_WHATSAPP } from '../constants';
+import { usePreferences } from '../context/PreferencesContext';
 
 const Others: React.FC = () => {
   const [selectedStory, setSelectedStory] = useState<number | null>(null);
   const [selectedReport, setSelectedReport] = useState<number | null>(null);
+  const { formatPrice } = usePreferences();
   return (
     <div className="w-full">
       <Helmet>
@@ -93,7 +95,7 @@ const Others: React.FC = () => {
                   <h3 className="font-serif text-xl mb-1">{product.name}</h3>
                   <p className="text-xs text-gray-500 mb-3 uppercase tracking-wide">{product.roast}</p>
                   <div className="flex justify-between items-center">
-                    <span className="font-medium text-dark">{product.price}</span>
+                    <span className="font-medium text-dark">{formatPrice(product.price)}</span>
                     <span className="text-xs text-gray-400 italic">{product.notes}</span>
                   </div>
                 </motion.div>

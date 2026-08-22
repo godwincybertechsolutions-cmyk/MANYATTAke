@@ -79,14 +79,6 @@ const Home: React.FC = () => {
             className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-serif text-white mb-6 sm:mb-8 leading-tight max-w-5xl"
           >
           </motion.h1>
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1 }}
-            className="text-white/80 font-light text-base sm:text-lg italic mb-8 sm:mb-12"
-          >
-          </motion.p>
-
           <motion.button
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}

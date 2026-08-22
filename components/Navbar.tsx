@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Menu, X, Calendar } from 'lucide-react';
+import { Menu, X, Calendar, Globe2, Coins } from 'lucide-react';
+import { usePreferences, type Currency, type Language } from '../context/PreferencesContext';
 import { NAVIGATION_LINKS, APP_NAME } from '../constants';
 import { prefetchRoute } from '../utils/routePrefetch';
 import { Z_INDEX } from '../tokens';
@@ -13,6 +14,7 @@ const Navbar: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
+  const { currency, language, setCurrency, setLanguage } = usePreferences();
   const mobileMenuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -141,6 +143,20 @@ const Navbar: React.FC = () => {
 
           {/* Desktop actions */}
           <div className="hidden md:flex items-center gap-1.5 lg:gap-2 shrink-0">
+            <label className={`flex items-center gap-1 rounded-full px-2 py-2 text-[10px] font-bold uppercase tracking-wide ${scrolled ? 'text-gray-700 bg-gray-50' : 'text-white bg-white/10'}`}>
+              <Coins size={14} aria-hidden="true" />
+              <span className="sr-only">Currency</span>
+              <select aria-label="Currency" value={currency} onChange={(event) => setCurrency(event.target.value as Currency)} className="bg-transparent outline-none cursor-pointer">
+                {(['KES', 'USD', 'EUR', 'GBP'] as Currency[]).map((option) => <option key={option} value={option} className="text-dark">{option}</option>)}
+              </select>
+            </label>
+            <label className={`flex items-center gap-1 rounded-full px-2 py-2 text-[10px] font-bold uppercase tracking-wide ${scrolled ? 'text-gray-700 bg-gray-50' : 'text-white bg-white/10'}`}>
+              <Globe2 size={14} aria-hidden="true" />
+              <span className="sr-only">Language</span>
+              <select aria-label="Language" value={language} onChange={(event) => setLanguage(event.target.value as Language)} className="bg-transparent outline-none cursor-pointer">
+                {(['English', 'Swahili', 'French', 'German'] as Language[]).map((option) => <option key={option} value={option} className="text-dark">{option}</option>)}
+              </select>
+            </label>
             <button
               type="button"
               onClick={goToBooking}
