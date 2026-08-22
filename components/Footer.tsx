@@ -28,7 +28,7 @@ const Footer: React.FC = () => {
                 <span className="font-serif text-2xl font-bold hidden sm:block">By Manyatta Tabasamu</span>
               </Link>
             <p className="text-gray-400 text-sm leading-relaxed">
-              Bridging the gap between the majestic peaks of Mt. Kenya, the wild soul of the savannah, and the sophisticated pulse of Nairobi.
+              With a focus on quality, uniqueness, and a homey atmosphere, New Manyatta seeks to enrich the overall guest experience while showcasing the beauty of this dynamic country.
             </p>
             <div className="flex space-x-4" role="list" aria-label="Social media links">
               <a href="https://www.tiktok.com/@newmanyatta_ke" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary rounded-lg p-1" aria-label="Follow @newmanyatta_ke on TikTok" role="listitem">
@@ -72,7 +72,6 @@ const Footer: React.FC = () => {
                 <a href="https://www.tiktok.com/@newmanyatta_ke" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors" aria-label="TikTok: @newmanyatta_ke"><FaTiktok size={18} /></a>
                 <a href="https://www.instagram.com/newmanyatta_ke" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors" aria-label="Instagram: @newmanyatta_ke"><FaInstagram size={18} /></a>
                 <a href="https://www.facebook.com/newmanyatta_ke" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors" aria-label="Facebook: @newmanyatta_ke"><FaFacebookF size={18} /></a>
-                <span className="text-xs text-gray-500">@newmanyatta_ke</span>
               </div>
             </address>
           </div>

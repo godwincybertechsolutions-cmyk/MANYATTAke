@@ -85,6 +85,7 @@ const Home: React.FC = () => {
             transition={{ delay: 1 }}
             className="text-white/80 font-light text-base sm:text-lg italic mb-8 sm:mb-12"
           >
+            With a focus on quality, uniqueness, and a homey atmosphere, New Manyatta seeks to enrich the overall guest experience while showcasing the beauty of this dynamic country.
           </motion.p>
 
           <motion.button

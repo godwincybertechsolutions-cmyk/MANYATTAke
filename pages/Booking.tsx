@@ -11,6 +11,7 @@ import {
 } from '../services/properties';
 import { calculateBookingTotal } from '../services/bookings';
 import { getSupabaseErrorMessage } from '../utils/supabaseError';
+import { usePreferences } from '../context/PreferencesContext';
 import {
   CONCIERGE_1_DISPLAY,
   CONCIERGE_1_PHONE,
@@ -29,6 +30,7 @@ const Booking: React.FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const navState = (location.state as BookingLocationState | null) ?? null;
+  const { formatPrice } = usePreferences();
 
   const [loadingProduct, setLoadingProduct] = useState(true);
   const [filterType, setFilterType] = useState<PropertyType | 'all'>(
@@ -501,7 +503,7 @@ const Booking: React.FC = () => {
                 >
                   <span className="text-sm font-medium text-gray-600">Estimated total</span>
                   <span className="font-serif text-2xl text-dark">
-                    {property.currency} {estimatedTotal.toLocaleString()}
+                    {formatPrice(estimatedTotal, property.currency)}
                   </span>
                 </div>
               )}

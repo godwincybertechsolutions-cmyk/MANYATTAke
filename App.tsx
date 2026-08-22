@@ -7,6 +7,7 @@ import ErrorBoundary from './components/ErrorBoundary';
 import LazySplashCursor from './components/LazySplashCursor';
 import RouteSkeleton from './components/RouteSkeleton';
 import { prefetchCommonRoutes } from './utils/routePrefetch';
+import { PreferencesProvider } from './context/PreferencesContext';
 
 const Home = React.lazy(() => import('./pages/Home'));
 const MountainVillas = React.lazy(() => import('./pages/MountainVillas'));
@@ -52,8 +53,9 @@ const App: React.FC = () => {
 
   return (
     <ErrorBoundary>
-      <HelmetProvider>
-        <Router>
+      <PreferencesProvider>
+        <HelmetProvider>
+          <Router>
           <LazySplashCursor />
           <ScrollToTop />
           <a
@@ -78,8 +80,9 @@ const App: React.FC = () => {
             </main>
             <Footer />
           </div>
-        </Router>
-      </HelmetProvider>
+          </Router>
+        </HelmetProvider>
+      </PreferencesProvider>
     </ErrorBoundary>
   );
 };
