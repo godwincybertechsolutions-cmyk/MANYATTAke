@@ -218,7 +218,23 @@ const Navbar: React.FC = () => {
             </Link>
           ))}
 
-          <div className="pt-4 mt-2 border-t border-gray-100 space-y-2">
+          <div className="mt-2 flex flex-col gap-2 border-t border-gray-100 pt-4">
+            <div className="grid grid-cols-2 gap-2">
+              <label className="flex items-center gap-2 rounded-xl border border-gray-200 bg-gray-50 px-3 py-3 text-xs font-bold uppercase tracking-wide text-gray-700">
+                <Coins size={16} aria-hidden="true" />
+                <span className="sr-only">Currency</span>
+                <select aria-label="Currency" value={currency} onChange={(event) => setCurrency(event.target.value as Currency)} className="min-w-0 flex-1 bg-transparent outline-none">
+                  {(['KES', 'USD', 'EUR', 'GBP'] as Currency[]).map((option) => <option key={option} value={option}>{option}</option>)}
+                </select>
+              </label>
+              <label className="flex items-center gap-2 rounded-xl border border-gray-200 bg-gray-50 px-3 py-3 text-xs font-bold uppercase tracking-wide text-gray-700">
+                <Globe2 size={16} aria-hidden="true" />
+                <span className="sr-only">Language</span>
+                <select aria-label="Language" value={language} onChange={(event) => setLanguage(event.target.value as Language)} className="min-w-0 flex-1 bg-transparent outline-none">
+                  {(['English', 'Swahili', 'French', 'German'] as Language[]).map((option) => <option key={option} value={option}>{option}</option>)}
+                </select>
+              </label>
+            </div>
             <button
               type="button"
               onClick={goToBooking}
