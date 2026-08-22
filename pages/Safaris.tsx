@@ -166,7 +166,7 @@ landscapes, wildlife, and cultures ensure that every adventure is enriching and 
                       <div className="p-8 md:p-10">
                         {itinerary.itineraryPdf && (
                           <div className="mb-8 overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm">
-                            <div className="flex flex-col gap-4 border-b border-gray-200 p-5 sm:flex-row sm:items-center sm:justify-between">
+                            <div className="flex flex-col gap-3 border-b border-gray-200 p-4 sm:flex-row sm:items-center sm:justify-between sm:p-5">
                               <div>
                                 <h4 className="font-serif text-xl text-dark">Full Itinerary PDF</h4>
                                 <p className="mt-1 text-sm text-gray-500">Review the complete {itinerary.title} itinerary.</p>
@@ -183,34 +183,11 @@ landscapes, wildlife, and cultures ensure that every adventure is enriching and 
                             <iframe
                               src={`${itinerary.itineraryPdf}#view=FitH`}
                               title={`${itinerary.title} full itinerary PDF`}
-                              className="h-[480px] w-full bg-stone-50 sm:h-[620px]"
+                              className="h-[55vh] min-h-[420px] w-full bg-stone-50 sm:h-[620px]"
                             />
                           </div>
                         )}
-                        <h4 className="font-serif text-xl mb-6 text-dark border-b border-gray-200 pb-2">Daily Schedule</h4>
-                        <div className="space-y-6 relative before:absolute before:left-[19px] before:top-2 before:h-full before:w-0.5 before:bg-gray-200">
-                          {itinerary.days.map((day) => (
-                            <div key={day.day} className="relative flex gap-6">
-                              <div className="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-bold text-sm shrink-0 z-10 shadow-sm border-4 border-stone-50">
-                                {day.day}
-                              </div>
-                              <div className="flex-1 bg-white p-6 rounded-lg shadow-sm">
-                                <h5 className="font-bold text-dark mb-2 text-lg">{day.title}</h5>
-                                <div className="space-y-2 mb-4">
-                                  {day.activities.map((act, i) => (
-                                    <div key={i} className="flex items-start gap-2 text-sm text-gray-600">
-                                      <div className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5"></div>
-                                      {act}
-                                    </div>
-                                  ))}
-                                </div>
-                                <div className="flex items-center gap-2 text-xs font-bold text-gray-400 uppercase tracking-wider pt-4 border-t border-gray-100">
-                                  <BedDouble size={14} /> Lodging: <span className="text-primary">{day.lodging}</span>
-                                </div>
-                              </div>
-                            </div>
-                          ))}
-                        </div>
+
                       </div>
                     </motion.div>
                   )}
