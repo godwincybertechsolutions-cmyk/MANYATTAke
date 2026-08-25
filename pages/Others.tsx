@@ -47,126 +47,48 @@ const Others: React.FC = () => {
         </motion.div>
       </div>
 
-      {/* Coffee Showcase */}
-      <section className="py-24 bg-stone-50">
+      {/* Pantry + Merchandise */}
+      <section className="pantry-section py-24">
         <div className="container mx-auto px-6">
-          <div className="flex flex-col md:flex-row items-center gap-12 mb-16">
-            <div className="md:w-1/2">
-              <span className="text-primary font-bold uppercase tracking-widest text-xs mb-4 block">The Pantry</span>
-              <h2 className="font-serif text-4xl mb-6 text-dark">Mt. Elgon Reserve Coffee</h2>
-              <p className="text-gray-600 leading-relaxed mb-8">
-                Grown in the volcanic soils of Mt. Elgon, our exclusive coffee selection brings the rich, complex flavors of the Kenyan highlands to your cup. Hand-picked, sun-dried, and roasted to perfection.
-              </p>
-              <div className="flex items-center gap-4 text-sm font-medium text-dark">
-                <div className="flex items-center gap-2">
-                  <Coffee size={18} className="text-primary" /> Single Origin
-                </div>
-                <div className="flex items-center gap-2">
-                  <Heart size={18} className="text-primary" /> Fair Trade
-                </div>
+          <div className="mb-14 flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+            <div className="max-w-2xl">
+              <span className="section-kicker">The Pantry</span>
+              <h2 className="mt-4 font-serif text-4xl leading-tight text-dark md:text-6xl">Small-batch goods, rooted in place.</h2>
+            </div>
+            <p className="max-w-sm text-sm leading-6 text-gray-600">A considered edit of Kenyan coffee and Manyatta essentials for slow mornings, open roads, and everything between.</p>
+          </div>
+
+          <div className="grid gap-6 lg:grid-cols-[0.8fr_1.2fr]">
+            <div className="pantry-intro flex min-h-[360px] flex-col justify-between rounded-[2rem] p-7 md:p-9">
+              <div>
+                <div className="mb-8 flex size-12 items-center justify-center rounded-full bg-primary text-white"><Coffee size={21} /></div>
+                <h3 className="max-w-sm font-serif text-3xl text-white md:text-4xl">Coffee with a sense of origin.</h3>
+              </div>
+              <div className="flex flex-wrap gap-3 text-xs font-medium uppercase tracking-[0.16em] text-white/75">
+                <span className="rounded-full border border-white/25 px-3 py-2">Single origin</span>
+                <span className="rounded-full border border-white/25 px-3 py-2">Fair trade</span>
               </div>
             </div>
-            <div className="md:w-1/2 grid grid-cols-1 sm:grid-cols-2 gap-6">
-              {COFFEE_PRODUCTS.map((product) => (
-                <motion.div 
-                  key={product.id} 
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-100px" }}
-                  transition={{ duration: 0.5 }}
-                  className="bg-white p-6 rounded-2xl shadow-md border border-gray-100 group hover:shadow-lg hover:-translate-y-2 transition-all duration-300 hover:border-primary/30"
-                >
-                  <div className="aspect-square bg-gray-100 rounded-lg mb-4 overflow-hidden relative">
-                    <OptimizedImage 
-                      src={product.image} 
-                      alt={product.name} 
-                      fill
-                      objectFit="cover"
-                      className="group-hover:scale-105 transition-transform duration-500"
-                    />
-                    <motion.button 
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="absolute bottom-3 right-3 bg-white p-2 rounded-full shadow-md text-primary hover:bg-primary hover:text-white transition-colors z-10"
-                    >
-                      <ShoppingBag size={18} />
-                    </motion.button>
+            <div className="grid gap-5 sm:grid-cols-2">
+              {COFFEE_PRODUCTS.map((product, index) => (
+                <motion.article key={product.id} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-80px' }} transition={{ duration: 0.45, delay: index * 0.08 }} className="product-card group">
+                  <div className="product-image aspect-[4/3]">
+                    <OptimizedImage src={product.image} alt={product.name} fill objectFit="cover" sizes="(max-width: 640px) 100vw, 40vw" className="transition-transform duration-700 group-hover:scale-105" />
+                    <span className="absolute left-4 top-4 rounded-full bg-white/90 px-3 py-1.5 text-[10px] font-bold uppercase tracking-wider text-dark">{product.roast}</span>
+                    <button aria-label={`Add ${product.name} to bag`} className="absolute bottom-4 right-4 flex size-10 items-center justify-center rounded-full bg-primary text-white shadow-lg transition-transform hover:scale-110"><ShoppingBag size={17} /></button>
                   </div>
-                  <h3 className="font-serif text-xl mb-1">{product.name}</h3>
-                  <p className="text-xs text-gray-500 mb-3 uppercase tracking-wide">{product.roast}</p>
-                  <div className="flex justify-between items-center">
-                    <span className="font-medium text-dark">{formatPrice(product.price)}</span>
-                    <span className="text-xs text-gray-400 italic">{product.notes}</span>
-                  </div>
-                </motion.div>
+                  <div className="flex items-start justify-between gap-4 px-1 pt-4"><div><h3 className="font-serif text-2xl text-dark">{product.name}</h3><p className="mt-1 text-xs italic text-gray-500">{product.notes}</p></div><span className="pt-1 text-sm font-semibold text-primary">{formatPrice(product.price)}</span></div>
+                </motion.article>
               ))}
             </div>
           </div>
 
-          {/* Official Merchandise Section */}
-          <div className="mt-16 flex flex-col items-center gap-12 md:flex-row">
-            <div className="w-full md:w-1/2">
-              <span className="mb-4 block text-xs font-bold uppercase tracking-widest text-primary">The Collection</span>
-              <h3 className="mb-6 font-serif text-4xl text-dark md:text-5xl">Official Merchandise</h3>
-              <p className="mb-8 leading-relaxed text-gray-600">
-                Carry a little piece of Manyatta with you. Explore our collection of thoughtfully made apparel and travel essentials, designed for life on the road and inspired by the Kenyan highlands.
-              </p>
-              <div className="flex items-center gap-4 text-sm font-medium text-dark">
-                <div className="flex items-center gap-2"><ShoppingBag size={18} className="text-primary" /> Signature essentials</div>
-              </div>
-            </div>
-
-            <div className="grid w-full grid-cols-1 gap-6 sm:grid-cols-2 md:w-1/2">
-              {[
-                {
-                  name: 'T-shirts',
-                  image: '/assets/Merch/New Manyatta T-Shirt Design.png',
-                  alt: 'Manyatta signature T-shirt',
-                  description: 'Soft premium cotton apparel inspired by the Kenyan highlands.',
-                  price: 'Ksh 2,800',
-                },
-                {
-                  name: 'Caps',
-                  image: '/assets/Merch/New Manyatta Cap Design.png',
-                  alt: 'Manyatta signature cap',
-                  description: 'Breathable embroidered cap made for sunny days and open-air adventures.',
-                  price: 'Ksh 3,500',
-                },
-                {
-                  name: 'Hoodies',
-                  image: '/assets/Merch/New Manyatta Hoodie Design.png',
-                  alt: 'Manyatta signature hoodie',
-                  description: 'A warm everyday layer for cool highland mornings and evenings.',
-                  price: 'Ksh 4,500',
-                },
-              ].map((item) => (
-                <motion.div
-                  key={item.name}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-100px" }}
-                  transition={{ duration: 0.5 }}
-                  className="group flex flex-col justify-between rounded-2xl border border-gray-100 bg-white p-6 shadow-md transition-all duration-300 hover:-translate-y-2 hover:border-primary/30 hover:shadow-lg"
-                >
-                  <div>
-                    <div className="aspect-[4/3] rounded-xl overflow-hidden mb-5 bg-stone-100">
-                      <OptimizedImage src={item.image} alt={item.alt} fill objectFit="cover" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" />
-                    </div>
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-700 bg-emerald-100 px-2.5 py-1 rounded-full inline-block mb-3">
-                      Apparel
-                    </span>
-                    <h4 className="font-serif text-xl text-dark mb-2">{item.name}</h4>
-                    <p className="text-xs text-gray-500 mb-4 leading-relaxed">{item.description}</p>
-                  </div>
-                  <div className="flex items-center justify-between pt-4 border-t border-gray-200/60">
-                    <span className="font-medium text-dark text-sm">{item.price}</span>
-                    <a href={CONCIERGE_1_WHATSAPP} target="_blank" rel="noopener noreferrer" className="text-xs font-bold text-primary hover:underline">
-                      Order via Concierge &rarr;
-                    </a>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
+          <div className="my-24 flex items-center gap-5"><span className="section-kicker">The Collection</span><div className="h-px flex-1 bg-gray-200" /></div>
+          <div className="mb-10 flex flex-col gap-4 md:flex-row md:items-end md:justify-between"><div><h3 className="font-serif text-4xl text-dark md:text-5xl">Wear the journey.</h3><p className="mt-3 max-w-xl leading-6 text-gray-600">Thoughtfully made layers and travel essentials inspired by the Kenyan highlands.</p></div><div className="flex items-center gap-2 text-sm font-medium text-dark"><Heart size={17} className="text-primary" /> Signature essentials</div></div>
+          <div className="grid gap-5 md:grid-cols-3">
+            {[{ name: 'T-shirts', image: '/assets/Merch/New Manyatta T-Shirt Design.png', alt: 'Manyatta signature T-shirt', description: 'Premium cotton, made for everyday movement.', price: 'Ksh 2,800' }, { name: 'Caps', image: '/assets/Merch/New Manyatta Cap Design.png', alt: 'Manyatta signature cap', description: 'A breathable finish for bright days outside.', price: 'Ksh 3,500' }, { name: 'Hoodies', image: '/assets/Merch/New Manyatta Hoodie Design.png', alt: 'Manyatta signature hoodie', description: 'A warm layer for cool highland evenings.', price: 'Ksh 4,500' }].map((item, index) => (
+              <motion.article key={item.name} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-80px' }} transition={{ duration: 0.45, delay: index * 0.08 }} className="merch-card group"><div className="merch-image"><OptimizedImage src={item.image} alt={item.alt} fill objectFit="cover" sizes="(max-width: 768px) 100vw, 33vw" className="transition-transform duration-700 group-hover:scale-105" /><span className="absolute bottom-4 left-4 rounded-full bg-dark/85 px-3 py-1.5 text-[10px] font-bold uppercase tracking-wider text-white">Manyatta goods</span></div><div className="flex flex-1 flex-col p-5"><div className="flex items-start justify-between gap-3"><h4 className="font-serif text-2xl text-dark">{item.name}</h4><span className="text-sm font-semibold text-primary">{item.price}</span></div><p className="mt-2 flex-1 text-sm leading-6 text-gray-500">{item.description}</p><a href={CONCIERGE_1_WHATSAPP} target="_blank" rel="noopener noreferrer" className="mt-5 inline-flex items-center text-xs font-bold uppercase tracking-wider text-dark transition-colors hover:text-primary">Order via Concierge <ArrowRight size={14} className="ml-2 transition-transform group-hover:translate-x-1" /></a></div></motion.article>
+            ))}
           </div>
         </div>
       </section>
