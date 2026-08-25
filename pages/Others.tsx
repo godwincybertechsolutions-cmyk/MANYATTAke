@@ -120,21 +120,21 @@ const Others: React.FC = () => {
               {[
                 {
                   name: 'T-shirts',
-                  image: '/assets/Merchandise/signature-tshirt.png',
+                  image: '/assets/Merch/New Manyatta T-Shirt Design.png',
                   alt: 'Manyatta signature T-shirt',
                   description: 'Soft premium cotton apparel inspired by the Kenyan highlands.',
                   price: 'Ksh 2,800',
                 },
                 {
                   name: 'Caps',
-                  image: '/assets/Merchandise/signature-safari-cap.png',
+                  image: '/assets/Merch/New Manyatta Cap Design.png',
                   alt: 'Manyatta signature cap',
                   description: 'Breathable embroidered cap made for sunny days and open-air adventures.',
                   price: 'Ksh 3,500',
                 },
                 {
                   name: 'Hoodies',
-                  image: '/assets/Merchandise/signature-hoodie.png',
+                  image: '/assets/Merch/New Manyatta Hoodie Design.png',
                   alt: 'Manyatta signature hoodie',
                   description: 'A warm everyday layer for cool highland mornings and evenings.',
                   price: 'Ksh 4,500',
