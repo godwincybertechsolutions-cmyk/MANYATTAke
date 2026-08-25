@@ -9,14 +9,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigate, useLocation } from 'react-router-dom';
 import type { BookingLocationState } from '../types';
 import { resolvePropertySlug } from '../constants';
-import { usePreferences } from '../context/PreferencesContext';
-
 const Safaris: React.FC = () => {
   const [expandedItinerary, setExpandedItinerary] = useState<string | null>(null);
   const navigate = useNavigate();
   const location = useLocation();
-  const { formatPrice } = usePreferences();
-
   const bookSafari = (itineraryId: string, title: string) => {
     const state: BookingLocationState = {
       slug: resolvePropertySlug(itineraryId),
@@ -116,7 +112,7 @@ landscapes, wildlife, and cultures ensure that every adventure is enriching and 
                     <div className="flex justify-between items-start mb-4">
                       <h3 className="font-serif text-3xl text-dark">{itinerary.title}</h3>
                       <span className="bg-orange-50 text-primary px-4 py-2 rounded-lg font-bold text-sm">
-                        {formatPrice(itinerary.pricePerPerson)} <span className="text-xs font-normal">/ pp</span>
+                        Price on request
                       </span>
                     </div>
 

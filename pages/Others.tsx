@@ -104,14 +104,19 @@ const Others: React.FC = () => {
           </div>
 
           {/* Official Merchandise Section */}
-          <div className="mt-16 bg-white border border-gray-100 rounded-3xl p-8 sm:p-12 shadow-sm">
-            <div className="text-center max-w-xl mx-auto mb-10">
-              <h3 className="font-serif text-4xl md:text-5xl text-dark">
-                Official Merchendise
-              </h3>
+          <div className="mt-16 flex flex-col items-center gap-12 md:flex-row">
+            <div className="w-full md:w-1/2">
+              <span className="mb-4 block text-xs font-bold uppercase tracking-widest text-primary">The Collection</span>
+              <h3 className="mb-6 font-serif text-4xl text-dark md:text-5xl">Official Merchandise</h3>
+              <p className="mb-8 leading-relaxed text-gray-600">
+                Carry a little piece of Manyatta with you. Explore our collection of thoughtfully made apparel and travel essentials, designed for life on the road and inspired by the Kenyan highlands.
+              </p>
+              <div className="flex items-center gap-4 text-sm font-medium text-dark">
+                <div className="flex items-center gap-2"><ShoppingBag size={18} className="text-primary" /> Signature essentials</div>
+              </div>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid w-full grid-cols-1 gap-6 sm:grid-cols-2 md:w-1/2">
               {[
                 {
                   name: 'T-shirts',
@@ -135,7 +140,14 @@ const Others: React.FC = () => {
                   price: 'Ksh 4,500',
                 },
               ].map((item) => (
-                <div key={item.name} className="bg-stone-50 p-6 rounded-2xl border border-gray-100 flex flex-col justify-between hover:shadow-md transition-shadow">
+                <motion.div
+                  key={item.name}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ duration: 0.5 }}
+                  className="group flex flex-col justify-between rounded-2xl border border-gray-100 bg-white p-6 shadow-md transition-all duration-300 hover:-translate-y-2 hover:border-primary/30 hover:shadow-lg"
+                >
                   <div>
                     <div className="aspect-[4/3] rounded-xl overflow-hidden mb-5 bg-stone-100">
                       <OptimizedImage src={item.image} alt={item.alt} fill objectFit="cover" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" />
@@ -152,7 +164,7 @@ const Others: React.FC = () => {
                       Order via Concierge &rarr;
                     </a>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
