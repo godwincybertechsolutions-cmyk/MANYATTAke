@@ -329,7 +329,7 @@ export const COFFEE_PRODUCTS = [
     name: "Mt. Elgon Reserve",
     roast: "Medium Dark",
     price: "Ksh 1,200",
-    image: "/assets/Coffee/MT Elgon Reserve Coffee Packaging.png",
+    image: "/assets/Coffee/Mt Elgon Reserve - Coffee Packaging.png",
     notes: "Chocolate, Citrus, Spice"
   },
   {
@@ -337,7 +337,7 @@ export const COFFEE_PRODUCTS = [
     name: "Volcanic Gold",
     roast: "Light",
     price: "Ksh 1,500",
-    image: "/assets/Coffee/volcanic gold Coffee Packaging.png",
+    image: "/assets/Coffee/Volcanic Gold - Coffee Packaging.png",
     notes: "Floral, Berry, Honey"
   }
 ];
