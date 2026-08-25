@@ -159,27 +159,6 @@ export const BURGURET_VILLA_DETAILS = {
   ]
 };
 
-export const MOUNTAIN_VILLA_PRICING = [
-  {
-    title: "Family Retreat",
-    price: "Ksh 60,000",
-    unit: "/night",
-    features: ["Accommodates 4-6 pax", "Full House Access", "Daily Housekeeping", "Fireplace Service"]
-  },
-  {
-    title: "Couples Getaway",
-    price: "USD 120",
-    unit: "/person",
-    features: ["Master Suite Access", "Private Dining", "Welcome Champagne", "Guided Nature Walk"]
-  },
-  {
-    title: "Long Stay",
-    price: "Ksh 270,000",
-    unit: "/month",
-    features: ["Dedicated Workspace", "High-speed Fiber", "Laundry Service", "Utility Management"]
-  }
-];
-
 export const CONCIERGE_1_PHONE = "+254723366462";
 export const CONCIERGE_1_DISPLAY = "+254 723 366 462";
 export const CONCIERGE_1_WHATSAPP = "https://wa.me/254723366462";
@@ -250,7 +229,7 @@ export const SAFARI_ITINERARIES: Itinerary[] = [
     locations: ["Aberdare Park", "Ol Pejeta", "Solio Ranch"],
     description: "A quick but intense immersion into the wild, perfect for spotting Rhinos and elusive forest dwellers.",
     image: "/assets/Curated%20Itineraries%20Images/unnamed%20(10).png",
-    pricePerPerson: "USD 850",
+    pricePerPerson: "Price on request",
     itineraryPdf: "/assets/NM%20Safari%20Itinerary-WEEKEND%20SAFARI_compressed.pdf",
     days: [
       {
@@ -274,7 +253,7 @@ export const SAFARI_ITINERARIES: Itinerary[] = [
     locations: ["Mt. Kenya Slopes", "Samburu Reserve"],
     description: "Experience the drastic change in landscapes from lush forests to semi-arid beauty.",
     image: "/assets/Curated%20Itineraries%20Images/unnamed%20(11).png",
-    pricePerPerson: "USD 1,450",
+    pricePerPerson: "Price on request",
     itineraryPdf: "/assets/NM%20Safari%20Itinerary-BEST%20OF%20MT%20KENYA_compressed.pdf",
     days: [
       {
@@ -304,7 +283,7 @@ export const SAFARI_ITINERARIES: Itinerary[] = [
     locations: ["Lake Baringo", "Narumoru", "Meru National Park"],
     description: "The ultimate expedition covering rift valley lakes, highland forests, and remote wilderness.",
     image: "/assets/Curated%20Itineraries%20Images/unnamed%20(12).png",
-    pricePerPerson: "USD 3,200",
+    pricePerPerson: "Price on request",
     days: [
       { day: 1, title: "Rift Valley Descent", activities: ["Drive to Lake Baringo", "Bird watching boat ride"], lodging: "Island Camp Baringo" },
       { day: 2, title: "Lake Bogoria", activities: ["Visit hot springs", "Flamingo viewing"], lodging: "Island Camp Baringo" },
@@ -322,11 +301,11 @@ export const URBAN_APARTMENTS = [
   {
   id: "laurel",
   name: "Laurel Hill Suites",
-  location: "Kilimani",
+  location: "Upper Hill",
   bedrooms: 1,
-    salePrice: "Ksh 10.5M",
-    rentLongTerm: "Ksh 170K/month",
-    rentShortTerm: "Ksh 8,400/night",
+    salePrice: "Price on request",
+    rentLongTerm: "Price on request",
+    rentShortTerm: "Price on request",
     image: "/assets/Premium%20Locations/L6%20Reception.jpg",
     features: ["City View", "Rooftop Pool", "Gym Access"],
     images: LAUREL_IMAGES
@@ -334,10 +313,10 @@ export const URBAN_APARTMENTS = [
   {
   id: "alba",
   name: "Alba Gardens",
-  location: "Riverside",
+  location: "Kilimani",
   bedrooms: 2,
-    rentLongTerm: "Ksh 250K/month",
-    rentShortTerm: "Ksh 14,400/night",
+    rentLongTerm: "Price on request",
+    rentShortTerm: "Price on request",
     image: "/assets/Premium%20Locations/A17%20Reception.jpg",
     features: ["Garden Terrace", "Double Parking", "Smart Home System"],
     images: ALBA_IMAGES

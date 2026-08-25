@@ -128,9 +128,6 @@ const UrbanApartments: React.FC = () => {
                   className="h-72 overflow-hidden relative cursor-pointer bg-gray-100"
                   onClick={() => openGallery(apt.images, apt.name)}
                 >
-                  <div className="absolute top-4 right-4 bg-primary text-white px-3 py-2 text-xs font-bold uppercase tracking-wider z-10 rounded-lg shadow-lg">
-                    {apt.rentShortTerm}
-                  </div>
                   <motion.div 
                     whileHover={{ scale: 1.1 }}
                     className="absolute bottom-4 right-4 bg-primary text-white p-3 rounded-full z-10 cursor-pointer shadow-lg hover:shadow-xl transition-shadow"
@@ -155,22 +152,9 @@ const UrbanApartments: React.FC = () => {
                     <span className="flex items-center gap-2 bg-gray-50 px-3 py-2 rounded-lg"><Move size={18} className="text-primary" /> 120 sqm</span>
                   </div>
 
-                  {/* Pricing Grid */}
-                  <div className="bg-gradient-to-r from-primary/5 to-primary/10 p-5 rounded-xl grid grid-cols-2 gap-4 mb-6 border border-primary/20">
-                    {apt.salePrice && (
-                      <div className="col-span-2 border-b border-primary/20 pb-3 mb-2">
-                        <span className="block text-xs text-gray-500 font-bold uppercase">For Sale</span>
-                        <span className="block font-serif text-2xl text-dark font-bold">{apt.salePrice}</span>
-                      </div>
-                    )}
-                    <div>
-                      <span className="block text-xs text-gray-500 font-bold uppercase">Long Term</span>
-                      <span className="block font-serif text-xl text-primary font-bold">{apt.rentLongTerm}</span>
-                    </div>
-                    <div>
-                      <span className="block text-xs text-gray-500 font-bold uppercase">Short Stay</span>
-                      <span className="block font-serif text-xl text-primary font-bold">{apt.rentShortTerm}</span>
-                    </div>
+                  <div className="mb-6 rounded-xl border border-primary/20 bg-gradient-to-r from-primary/5 to-primary/10 p-5">
+                    <span className="block text-xs font-bold uppercase tracking-wider text-gray-500">Pricing</span>
+                    <span className="font-serif text-xl font-bold text-primary">Price on request</span>
                   </div>
 
                   {/* Features */}
