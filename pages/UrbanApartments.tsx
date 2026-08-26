@@ -8,13 +8,14 @@ import type { BookingLocationState } from '../types';
 import { resolvePropertySlug } from '../constants';
 import { motion } from 'framer-motion';
 import OptimizedImage from '../components/OptimizedImage';
+import AssetSlideshow from '../components/AssetSlideshow';
 import ImageSlideshowModal from '../components/ImageSlideshowModal';
 
 const UrbanApartments: React.FC = () => {
   const navigate = useNavigate();
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedLocation, setSelectedLocation] = useState('All locations');
-  const locations = ['All locations', 'Upper Hill', 'Kilimani', 'Riverside', 'Westlands', 'Kileleshwa'];
+  const locations = ['All locations', 'Upper Hill', 'Kilimani', 'Riverside', 'Westlands', 'Kileleshwa', 'Syokimau'];
 
   const filteredApartments = useMemo(
     () => selectedLocation === 'All locations'
@@ -124,22 +125,12 @@ const UrbanApartments: React.FC = () => {
                 className="group border border-gray-200 rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 bg-white hover:-translate-y-3 hover:border-primary/30"
               >
                 {/* Image */}
-                <div
-                  className="h-72 overflow-hidden relative cursor-pointer bg-gray-100"
-                  onClick={() => openGallery(apt.images, apt.name)}
-                >
-                  <motion.div 
-                    whileHover={{ scale: 1.1 }}
-                    className="absolute bottom-4 right-4 bg-primary text-white p-3 rounded-full z-10 cursor-pointer shadow-lg hover:shadow-xl transition-shadow"
-                  >
-                    <Camera size={20} />
-                  </motion.div>
-                  <OptimizedImage
-                    src={apt.image}
-                    alt={apt.name}
-                    fill
-                    objectFit="cover"
-                    className="group-hover:scale-110 transition-transform duration-700"
+                <div className="h-72 overflow-hidden relative bg-gray-100 rounded-t-3xl">
+                  <AssetSlideshow 
+                    images={[apt.image, ...(apt.images || [])]} 
+                    alt={apt.name} 
+                    className="h-full w-full" 
+                    onOpenGallery={() => openGallery(apt.images, apt.name)} 
                   />
                 </div>
 
@@ -185,15 +176,6 @@ const UrbanApartments: React.FC = () => {
                       type="button"
                     >
                       Book Stay <ArrowRight size={16} />
-                    </motion.button>
-                    <motion.button
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="flex-1 border-2 border-dark text-dark py-3 rounded-lg text-sm font-bold uppercase tracking-wide hover:bg-dark hover:text-white transition-all focus:outline-none focus:ring-2 focus:ring-dark/50"
-                      onClick={() => openGallery(apt.images, apt.name)}
-                      type="button"
-                    >
-                      View Gallery
                     </motion.button>
                   </div>
                 </div>

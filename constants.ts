@@ -9,6 +9,10 @@ export const PROPERTY_SLUG_BY_FRONTEND_ID: Record<string, string> = {
   weekend: 'weekend-safari',
   laurel: 'laurel-hill-suites',
   alba: 'alba-gardens',
+  starroot: 'star-root-residency',
+  riverside108: '108-riverside-apartment',
+  appletree: 'apple-tree-living',
+
 };
 
 export function resolvePropertySlug(frontendId: string): string {
@@ -27,60 +31,74 @@ export const NAVIGATION_LINKS = navigationLinks;
 
 // Image Galleries
 export const LAUREL_IMAGES = [
-  "/assets/Laurel Hill Suites/L6 Bathroom Essentials.jpg",
-  "/assets/Laurel Hill Suites/L6 Bedroom Balcony.jpg",
-  "/assets/Laurel Hill Suites/L6 Bedroom Overview.jpg",
-  "/assets/Laurel Hill Suites/L6 Gym (b).jpg",
-  "/assets/Laurel Hill Suites/L6 Gym (c).jpg",
-  "/assets/Laurel Hill Suites/L6 Kitchen (b).jpg",
-  "/assets/Laurel Hill Suites/L6 Kitchen Island .jpg",
-  "/assets/Laurel Hill Suites/L6 Laundry Area.jpg",
-  "/assets/Laurel Hill Suites/L6 Lounge Area (b).jpg",
-  "/assets/Laurel Hill Suites/L6 Lounge Area (c).jpg",
-  "/assets/Laurel Hill Suites/L6 Lounge Area (d).jpg",
-  "/assets/Laurel Hill Suites/L6 MB Bathroom.jpg",
-  "/assets/Laurel Hill Suites/L6 Reception (b).jpg",
-  "/assets/Laurel Hill Suites/L6 Reception.jpg",
-  "/assets/Laurel Hill Suites/L6 Rooftop Pool (b).jpg",
-  "/assets/Laurel Hill Suites/L6 Rooftop Pool (c).jpg",
-  "/assets/Laurel Hill Suites/L6 Rooftop Pool.jpg",
-  "/assets/Laurel Hill Suites/L6 Sauna (b).jpg",
-  "/assets/Laurel Hill Suites/L6 Sauna.jpg",
-  "/assets/Laurel Hill Suites/L6 Shower.jpg",
-  "/assets/Laurel Hill Suites/L6 WallArt (b).jpg",
-  "/assets/Laurel Hill Suites/L6 WallArt .jpg"
+  "/assets/Upperhill, Nairobi/Laurel Hill Suite/Laurel Hill Pictures/L6 Balcony Area.jpg",
+  "/assets/Upperhill, Nairobi/Laurel Hill Suite/Laurel Hill Pictures/L6 Bathroom Essentials.jpg",
+  "/assets/Upperhill, Nairobi/Laurel Hill Suite/Laurel Hill Pictures/L6 Bedroom (b).jpg",
+  "/assets/Upperhill, Nairobi/Laurel Hill Suite/Laurel Hill Pictures/L6 Bedroom (c).jpg",
+  "/assets/Upperhill, Nairobi/Laurel Hill Suite/Laurel Hill Pictures/L6 Bedroom (d).jpg",
+  "/assets/Upperhill, Nairobi/Laurel Hill Suite/Laurel Hill Pictures/L6 Bedroom .jpg",
+  "/assets/Upperhill, Nairobi/Laurel Hill Suite/Laurel Hill Pictures/L6 Bedroom Balcony (b).jpg",
+  "/assets/Upperhill, Nairobi/Laurel Hill Suite/Laurel Hill Pictures/L6 Bedroom Balcony.jpg",
+  "/assets/Upperhill, Nairobi/Laurel Hill Suite/Laurel Hill Pictures/L6 Bedroom Overview.jpg",
+  "/assets/Upperhill, Nairobi/Laurel Hill Suite/Laurel Hill Pictures/L6 Guest Bathroom (b).jpg"
 ];
 
 export const ALBA_IMAGES = [
-  "/assets/Alba Gardens B1702/A17 Balcony.jpg",
-  "/assets/Alba Gardens B1702/A17 Bathroom .jpg",
-  "/assets/Alba Gardens B1702/A17 Corridor.jpg",
-  "/assets/Alba Gardens B1702/A17 Dining Area.jpg",
-  "/assets/Alba Gardens B1702/A17 Entrance.jpg",
-  "/assets/Alba Gardens B1702/A17 GB Bathroom (b).jpg",
-  "/assets/Alba Gardens B1702/A17 GB Bathroom.jpg",
-  "/assets/Alba Gardens B1702/A17 Guest Bathroom.jpg",
-  "/assets/Alba Gardens B1702/A17 Guest Bedroom (b).jpg",
-  "/assets/Alba Gardens B1702/A17 Guest Bedroom (c).jpg",
-  "/assets/Alba Gardens B1702/A17 Guest Bedroom (d).jpg",
-  "/assets/Alba Gardens B1702/A17 Guest Bedroom .jpg",
-  "/assets/Alba Gardens B1702/A17 Kitchen (b).jpg",
-  "/assets/Alba Gardens B1702/A17 Kitchen (c).jpg",
-  "/assets/Alba Gardens B1702/A17 Kitchen Appliance.jpg",
-  "/assets/Alba Gardens B1702/A17 Kitchen Appliances.jpg",
-  "/assets/Alba Gardens B1702/A17 Kitchen.jpg",
-  "/assets/Alba Gardens B1702/A17 Laundry Area (b).jpg",
-  "/assets/Alba Gardens B1702/A17 Laundry Area.jpg",
-  "/assets/Alba Gardens B1702/A17 Lounge Area (b).jpg",
-  "/assets/Alba Gardens B1702/A17 Lounge Area (c).jpg",
-  "/assets/Alba Gardens B1702/A17 Lounge Area.jpg",
-  "/assets/Alba Gardens B1702/A17 Master Bedroom (c).jpg",
-  "/assets/Alba Gardens B1702/A17 Master Bedroom.jpg",
-  "/assets/Alba Gardens B1702/A17 Mater Bedroom (b).jpg",
-  "/assets/Alba Gardens B1702/A17 Overview Lounge Area.jpg",
-  "/assets/Alba Gardens B1702/A17 Reception.jpg",
-  "/assets/Alba Gardens B1702/A17 Shower (b).jpg",
-  "/assets/Alba Gardens B1702/A17 Shower.jpg"
+  "/assets/Kilimani, Nairobi/ALBA GARDENS - 2 Bedroom (B1206)/Alba Garden B1206 Pictures/BEDROOM 1/9D5A1976.jpg",
+  "/assets/Kilimani, Nairobi/ALBA GARDENS - 2 Bedroom (B1206)/Alba Garden B1206 Pictures/BEDROOM 1/9D5A1983.jpg",
+  "/assets/Kilimani, Nairobi/ALBA GARDENS - 2 Bedroom (B1206)/Alba Garden B1206 Pictures/BEDROOM 1/9D5A1992.jpg",
+  "/assets/Kilimani, Nairobi/ALBA GARDENS - 2 Bedroom (B1206)/Alba Garden B1206 Pictures/BEDROOM 1/9D5A1998.jpg",
+  "/assets/Kilimani, Nairobi/ALBA GARDENS - 2 Bedroom (B1206)/Alba Garden B1206 Pictures/BEDROOM 1/9D5A2006.jpg",
+  "/assets/Kilimani, Nairobi/ALBA GARDENS - 2 Bedroom (B1206)/Alba Garden B1206 Pictures/BEDROOM 1/9D5A2076.jpg",
+  "/assets/Kilimani, Nairobi/ALBA GARDENS - 2 Bedroom (B1206)/Alba Garden B1206 Pictures/BEDROOM 2/9D5A2019.jpg",
+  "/assets/Kilimani, Nairobi/ALBA GARDENS - 2 Bedroom (B1206)/Alba Garden B1206 Pictures/BEDROOM 2/9D5A2022.jpg",
+  "/assets/Kilimani, Nairobi/ALBA GARDENS - 2 Bedroom (B1206)/Alba Garden B1206 Pictures/BEDROOM 2/9D5A2029.jpg",
+  "/assets/Kilimani, Nairobi/ALBA GARDENS - 2 Bedroom (B1206)/Alba Garden B1206 Pictures/BEDROOM 2/9D5A2033.jpg"
+];
+
+export const STAR_ROOT_IMAGES = [
+  "/assets/Kilimani, Nairobi/STAR ROOT RESIDENCY - 1 Bedroom/Star Root Residency Bathroom 1.jpg",
+  "/assets/Kilimani, Nairobi/STAR ROOT RESIDENCY - 1 Bedroom/Star Root Residency Bathroom.jpg",
+  "/assets/Kilimani, Nairobi/STAR ROOT RESIDENCY - 1 Bedroom/Star Root Residency Bedroom 1.jpg",
+  "/assets/Kilimani, Nairobi/STAR ROOT RESIDENCY - 1 Bedroom/Star Root Residency Bedroom 2.jpg",
+  "/assets/Kilimani, Nairobi/STAR ROOT RESIDENCY - 1 Bedroom/Star Root Residency Bedroom.jpg",
+  "/assets/Kilimani, Nairobi/STAR ROOT RESIDENCY - 1 Bedroom/Star Root Residency Entrance.jpg",
+  "/assets/Kilimani, Nairobi/STAR ROOT RESIDENCY - 1 Bedroom/Star Root Residency Gym.jpg",
+  "/assets/Kilimani, Nairobi/STAR ROOT RESIDENCY - 1 Bedroom/Star Root Residency Kid's Play Area.jpg",
+  "/assets/Kilimani, Nairobi/STAR ROOT RESIDENCY - 1 Bedroom/Star Root Residency Kitchen.jpg",
+  "/assets/Kilimani, Nairobi/STAR ROOT RESIDENCY - 1 Bedroom/Star Root Residency Living Room 1.jpg",
+  "/assets/Kilimani, Nairobi/STAR ROOT RESIDENCY - 1 Bedroom/Star Root Residency Office Area.jpg",
+  "/assets/Kilimani, Nairobi/STAR ROOT RESIDENCY - 1 Bedroom/Star Root Residency Pool Area.jpg"
+];
+
+export const RIVERSIDE_IMAGES = [
+  "/assets/Riverside, Nairobi/108 Riverside Apartment/108 Riverside Apartment Pictures/108 Riverside Balcony .jpg",
+  "/assets/Riverside, Nairobi/108 Riverside Apartment/108 Riverside Apartment Pictures/108 Riverside Bathroom .jpg",
+  "/assets/Riverside, Nairobi/108 Riverside Apartment/108 Riverside Apartment Pictures/108 Riverside Bedroom (1).jpg",
+  "/assets/Riverside, Nairobi/108 Riverside Apartment/108 Riverside Apartment Pictures/108 Riverside Bedroom .jpg",
+  "/assets/Riverside, Nairobi/108 Riverside Apartment/108 Riverside Apartment Pictures/108 Riverside corridor.jpg",
+  "/assets/Riverside, Nairobi/108 Riverside Apartment/108 Riverside Apartment Pictures/108 Riverside Gym.jpg",
+  "/assets/Riverside, Nairobi/108 Riverside Apartment/108 Riverside Apartment Pictures/108 Riverside Kitchen (1).jpg",
+  "/assets/Riverside, Nairobi/108 Riverside Apartment/108 Riverside Apartment Pictures/108 Riverside Laundry area.jpg",
+  "/assets/Riverside, Nairobi/108 Riverside Apartment/108 Riverside Apartment Pictures/108 Riverside Living room (1).jpg",
+  "/assets/Riverside, Nairobi/108 Riverside Apartment/108 Riverside Apartment Pictures/108 Riverside Living room (2).jpg",
+  "/assets/Riverside, Nairobi/108 Riverside Apartment/108 Riverside Apartment Pictures/108 Riverside Living Room (3).jpg",
+  "/assets/Riverside, Nairobi/108 Riverside Apartment/108 Riverside Apartment Pictures/108 Riverside whole building.jpg"
+];
+
+export const APPLETREE_IMAGES = [
+  "/assets/Syokimau, Nairobi/Apple Tree/Apple Tree Bedroom 1.jpg",
+  "/assets/Syokimau, Nairobi/Apple Tree/Apple Tree Bedroom 2.jpg",
+  "/assets/Syokimau, Nairobi/Apple Tree/Apple Tree Bedroom 3.jpg",
+  "/assets/Syokimau, Nairobi/Apple Tree/Apple Tree Bedroom 5.jpg",
+  "/assets/Syokimau, Nairobi/Apple Tree/Apple Tree Bedroom 6.jpg",
+  "/assets/Syokimau, Nairobi/Apple Tree/Apple Tree Dining Area.jpg",
+  "/assets/Syokimau, Nairobi/Apple Tree/Apple Tree Kitchen.jpg",
+  "/assets/Syokimau, Nairobi/Apple Tree/Apple Tree Living Room 1.jpg",
+  "/assets/Syokimau, Nairobi/Apple Tree/Apple Tree Living Room 2.jpg",
+  "/assets/Syokimau, Nairobi/Apple Tree/Apple Tree Living Room 3.jpg",
+  "/assets/Syokimau, Nairobi/Apple Tree/Apple Tree Living Room 4.jpg",
+  "/assets/Syokimau, Nairobi/Apple Tree/Apple Tree Living Room.jpg"
 ];
 
 export const BURGURET_IMAGES = [
@@ -306,7 +324,7 @@ export const URBAN_APARTMENTS = [
     salePrice: "Price on request",
     rentLongTerm: "Price on request",
     rentShortTerm: "Price on request",
-    image: "/assets/Premium%20Locations/L6%20Reception.jpg",
+    image: "/assets/Upperhill, Nairobi/Laurel Hill Suite/Laurel Hill Pictures/L6 Reception.jpg",
     features: ["City View", "Rooftop Pool", "Gym Access"],
     images: LAUREL_IMAGES
   },
@@ -317,9 +335,42 @@ export const URBAN_APARTMENTS = [
   bedrooms: 2,
     rentLongTerm: "Price on request",
     rentShortTerm: "Price on request",
-    image: "/assets/Premium%20Locations/A17%20Reception.jpg",
+    image: "/assets/Kilimani, Nairobi/ALBA GARDENS - 2 Bedroom (B1206)/Alba Garden B1206 Pictures/RECEPTION/9D5A1854.jpg",
     features: ["Garden Terrace", "Double Parking", "Smart Home System"],
     images: ALBA_IMAGES
+  },
+  {
+    id: "star-root",
+    name: "Star Root Residency",
+    location: "Kilimani",
+    bedrooms: 1,
+    rentLongTerm: "Price on request",
+    rentShortTerm: "Price on request",
+    image: "/assets/Kilimani, Nairobi/STAR ROOT RESIDENCY - 1 Bedroom/Star Root Residency Entrance.jpg",
+    features: ["Gym", "Pool Area", "Kid's Play Area"],
+    images: STAR_ROOT_IMAGES
+  },
+  {
+    id: "riverside-108",
+    name: "108 Riverside Apartment",
+    location: "Riverside",
+    bedrooms: 1,
+    rentLongTerm: "Price on request",
+    rentShortTerm: "Price on request",
+    image: "/assets/Riverside, Nairobi/108 Riverside Apartment/108 Riverside Apartment Pictures/108 Riverside whole building.jpg",
+    features: ["Gym", "Balcony", "Laundry area"],
+    images: RIVERSIDE_IMAGES
+  },
+  {
+    id: "apple-tree",
+    name: "Apple Tree Living",
+    location: "Syokimau",
+    bedrooms: 6,
+    rentLongTerm: "Price on request",
+    rentShortTerm: "Price on request",
+    image: "/assets/Syokimau, Nairobi/Apple Tree/Apple Tree Living Room 1.jpg",
+    features: ["Spacious Living Room", "Dining Area", "Large Kitchen"],
+    images: APPLETREE_IMAGES
   }
 ];
 
@@ -329,7 +380,7 @@ export const COFFEE_PRODUCTS = [
     name: "Mt. Elgon Reserve",
     roast: "Medium Dark",
     price: "Ksh 1,200",
-    image: "/assets/Coffee/MT Elgon Reserve Coffee Packaging.png",
+    image: "/assets/Coffee/Mt Elgon Reserve - Coffee Packaging.png",
     notes: "Chocolate, Citrus, Spice"
   },
   {
@@ -337,7 +388,7 @@ export const COFFEE_PRODUCTS = [
     name: "Volcanic Gold",
     roast: "Light",
     price: "Ksh 1,500",
-    image: "/assets/Coffee/volcanic gold Coffee Packaging.png",
+    image: "/assets/Coffee/Volcanic Gold - Coffee Packaging.png",
     notes: "Floral, Berry, Honey"
   }
 ];
