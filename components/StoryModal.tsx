@@ -97,11 +97,18 @@ const StoryModal: React.FC<StoryModalProps> = ({ isOpen, onClose, title, date, i
                                     initial={{ opacity: 0 }}
                                     animate={{ opacity: 1 }}
                                     transition={{ delay: 0.3 }}
-                                    className="prose prose-lg max-w-none text-gray-700 leading-relaxed space-y-6"
+                                    className="max-w-none text-gray-700 leading-relaxed"
                                 >
-                                    {content.split('\n\n').map((paragraph, idx) => (
-                                        <p key={idx} className="text-lg">{paragraph}</p>
-                                    ))}
+                                    {content.split('\n\n').map((paragraph, idx) => {
+                                        const isHeading = title === 'Top 5 Safari Essentials' && idx > 0 && !paragraph.includes(' ')
+                                            ? false
+                                            : title === 'Top 5 Safari Essentials' && idx > 0 && paragraph.length < 40;
+                                        return isHeading ? (
+                                            <h2 key={idx} className="mt-8 mb-2 font-serif text-2xl font-semibold text-dark">{paragraph}</h2>
+                                        ) : (
+                                            <p key={idx} className="mb-6 text-lg leading-8">{paragraph}</p>
+                                        );
+                                    })}
                                 </motion.div>
 
                                 {/* Footer */}
