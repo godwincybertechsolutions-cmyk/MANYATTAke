@@ -50,16 +50,62 @@ export const PreferencesProvider: React.FC<{ children: React.ReactNode }> = ({ c
       window.sessionStorage.setItem('manyatta-language', next);
     },
     formatPrice: (amount: number | string, sourceCurrency = 'KES') => {
-      const numericAmount = Number(String(amount).replace(/[^0-9.-]/g, '')) || 0;
+      if (!amount) return '';
+      const strAmount = String(amount);
+      const matches = strAmount.match(/[\d.,]+/);
+      
+      if (!matches) {
+        return strAmount; // Return as is (e.g. "Price on request")
+      }
+      
+      const numericAmount = Number(matches[0].replace(/,/g, '')) || 0;
       const source = sourceCurrency.toUpperCase() as Currency;
       const inKes = source === 'KES' ? numericAmount : numericAmount / currencyRates[source] || numericAmount;
-      return new Intl.NumberFormat(currencyLocales[currency], {
+      
+      const formatted = new Intl.NumberFormat(currencyLocales[currency], {
         style: 'currency',
         currency,
         maximumFractionDigits: currency === 'KES' ? 0 : 2,
       }).format(inKes * currencyRates[currency]);
+      
+      // If the original string had text around the number, we might want to keep it, but for now just returning formatted is fine
+      return formatted;
     },
   }), [currency, language]);
+
+  // Google Translate Integration
+  useEffect(() => {
+    const applyTranslation = () => {
+      const languageMap: Record<Language, string> = {
+        English: 'en',
+        Swahili: 'sw',
+        French: 'fr',
+        German: 'de',
+      };
+      
+      const targetLang = languageMap[language];
+      const googtransCookie = `/en/${targetLang}`;
+
+      const selectElement = document.querySelector('.goog-te-combo') as HTMLSelectElement;
+      
+      if (selectElement) {
+        selectElement.value = targetLang;
+        selectElement.dispatchEvent(new Event('change'));
+      } else {
+        // Fallback or before initialized
+        if (targetLang === 'en') {
+            document.cookie = `googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+            document.cookie = `googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=${window.location.hostname};`;
+        } else {
+            document.cookie = `googtrans=${googtransCookie}; path=/;`;
+            document.cookie = `googtrans=${googtransCookie}; path=/; domain=${window.location.hostname};`;
+        }
+      }
+    };
+    
+    // Slight delay to ensure widget is loaded if it was just mounted
+    setTimeout(applyTranslation, 300);
+  }, [language]);
 
   return <PreferencesContext.Provider value={value}>{children}</PreferencesContext.Provider>;
 };

@@ -43,18 +43,17 @@ const AssetSlideshow: React.FC<AssetSlideshowProps> = ({
 
   return (
     <div className={`relative isolate overflow-hidden ${className}`} onClick={onOpenGallery}>
-      <img
-        key={activeImage}
-        src={activeImage}
-        alt={`${alt} — image ${activeIndex + 1} of ${images.length}`}
-        className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ${imageClassName}`}
-        loading={priority ? 'eager' : 'lazy'}
-        fetchPriority={priority ? 'high' : 'auto'}
-        decoding="async"
-      />
-      {nextImage && (
-        <link rel="preload" as="image" href={nextImage} />
-      )}
+      {images.map((img, idx) => (
+        <img
+          key={img}
+          src={img}
+          alt={`${alt} — image ${idx + 1} of ${images.length}`}
+          className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ${imageClassName} ${idx === activeIndex ? 'opacity-100 z-0' : 'opacity-0 -z-10'}`}
+          loading={priority && idx === 0 ? 'eager' : 'lazy'}
+          fetchPriority={priority && idx === 0 ? 'high' : 'auto'}
+          decoding="async"
+        />
+      ))}
       <div className="pointer-events-none absolute inset-0 z-10 bg-gradient-to-t from-black/55 via-transparent to-black/20" />
       {images.length > 1 && (
         <>

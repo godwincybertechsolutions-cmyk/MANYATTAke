@@ -28,3 +28,21 @@
     background-position: -100% 0;
   }
 }
+
+/* Hide Google Translate Toolbar */
+.goog-te-banner-frame.skiptranslate, 
+.goog-te-gadget-icon {
+  display: none !important;
+}
+
+body {
+  top: 0px !important; 
+}
+#goog-gt-tt {
+  display: none !important;
+  top: 0px !important;
+}
+.goog-tooltip skiptranslate {
+  display: none !important;
+  top: 0px !important;
+}
