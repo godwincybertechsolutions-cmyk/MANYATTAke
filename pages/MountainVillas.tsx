@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import ImageSlideshowModal from '../components/ImageSlideshowModal';
 import AssetSlideshow from '../components/AssetSlideshow';
+import OptimizedImage from '../components/OptimizedImage';
 import {
   BURGURET_VILLA_DETAILS,
   BURGURET_IMAGES,
@@ -71,11 +72,13 @@ const MountainVillas: React.FC = () => {
 
       {/* Hero */}
       <div className="relative h-[58vh] min-h-[420px] w-full sm:h-[60vh]">
-        <AssetSlideshow
-          images={NARUMORU_VILLA_DETAILS.images || []}
-          alt="Narumoru Mountain Villa"
+        <OptimizedImage
+          src="/assets/Mountain%20Villas%20Hero%20Image/IMG_7506.jpg"
+          alt="Mountain villa surrounded by Mt. Kenya landscape"
           className="h-full w-full"
-          imageClassName="object-center"
+          fill
+          priority
+          objectFit="cover"
         />
         <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-black/20 text-center">
           <div className="max-w-4xl px-5 sm:px-6">

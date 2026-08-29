@@ -171,6 +171,15 @@ const UrbanApartments: React.FC = () => {
                     <motion.button
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
+                      className="flex-1 border border-dark bg-white py-3 rounded-lg text-sm font-bold uppercase tracking-wide text-dark hover:bg-dark hover:text-white transition-all shadow-sm hover:shadow-md flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-primary/50"
+                      onClick={() => openGallery([apt.image, ...(apt.images || [])], apt.name)}
+                      type="button"
+                    >
+                      <Camera size={16} /> View Gallery
+                    </motion.button>
+                    <motion.button
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
                       className="flex-1 bg-primary text-white py-3 rounded-lg text-sm font-bold uppercase tracking-wide hover:bg-[#c4492e] transition-all shadow-md hover:shadow-lg flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-primary/50"
                       onClick={() => bookApartment(apt.id, apt.name)}
                       type="button"
