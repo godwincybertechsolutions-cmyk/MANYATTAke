@@ -7,6 +7,7 @@ type AssetSlideshowProps = {
   className?: string;
   imageClassName?: string;
   interval?: number;
+  priority?: boolean;
   onOpenGallery?: () => void;
 };
 
@@ -16,6 +17,7 @@ const AssetSlideshow: React.FC<AssetSlideshowProps> = ({
   className = '',
   imageClassName = '',
   interval = 6000,
+  priority = false,
   onOpenGallery,
 }) => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -37,17 +39,17 @@ const AssetSlideshow: React.FC<AssetSlideshowProps> = ({
   };
 
   return (
-    <div className={`relative overflow-hidden ${className}`} onClick={onOpenGallery}>
+    <div className={`relative isolate overflow-hidden ${className}`} onClick={onOpenGallery}>
       {images.map((image, index) => (
         <img
           key={image}
           src={image}
           alt={`${alt} — image ${index + 1} of ${images.length}`}
           className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-1000 ${imageClassName} ${index === activeIndex ? 'opacity-100' : 'opacity-0'}`}
-          loading={index === 0 ? 'eager' : 'lazy'}
+          loading={priority && index === 0 ? 'eager' : 'lazy'}
         />
       ))}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-black/20" />
+      <div className="pointer-events-none absolute inset-0 z-10 bg-gradient-to-t from-black/55 via-transparent to-black/20" />
       {images.length > 1 && (
         <>
           <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 p-5 sm:p-7" onClick={(event) => event.stopPropagation()}>

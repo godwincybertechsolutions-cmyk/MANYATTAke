@@ -8,9 +8,10 @@ import OptimizedImage from '../components/OptimizedImage';
 import AssetSlideshow from '../components/AssetSlideshow';
 
 const HOME_SLIDES = [
-  '/assets/HomePage%20Slideshow%20Images/Social%20Median(Mt%20Ololokwe%20Top%20with%20personna%202).JPG',
-  '/assets/HomePage%20Slideshow%20Images/Website%20(Hartlaub%20Turaco).JPG',
-  '/assets/HomePage%20Slideshow%20Images/Website%20(Hartlaub_s%20Turaco).JPG',
+  '/assets/HomePage%20Slideshow%20Images/Website%20(personna%20beside%20elephant%202).jpg',
+  '/assets/HomePage%20Slideshow%20Images/Website%20(Suguta%20Valley%20Creek(.jpg',
+  "/assets/HomePage%20Slideshow%20Images/Website%20(Hartlaub's%20Turaco).JPG",
+  '/assets/HomePage%20Slideshow%20Images/IMG_0169.jpg',
 ];
 import {
   CONCIERGE_1_WHATSAPP,
@@ -57,6 +58,7 @@ const Home: React.FC = () => {
           alt="Kenya landscape and wildlife"
           className="absolute inset-0 h-full w-full"
           imageClassName="scale-105"
+          priority
         />
 
         {/* Overlay */}

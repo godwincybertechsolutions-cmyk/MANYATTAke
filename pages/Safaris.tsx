@@ -51,7 +51,7 @@ const Safaris: React.FC = () => {
         />
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-6">
           <h1 className="font-serif text-5xl md:text-7xl text-white max-w-4xl leading-tight">
-            Your Journey, <br /> <span className="italic">Our Story</span>
+            Your Journey <br /> <span className="italic">Our Story</span>
           </h1>
         </div>
       </div>
