@@ -45,10 +45,9 @@ const Footer: React.FC = () => {
             <h4 className="font-serif text-lg mb-6 text-primary">Explore</h4>
             <ul className="space-y-3 text-sm text-gray-400">
               <li><Link to="/mountain-villas" className="hover:text-white transition-colors duration-200 hover:translate-x-1 focus:outline-none focus:ring-2 focus:ring-primary rounded px-1">Mountain Villas</Link></li>
-              <li><Link to="/safaris" className="hover:text-white transition-colors duration-200 hover:translate-x-1 focus:outline-none focus:ring-2 focus:ring-primary rounded px-1">Safari Experiences</Link></li>
               <li><Link to="/urban-apartments" className="hover:text-white transition-colors duration-200 hover:translate-x-1 focus:outline-none focus:ring-2 focus:ring-primary rounded px-1">Urban Living</Link></li>
+              <li><Link to="/safaris" className="hover:text-white transition-colors duration-200 hover:translate-x-1 focus:outline-none focus:ring-2 focus:ring-primary rounded px-1">Safari Experiences</Link></li>
               <li><Link to="/others" className="hover:text-white transition-colors duration-200 hover:translate-x-1 focus:outline-none focus:ring-2 focus:ring-primary rounded px-1">Our Story</Link></li>
-              <li><a href="#gallery" className="hover:text-white transition-colors duration-200 hover:translate-x-1 focus:outline-none focus:ring-2 focus:ring-primary rounded px-1">Gallery</a></li>
             </ul>
           </nav>
 
