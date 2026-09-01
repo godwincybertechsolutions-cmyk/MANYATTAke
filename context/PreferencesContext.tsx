@@ -1,7 +1,33 @@
 import React, { createContext, useContext, useEffect, useMemo, useState } from 'react';
 
 export type Currency = 'KES' | 'USD' | 'EUR' | 'GBP';
-export type Language = 'English' | 'Swahili' | 'French' | 'German';
+export type Language = string;
+
+/** Google Translate languages commonly available in the website widget. */
+export const GOOGLE_TRANSLATE_LANGUAGES: Array<{ label: string; code: string }> = [
+  { label: 'English', code: 'en' }, { label: 'Afrikaans', code: 'af' }, { label: 'Albanian', code: 'sq' },
+  { label: 'Arabic', code: 'ar' }, { label: 'Amharic', code: 'am' }, { label: 'Armenian', code: 'hy' },
+  { label: 'Azerbaijani', code: 'az' }, { label: 'Basque', code: 'eu' }, { label: 'Belarusian', code: 'be' },
+  { label: 'Bengali', code: 'bn' }, { label: 'Bulgarian', code: 'bg' }, { label: 'Catalan', code: 'ca' },
+  { label: 'Chinese (Simplified)', code: 'zh-CN' }, { label: 'Chinese (Traditional)', code: 'zh-TW' },
+  { label: 'Croatian', code: 'hr' }, { label: 'Czech', code: 'cs' }, { label: 'Danish', code: 'da' },
+  { label: 'Dutch', code: 'nl' }, { label: 'Estonian', code: 'et' }, { label: 'Filipino', code: 'tl' },
+  { label: 'Finnish', code: 'fi' }, { label: 'French', code: 'fr' }, { label: 'Galician', code: 'gl' },
+  { label: 'Georgian', code: 'ka' }, { label: 'German', code: 'de' }, { label: 'Greek', code: 'el' },
+  { label: 'Gujarati', code: 'gu' }, { label: 'Hebrew', code: 'iw' }, { label: 'Hindi', code: 'hi' },
+  { label: 'Hungarian', code: 'hu' }, { label: 'Icelandic', code: 'is' }, { label: 'Indonesian', code: 'id' },
+  { label: 'Irish', code: 'ga' }, { label: 'Italian', code: 'it' }, { label: 'Japanese', code: 'ja' },
+  { label: 'Kannada', code: 'kn' }, { label: 'Korean', code: 'ko' }, { label: 'Latvian', code: 'lv' },
+  { label: 'Lithuanian', code: 'lt' }, { label: 'Malay', code: 'ms' }, { label: 'Malayalam', code: 'ml' },
+  { label: 'Marathi', code: 'mr' }, { label: 'Norwegian', code: 'no' }, { label: 'Persian', code: 'fa' },
+  { label: 'Polish', code: 'pl' }, { label: 'Portuguese', code: 'pt' }, { label: 'Punjabi', code: 'pa' },
+  { label: 'Romanian', code: 'ro' }, { label: 'Russian', code: 'ru' }, { label: 'Serbian', code: 'sr' },
+  { label: 'Slovak', code: 'sk' }, { label: 'Slovenian', code: 'sl' }, { label: 'Spanish', code: 'es' },
+  { label: 'Swahili', code: 'sw' }, { label: 'Swedish', code: 'sv' }, { label: 'Tamil', code: 'ta' },
+  { label: 'Telugu', code: 'te' }, { label: 'Thai', code: 'th' }, { label: 'Turkish', code: 'tr' },
+  { label: 'Ukrainian', code: 'uk' }, { label: 'Urdu', code: 'ur' }, { label: 'Vietnamese', code: 'vi' },
+  { label: 'Welsh', code: 'cy' }, { label: 'Yiddish', code: 'yi' },
+];
 
 const currencyRates: Record<Currency, number> = {
   KES: 1,
@@ -35,7 +61,7 @@ export const PreferencesProvider: React.FC<{ children: React.ReactNode }> = ({ c
     const storedCurrency = window.sessionStorage.getItem('manyatta-currency') as Currency | null;
     const storedLanguage = window.sessionStorage.getItem('manyatta-language') as Language | null;
     if (storedCurrency && storedCurrency in currencyRates) setCurrency(storedCurrency);
-    if (storedLanguage && ['English', 'Swahili', 'French', 'German'].includes(storedLanguage)) setLanguage(storedLanguage);
+    if (storedLanguage && GOOGLE_TRANSLATE_LANGUAGES.some((option) => option.label === storedLanguage)) setLanguage(storedLanguage);
   }, []);
 
   const value = useMemo(() => ({
@@ -76,14 +102,7 @@ export const PreferencesProvider: React.FC<{ children: React.ReactNode }> = ({ c
   // Google Translate Integration
   useEffect(() => {
     const applyTranslation = () => {
-      const languageMap: Record<Language, string> = {
-        English: 'en',
-        Swahili: 'sw',
-        French: 'fr',
-        German: 'de',
-      };
-      
-      const targetLang = languageMap[language];
+      const targetLang = GOOGLE_TRANSLATE_LANGUAGES.find((option) => option.label === language)?.code ?? 'en';
       const googtransCookie = `/en/${targetLang}`;
 
       const selectElement = document.querySelector('.goog-te-combo') as HTMLSelectElement;

@@ -7,8 +7,8 @@ import { useNavigate } from 'react-router-dom';
 
 const experiences: { type: PropertyType; label: string; location: string }[] = [
   { type: 'mountain', label: 'Mountain Villas', location: 'Narumoru' },
-  { type: 'safari', label: 'Safaris', location: 'All Parks' },
   { type: 'urban', label: 'Apartments', location: 'Nairobi' },
+  { type: 'safari', label: 'Safaris', location: 'All Parks' },
 ];
 
 const BookingWidget: React.FC = () => {
