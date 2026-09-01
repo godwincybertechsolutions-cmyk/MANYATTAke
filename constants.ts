@@ -295,6 +295,17 @@ export const SAFARI_ITINERARIES: Itinerary[] = [
     ]
   },
   {
+    id: "north-of-kenya",
+    title: "North Of Kenya",
+    duration: "See full itinerary",
+    locations: ["Northern Kenya"],
+    description: "Discover the landscapes, wildlife, and culture of Northern Kenya through this carefully curated journey.",
+    image: "/assets/Curated%20Itineraries%20Images/unnamed%20(12).png",
+    pricePerPerson: "Price on request",
+    itineraryPdf: "/assets/North%20Of%20Kenya%20Itinerary%20Final_compressed.pdf",
+    days: []
+  },
+  {
     id: "grand",
     title: "Mt Kenya Circuit",
     duration: "8 Nights",
