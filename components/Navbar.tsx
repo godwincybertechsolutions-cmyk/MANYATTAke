@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Menu, X, Calendar, Globe2, Coins } from 'lucide-react';
-import { usePreferences, type Currency, type Language } from '../context/PreferencesContext';
+import { usePreferences, GOOGLE_TRANSLATE_LANGUAGES, type Currency } from '../context/PreferencesContext';
 import { NAVIGATION_LINKS, APP_NAME } from '../constants';
 import { prefetchRoute } from '../utils/routePrefetch';
 import { Z_INDEX } from '../tokens';
@@ -154,7 +154,7 @@ const Navbar: React.FC = () => {
               <Globe2 size={14} aria-hidden="true" />
               <span className="sr-only">Language</span>
               <select aria-label="Language" value={language} onChange={(event) => setLanguage(event.target.value as Language)} className="bg-transparent outline-none cursor-pointer">
-                {(['English', 'Swahili', 'French', 'German'] as Language[]).map((option) => <option key={option} value={option} className="text-dark">{option}</option>)}
+                {GOOGLE_TRANSLATE_LANGUAGES.map((option) => <option key={option.code} value={option.label} className="text-dark">{option.label}</option>)}
               </select>
             </label>
             <button
