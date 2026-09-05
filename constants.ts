@@ -313,6 +313,7 @@ export const SAFARI_ITINERARIES: Itinerary[] = [
     description: "The ultimate expedition covering rift valley lakes, highland forests, and remote wilderness.",
     image: "/assets/Curated%20Itineraries%20Images/unnamed%20(12).png",
     pricePerPerson: "Price on request",
+    itineraryPdf: "/assets/Mt.%20Kenya%20Circuit%20Itinerary%20Final_compressed.pdf",
     days: [
       { day: 1, title: "Rift Valley Descent", activities: ["Drive to Lake Baringo", "Bird watching boat ride"], lodging: "Island Camp Baringo" },
       { day: 2, title: "Lake Bogoria", activities: ["Visit hot springs", "Flamingo viewing"], lodging: "Island Camp Baringo" },
