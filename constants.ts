@@ -302,7 +302,7 @@ export const SAFARI_ITINERARIES: Itinerary[] = [
     description: "Discover the landscapes, wildlife, and culture of Northern Kenya through this carefully curated journey.",
     image: "/assets/Curated%20Itineraries%20Images/unnamed%20(12).png",
     pricePerPerson: "Price on request",
-    itineraryPdf: "/assets/North%20Of%20Kenya%20Itinerary%20Final_compressed.pdf",
+    itineraryPdf: "/assets/North%20of%20Kenya%20Itinerary%20(1)_compressed.pdf",
     days: []
   },
   {
