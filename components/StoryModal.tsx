@@ -71,7 +71,7 @@ const StoryModal: React.FC<StoryModalProps> = ({ isOpen, onClose, title, date, i
                                 role="img"
                                 aria-label={`${title} - featured image`}
                             >
-                                <img src={image} alt={title} className="w-full h-full object-cover" />
+                                <img src={image} alt={title} className="w-full h-full object-cover" loading="lazy" decoding="async" />
                             </motion.div>
 
                             {/* Content */}

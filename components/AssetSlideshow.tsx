@@ -22,6 +22,18 @@ const AssetSlideshow: React.FC<AssetSlideshowProps> = ({
 }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
+  const [loadedIndexes, setLoadedIndexes] = useState<Set<number>>(new Set([0]));
+
+  useEffect(() => {
+    setLoadedIndexes(prev => {
+      const newSet = new Set(prev);
+      newSet.add(activeIndex);
+      if (images.length > 1) {
+        newSet.add((activeIndex + 1) % images.length);
+      }
+      return newSet;
+    });
+  }, [activeIndex, images.length]);
 
   useEffect(() => {
     if (!isPlaying || images.length < 2) return;
@@ -38,15 +50,12 @@ const AssetSlideshow: React.FC<AssetSlideshowProps> = ({
     setIsPlaying(false);
   };
 
-  const activeImage = images[activeIndex];
-  const nextImage = images.length > 1 ? images[(activeIndex + 1) % images.length] : undefined;
-
   return (
     <div className={`relative isolate overflow-hidden ${className}`} onClick={onOpenGallery}>
       {images.map((img, idx) => (
         <img
           key={img}
-          src={img}
+          src={loadedIndexes.has(idx) ? img : undefined}
           alt={`${alt} — image ${idx + 1} of ${images.length}`}
           className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ${imageClassName} ${idx === activeIndex ? 'opacity-100 z-0' : 'opacity-0 -z-10'}`}
           loading={priority && idx === 0 ? 'eager' : 'lazy'}

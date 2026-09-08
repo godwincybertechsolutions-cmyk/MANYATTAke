@@ -156,10 +156,10 @@ const MountainVillas: React.FC = () => {
                     <AssetSlideshow images={villa.images} alt={villa.details.title} className="h-full w-full" onOpenGallery={() => openGallery(villa.images, villa.details.title)} />
                   </div>
                   <div className="hidden h-44 overflow-hidden rounded-2xl md:block">
-                    <img src={villa.id === 'narumoru' ? '/assets/NARUMORU%20VACATION%20HOME%20PICS/PHOTO-2026-05-18-21-12-43.jpg' : villa.images[1] || villa.images[0]} className="h-full w-full object-cover" alt={`${villa.details.title} interior`} />
+                    <img src={villa.id === 'narumoru' ? '/assets/NARUMORU%20VACATION%20HOME%20PICS/PHOTO-2026-05-18-21-12-43.jpg' : villa.images[1] || villa.images[0]} className="h-full w-full object-cover" alt={`${villa.details.title} interior`} loading="lazy" decoding="async" />
                   </div>
                   <div className="hidden h-44 overflow-hidden rounded-2xl md:block">
-                    <img src={villa.id === 'narumoru' ? '/assets/NARUMORU%20VACATION%20HOME%20PICS/PHOTO-2026-05-18-21-13-55.jpg' : villa.images[2] || villa.images[0]} className="h-full w-full object-cover" alt={`${villa.details.title} detail`} />
+                    <img src={villa.id === 'narumoru' ? '/assets/NARUMORU%20VACATION%20HOME%20PICS/PHOTO-2026-05-18-21-13-55.jpg' : villa.images[2] || villa.images[0]} className="h-full w-full object-cover" alt={`${villa.details.title} detail`} loading="lazy" decoding="async" />
                   </div>
                 </div>
               </div>

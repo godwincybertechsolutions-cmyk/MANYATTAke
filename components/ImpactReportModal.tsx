@@ -71,7 +71,7 @@ const ImpactReportModal: React.FC<ImpactReportModalProps> = ({
                                 transition={{ delay: 0.1 }}
                                 className="w-full h-80 overflow-hidden"
                             >
-                                <img src={image} alt={title} className="w-full h-full object-cover" />
+                                <img src={image} alt={title} className="w-full h-full object-cover" loading="lazy" decoding="async" />
                             </motion.div>
 
                             {/* Content */}
