@@ -31,16 +31,16 @@ export const NAVIGATION_LINKS = navigationLinks;
 
 // Image Galleries
 export const LAUREL_IMAGES = [
-  "/assets/Upperhill, Nairobi/Laurel Hill Suite/Laurel Hill Pictures/L6 Balcony Area.jpg",
-  "/assets/Upperhill, Nairobi/Laurel Hill Suite/Laurel Hill Pictures/L6 Bathroom Essentials.jpg",
-  "/assets/Upperhill, Nairobi/Laurel Hill Suite/Laurel Hill Pictures/L6 Bedroom (b).jpg",
-  "/assets/Upperhill, Nairobi/Laurel Hill Suite/Laurel Hill Pictures/L6 Bedroom (c).jpg",
-  "/assets/Upperhill, Nairobi/Laurel Hill Suite/Laurel Hill Pictures/L6 Bedroom (d).jpg",
-  "/assets/Upperhill, Nairobi/Laurel Hill Suite/Laurel Hill Pictures/L6 Bedroom .jpg",
-  "/assets/Upperhill, Nairobi/Laurel Hill Suite/Laurel Hill Pictures/L6 Bedroom Balcony (b).jpg",
-  "/assets/Upperhill, Nairobi/Laurel Hill Suite/Laurel Hill Pictures/L6 Bedroom Balcony.jpg",
-  "/assets/Upperhill, Nairobi/Laurel Hill Suite/Laurel Hill Pictures/L6 Bedroom Overview.jpg",
-  "/assets/Upperhill, Nairobi/Laurel Hill Suite/Laurel Hill Pictures/L6 Guest Bathroom (b).jpg"
+  "/assets/Laurel Hill Suites/L6 Bedroom Balcony.jpg",
+  "/assets/Laurel Hill Suites/L6 Bathroom Essentials.jpg",
+  "/assets/Laurel Hill Suites/L6 Bedroom Overview.jpg",
+  "/assets/Laurel Hill Suites/L6 Gym (b).jpg",
+  "/assets/Laurel Hill Suites/L6 Gym (c).jpg",
+  "/assets/Laurel Hill Suites/L6 Kitchen (b).jpg",
+  "/assets/Laurel Hill Suites/L6 Kitchen Island .jpg",
+  "/assets/Laurel Hill Suites/L6 Laundry Area.jpg",
+  "/assets/Laurel Hill Suites/L6 Lounge Area (b).jpg",
+  "/assets/Laurel Hill Suites/L6 Reception (b).jpg"
 ];
 
 export const ALBA_IMAGES = [
@@ -336,7 +336,7 @@ export const URBAN_APARTMENTS = [
     salePrice: "Price on request",
     rentLongTerm: "Price on request",
     rentShortTerm: "Price on request",
-    image: "/assets/Upperhill, Nairobi/Laurel Hill Suite/Laurel Hill Pictures/L6 Reception.jpg",
+    image: "/assets/Laurel Hill Suites Hero/L6 Reception.jpg",
     features: ["City View", "Rooftop Pool", "Gym Access"],
     images: LAUREL_IMAGES
   },
@@ -347,7 +347,7 @@ export const URBAN_APARTMENTS = [
   bedrooms: 2,
     rentLongTerm: "Price on request",
     rentShortTerm: "Price on request",
-    image: "/assets/Kilimani, Nairobi/ALBA GARDENS - 2 Bedroom (B1206)/Alba Garden B1206 Pictures/RECEPTION/9D5A1854.jpg",
+    image: "/assets/Alba Gardens Hero/A17 Reception.jpg",
     features: ["Garden Terrace", "Double Parking", "Smart Home System"],
     images: ALBA_IMAGES
   },
