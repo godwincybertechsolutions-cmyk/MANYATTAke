@@ -164,7 +164,7 @@ const Home: React.FC = () => {
                 <div className="relative h-[300px] sm:h-[500px] overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 group-hover:-translate-y-2">
                   <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors z-10 duration-300"></div>
                   <OptimizedImage
-                    src="/assets/Alba%20Gardens%20Hero/A17%20Reception.jpg"
+                    src="/assets/Kilimani,%20Nairobi/ALBA%20GARDENS%20-%202%20Bedroom%20%28B1702%29%29/Alba%20Gardens%20B1702%20Pictures/A17%20Overview%20Lounge%20Area.jpg"
                     alt="Urban Apartments"
                     className="transition-transform duration-700 group-hover:scale-110"
                     fill
