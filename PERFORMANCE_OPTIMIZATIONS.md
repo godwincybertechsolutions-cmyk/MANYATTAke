@@ -167,10 +167,23 @@ Test on various devices:
 
 ---
 
+## Browser Image Compression Layer
+
+The app now includes `hooks/useImageCompression.ts`, a shared upload/preview utility that tries the requested browser compressors in order and falls back to the existing `browser-image-compression` package:
+
+1. `@gkzlabs/image-compression` for Web Worker and WebCodecs-capable browsers
+2. `@gunny/compress-image` for OffscreenCanvas-based resizing and encoding
+3. `sinter-js` for format conversion and dimension limits
+4. `browser-image-compression` for broad browser compatibility
+
+Use `compressImage(file, { preset: 'upload' })` before sending user-selected images to storage. The default output is WebP, capped at 2048px for uploads and 1440px for previews; original files are retained when compression would make them larger. The helper accepts an `AbortSignal` so upload forms can cancel work cleanly.
+
+Existing page images continue to use `OptimizedImage` with intersection-based lazy loading, async decoding, responsive `srcSet` support, and blur-up placeholders. This avoids recompressing already-hosted assets in the browser while ensuring uploaded assets are reduced before they enter storage.
+
 ## Future Optimization Opportunities
 
-1. **Image Compression**: Implement WebP with JPEG fallback (can save 25-35% bandwidth)
-2. **Service Worker**: Cache images for offline access
-3. **CDN Integration**: Serve images from geographically distributed servers
-4. **Selective SHADING**: Re-enable on devices where devicePixelRatio < 1.5
-5. **Progressive Loading**: Show blur placeholder while image loads
+1. **Service Worker**: Cache images for offline access
+2. **CDN Integration**: Serve images from geographically distributed servers
+3. **Selective SHADING**: Re-enable on devices where devicePixelRatio < 1.5
+4. **Progressive Loading**: Show blur placeholder while an image loads
+5. **Upload UI integration**: Connect `useImageCompression` to a future profile or property image picker
