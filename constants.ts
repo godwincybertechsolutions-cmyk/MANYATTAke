@@ -7,12 +7,17 @@ export const PROPERTY_SLUG_BY_FRONTEND_ID: Record<string, string> = {
   burguret: 'burguret-villa',
   narumoru: 'narumoru-villa',
   weekend: 'weekend-safari',
+  mountain: 'best-of-mtkenya',
+  'north-of-kenya': 'north-of-kenya',
+  grand: 'mt-kenya-circuit',
   laurel: 'laurel-hill-suites',
   alba: 'alba-gardens',
+  'star-root': 'star-root-residency',
   starroot: 'star-root-residency',
-  riverside108: '108-riverside-apartment',
-  appletree: 'apple-tree-living',
-
+  'riverside-108': '108-riverside',
+  riverside108: '108-riverside',
+  'apple-tree': 'Apple-tree',
+  appletree: 'Apple-tree',
 };
 
 export function resolvePropertySlug(frontendId: string): string {
