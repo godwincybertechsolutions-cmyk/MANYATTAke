@@ -20,11 +20,12 @@ import {
   CONTACT_EMAIL,
 } from '../constants';
 
-const TYPE_LABELS: Record<PropertyType, string> = {
-  mountain: 'Mountain Villas',
-  safari: 'Safaris',
-  urban: 'Urban Apartments',
-};
+const propertyFilters = [
+  { label: 'All', value: 'all' },
+  { label: 'Mountain Villas', value: 'mountain' },
+  { label: 'Urban Apartments', value: 'urban' },
+  { label: 'Safaris', value: 'safari' },
+] as const;
 
 const Booking: React.FC = () => {
   const location = useLocation();
@@ -323,18 +324,18 @@ const Booking: React.FC = () => {
 
               {/* Category Filter */}
               <div className="flex flex-wrap gap-2">
-                {(['all', 'mountain', 'safari', 'urban'] as const).map((t) => (
+                {propertyFilters.map(({ label, value }) => (
                   <button
-                    key={t}
+                    key={value}
                     type="button"
-                    onClick={() => setFilterType(t)}
+                    onClick={() => setFilterType(value)}
                     className={`px-3 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wide ${
-                      filterType === t
+                      filterType === value
                         ? 'bg-primary text-white'
                         : 'bg-gray-100 text-gray-600'
                     }`}
                   >
-                    {t === 'all' ? 'All' : TYPE_LABELS[t]}
+                    {label}
                   </button>
                 ))}
               </div>
