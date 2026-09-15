@@ -60,11 +60,12 @@ const AssetSlideshow: React.FC<AssetSlideshowProps> = ({
         <img
           key={img}
           src={loadedIndexes.has(idx) ? img : undefined}
-          alt={`${alt} — image ${idx + 1} of ${images.length}`}
+          alt={idx === activeIndex ? `${alt} — image ${idx + 1} of ${images.length}` : ''}
+          aria-hidden={idx !== activeIndex}
           className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ${imageClassName} ${idx === activeIndex ? 'opacity-100 z-0' : 'opacity-0 -z-10'}`}
           loading={priority && idx === 0 ? 'eager' : 'lazy'}
           fetchPriority={priority && idx === 0 ? 'high' : 'auto'}
-          decoding={idx === 0 && priority ? 'sync' : 'async'}
+          decoding={idx === 0 && priority ? 'async' : 'async'}
           onLoad={() => handleImageLoad(idx)}
         />
       ))}
