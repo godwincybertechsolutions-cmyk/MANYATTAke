@@ -17,15 +17,31 @@ const LazySplashCursor: React.FC = () => {
   useEffect(() => {
     if (!shouldEnableSplash()) return;
 
-    const enable = () => setShow(true);
+    let idleId: number | undefined;
+    let timeoutId: number | undefined;
+    let activated = false;
 
-    if ('requestIdleCallback' in window) {
-      const id = requestIdleCallback(enable, { timeout: 3000 });
-      return () => cancelIdleCallback(id);
-    }
+    const enable = () => {
+      if (activated) return;
+      activated = true;
+      setShow(true);
+    };
 
-    const t = window.setTimeout(enable, 2000);
-    return () => clearTimeout(t);
+    const handlePointerMove = () => {
+      window.removeEventListener('pointermove', handlePointerMove);
+      if ('requestIdleCallback' in window) {
+        idleId = requestIdleCallback(enable, { timeout: 5000 });
+      } else {
+        timeoutId = window.setTimeout(enable, 3000);
+      }
+    };
+
+    window.addEventListener('pointermove', handlePointerMove, { once: true, passive: true });
+    return () => {
+      window.removeEventListener('pointermove', handlePointerMove);
+      if (idleId !== undefined) cancelIdleCallback(idleId);
+      if (timeoutId !== undefined) clearTimeout(timeoutId);
+    };
   }, []);
 
   if (!show) return null;

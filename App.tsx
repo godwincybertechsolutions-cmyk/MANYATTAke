@@ -6,7 +6,6 @@ import Footer from './components/Footer';
 import ErrorBoundary from './components/ErrorBoundary';
 import LazySplashCursor from './components/LazySplashCursor';
 import RouteSkeleton from './components/RouteSkeleton';
-import { prefetchCommonRoutes } from './utils/routePrefetch';
 import { PreferencesProvider } from './context/PreferencesContext';
 
 const Home = React.lazy(() => import('./pages/Home'));
@@ -26,17 +25,6 @@ const ScrollToTop = () => {
 
 const App: React.FC = () => {
   useEffect(() => {
-    const connection = (navigator as Navigator & { connection?: { saveData?: boolean; effectiveType?: string } }).connection;
-    const isConstrained = connection?.saveData || connection?.effectiveType === 'slow-2g' || connection?.effectiveType === '2g';
-    if (isConstrained || window.matchMedia('(max-width: 767px)').matches) return;
-
-    const schedulePrefetch = () => prefetchCommonRoutes();
-    if ('requestIdleCallback' in window) {
-      requestIdleCallback(schedulePrefetch, { timeout: 5000 });
-    } else {
-      setTimeout(schedulePrefetch, 3000);
-    }
-
     let cleanup: (() => void) | undefined;
     if (import.meta.env.DEV) {
       import('./services/webVitalsMonitor').then(({ default: webVitalsMonitor }) => {
