@@ -26,11 +26,15 @@ const ScrollToTop = () => {
 
 const App: React.FC = () => {
   useEffect(() => {
+    const connection = (navigator as Navigator & { connection?: { saveData?: boolean; effectiveType?: string } }).connection;
+    const isConstrained = connection?.saveData || connection?.effectiveType === 'slow-2g' || connection?.effectiveType === '2g';
+    if (isConstrained || window.matchMedia('(max-width: 767px)').matches) return;
+
     const schedulePrefetch = () => prefetchCommonRoutes();
     if ('requestIdleCallback' in window) {
-      requestIdleCallback(schedulePrefetch, { timeout: 2500 });
+      requestIdleCallback(schedulePrefetch, { timeout: 5000 });
     } else {
-      setTimeout(schedulePrefetch, 1200);
+      setTimeout(schedulePrefetch, 3000);
     }
 
     let cleanup: (() => void) | undefined;
