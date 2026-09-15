@@ -25,15 +25,19 @@ const AssetSlideshow: React.FC<AssetSlideshowProps> = ({
   const [loadedIndexes, setLoadedIndexes] = useState<Set<number>>(new Set([0]));
 
   useEffect(() => {
-    setLoadedIndexes(prev => {
-      const newSet = new Set(prev);
-      newSet.add(activeIndex);
-      if (images.length > 1) {
-        newSet.add((activeIndex + 1) % images.length);
-      }
-      return newSet;
-    });
-  }, [activeIndex, images.length]);
+    if (activeIndex === 0) return;
+    setLoadedIndexes((prev) => new Set(prev).add(activeIndex));
+  }, [activeIndex]);
+
+  const handleImageLoad = (index: number) => {
+    if (index !== activeIndex || images.length < 2) return;
+    const schedule = () => setLoadedIndexes((prev) => new Set(prev).add((index + 1) % images.length));
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(schedule, { timeout: 2500 });
+    } else {
+      window.setTimeout(schedule, 1500);
+    }
+  };
 
   useEffect(() => {
     if (!isPlaying || images.length < 2) return;
@@ -60,7 +64,8 @@ const AssetSlideshow: React.FC<AssetSlideshowProps> = ({
           className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ${imageClassName} ${idx === activeIndex ? 'opacity-100 z-0' : 'opacity-0 -z-10'}`}
           loading={priority && idx === 0 ? 'eager' : 'lazy'}
           fetchPriority={priority && idx === 0 ? 'high' : 'auto'}
-          decoding="async"
+          decoding={idx === 0 && priority ? 'sync' : 'async'}
+          onLoad={() => handleImageLoad(idx)}
         />
       ))}
       <div className="pointer-events-none absolute inset-0 z-10 bg-gradient-to-t from-black/55 via-transparent to-black/20" />

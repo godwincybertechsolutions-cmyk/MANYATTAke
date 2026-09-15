@@ -42,7 +42,7 @@ const Home: React.FC = () => {
         <link
           rel="preload"
           as="image"
-          href="/assets/Mountain%20Villas%20Hero%20Image/Burguret.%20Outside%20Patio%20View%202.jpg"
+          href={HOME_SLIDES[0]}
           fetchPriority="high"
         />
         <meta name="twitter:card" content="summary_large_image" />
@@ -139,6 +139,7 @@ const Home: React.FC = () => {
                     className="transition-transform duration-700 group-hover:scale-110"
                     fill
                     objectFit="cover"
+                    sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 33vw"
                   />
                   <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-20">
                     <div className="flex items-center gap-3 text-white mb-2 group-hover:gap-4 transition-all duration-300">
@@ -169,6 +170,7 @@ const Home: React.FC = () => {
                     className="transition-transform duration-700 group-hover:scale-110"
                     fill
                     objectFit="cover"
+                    sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 33vw"
                   />
                   <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-20">
                     <div className="flex items-center gap-3 text-white mb-2 group-hover:gap-4 transition-all duration-300">
@@ -199,6 +201,7 @@ const Home: React.FC = () => {
                     className="transition-transform duration-700 group-hover:scale-110"
                     fill
                     objectFit="cover"
+                    sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 33vw"
                   />
                   <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-20">
                     <div className="flex items-center gap-3 text-white mb-2 group-hover:gap-4 transition-all duration-300">
