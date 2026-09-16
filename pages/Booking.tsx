@@ -13,6 +13,7 @@ import { calculateBookingTotal } from '../services/bookings';
 import { getSupabaseErrorMessage } from '../utils/supabaseError';
 import { usePreferences } from '../context/PreferencesContext';
 import { useProperties } from '../hooks/useProperties';
+import { useCreateBookingLeadMutation } from '../hooks/useBookings';
 import {
   CONCIERGE_1_DISPLAY,
   CONCIERGE_1_PHONE,
@@ -125,7 +126,9 @@ const Booking: React.FC = () => {
     );
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const { mutateAsync: submitBookingLead } = useCreateBookingLeadMutation();
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
 
@@ -160,13 +163,27 @@ const Booking: React.FC = () => {
 
     setSubmitting(true);
     
-    // For now, we skip the database insertion since users are anonymous
-    // Prepare the WhatsApp fallback message
+    try {
+      // 1. Silently log the lead in Supabase
+      await submitBookingLead({
+        guest_name: guestName.trim(),
+        guest_phone: guestPhone.trim(),
+        property_id: property.id,
+        check_in_date: checkInDate,
+        check_out_date: checkOutDate,
+      });
+    } catch (err) {
+      // We catch the error but don't stop the user journey!
+      // This ensures they still get to WhatsApp even if the database insert fails
+      console.error('Failed to log booking lead:', err);
+    }
+
+    // 2. Prepare the WhatsApp fallback message
     const msg = constructBookingMessage();
     setFormattedMessage(msg);
     setSuccess(true);
 
-    // Auto launch WhatsApp for Concierge 1
+    // 3. Auto launch WhatsApp for Concierge 1
     const clean1 = CONCIERGE_1_PHONE.replace(/[^0-9]/g, '');
     const whatsappUrl = `https://wa.me/${clean1}?text=${encodeURIComponent(msg)}`;
     window.open(whatsappUrl, '_blank');

@@ -1,14 +1,13 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { createBooking, type CreateBookingInput } from '../services/bookings';
+import { createBookingLead, type CreateBookingLeadInput } from '../services/bookings';
 
-export function useCreateBookingMutation() {
+export function useCreateBookingLeadMutation() {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: (input: CreateBookingInput) => createBooking(input),
+    mutationFn: (input: CreateBookingLeadInput) => createBookingLead(input),
     onSuccess: () => {
-      // Invalidate the user's bookings query so it refetches next time they visit their profile
-      queryClient.invalidateQueries({ queryKey: ['userBookings'] });
+      // Could invalidate admin lead queries here if an admin dashboard exists
     },
   });
 }

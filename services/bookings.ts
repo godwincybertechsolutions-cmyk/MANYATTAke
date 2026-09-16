@@ -90,3 +90,28 @@ export async function cancelBooking(bookingId: string) {
   if (error) throw error;
   return data as DbBooking;
 }
+
+export interface CreateBookingLeadInput {
+  guest_name: string;
+  guest_phone: string;
+  property_id: string;
+  check_in_date: string;
+  check_out_date: string;
+}
+
+export async function createBookingLead(input: CreateBookingLeadInput) {
+  const { data, error } = await supabase
+    .from('booking_leads')
+    .insert({
+      guest_name: input.guest_name,
+      guest_phone: input.guest_phone,
+      property_id: input.property_id,
+      check_in_date: input.check_in_date,
+      check_out_date: input.check_out_date,
+    })
+    .select()
+    .single();
+
+  if (error) throw error;
+  return data;
+}
