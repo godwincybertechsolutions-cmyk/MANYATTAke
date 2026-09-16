@@ -1,11 +1,15 @@
 import { useQuery } from '@tanstack/react-query';
-import { getProperties, getPropertyById, getPropertyBySlug } from '../services/properties';
+import { getLocalizedProperties, getPropertyById, getPropertyBySlug } from '../services/properties';
 import type { PropertyType } from '../types';
+import { usePreferences, GOOGLE_TRANSLATE_LANGUAGES } from '../context/PreferencesContext';
 
 export function useProperties(type?: PropertyType) {
+  const { language, currency } = usePreferences();
+  const langCode = GOOGLE_TRANSLATE_LANGUAGES.find((option) => option.label === language)?.code ?? 'en';
+
   return useQuery({
-    queryKey: ['properties', type ?? 'all'],
-    queryFn: () => getProperties(type),
+    queryKey: ['properties', type ?? 'all', langCode, currency],
+    queryFn: () => getLocalizedProperties(langCode, currency, type),
     staleTime: 1000 * 60 * 5, // 5 minutes
   });
 }

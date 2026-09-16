@@ -68,3 +68,21 @@ export async function getPropertyBySlug(slug: string) {
   if (error) throw error;
   return data ? normalizeProperty(data as DbProperty) : null;
 }
+
+export async function getLocalizedProperties(languageCode: string, currencyCode: string, type?: PropertyType) {
+  const { data, error } = await supabase.rpc('get_localized_properties', {
+    p_lang_code: languageCode,
+    p_currency_code: currencyCode
+  });
+
+  if (error) throw error;
+  
+  let properties = normalizeProperties(data as DbProperty[] | null);
+  
+  // Optionally filter by type in Javascript if RPC doesn't accept type yet
+  if (type) {
+    properties = properties.filter(p => p.type === type);
+  }
+  
+  return properties;
+}
