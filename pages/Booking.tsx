@@ -12,6 +12,7 @@ import {
 import { calculateBookingTotal } from '../services/bookings';
 import { getSupabaseErrorMessage } from '../utils/supabaseError';
 import { usePreferences } from '../context/PreferencesContext';
+import { useProperties } from '../hooks/useProperties';
 import {
   CONCIERGE_1_DISPLAY,
   CONCIERGE_1_PHONE,
@@ -32,13 +33,12 @@ const Booking: React.FC = () => {
   const navigate = useNavigate();
   const navState = (location.state as BookingLocationState | null) ?? null;
   const { formatPrice } = usePreferences();
+  const { data: catalog = [], isLoading: loadingProduct, error: queryError } = useProperties();
 
-  const [loadingProduct, setLoadingProduct] = useState(true);
   const [filterType, setFilterType] = useState<PropertyType | 'all'>(
     navState?.type ?? 'all'
   );
   const [property, setProperty] = useState<DbProperty | null>(null);
-  const [catalog, setCatalog] = useState<DbProperty[]>([]);
 
   // Guest Details
   const [guestName, setGuestName] = useState('');
@@ -56,49 +56,34 @@ const Booking: React.FC = () => {
   const [formattedMessage, setFormattedMessage] = useState('');
 
   useEffect(() => {
-    let cancelled = false;
+    if (queryError) {
+      setError(
+        getSupabaseErrorMessage(
+          queryError,
+          'Could not load listings. Check that the properties table exists and RLS allows public read.'
+        )
+      );
+    }
+  }, [queryError]);
 
-    async function load() {
-      setLoadingProduct(true);
-      setError(null);
-      try {
-        const all = await getProperties();
-        if (cancelled) return;
-        setCatalog(all);
-
-        let selected: DbProperty | null = null;
-        if (navState?.propertyId) {
-          selected = await getPropertyById(navState.propertyId);
-        } else if (navState?.slug) {
-          selected = await getPropertyBySlug(navState.slug);
-        } else if (navState?.type) {
-          selected = all.find((p) => p.type === navState.type) ?? null;
-        }
-
-        if (selected) {
-          setProperty(selected);
-          setFilterType(selected.type);
-          setNumberOfGuests(Math.min(2, selected.capacity));
-        }
-      } catch (e) {
-        if (!cancelled) {
-          setError(
-            getSupabaseErrorMessage(
-              e,
-              'Could not load listings. Check that the properties table exists and RLS allows public read.'
-            )
-          );
-        }
-      } finally {
-        if (!cancelled) setLoadingProduct(false);
-      }
+  useEffect(() => {
+    if (loadingProduct || catalog.length === 0 || property) return;
+    
+    let selected: DbProperty | null = null;
+    if (navState?.propertyId) {
+      selected = catalog.find(p => p.id === navState.propertyId) ?? null;
+    } else if (navState?.slug) {
+      selected = catalog.find(p => p.slug === navState.slug) ?? null;
+    } else if (navState?.type) {
+      selected = catalog.find((p) => p.type === navState.type) ?? null;
     }
 
-    load();
-    return () => {
-      cancelled = true;
-    };
-  }, [navState?.propertyId, navState?.slug, navState?.type]);
+    if (selected) {
+      setProperty(selected);
+      setFilterType(selected.type);
+      setNumberOfGuests(Math.min(2, selected.capacity));
+    }
+  }, [loadingProduct, catalog, navState, property]);
 
   const filteredCatalog = useMemo(() => {
     if (filterType === 'all') return catalog;
@@ -174,15 +159,19 @@ const Booking: React.FC = () => {
     }
 
     setSubmitting(true);
+    
+    // For now, we skip the database insertion since users are anonymous
+    // Prepare the WhatsApp fallback message
     const msg = constructBookingMessage();
     setFormattedMessage(msg);
     setSuccess(true);
-    setSubmitting(false);
 
     // Auto launch WhatsApp for Concierge 1
     const clean1 = CONCIERGE_1_PHONE.replace(/[^0-9]/g, '');
     const whatsappUrl = `https://wa.me/${clean1}?text=${encodeURIComponent(msg)}`;
     window.open(whatsappUrl, '_blank');
+      
+    setSubmitting(false);
   };
 
   const getConcierge1WhatsappUrl = () => {
