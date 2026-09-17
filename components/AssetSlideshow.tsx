@@ -24,6 +24,8 @@ const AssetSlideshow: React.FC<AssetSlideshowProps> = ({
   const [isPlaying, setIsPlaying] = useState(true);
   const [loadedIndexes, setLoadedIndexes] = useState<Set<number>>(new Set([0]));
 
+  const pauseOnInteraction = () => setIsPlaying(false);
+
   useEffect(() => {
     if (activeIndex === 0) return;
     setLoadedIndexes((prev) => new Set(prev).add(activeIndex));
@@ -55,7 +57,20 @@ const AssetSlideshow: React.FC<AssetSlideshowProps> = ({
   };
 
   return (
-    <div className={`relative isolate overflow-hidden ${className}`} onClick={onOpenGallery}>
+    <div
+      className={`relative isolate overflow-hidden ${className}`}
+      onClick={onOpenGallery}
+      onMouseEnter={pauseOnInteraction}
+      onFocus={pauseOnInteraction}
+      role={onOpenGallery ? 'button' : undefined}
+      tabIndex={onOpenGallery ? 0 : undefined}
+      onKeyDown={(event) => {
+        if (onOpenGallery && (event.key === 'Enter' || event.key === ' ')) {
+          event.preventDefault();
+          onOpenGallery();
+        }
+      }}
+    >
       {images.map((img, idx) => (
         <img
           key={img}
@@ -70,6 +85,11 @@ const AssetSlideshow: React.FC<AssetSlideshowProps> = ({
         />
       ))}
       <div className="pointer-events-none absolute inset-0 z-10 bg-gradient-to-t from-black/55 via-transparent to-black/20" />
+      {images.length > 1 && (
+        <span className="pointer-events-none absolute right-5 top-5 z-20 rounded-full bg-black/40 px-3 py-1 text-xs font-semibold text-white backdrop-blur-sm" aria-live="polite">
+          {activeIndex + 1} / {images.length}
+        </span>
+      )}
       {images.length > 1 && (
         <>
           <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 p-5 sm:p-7" onClick={(event) => event.stopPropagation()}>

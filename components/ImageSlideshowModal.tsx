@@ -150,6 +150,7 @@ const ImageSlideshowModal: React.FC<ImageSlideshowModalProps> = ({ images, isOpe
         
         const currentX = e.touches[0].clientX;
         const diff = touchStartX - currentX;
+        setTouchEndX(currentX);
         setSwipeOffset(diff);
         
         // Prevent scrolling while swiping
