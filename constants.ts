@@ -394,7 +394,7 @@ export const URBAN_APARTMENTS = [
     rentShortTerm: "Price on request",
     image: "/assets/Laurel Hill Suites Hero/L6 Reception.jpg",
     features: ["City View", "Rooftop Pool", "Gym Access"],
-    images: LAUREL_IMAGES
+    images: LAUREL_IMAGES.slice(0, 10)
   },
   {
   id: "alba",
@@ -405,7 +405,7 @@ export const URBAN_APARTMENTS = [
     rentShortTerm: "Price on request",
     image: "/assets/Alba Gardens Hero/A17 Reception.jpg",
     features: ["Garden Terrace", "Double Parking", "Smart Home System"],
-    images: ALBA_IMAGES
+    images: ALBA_IMAGES.slice(0, 10)
   },
   {
     id: "star-root",

@@ -115,7 +115,10 @@ const UrbanApartments: React.FC = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-            {filteredApartments.map((apt, idx) => (
+            {filteredApartments.map((apt, idx) => {
+              const apartmentImages = apt.images?.length ? apt.images.slice(0, 10) : [apt.image];
+
+              return (
               <motion.div 
                 key={apt.id}
                 initial={{ opacity: 0, y: 20 }}
@@ -127,10 +130,10 @@ const UrbanApartments: React.FC = () => {
                 {/* Image */}
                 <div className="h-72 overflow-hidden relative bg-gray-100 rounded-t-3xl">
                   <AssetSlideshow 
-                    images={[apt.image, ...(apt.images || [])]} 
-                    alt={apt.name} 
-                    className="h-full w-full" 
-                    onOpenGallery={() => openGallery(apt.images, apt.name)} 
+                    images={apartmentImages}
+                    alt={apt.name}
+                    className="h-full w-full"
+                    onOpenGallery={() => openGallery(apartmentImages, apt.name)}
                   />
                 </div>
 
@@ -172,7 +175,7 @@ const UrbanApartments: React.FC = () => {
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                       className="flex-1 border border-dark bg-white py-3 rounded-lg text-sm font-bold uppercase tracking-wide text-dark hover:bg-dark hover:text-white transition-all shadow-sm hover:shadow-md flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-primary/50"
-                      onClick={() => openGallery([apt.image, ...(apt.images || [])], apt.name)}
+                      onClick={() => openGallery(apartmentImages, apt.name)}
                       type="button"
                     >
                       <Camera size={16} /> View Gallery
@@ -189,7 +192,8 @@ const UrbanApartments: React.FC = () => {
                   </div>
                 </div>
               </motion.div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
