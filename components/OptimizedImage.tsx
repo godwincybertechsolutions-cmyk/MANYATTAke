@@ -17,6 +17,9 @@ interface OptimizedImageProps {
 const BLUR_PLACEHOLDER =
   'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300"%3E%3Crect fill="%23e5e7eb" width="400" height="300"/%3E%3C/svg%3E';
 
+// Keep already decoded images visible during SPA navigation without refetching them.
+const decodedImageCache = new Set<string>();
+
 const OptimizedImage: React.FC<OptimizedImageProps> = ({
   src,
   alt,
@@ -30,8 +33,10 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
   sizes,
   srcSet,
 }) => {
-  const [visible, setVisible] = useState(priority);
-  const [resolvedSrc, setResolvedSrc] = useState(priority ? src : BLUR_PLACEHOLDER);
+  const [visible, setVisible] = useState(priority || decodedImageCache.has(src));
+  const [resolvedSrc, setResolvedSrc] = useState(
+    priority || decodedImageCache.has(src) ? src : BLUR_PLACEHOLDER
+  );
   const imgRef = useRef<HTMLImageElement>(null);
 
   const objectFitClass = {
@@ -66,6 +71,7 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
   }, [src, priority]);
 
   const handleLoad = () => {
+    decodedImageCache.add(src);
     setVisible(true);
     onLoad?.();
   };
