@@ -30,13 +30,27 @@
 }
 
 /* Hide Google Translate Toolbar */
-.goog-te-banner-frame.skiptranslate, 
+.goog-te-banner-frame.skiptranslate,
+iframe.goog-te-banner-frame,
 .goog-te-gadget-icon {
   display: none !important;
 }
 
+html,
 body {
-  top: 0px !important; 
+  top: 0 !important;
+  margin-top: 0 !important;
+}
+
+/* Keep below-the-fold sections from competing with the hero for main-thread time. */
+.cv-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 720px;
+}
+
+/* Prevent the initial React shell from collapsing while route chunks hydrate. */
+#root {
+  min-height: 100vh;
 }
 #goog-gt-tt {
   display: none !important;

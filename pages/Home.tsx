@@ -96,7 +96,7 @@ const Home: React.FC = () => {
         </div>
       </div>
 
-      <section className="border-b border-gray-200/60 bg-stone-50 py-14 sm:py-16">
+      <section className="cv-auto border-b border-gray-200/60 bg-stone-50 py-14 sm:py-16">
         <div className="container mx-auto px-4 sm:px-6">
           <div className="mx-auto flex max-w-6xl flex-col gap-8 rounded-3xl bg-dark p-5 text-white shadow-xl sm:p-10 lg:flex-row lg:items-center lg:justify-between">
             <div className="max-w-xl">

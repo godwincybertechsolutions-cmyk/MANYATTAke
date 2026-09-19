@@ -58,7 +58,7 @@ const App: React.FC = () => {
           </a>
           <div className="flex flex-col min-h-screen bg-white font-sans text-dark selection:bg-primary selection:text-white">
             <Navbar />
-            <main id="main-content" className="flex-grow pt-24" role="main">
+            <main id="main-content" className="flex-grow min-h-[calc(100vh-6rem)] pt-24" role="main">
               <Suspense fallback={<RouteSkeleton />}>
                 <Routes>
                   <Route path="/" element={<Home />} />
