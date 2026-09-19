@@ -68,22 +68,51 @@ const Booking: React.FC = () => {
   }, [queryError]);
 
   useEffect(() => {
-    if (loadingProduct || catalog.length === 0 || property) return;
-    
-    let selected: DbProperty | null = null;
-    if (navState?.propertyId) {
-      selected = catalog.find(p => p.id === navState.propertyId) ?? null;
-    } else if (navState?.slug) {
-      selected = catalog.find(p => p.slug === navState.slug) ?? null;
-    } else if (navState?.type) {
-      selected = catalog.find((p) => p.type === navState.type) ?? null;
-    }
+    if (loadingProduct || property) return;
 
-    if (selected) {
+    let cancelled = false;
+    const selectProperty = (selected: DbProperty | null) => {
+      if (cancelled || !selected) return;
       setProperty(selected);
       setFilterType(selected.type);
       setNumberOfGuests(Math.min(2, selected.capacity));
-    }
+    };
+
+    const resolveSelection = async () => {
+      let selected: DbProperty | null = null;
+      if (navState?.propertyId) {
+        selected = catalog.find((item) => item.id === navState.propertyId) ?? null;
+        if (!selected) selected = await getPropertyById(navState.propertyId);
+      } else if (navState?.slug) {
+        selected = catalog.find((item) => item.slug === navState.slug) ?? null;
+        if (!selected) selected = await getPropertyBySlug(navState.slug);
+      }
+
+      // Keep the booking button useful even when an existing database slug differs
+      // from the frontend mapping, while still restricting the match to its type.
+      if (!selected && navState?.name) {
+        const requestedName = navState.name.trim().toLocaleLowerCase();
+        selected = catalog.find(
+          (item) =>
+            item.type === navState.type &&
+            item.name.trim().toLocaleLowerCase() === requestedName
+        ) ?? null;
+      }
+
+      if (!selected && navState?.type) {
+        selected = catalog.find((item) => item.type === navState.type) ?? null;
+      }
+
+      selectProperty(selected);
+    };
+
+    resolveSelection().catch((lookupError) => {
+      if (!cancelled) setError(getSupabaseErrorMessage(lookupError, 'Could not find that listing. Please choose a listing below.'));
+    });
+
+    return () => {
+      cancelled = true;
+    };
   }, [loadingProduct, catalog, navState, property]);
 
   const filteredCatalog = useMemo(() => {
