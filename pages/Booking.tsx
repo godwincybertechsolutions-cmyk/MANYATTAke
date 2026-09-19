@@ -86,9 +86,23 @@ const Booking: React.FC = () => {
       } else if (navState?.slug) {
         selected = catalog.find((item) => item.slug === navState.slug) ?? null;
         if (!selected) selected = await getPropertyBySlug(navState.slug);
-      } else if (navState?.type) {
+      }
+
+      // Keep the booking button useful even when an existing database slug differs
+      // from the frontend mapping, while still restricting the match to its type.
+      if (!selected && navState?.name) {
+        const requestedName = navState.name.trim().toLocaleLowerCase();
+        selected = catalog.find(
+          (item) =>
+            item.type === navState.type &&
+            item.name.trim().toLocaleLowerCase() === requestedName
+        ) ?? null;
+      }
+
+      if (!selected && navState?.type) {
         selected = catalog.find((item) => item.type === navState.type) ?? null;
       }
+
       selectProperty(selected);
     };
 

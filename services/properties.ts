@@ -30,9 +30,9 @@ function normalizeProperties(properties: DbProperty[] | null): DbProperty[] {
   return (properties ?? []).map(normalizeProperty);
 }
 
-async function queryPropertiesTable(table: 'properties' | 'property_catalog', type?: PropertyType) {
+async function queryPropertiesTable(type?: PropertyType) {
   let query = supabase
-    .from(table)
+    .from('properties')
     .select(PROPERTY_COLUMNS)
     .eq('is_available', true)
     .order('created_at', { ascending: false });
@@ -43,32 +43,33 @@ async function queryPropertiesTable(table: 'properties' | 'property_catalog', ty
 }
 
 export async function getProperties(type?: PropertyType) {
-  const primary = await queryPropertiesTable('properties', type);
-  if (!primary.error && primary.data?.length) {
-    return normalizeProperties(primary.data as DbProperty[]);
-  }
-
-  const fallback = await queryPropertiesTable('property_catalog', type);
-  if (fallback.error) throw primary.error ?? fallback.error;
-  return normalizeProperties(fallback.data as DbProperty[] | null);
+  const result = await queryPropertiesTable(type);
+  if (result.error) throw result.error;
+  return normalizeProperties(result.data as DbProperty[] | null);
 }
 
 export async function getPropertyById(id: string) {
-  const primary = await supabase.from('properties').select(PROPERTY_COLUMNS).eq('id', id).maybeSingle();
-  if (!primary.error && primary.data) return normalizeProperty(primary.data as DbProperty);
+  const result = await supabase
+    .from('properties')
+    .select(PROPERTY_COLUMNS)
+    .eq('id', id)
+    .eq('is_available', true)
+    .maybeSingle();
 
-  const fallback = await supabase.from('property_catalog').select(PROPERTY_COLUMNS).eq('id', id).maybeSingle();
-  if (fallback.error) throw primary.error ?? fallback.error;
-  return fallback.data ? normalizeProperty(fallback.data as DbProperty) : null;
+  if (result.error) throw result.error;
+  return result.data ? normalizeProperty(result.data as DbProperty) : null;
 }
 
 export async function getPropertyBySlug(slug: string) {
-  const primary = await supabase.from('properties').select(PROPERTY_COLUMNS).eq('slug', slug).eq('is_available', true).maybeSingle();
-  if (!primary.error && primary.data) return normalizeProperty(primary.data as DbProperty);
+  const result = await supabase
+    .from('properties')
+    .select(PROPERTY_COLUMNS)
+    .eq('slug', slug)
+    .eq('is_available', true)
+    .maybeSingle();
 
-  const fallback = await supabase.from('property_catalog').select(PROPERTY_COLUMNS).eq('slug', slug).eq('is_available', true).maybeSingle();
-  if (fallback.error) throw primary.error ?? fallback.error;
-  return fallback.data ? normalizeProperty(fallback.data as DbProperty) : null;
+  if (result.error) throw result.error;
+  return result.data ? normalizeProperty(result.data as DbProperty) : null;
 }
 
 export async function getLocalizedProperties(languageCode: string, currencyCode: string, type?: PropertyType) {
